@@ -1,0 +1,38 @@
+﻿<Properties GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="OVHApi/Tools/Ensure.cs">
+    <Files>
+      <File FileName="OVHApi/Tools/Ensure.cs" Line="31" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="OVHApi" expanded="True">
+            <Node name="Commands" expanded="True" />
+            <Node name="Properties" expanded="True" />
+            <Node name="Tools" expanded="True">
+              <Node name="Ensure.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="OVHApi.testapp" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>response.Result</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/flynn/Projects/depfac.ovh/depfac.ovh.test/Program.cs" line="37" column="1" />
+      <Breakpoint file="/home/flynn/Projects/depfac.ovh/depfac.ovh.test/Program.cs" line="30" column="31" />
+      <Breakpoint file="/home/flynn/Projects/depfac.ovh/depfac.ovh.test/Program.cs" line="27" column="27" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
