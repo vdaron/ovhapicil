@@ -28,8 +28,8 @@ Once the application key and secret are created, you must retrieve a consumer ke
  
  The previous code returns a CredentialsResponse.ValidationUrl. Copy/Paste or redirect user to that url to create the ConsumerKey
  
-How to use the API
-------------------
+2. Consume API services
+-----------------------
 
 ```csharp
    OvhApiClient api = new OvhApiClient("YOUR_APPLICATION_KEY",
