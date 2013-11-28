@@ -7,7 +7,9 @@ The folowing API are currently implemented
 
  * DNS Management, read, write, delete.
  * Dedicated Server, read.
- * Billing information, read.
+ * Billing, Payment information, read.
+ * Applications and access rights linked to OVH handle
+ * **Please, submit your pull request for missing features !**
 
 How to use the API
 ==================
@@ -45,8 +47,3 @@ Once the application key and secret are created, you must retrieve a consumer ke
                                        
     //now, you can use your api to access your OVH Services
 ```
-
-Unsupported API
-===============
-
-Only a subset of the API is available right now. Do not hesitate to send me Pull Request !
