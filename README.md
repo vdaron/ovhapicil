@@ -3,6 +3,12 @@ ovhapicil
 
 .NET Client for OVH API ( More info about API can be found at [https://api.ovh.com/](https://api.ovh.com/))
 
+The folowing API are currently implemented
+
+ * DNS Management, read, write, delete.
+ * Dedicated Server, read.
+ * Billing information, read.
+
 How to use the API
 ==================
 
