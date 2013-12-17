@@ -34,7 +34,7 @@ Once the application key and secret are created, you must retrieve a consumer ke
                         
  ```
  
- The previous code returns a *CredentialsResponse.ValidationUrl*.  _You must use this url to link your application with your OVH NickHandle_. Therefore, Copy/Paste or redirect user to that url to create the ConsumerKey.
+ The previous code returns a *CredentialsResponse.ValidationUrl*.  **You must use this url to link your application with your OVH NickHandle**. Therefore, Copy/Paste or redirect user to that url to create the ConsumerKey.
  
 2. Consume API services
 -----------------------
