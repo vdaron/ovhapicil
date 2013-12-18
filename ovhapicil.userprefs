@@ -1,18 +1,21 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="OVHApi/Tools/Ensure.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OVHApi/Commands/Me/Application.cs">
     <Files>
-      <File FileName="OVHApi/Tools/Ensure.cs" Line="31" Column="10" />
+      <File FileName="OVHApi/Commands/Me/Application.cs" Line="47" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="OVHApi" expanded="True">
-            <Node name="Commands" expanded="True" />
-            <Node name="Properties" expanded="True" />
-            <Node name="Tools" expanded="True">
-              <Node name="Ensure.cs" selected="True" />
+            <Node name="Commands" expanded="True">
+              <Node name="Dedicated" expanded="True" />
+              <Node name="Domain" expanded="True" />
+              <Node name="Me" expanded="True">
+                <Node name="Application.cs" selected="True" />
+              </Node>
             </Node>
+            <Node name="Tools" expanded="True" />
           </Node>
           <Node name="OVHApi.testapp" expanded="True" />
         </State>
