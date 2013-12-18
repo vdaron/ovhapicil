@@ -33,22 +33,25 @@ namespace OVHApi.Commands.Dedicated.Server
 		/// The disk space available in gigabytes
 		/// </summary>
 		/// <value>The quota.</value>
-		public UnitAndValue<long> Quota{ get; set;}
+		public UnitAndValue<long> Quota{ get; internal set; }
+
 		/// <summary>
 		/// The disk space currently used on your backup FTP in gigabytes
 		/// </summary>
 		/// <value>The usage.</value>
-		public UnitAndValue<long> Usage{get;set;}
+		public UnitAndValue<long> Usage{ get; internal set; }
+
 		/// <summary>
 		/// The backup FTP server name
 		/// </summary>
 		/// <value>The name of the ftp backup.</value>
-		public string FtpBackupName{get;set;}
+		public string FtpBackupName{ get; internal set; }
+
 		/// <summary>
 		/// If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
 		/// </summary>
 		/// <value>The read only date.</value>
-		public DateTime? ReadOnlyDate{get;set;}
+		public DateTime? ReadOnlyDate{ get; internal set; }
 	}
 }
 
