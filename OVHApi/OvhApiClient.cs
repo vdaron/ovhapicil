@@ -355,7 +355,18 @@ namespace OVHApi
 			Ensure.NotNullNotEmpty("serverName",serverName);
 			return await RawCall<BackupFtp>(HttpMethod.Get,"/dedicated/server/{0}/features/backupFTP".Fmt(serverName));
 		}
-
+		public async Task<long[]> GetDedicatedServerInterventionIds(string serverName)
+		{
+			Ensure.NotNullNotEmpty("serverName",serverName);
+			return await RawCall<long[]>(HttpMethod.Get,"/dedicated/server/{0}/intervention".Fmt(serverName));
+		}
+		public async Task<Intervention> GetDedicatedServerIntervention(string serverName,
+		                                                               long interventionId)
+		{
+			Ensure.NotNullNotEmpty("serverName",serverName);
+			Ensure.IdIsValid("interventionId",interventionId);
+			return await RawCall<Intervention>(HttpMethod.Get,"/dedicated/server/{0}/intervention/{1}".Fmt(serverName, interventionId));
+		}
 		public async Task<string[]> GetIPs(IPType? type = null)
 		{
 			QueryString queryString = new QueryString();

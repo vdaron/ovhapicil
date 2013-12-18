@@ -64,6 +64,7 @@
     <Compile Include="Tools\Ensure.cs" />
     <Compile Include="Commands\IP\IPType.cs" />
     <Compile Include="Commands\Dedicated\Server\BackupFtp.cs" />
+    <Compile Include="Commands\Dedicated\Server\Intervention.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
