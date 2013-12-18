@@ -29,9 +29,21 @@ namespace OVHApi.Commands.Dedicated.Server
 {
 	public class Intervention
 	{
-		public long InterventionId{ get; set;}
-		public DateTime Date{ get; set;}
-		public string Type{ get; set;}
+		/// <summary>
+		/// the intervention identifier.
+		/// </summary>
+		/// <value>The intervention identifier.</value>
+		public long InterventionId{ get; internal set;}
+		/// <summary>
+		/// the intervention start date.
+		/// </summary>
+		/// <value>The date.</value>
+		public DateTime Date{ get; internal set;}
+		/// <summary>
+		/// the intervention type.
+		/// </summary>
+		/// <value>The type.</value>
+		public string Type{ get; internal set;}
 	}
 }
 
