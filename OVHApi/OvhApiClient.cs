@@ -11,6 +11,7 @@ using OVHApi.Commands;
 using OVHApi.Commands.Dedicated.Server;
 using OVHApi.Commands.Me;
 using OVHApi.Tools;
+using OVHApi.Commands.IP;
 
 namespace OVHApi
 {
@@ -37,7 +38,7 @@ namespace OVHApi
 		private readonly string _applicationSecret;
 		private readonly Uri _rootPath;
 		private readonly HttpClient _client;
-		private readonly SHA1 sha1 = SHA1.Create();
+		private readonly SHA1 _sha = SHA1.Create();
 
 		private long? _timeDelta = null;
 
@@ -349,6 +350,18 @@ namespace OVHApi
 					period.ToString().ToLower(),
 					t));
 		}
+		public async Task<BackupFtp> GetDedicatedServerBackupFtp(string serverName)
+		{
+			Ensure.NotNullNotEmpty("serverName",serverName);
+			return await RawCall<BackupFtp>(HttpMethod.Get,"/dedicated/server/{0}/features/backupFTP".Fmt(serverName));
+		}
+
+		public async Task<string[]> GetIPs(IPType? type = null)
+		{
+			QueryString queryString = new QueryString();
+			queryString["type"] = type;
+			return await RawCall<string[]>(HttpMethod.Get,"/ip{0}".Fmt(queryString.ToString()));
+		}
 
 		#region Private methods
 
@@ -425,7 +438,7 @@ namespace OVHApi
 
 		private byte[] GetHash(string inputString)
 		{
-			return sha1.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+			return _sha.ComputeHash(Encoding.UTF8.GetBytes(inputString));
 		}
 
 		private string GetHashString(string inputString)

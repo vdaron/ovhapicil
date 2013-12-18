@@ -2,10 +2,10 @@ using System;
 
 namespace OVHApi.Commands
 {
-	public class UnitAndValue
+	public class UnitAndValue<T>
 	{
 		public string Unit{get;set;}
-		public double Value{get;set;}
+		public T Value{get;set;}
 	}
 }
 

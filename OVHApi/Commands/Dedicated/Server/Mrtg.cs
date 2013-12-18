@@ -25,7 +25,7 @@ namespace OVHApi.Commands.Dedicated.Server
 	public class Mrtg
 	{
 		public long Timestamp{get;set;}
-		public UnitAndValue Value{get;set;}
+		public UnitAndValue<double> Value{get;set;}
 	}
 }
 

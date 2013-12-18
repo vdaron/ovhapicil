@@ -62,6 +62,8 @@
     <Compile Include="Tools\OvhException.cs" />
     <Compile Include="Tools\QueryString.cs" />
     <Compile Include="Tools\Ensure.cs" />
+    <Compile Include="Commands\IP\IPType.cs" />
+    <Compile Include="Commands\Dedicated\Server\BackupFtp.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -74,6 +76,7 @@
     <Folder Include="Commands\Dedicated\" />
     <Folder Include="Commands\Dedicated\Server\" />
     <Folder Include="Tools\" />
+    <Folder Include="Commands\IP\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
