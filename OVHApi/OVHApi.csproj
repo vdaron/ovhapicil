@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,54 +30,50 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.3.9.70\lib\net35\ServiceStack.Text.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Commands\Credentials.cs" />
-    <Compile Include="Commands\Domain\DomainRecordDetail.cs" />
-    <Compile Include="Commands\Domain\DomainServiceNameserver.cs" />
-    <Compile Include="Commands\Domain\DomainServiceOwo.cs" />
-    <Compile Include="Commands\Domain\DomainZoneDetail.cs" />
-    <Compile Include="Commands\Domain\DomainZoneSoa.cs" />
-    <Compile Include="OvhApiClient.cs" />
-    <Compile Include="Commands\Me\NickHandle.cs" />
-    <Compile Include="Commands\Dedicated\Server\ServerInfos.cs" />
-    <Compile Include="Commands\Domain\DomainServiceInfo.cs" />
-    <Compile Include="Commands\ServiceInfo.cs" />
-    <Compile Include="Commands\Dedicated\Server\Mrtg.cs" />
-    <Compile Include="Commands\UnitAndValue.cs" />
-    <Compile Include="Commands\Error.cs" />
-    <Compile Include="Commands\OvhTask.cs" />
-    <Compile Include="Commands\Me\Application.cs" />
-    <Compile Include="Commands\Me\Bill.cs" />
-    <Compile Include="Commands\Price.cs" />
-    <Compile Include="Commands\Me\BillDetail.cs" />
-    <Compile Include="Commands\Me\Payment.cs" />
-    <Compile Include="Tools\OvhException.cs" />
-    <Compile Include="Tools\QueryString.cs" />
+    <Compile Include="Credentials.cs" />
+    <Compile Include="IPAddressBlock.cs" />
     <Compile Include="Tools\Ensure.cs" />
-    <Compile Include="Commands\IP\IPType.cs" />
-    <Compile Include="Commands\Dedicated\Server\BackupFtp.cs" />
-    <Compile Include="Commands\Dedicated\Server\Intervention.cs" />
+    <Compile Include="Tools\Error.cs" />
+    <Compile Include="OvhApiClient.cs" />
+    <Compile Include="Tools\IPAddressConverter.cs" />
+    <Compile Include="Tools\OvhException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\QueryString.cs" />
+    <Compile Include="Templates\Models.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Operations.cs">
+      <DependentUpon>Operations.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Tools\DateTimeExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Templates\Models.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Models.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Operations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Operations.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Commands\Domain\" />
-    <Folder Include="Commands\Me\" />
-    <Folder Include="Commands\Dedicated\" />
-    <Folder Include="Commands\Dedicated\Server\" />
-    <Folder Include="Tools\" />
-    <Folder Include="Commands\IP\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

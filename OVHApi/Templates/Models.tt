@@ -1,0 +1,7 @@
+﻿<#@ template debug="false" language="C#" hostspecific="true" #>
+<#@ assembly name="$(SolutionDir)/OVHApi.Parser/bin/Debug/OVHApi.Parser.exe" #>
+<#@ import namespace="OVHApi.Parser" #>
+<#
+	ModelGenerator generator = new ModelGenerator();
+	generator.CreateModels(new HttpFileLoader().Load());
+#><#= generator.GetOutput() #>

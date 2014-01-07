@@ -23,8 +23,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using ServiceStack.Text;
 
 namespace OVHApi.Tools
 {
@@ -33,17 +33,17 @@ namespace OVHApi.Tools
 		public static void IdIsValid(string parameterName, long parameterValue)
 		{
 			if(parameterValue <= 0)
-				throw new ArgumentNullException("Invalid argument '{0}', cannot be 0.".Fmt(parameterName));
+				throw new ArgumentNullException(String.Format("Invalid argument '{0}', cannot be 0.",parameterName));
 		}
 		public static void NotNull(string parameterName, object parameterValue)
 		{
 			if(parameterValue == null)
-				throw new ArgumentNullException("Invalid argument '{0}', cannot be null.".Fmt(parameterName));
+				throw new ArgumentNullException(String.Format("Invalid argument '{0}', cannot be null.",parameterName));
 		}
-		public static void NotNullNotEmpty(string parameterName, string parameterValue)
+		public static void NotNullNorEmpty(string parameterName, string parameterValue)
 		{
 			if(string.IsNullOrEmpty(parameterValue))
-				throw new ArgumentException("Invalid argument '{0}', cannot be null or empty".Fmt(parameterName));
+				throw new ArgumentException(String.Format("Invalid argument '{0}', cannot be null or empty",parameterName));
 		}
 	}
 }

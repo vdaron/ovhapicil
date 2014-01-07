@@ -1,0 +1,40 @@
+﻿<#@ template debug="false" language="C#" hostspecific="true" #>
+<#@ assembly name="$(SolutionDir)/OVHApi.Parser/bin/Debug/OVHApi.Parser.exe" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="OVHApi.Parser" #>
+<#
+	List<OvhApi> apis = new List<OvhApi>();
+	apis.AddRange(new HttpFileLoader().Load());
+#>
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using OVHApi.Tools;
+
+namespace OVHApi
+{
+	public partial class OvhApiClient{
+	<#foreach (var api in apis){
+		foreach(var a in api.Apis){ 
+			foreach(var operation in a.Operations){
+				if(!String.IsNullOrEmpty(operation.Description)){#>
+		/// <summary>
+		/// <#= operation.Description #><# foreach(var param in operation.Parameters){#>
+		/// <param name="<#= Util.GetParameterName(param)#>"><#= param.Description ?? "To be written"#></param><#}#>
+		/// </summary><# } if(operation.ApiStatus.Value == ApiState.Deprecated){#>
+		[Obsolete("Deprecated since <#= operation.ApiStatus.DeprecatedDate#><# if(operation.ApiStatus.Replacement != null){#> use '<#=operation.ApiStatus.Replacement #>' instead<#}#>")]<#}#>
+		public async Task<#= Util.GetMethodReturnTaskParameter(operation.ResponseType)#> <#= Util.GetMethodNameAndParameters(a,operation) #>
+		{
+		<# if (!operation.NoAuthentication){ #>
+			if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+		<# } #>
+			<#= Util.CreateParameterChecks(operation.Parameters) #>
+			<#= Util.CreateQueryString(operation.Parameters) #>
+			<#= Util.CreateBodyRequest(operation.Parameters) #>
+			<#= Util.CreateMethodReturn(a,operation) #>
+		}
+		<#}}}#>
+	}
+}

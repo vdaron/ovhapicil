@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi", "OVHApi\OVHApi.csproj", "{238E8EA0-5ABE-433B-B328-6C05C9B9FD4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.testapp", "OVHApi.testapp\OVHApi.testapp.csproj", "{5A349CAC-1B23-4236-9D38-7C2586FDE94C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.Parser", "OVHApi.Parser\OVHApi.Parser.csproj", "{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,13 @@ Global
 		{5A349CAC-1B23-4236-9D38-7C2586FDE94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A349CAC-1B23-4236-9D38-7C2586FDE94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A349CAC-1B23-4236-9D38-7C2586FDE94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = OVHApi.testapp\OVHApi.testapp.csproj

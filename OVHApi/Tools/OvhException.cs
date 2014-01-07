@@ -1,5 +1,4 @@
 using System;
-using OVHApi.Commands;
 
 namespace OVHApi.Tools
 {

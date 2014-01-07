@@ -1,6 +1,4 @@
-using System;
-
-namespace OVHApi.Commands
+namespace OVHApi.Tools
 {
 	public class Error
 	{

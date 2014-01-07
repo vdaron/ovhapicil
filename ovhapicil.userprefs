@@ -1,23 +1,26 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="OVHApi/Commands/Me/Application.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OVHApi.testapp/T4Template.tt">
     <Files>
       <File FileName="OVHApi/Commands/Me/Application.cs" Line="47" Column="1" />
+      <File FileName="OVHApi.testapp/T4Template.tt" Line="96" Column="5" />
+      <File FileName="OVHApi.testapp/Program.cs" Line="60" Column="3" />
+      <File FileName="OVHApi/OvhApiClient.cs" Line="398" Column="1" />
+      <File FileName="OVHApi.testapp/T4Template.cs" Line="1399" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="OVHApi" expanded="True">
             <Node name="Commands" expanded="True">
-              <Node name="Dedicated" expanded="True" />
-              <Node name="Domain" expanded="True" />
-              <Node name="Me" expanded="True">
-                <Node name="Application.cs" selected="True" />
-              </Node>
+              <Node name="Me" expanded="True" />
             </Node>
             <Node name="Tools" expanded="True" />
           </Node>
-          <Node name="OVHApi.testapp" expanded="True" />
+          <Node name="OVHApi.testapp" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="T4Template.tt" expanded="True" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -35,6 +38,7 @@
       <Breakpoint file="/home/flynn/Projects/depfac.ovh/depfac.ovh.test/Program.cs" line="37" column="1" />
       <Breakpoint file="/home/flynn/Projects/depfac.ovh/depfac.ovh.test/Program.cs" line="30" column="31" />
       <Breakpoint file="/home/flynn/Projects/depfac.ovh/depfac.ovh.test/Program.cs" line="27" column="27" />
+      <Breakpoint file="/home/flynn/Projects/ovhapicil/OVHApi.testapp/Program.cs" line="144" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
