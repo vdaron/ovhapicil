@@ -238,6 +238,9 @@ namespace OVHApi.Parser
 
 		private static void AddSummary(CodeCommentStatementCollection comments, string summary)
 		{
+			if (String.IsNullOrEmpty(summary))
+				return;
+
 			comments.Add(new CodeCommentStatement("<summary>", true));
 			comments.Add(new CodeCommentStatement(summary, true));
 			comments.Add(new CodeCommentStatement("</summary>", true));

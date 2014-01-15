@@ -45,9 +45,6 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("ip")]
 		private System.Net.IPAddress _ip;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress Ip {
 			get {
 				return this._ip;
@@ -78,9 +75,6 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("cname")]
 		private string _cname;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long CacheRuleUse {
 			get {
 				return this._cacheRuleUse;
@@ -96,9 +90,6 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.DomainStatusEnum Status {
 			get {
 				return this._status;
@@ -108,18 +99,12 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.DomainTypeEnum Type {
 			get {
 				return this._type;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Cname {
 			get {
 				return this._cname;
@@ -141,9 +126,6 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("value")]
 		private long _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
@@ -153,9 +135,6 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Value {
 			get {
 				return this._value;
@@ -201,36 +180,24 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("status")]
 		private OvhApi.Models.Cdnanycast.TaskStateEnum _status;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long TaskId {
 			get {
 				return this._taskId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.TaskFunctionEnum Function {
 			get {
 				return this._function;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Comment {
 			get {
 				return this._comment;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.TaskStateEnum Status {
 			get {
 				return this._status;
@@ -351,72 +318,48 @@ namespace OvhApi.Models.Services {
 		[JsonProperty("creation")]
 		private System.DateTime _creation;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Service.StateEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> EngagedUpTo {
 			get {
 				return this._engagedUpTo;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ContactBilling {
 			get {
 				return this._contactBilling;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ContactTech {
 			get {
 				return this._contactTech;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Expiration {
 			get {
 				return this._expiration;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ContactAdmin {
 			get {
 				return this._contactAdmin;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Creation {
 			get {
 				return this._creation;
@@ -474,45 +417,30 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("certificateValidTo")]
 		private System.Nullable<System.DateTime> _certificateValidTo;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.SslStateEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Cn {
 			get {
 				return this._cn;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> CertificateValidFrom {
 			get {
 				return this._certificateValidFrom;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> CertificateValidTo {
 			get {
 				return this._certificateValidTo;
@@ -597,54 +525,36 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("cacheRuleLimitPerDomain")]
 		private long _cacheRuleLimitPerDomain;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Quota {
 			get {
 				return this._quota;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long BackendUse {
 			get {
 				return this._backendUse;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> LastQuotaOrder {
 			get {
 				return this._lastQuotaOrder;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Offer {
 			get {
 				return this._offer;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress AnycastName {
 			get {
 				return this._anycast;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long BackendLimit {
 			get {
 				return this._backendLimit;
@@ -660,9 +570,6 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long CacheRuleLimitPerDomain {
 			get {
 				return this._cacheRuleLimitPerDomain;
@@ -726,18 +633,12 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("fileType")]
 		private OvhApi.Models.Cdnanycast.CacheRuleFileTypeEnum _fileType;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.CacheRuleCacheTypeEnum CacheType {
 			get {
 				return this._cacheType;
@@ -753,18 +654,12 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string FileMatch {
 			get {
 				return this._fileMatch;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Ttl {
 			get {
 				return this._ttl;
@@ -774,9 +669,6 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.CacheRuleStatusEnum Status {
 			get {
 				return this._status;
@@ -786,9 +678,6 @@ namespace OvhApi.Models.Cdnanycast {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.CacheRuleFileTypeEnum FileType {
 			get {
 				return this._fileType;
@@ -831,27 +720,18 @@ namespace OvhApi.Models.Cdnanycast {
 		[JsonProperty("name")]
 		private string _name;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string City {
 			get {
 				return this._city;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Comment {
 			get {
 				return this._comment;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdnanycast.PopStatusEnum Status {
 			get {
 				return this._status;
@@ -886,9 +766,6 @@ namespace OvhApi.Models.Cdnanycast {
 namespace OvhApi.Models.Service {
 	
 	
-	/// <summary>
-	/// 
-	/// </summary>
 	public enum StateEnum {
 		
 		[JsonProperty("expired")]
@@ -957,18 +834,12 @@ namespace OvhApi.Models.Cdn.Website {
 		[JsonProperty("status")]
 		private OvhApi.Models.Cdn.Website.BackendStatusEnum _status;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress Ipv4 {
 			get {
 				return this._ipv4;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdn.Website.BackendStatusEnum Status {
 			get {
 				return this._status;
@@ -1020,18 +891,12 @@ namespace OvhApi.Models.Cdn.Website {
 		[JsonProperty("status")]
 		private OvhApi.Models.Cdn.Website.DomainStatusEnum _status;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string DomainName {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdn.Website.DomainStatusEnum Status {
 			get {
 				return this._status;
@@ -1059,36 +924,24 @@ namespace OvhApi.Models.Cdn.Website {
 		[JsonProperty("status")]
 		private OvhApi.Models.Cdn.Website.TaskStateEnum _status;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long TaskId {
 			get {
 				return this._taskId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdn.Website.TaskFunctionEnum Function {
 			get {
 				return this._function;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Comment {
 			get {
 				return this._comment;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdn.Website.TaskStateEnum Status {
 			get {
 				return this._status;
@@ -1110,18 +963,12 @@ namespace OvhApi.Models.Cdn.Website {
 		[JsonProperty("status")]
 		private OvhApi.Models.Cdn.Website.DomainZoneStatusEnum _status;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ZoneName {
 			get {
 				return this._zone;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Cdn.Website.DomainZoneStatusEnum Status {
 			get {
 				return this._status;
@@ -1209,9 +1056,6 @@ namespace OvhApi.Models.Cdn.Website {
 		[JsonProperty("value")]
 		private long _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
@@ -1221,9 +1065,6 @@ namespace OvhApi.Models.Cdn.Website {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Value {
 			get {
 				return this._value;
@@ -1269,27 +1110,18 @@ namespace OvhApi.Models.Cdn.Website {
 		[JsonProperty("service")]
 		private string _service;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Offer {
 			get {
 				return this._offer;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress Anycast {
 			get {
 				return this._anycast;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Service {
 			get {
 				return this._service;
@@ -1317,9 +1149,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 		[JsonProperty("endpoint")]
 		private string _endpoint;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
@@ -1329,9 +1158,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Tenant {
 			get {
 				return this._tenant;
@@ -1341,9 +1167,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Login {
 			get {
 				return this._login;
@@ -1353,9 +1176,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Endpoint {
 			get {
 				return this._endpoint;
@@ -1383,9 +1203,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 		[JsonProperty("server")]
 		private string _server;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
@@ -1401,9 +1218,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Server {
 			get {
 				return this._server;
@@ -1443,9 +1257,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 		[JsonProperty("value")]
 		private long _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
@@ -1455,9 +1266,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Value {
 			get {
 				return this._value;
@@ -1605,9 +1413,6 @@ namespace OvhApi.Models.Cdn {
 		[JsonProperty("domain")]
 		private string _domain;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
@@ -1770,18 +1575,12 @@ namespace OvhApi.Models.Pcs {
 		[JsonProperty("name")]
 		private string _name;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDate {
 			get {
 				return this._creationDate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -1932,9 +1731,6 @@ namespace OvhApi.Models.Cloud.Cdn {
 		[JsonProperty("endpoint")]
 		private string _endpoint;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
@@ -1944,9 +1740,6 @@ namespace OvhApi.Models.Cloud.Cdn {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Tenant {
 			get {
 				return this._tenant;
@@ -1956,9 +1749,6 @@ namespace OvhApi.Models.Cloud.Cdn {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Login {
 			get {
 				return this._login;
@@ -1968,9 +1758,6 @@ namespace OvhApi.Models.Cloud.Cdn {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Endpoint {
 			get {
 				return this._endpoint;
@@ -1996,9 +1783,6 @@ namespace OvhApi.Models.ComplexType {
 		[JsonProperty("value")]
 		private T _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Unit {
 			get {
 				return this._unit;
@@ -2008,9 +1792,6 @@ namespace OvhApi.Models.ComplexType {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public T Value {
 			get {
 				return this._value;
@@ -2131,27 +1912,18 @@ namespace OvhApi.Models.Pcs {
 		[JsonProperty("userName")]
 		private string _userName;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDate {
 			get {
 				return this._creationDate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string UserName {
 			get {
 				return this._userName;
@@ -2254,9 +2026,6 @@ namespace OvhApi.Models.Cloud.Pcs {
 		[JsonProperty("endpoint")]
 		private string _endpoint;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
@@ -2266,9 +2035,6 @@ namespace OvhApi.Models.Cloud.Pcs {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Tenant {
 			get {
 				return this._tenant;
@@ -2278,9 +2044,6 @@ namespace OvhApi.Models.Cloud.Pcs {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Login {
 			get {
 				return this._login;
@@ -2290,9 +2053,6 @@ namespace OvhApi.Models.Cloud.Pcs {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Endpoint {
 			get {
 				return this._endpoint;
@@ -2614,9 +2374,6 @@ namespace OvhApi.Models.Dedicated {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<long> Rating {
 			get {
 				return this._rating;
@@ -2962,9 +2719,6 @@ namespace OvhApi.Models.Dedicated.InstallationTemplate {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Dedicated.TemplatePartitionTypeEnum Type {
 			get {
 				return this._type;
@@ -3757,9 +3511,6 @@ namespace OvhApi.Models.SecondaryDns {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDate {
 			get {
 				return this._creationDate;
@@ -4387,9 +4138,6 @@ namespace OvhApi.Models.Dedicated.Server {
 		[JsonProperty("value")]
 		private OvhApi.Models.ComplexType.UnitAndValue<double> _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Timestamp {
 			get {
 				return this._timestamp;
@@ -4399,9 +4147,6 @@ namespace OvhApi.Models.Dedicated.Server {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.ComplexType.UnitAndValue<double> Value {
 			get {
 				return this._value;
@@ -4813,9 +4558,6 @@ namespace OvhApi.Models.SecondaryDns {
 		[JsonProperty("hostname")]
 		private string _hostname;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress Ipv6 {
 			get {
 				return this._ipv6;
@@ -4825,9 +4567,6 @@ namespace OvhApi.Models.SecondaryDns {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress Ip {
 			get {
 				return this._ip;
@@ -5029,9 +4768,6 @@ namespace OvhApi.Models.Dedicated.Server {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Dedicated.Server.StateEnum State {
 			get {
 				return this._state;
@@ -5068,18 +4804,12 @@ namespace OvhApi.Models.Dedicated.Server {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Rack {
 			get {
 				return this._rack;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string RootDevice {
 			get {
 				return this._rootDevice;
@@ -5089,18 +4819,12 @@ namespace OvhApi.Models.Dedicated.Server {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<long> LinkSpeed {
 			get {
 				return this._linkSpeed;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<long> BootId {
 			get {
 				return this._bootId;
@@ -5671,9 +5395,6 @@ namespace OvhApi.Models.Dedicated.Server {
 		[JsonProperty("enabled")]
 		private bool _enabled;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string FirewallName {
 			get {
 				return this._firewall;
@@ -5707,9 +5428,6 @@ namespace OvhApi.Models.Dedicated.Server {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Enabled {
 			get {
 				return this._enabled;
@@ -5845,72 +5563,48 @@ namespace OvhApi.Models.Vrack {
 		[JsonProperty("id")]
 		private long _id;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> LastUpdate {
 			get {
 				return this._lastUpdate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<long> OrderId {
 			get {
 				return this._orderId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Function {
 			get {
 				return this._function;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string TargetDomain {
 			get {
 				return this._targetDomain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> TodoDate {
 			get {
 				return this._todoDate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ServiceName {
 			get {
 				return this._serviceName;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
@@ -5965,9 +5659,6 @@ namespace OvhApi.Models.DedicatedCloud {
 		[JsonProperty("networkName")]
 		private string _networkName;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Country {
 			get {
 				return this._country;
@@ -6001,9 +5692,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -6046,54 +5734,36 @@ namespace OvhApi.Models.DedicatedCloud {
 		[JsonProperty("state")]
 		private OvhApi.Models.DedicatedCloud.Filer.StateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ProfileName {
 			get {
 				return this._profile;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.Ressources.BillingTypeEnum BillingType {
 			get {
 				return this._billingType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long FilerId {
 			get {
 				return this._filerId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.ComplexType.UnitAndValue<long> Size {
 			get {
 				return this._size;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.Filer.StateEnum State {
 			get {
 				return this._state;
@@ -6132,9 +5802,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			[JsonProperty("size")]
 			private OvhApi.Models.ComplexType.UnitAndValue<long> _size;
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string Name {
 				get {
 					return this._name;
@@ -6144,9 +5811,6 @@ namespace OvhApi.Models.DedicatedCloud {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.ComplexType.UnitAndValue<long> Size {
 				get {
 					return this._size;
@@ -6232,27 +5896,18 @@ namespace OvhApi.Models.DedicatedCloud {
 		[JsonProperty("state")]
 		private OvhApi.Models.DedicatedCloud.User.StateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long UserId {
 			get {
 				return this._userId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CanManageIpFailOvers {
 			get {
 				return this._canManageIpFailOvers;
@@ -6262,9 +5917,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CanManageNetwork {
 			get {
 				return this._canManageNetwork;
@@ -6274,9 +5926,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.User.StateEnum State {
 			get {
 				return this._state;
@@ -6373,27 +6022,18 @@ namespace OvhApi.Models.DedicatedCloud {
 		[JsonProperty("state")]
 		private OvhApi.Models.DedicatedCloud.Vlan.StateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long VlanNumber {
 			get {
 				return this._vlanNumber;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.Vlan.TypeEnum Type {
 			get {
 				return this._type;
@@ -6409,18 +6049,12 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long VlanId {
 			get {
 				return this._vlanId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.Vlan.StateEnum State {
 			get {
 				return this._state;
@@ -6505,9 +6139,6 @@ namespace OvhApi.Models.DedicatedCloud {
 		[JsonProperty("state")]
 		private OvhApi.Models.DedicatedCloud.TaskStateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long TaskId {
 			get {
 				return this._taskId;
@@ -6859,9 +6490,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.UserLogoutPolicyEnum UserLogoutPolicy {
 			get {
 				return this._userLogoutPolicy;
@@ -6916,18 +6544,12 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long RightId {
 			get {
 				return this._rightId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DatacenterId {
 			get {
 				return this._datacenterId;
@@ -6988,54 +6610,36 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.ComplexType.UnitAndValue<double> Cpu {
 			get {
 				return this._cpu;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.Ressources.BillingTypeEnum BillingType {
 			get {
 				return this._billingType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long HostId {
 			get {
 				return this._hostId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.ComplexType.UnitAndValue<long> Ram {
 			get {
 				return this._ram;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.Host.StateEnum State {
 			get {
 				return this._state;
@@ -7080,9 +6684,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			[JsonProperty("ram")]
 			private OvhApi.Models.ComplexType.UnitAndValue<long> _ram;
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string Core {
 				get {
 					return this._core;
@@ -7092,9 +6693,6 @@ namespace OvhApi.Models.DedicatedCloud {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.ComplexType.UnitAndValue<double> Cpu {
 				get {
 					return this._cpu;
@@ -7104,9 +6702,6 @@ namespace OvhApi.Models.DedicatedCloud {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string Name {
 				get {
 					return this._name;
@@ -7116,9 +6711,6 @@ namespace OvhApi.Models.DedicatedCloud {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.ComplexType.UnitAndValue<long> Ram {
 				get {
 					return this._ram;
@@ -7147,9 +6739,6 @@ namespace OvhApi.Models.DedicatedCloud {
 		[JsonProperty("state")]
 		private OvhApi.Models.DedicatedCloud.AllowedNetworkStateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long NetworkAccessId {
 			get {
 				return this._networkAccessId;
@@ -7168,9 +6757,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.DedicatedCloud.AllowedNetworkStateEnum State {
 			get {
 				return this._state;
@@ -7222,9 +6808,6 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -7234,18 +6817,12 @@ namespace OvhApi.Models.DedicatedCloud {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DatacenterId {
 			get {
 				return this._datacenterId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -8407,9 +7984,6 @@ namespace OvhApi.Models.Email.Exchange {
 		[JsonProperty("accountLicense")]
 		private OvhApi.Models.Email.Exchange.AccountLicense[] _accountLicense;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
@@ -8419,9 +7993,6 @@ namespace OvhApi.Models.Email.Exchange {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long OutlookQuantity {
 			get {
 				return this._outlookQuantity;
@@ -8431,9 +8002,6 @@ namespace OvhApi.Models.Email.Exchange {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Email.Exchange.AccountLicense[] AccountLicense {
 			get {
 				return this._accountLicense;
@@ -8467,45 +8035,30 @@ namespace OvhApi.Models.Email.Exchange {
 		[JsonProperty("sslExpirationDate")]
 		private System.Nullable<System.DateTime> _sslExpirationDate;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Email.Exchange.ServiceOfferEnum Offer {
 			get {
 				return this._offer;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Hostname {
 			get {
 				return this._hostname;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Email.Exchange.ServiceStateEnum State {
 			get {
 				return this._state;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> SslExpirationDate {
 			get {
 				return this._sslExpirationDate;
@@ -8788,9 +8341,6 @@ namespace OvhApi.Models.Email.Exchange {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool MxIsValid {
 			get {
 				return this._mxIsValid;
@@ -8977,9 +8527,6 @@ namespace OvhApi.Models.Email.Exchange {
 		[JsonProperty("license")]
 		private OvhApi.Models.Email.Exchange.OvhLicenceEnum _license;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long LicenseQuantity {
 			get {
 				return this._licenseQuantity;
@@ -8989,9 +8536,6 @@ namespace OvhApi.Models.Email.Exchange {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Email.Exchange.OvhLicenceEnum License {
 			get {
 				return this._license;
@@ -9994,18 +9538,12 @@ namespace OvhApi.Models.Ip {
 		[JsonProperty("reverse")]
 		private string _reverse;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress IpReverse {
 			get {
 				return this._ipReverse;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Reverse {
 			get {
 				return this._reverse;
@@ -10081,9 +9619,6 @@ namespace OvhApi.Models.Ip {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Sequence {
 			get {
 				return this._sequence;
@@ -10108,9 +9643,6 @@ namespace OvhApi.Models.Ip {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Rule {
 			get {
 				return this._rule;
@@ -10135,9 +9667,6 @@ namespace OvhApi.Models.Ip {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDate {
 			get {
 				return this._creationDate;
@@ -10168,18 +9697,12 @@ namespace OvhApi.Models.Ip {
 		[JsonProperty("type")]
 		private OvhApi.Models.Ip.IpTypeEnum _type;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OVHApi.IPAddressBlock IpName {
 			get {
 				return this._ip;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Ip.IpTypeEnum Type {
 			get {
 				return this._type;
@@ -10439,18 +9962,12 @@ namespace OvhApi.Models.Ip {
 		[JsonProperty("state")]
 		private OvhApi.Models.Ip.FirewallStateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress IpOnFirewall {
 			get {
 				return this._ipOnFirewall;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Enabled {
 			get {
 				return this._enabled;
@@ -10688,9 +10205,6 @@ namespace OvhApi.Models.Ip {
 		[JsonProperty("state")]
 		private OvhApi.Models.Ip.MitigationStateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress IpOnMitigation {
 			get {
 				return this._ipOnMitigation;
@@ -11330,9 +10844,6 @@ namespace OvhApi.Models.Ip {
 		[JsonProperty("state")]
 		private OvhApi.Models.Ip.MitigationProfileStateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress IpMitigationProfile {
 			get {
 				return this._ipMitigationProfile;
@@ -11768,9 +11279,6 @@ namespace OvhApi.Models.Ip {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<bool> Fragments {
 			get {
 				return this._fragments;
@@ -11780,9 +11288,6 @@ namespace OvhApi.Models.Ip {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<bool> Syn {
 			get {
 				return this._syn;
@@ -12803,36 +12308,24 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("openDate")]
 		private System.DateTime _openDate;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Balance {
 			get {
 				return this._balance;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime LastUpdate {
 			get {
 				return this._lastUpdate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string OvhAccountId {
 			get {
 				return this._ovhAccountId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime OpenDate {
 			get {
 				return this._openDate;
@@ -12968,72 +12461,48 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("previousBalance")]
 		private OvhApi.Models.Order.Price _previousBalance;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MovementId {
 			get {
 				return this._movementId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Amount {
 			get {
 				return this._amount;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Balance {
 			get {
 				return this._balance;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Order {
 			get {
 				return this._order;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Billing.OvhAccount.OperationEnum Operation {
 			get {
 				return this._operation;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PreviousBalance {
 			get {
 				return this._previousBalance;
@@ -13115,27 +12584,18 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("paymentType")]
 		private OvhApi.Models.Billing.PaymentMeanEnum _paymentType;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime PaymentDate {
 			get {
 				return this._paymentDate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string PaymentIdentifier {
 			get {
 				return this._paymentIdentifier;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Billing.PaymentMeanEnum PaymentType {
 			get {
 				return this._paymentType;
@@ -13160,9 +12620,6 @@ namespace OvhApi.Models.Order {
 		[JsonProperty("text")]
 		private string _text;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.CurrencyCodeEnum CurrencyCode {
 			get {
 				return this._currencyCode;
@@ -13172,9 +12629,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double Value {
 			get {
 				return this._value;
@@ -13184,9 +12638,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Text {
 			get {
 				return this._text;
@@ -14009,63 +13460,42 @@ namespace OvhApi.Models.Api {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Auth.CredentialStateEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ApplicationId {
 			get {
 				return this._applicationId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long CredentialId {
 			get {
 				return this._credentialId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Auth.AccessRule[] Rules {
 			get {
 				return this._rules;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> LastUse {
 			get {
 				return this._lastUse;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> Expiration {
 			get {
 				return this._expiration;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Creation {
 			get {
 				return this._creation;
@@ -14105,72 +13535,48 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("periodEnd")]
 		private System.Nullable<System.DateTime> _periodEnd;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string BillDetailId {
 			get {
 				return this._billDetailId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price TotalPrice {
 			get {
 				return this._totalPrice;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> PeriodStart {
 			get {
 				return this._periodStart;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Quantity {
 			get {
 				return this._quantity;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price UnitPrice {
 			get {
 				return this._unitPrice;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<System.DateTime> PeriodEnd {
 			get {
 				return this._periodEnd;
@@ -14222,45 +13628,30 @@ namespace OvhApi.Models.Api {
 		[JsonProperty("applicationKey")]
 		private string _applicationKey;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Api.ApplicationStatusEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ApplicationId {
 			get {
 				return this._applicationId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ApplicationKey {
 			get {
 				return this._applicationKey;
@@ -14294,54 +13685,36 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("description")]
 		private string _description;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long OrderDetailId {
 			get {
 				return this._orderDetailId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price TotalPrice {
 			get {
 				return this._totalPrice;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Quantity {
 			get {
 				return this._quantity;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price UnitPrice {
 			get {
 				return this._unitPrice;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -14399,9 +13772,6 @@ namespace OvhApi.Models.Auth {
 		[JsonProperty("path")]
 		private string _path;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Auth.MethodEnum Method {
 			get {
 				return this._method;
@@ -14411,9 +13781,6 @@ namespace OvhApi.Models.Auth {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Path {
 			get {
 				return this._path;
@@ -14564,72 +13931,48 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("reference")]
 		private string _reference;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string RefundDetailId {
 			get {
 				return this._refundDetailId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string RefundId {
 			get {
 				return this._refundId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price TotalPrice {
 			get {
 				return this._totalPrice;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Quantity {
 			get {
 				return this._quantity;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price UnitPrice {
 			get {
 				return this._unitPrice;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Reference {
 			get {
 				return this._reference;
@@ -14763,9 +14106,6 @@ namespace OvhApi.Models.Nichandle {
 namespace OvhApi.Models.Order {
 	
 	
-	/// <summary>
-	/// 
-	/// </summary>
 	public enum CurrencyCodeEnum {
 		
 		[JsonProperty("CAD")]
@@ -14888,9 +14228,6 @@ namespace OvhApi.Models.Nichandle {
 		[JsonProperty("legalform")]
 		private OvhApi.Models.Nichandle.LegalFormEnum _legalform;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Firstname {
 			get {
 				return this._firstname;
@@ -14900,9 +14237,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Vat {
 			get {
 				return this._vat;
@@ -14912,18 +14246,12 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.OvhSubsidiaryEnum OvhSubsidiary {
 			get {
 				return this._ovhSubsidiary;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Area {
 			get {
 				return this._area;
@@ -14933,9 +14261,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string BirthDay {
 			get {
 				return this._birthDay;
@@ -14945,9 +14270,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string NationalIdentificationNumber {
 			get {
 				return this._nationalIdentificationNumber;
@@ -14957,9 +14279,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string SpareEmail {
 			get {
 				return this._spareEmail;
@@ -14969,36 +14288,24 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.OvhCompanyEnum OvhCompany {
 			get {
 				return this._ovhCompany;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.StateEnum State {
 			get {
 				return this._state;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Email {
 			get {
 				return this._email;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string City {
 			get {
 				return this._city;
@@ -15008,9 +14315,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Fax {
 			get {
 				return this._fax;
@@ -15020,18 +14324,12 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string NichandleName {
 			get {
 				return this._nichandle;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Address {
 			get {
 				return this._address;
@@ -15041,9 +14339,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string CompanyNationalIdentificationNumber {
 			get {
 				return this._companyNationalIdentificationNumber;
@@ -15053,9 +14348,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string BirthCity {
 			get {
 				return this._birthCity;
@@ -15065,18 +14357,12 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CountryEnum Country {
 			get {
 				return this._country;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.LanguageEnum Language {
 			get {
 				return this._language;
@@ -15086,9 +14372,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Organisation {
 			get {
 				return this._organisation;
@@ -15098,9 +14381,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -15110,9 +14390,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Phone {
 			get {
 				return this._phone;
@@ -15122,9 +14399,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.GenderEnum Sex {
 			get {
 				return this._sex;
@@ -15134,9 +14408,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Zip {
 			get {
 				return this._zip;
@@ -15146,9 +14417,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string CorporationType {
 			get {
 				return this._corporationType;
@@ -15158,9 +14426,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.LegalFormEnum Legalform {
 			get {
 				return this._legalform;
@@ -15206,90 +14471,60 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("originalBillId")]
 		private string _originalBillId;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string RefundId {
 			get {
 				return this._refundId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string PdfUrl {
 			get {
 				return this._pdfUrl;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithoutTax {
 			get {
 				return this._priceWithoutTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Tax {
 			get {
 				return this._tax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long OrderId {
 			get {
 				return this._orderId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Url {
 			get {
 				return this._url;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithTax {
 			get {
 				return this._priceWithTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string OriginalBillId {
 			get {
 				return this._originalBillId;
@@ -15386,81 +14621,54 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("priceWithTax")]
 		private OvhApi.Models.Order.Price _priceWithTax;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string PdfUrl {
 			get {
 				return this._pdfUrl;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithoutTax {
 			get {
 				return this._priceWithoutTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Tax {
 			get {
 				return this._tax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string BillId {
 			get {
 				return this._billId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long OrderId {
 			get {
 				return this._orderId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Url {
 			get {
 				return this._url;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithTax {
 			get {
 				return this._priceWithTax;
@@ -15500,72 +14708,48 @@ namespace OvhApi.Models.Billing {
 		[JsonProperty("url")]
 		private string _url;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithoutTax {
 			get {
 				return this._priceWithoutTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Tax {
 			get {
 				return this._tax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime ExpirationDate {
 			get {
 				return this._expirationDate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long OrderId {
 			get {
 				return this._orderId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithTax {
 			get {
 				return this._priceWithTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Url {
 			get {
 				return this._url;
@@ -15601,9 +14785,6 @@ namespace OvhApi.Models.Billing {
 			[JsonProperty("ideal")]
 			private OvhApi.Models.Billing.Order.PaymentMean[] _ideal;
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] Promotion {
 				get {
 					return this._promotion;
@@ -15613,9 +14794,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] Paypal {
 				get {
 					return this._paypal;
@@ -15625,9 +14803,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] Edinar {
 				get {
 					return this._edinar;
@@ -15637,9 +14812,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] Multibanco {
 				get {
 					return this._multibanco;
@@ -15649,9 +14821,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] OvhAccount {
 				get {
 					return this._ovhAccount;
@@ -15661,9 +14830,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] FidelityPoints {
 				get {
 					return this._fidelityPoints;
@@ -15673,9 +14839,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] CreditCard {
 				get {
 					return this._creditCard;
@@ -15685,9 +14848,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean[] Ideal {
 				get {
 					return this._ideal;
@@ -15724,9 +14884,6 @@ namespace OvhApi.Models.Billing {
 			[JsonProperty("url")]
 			private string _url;
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Billing.Order.PaymentMean.HttpParameter[] Parameters {
 				get {
 					return this._parameters;
@@ -15736,9 +14893,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string Logo {
 				get {
 					return this._logo;
@@ -15748,9 +14902,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string HttpMethod {
 				get {
 					return this._httpMethod;
@@ -15760,9 +14911,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string HtmlForm {
 				get {
 					return this._htmlForm;
@@ -15772,9 +14920,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string SubType {
 				get {
 					return this._subType;
@@ -15784,9 +14929,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public double Fee {
 				get {
 					return this._fee;
@@ -15796,9 +14938,6 @@ namespace OvhApi.Models.Billing {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public string Url {
 				get {
 					return this._url;
@@ -15822,9 +14961,6 @@ namespace OvhApi.Models.Billing {
 				[JsonProperty("choice")]
 				private OvhApi.Models.Billing.Order.PaymentMean.HttpParameterChoice[] _choice;
 				
-				/// <summary>
-				/// 
-				/// </summary>
 				public string Value {
 					get {
 						return this._value;
@@ -15834,9 +14970,6 @@ namespace OvhApi.Models.Billing {
 					}
 				}
 				
-				/// <summary>
-				/// 
-				/// </summary>
 				public string Name {
 					get {
 						return this._name;
@@ -15846,9 +14979,6 @@ namespace OvhApi.Models.Billing {
 					}
 				}
 				
-				/// <summary>
-				/// 
-				/// </summary>
 				public OvhApi.Models.Billing.Order.PaymentMean.HttpParameterChoice[] Choice {
 					get {
 						return this._choice;
@@ -15870,9 +15000,6 @@ namespace OvhApi.Models.Billing {
 				[JsonProperty("name")]
 				private string _name;
 				
-				/// <summary>
-				/// 
-				/// </summary>
 				public string Value {
 					get {
 						return this._value;
@@ -15882,9 +15009,6 @@ namespace OvhApi.Models.Billing {
 					}
 				}
 				
-				/// <summary>
-				/// 
-				/// </summary>
 				public string Name {
 					get {
 						return this._name;
@@ -15959,9 +15083,6 @@ namespace OvhApi.Models.Nichandle {
 		[JsonProperty("consumerKey")]
 		private string _consumerKey;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string OvhIdentifier {
 			get {
 				return this._ovhIdentifier;
@@ -15971,9 +15092,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ConsumerKey {
 			get {
 				return this._consumerKey;
@@ -16061,9 +15179,6 @@ namespace OvhApi.Models.Nichandle {
 		[JsonProperty("legalform")]
 		private OvhApi.Models.Nichandle.CreationRule _legalform;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Firstname {
 			get {
 				return this._firstname;
@@ -16073,9 +15188,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Vat {
 			get {
 				return this._vat;
@@ -16085,9 +15197,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Area {
 			get {
 				return this._area;
@@ -16097,9 +15206,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule BirthDay {
 			get {
 				return this._birthDay;
@@ -16109,9 +15215,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule NationalIdentificationNumber {
 			get {
 				return this._nationalIdentificationNumber;
@@ -16121,9 +15224,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule OvhSubsidiary {
 			get {
 				return this._ovhSubsidiary;
@@ -16133,9 +15233,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule SpareEmail {
 			get {
 				return this._spareEmail;
@@ -16145,9 +15242,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule OvhCompany {
 			get {
 				return this._ovhCompany;
@@ -16157,9 +15251,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Email {
 			get {
 				return this._email;
@@ -16169,9 +15260,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule City {
 			get {
 				return this._city;
@@ -16181,9 +15269,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Fax {
 			get {
 				return this._fax;
@@ -16193,9 +15278,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Address {
 			get {
 				return this._address;
@@ -16205,9 +15287,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule CompanyNationalIdentificationNumber {
 			get {
 				return this._companyNationalIdentificationNumber;
@@ -16217,9 +15296,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule BirthCity {
 			get {
 				return this._birthCity;
@@ -16229,9 +15305,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Country {
 			get {
 				return this._country;
@@ -16241,9 +15314,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Language {
 			get {
 				return this._language;
@@ -16253,9 +15323,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Organisation {
 			get {
 				return this._organisation;
@@ -16265,9 +15332,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Name {
 			get {
 				return this._name;
@@ -16277,9 +15341,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Phone {
 			get {
 				return this._phone;
@@ -16289,9 +15350,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Sex {
 			get {
 				return this._sex;
@@ -16301,9 +15359,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Zip {
 			get {
 				return this._zip;
@@ -16313,9 +15368,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule CorporationType {
 			get {
 				return this._corporationType;
@@ -16325,9 +15377,6 @@ namespace OvhApi.Models.Nichandle {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Nichandle.CreationRule Legalform {
 			get {
 				return this._legalform;
@@ -16349,9 +15398,6 @@ namespace OvhApi.Models.Nichandle {
 		[JsonProperty("mandatory")]
 		private bool _mandatory;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Mandatory {
 			get {
 				return this._mandatory;
@@ -16577,9 +15623,6 @@ namespace OvhApi.Models.Order {
 		[JsonProperty("url")]
 		private string _url;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -16589,9 +15632,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Url {
 			get {
 				return this._url;
@@ -16883,9 +15923,6 @@ namespace OvhApi.Models.Order {
 		[JsonProperty("withTax")]
 		private OvhApi.Models.Order.Price _withTax;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price WithoutTax {
 			get {
 				return this._withoutTax;
@@ -16895,9 +15932,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Tax {
 			get {
 				return this._tax;
@@ -16907,9 +15941,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price WithTax {
 			get {
 				return this._withTax;
@@ -16943,9 +15974,6 @@ namespace OvhApi.Models.Order {
 		[JsonProperty("description")]
 		private string _description;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Domain {
 			get {
 				return this._domain;
@@ -16955,9 +15983,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price TotalPrice {
 			get {
 				return this._totalPrice;
@@ -16967,9 +15992,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Quantity {
 			get {
 				return this._quantity;
@@ -16979,9 +16001,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price UnitPrice {
 			get {
 				return this._unitPrice;
@@ -16991,9 +16010,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -17150,9 +16166,6 @@ namespace OvhApi.Models.Order {
 		[JsonProperty("prices")]
 		private OvhApi.Models.Order.OrderPrices _prices;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<long> OrderId {
 			get {
 				return this._orderId;
@@ -17162,9 +16175,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Url {
 			get {
 				return this._url;
@@ -17174,9 +16184,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.OrderDetail[] Details {
 			get {
 				return this._details;
@@ -17186,9 +16193,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Contract[] Contracts {
 			get {
 				return this._contracts;
@@ -17198,9 +16202,6 @@ namespace OvhApi.Models.Order {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.OrderPrices Prices {
 			get {
 				return this._prices;
@@ -18086,99 +17087,66 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("id")]
 		private long _id;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Receiver {
 			get {
 				return this._receiver;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DeliveryReceipt {
 			get {
 				return this._deliveryReceipt;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MessageLength {
 			get {
 				return this._messageLength;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DifferedDelivery {
 			get {
 				return this._differedDelivery;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double Credits {
 			get {
 				return this._credits;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Message {
 			get {
 				return this._message;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Ptt {
 			get {
 				return this._ptt;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Sender {
 			get {
 				return this._sender;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDatetime {
 			get {
 				return this._creationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long NumberOfSms {
 			get {
 				return this._numberOfSms;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
@@ -18368,9 +17336,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("media")]
 		private OvhApi.Models.Sms.ResponseTrackingMediaEnum _media;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Target {
 			get {
 				return this._target;
@@ -18380,9 +17345,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.ResponseTrackingMediaEnum Media {
 			get {
 				return this._media;
@@ -18407,9 +17369,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("ids")]
 		private long[] _ids;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double TotalCreditsRemoved {
 			get {
 				return this._totalCreditsRemoved;
@@ -18419,9 +17378,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long[] Ids {
 			get {
 				return this._ids;
@@ -18533,9 +17489,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("templates")]
 		private OvhApi.Models.Sms.Templates _templates;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.Response SmsResponse {
 			get {
 				return this._smsResponse;
@@ -18545,45 +17498,30 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.StatusAccountEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double CreditsLeft {
 			get {
 				return this._creditsLeft;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long UserQuantityWithQuota {
 			get {
 				return this._userQuantityWithQuota;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -18593,9 +17531,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string CallBack {
 			get {
 				return this._callBack;
@@ -18617,18 +17552,12 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double CreditsHoldByQuota {
 			get {
 				return this._creditsHoldByQuota;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.PackQuantityAutomaticRecreditEnum AutomaticRecreditAmount {
 			get {
 				return this._automaticRecreditAmount;
@@ -18638,9 +17567,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.Templates Templates {
 			get {
 				return this._templates;
@@ -18671,9 +17597,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("alertNumber")]
 		private string _alertNumber;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.SupportEnum Support {
 			get {
 				return this._support;
@@ -18683,9 +17606,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long AlertThresholdName {
 			get {
 				return this._alertThreshold;
@@ -18695,9 +17615,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string AlertEmail {
 			get {
 				return this._alertEmail;
@@ -18707,9 +17624,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string AlertNumber {
 			get {
 				return this._alertNumber;
@@ -18734,9 +17648,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("number")]
 		private string _number;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime DateCreation {
 			get {
 				return this._dateCreation;
@@ -18776,45 +17687,30 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("message")]
 		private string _message;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double Credits {
 			get {
 				return this._credits;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Sender {
 			get {
 				return this._sender;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDatetime {
 			get {
 				return this._creationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Message {
 			get {
 				return this._message;
@@ -18869,9 +17765,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.ResponseTrackingOptions[] TrackingOptions {
 			get {
 				return this._trackingOptions;
@@ -18881,9 +17774,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string TrackingDefaultSmsSender {
 			get {
 				return this._trackingDefaultSmsSender;
@@ -18893,9 +17783,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.ResponseTypeEnum ResponseType {
 			get {
 				return this._responseType;
@@ -18920,9 +17807,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("quotaLeft")]
 		private long _quotaLeft;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.QuotaStatusUserEnum QuotaStatus {
 			get {
 				return this._quotaStatus;
@@ -18932,9 +17816,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long QuotaLeft {
 			get {
 				return this._quotaLeft;
@@ -19001,99 +17882,66 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("id")]
 		private long _id;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Receiver {
 			get {
 				return this._receiver;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DeliveryReceipt {
 			get {
 				return this._deliveryReceipt;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MessageLength {
 			get {
 				return this._messageLength;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DifferedDelivery {
 			get {
 				return this._differedDelivery;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double Credits {
 			get {
 				return this._credits;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Message {
 			get {
 				return this._message;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Ptt {
 			get {
 				return this._ptt;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Sender {
 			get {
 				return this._sender;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDatetime {
 			get {
 				return this._creationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long NumberOfSms {
 			get {
 				return this._numberOfSms;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
@@ -19556,99 +18404,66 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("id")]
 		private long _id;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Receiver {
 			get {
 				return this._receiver;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DeliveryReceipt {
 			get {
 				return this._deliveryReceipt;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MessageLength {
 			get {
 				return this._messageLength;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DifferedDelivery {
 			get {
 				return this._differedDelivery;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double Credits {
 			get {
 				return this._credits;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Message {
 			get {
 				return this._message;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Ptt {
 			get {
 				return this._ptt;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Sender {
 			get {
 				return this._sender;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDatetime {
 			get {
 				return this._creationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long NumberOfSms {
 			get {
 				return this._numberOfSms;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
@@ -19682,9 +18497,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("emailFrom")]
 		private string _emailFrom;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CustomizedEmailMode {
 			get {
 				return this._customizedEmailMode;
@@ -19694,9 +18506,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string EmailBody {
 			get {
 				return this._emailBody;
@@ -19706,9 +18515,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CustomizedSmsMode {
 			get {
 				return this._customizedSmsMode;
@@ -19718,9 +18524,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string EmailSubject {
 			get {
 				return this._emailSubject;
@@ -19730,9 +18533,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string SmsBody {
 			get {
 				return this._smsBody;
@@ -19742,9 +18542,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string EmailFrom {
 			get {
 				return this._emailFrom;
@@ -19781,9 +18578,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("callBack")]
 		private string _callBack;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.Quota QuotaInformations {
 			get {
 				return this._quotaInformations;
@@ -19793,9 +18587,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
@@ -19805,9 +18596,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string[] IpRestrictions {
 			get {
 				return this._ipRestrictions;
@@ -19817,9 +18605,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Sms.AlertThreshold AlertThresholdInformations {
 			get {
 				return this._alertThresholdInformations;
@@ -19838,9 +18623,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string CallBack {
 			get {
 				return this._callBack;
@@ -19949,9 +18731,6 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("price")]
 		private double _price;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double SmsQuantity {
 			get {
 				return this._smsQuantity;
@@ -19961,9 +18740,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<double> GiftPrice {
 			get {
 				return this._giftPrice;
@@ -19973,9 +18749,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<double> GiftQuantity {
 			get {
 				return this._giftQuantity;
@@ -19985,9 +18758,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Language {
 			get {
 				return this._language;
@@ -19997,9 +18767,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<double> TotalPrice {
 			get {
 				return this._totalPrice;
@@ -20009,9 +18776,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string CountryDestination {
 			get {
 				return this._countryDestination;
@@ -20021,9 +18785,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Quantity {
 			get {
 				return this._quantity;
@@ -20033,9 +18794,6 @@ namespace OvhApi.Models.Sms {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public double Price {
 			get {
 				return this._price;
@@ -20081,81 +18839,54 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("called")]
 		private string _called;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Calling {
 			get {
 				return this._calling;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.VoiceConsumptionPlanTypeEnum PlanType {
 			get {
 				return this._planType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.VoiceConsumptionDestinationTypeEnum DestinationType {
 			get {
 				return this._destinationType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDatetime {
 			get {
 				return this._creationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ConsumptionId {
 			get {
 				return this._consumptionId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithoutTax {
 			get {
 				return this._priceWithoutTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Duration {
 			get {
 				return this._duration;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.VoiceConsumptionWayTypeEnum WayType {
 			get {
 				return this._wayType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Called {
 			get {
 				return this._called;
@@ -20207,9 +18938,6 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("dtmf")]
 		private string _dtmf;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long EntryId {
 			get {
 				return this._entryId;
@@ -20312,36 +19040,24 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("url")]
 		private string _url;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime UrlExpirationDatetime {
 			get {
 				return this._urlExpirationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Filename {
 			get {
 				return this._filename;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.PcsFileStatusEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Url {
 			get {
 				return this._url;
@@ -20387,9 +19103,6 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("category")]
 		private OvhApi.Models.Telephony.SchedulerCategoryEnum _category;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime LastUpdate {
 			get {
 				return this._lastUpdate;
@@ -20423,9 +19136,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.SchedulerCategoryEnum Category {
 			get {
 				return this._category;
@@ -20471,9 +19181,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ConditionId {
 			get {
 				return this._conditionId;
@@ -20615,9 +19322,6 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("strategy")]
 		private OvhApi.Models.Telephony.PabxHuntingQueueStrategyEnum _strategy;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MaxMember {
 			get {
 				return this._maxMember;
@@ -20639,9 +19343,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long QueueId {
 			get {
 				return this._queueId;
@@ -20684,9 +19385,6 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("status")]
 		private OvhApi.Models.Telephony.PabxHuntingAgentStatusEnum _status;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long AgentId {
 			get {
 				return this._agentId;
@@ -20798,9 +19496,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ConditionId {
 			get {
 				return this._conditionId;
@@ -20879,9 +19574,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long RuleId {
 			get {
 				return this._ruleId;
@@ -20912,9 +19604,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long SoundId {
 			get {
 				return this._soundId;
@@ -20936,18 +19625,12 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("huntingId")]
 		private long _huntingId;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long HuntingId {
 			get {
 				return this._huntingId;
@@ -20981,9 +19664,6 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("anonymousRejection")]
 		private bool _anonymousRejection;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime LastUpdate {
 			get {
 				return this._lastUpdate;
@@ -21026,9 +19706,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long DialplanId {
 			get {
 				return this._dialplanId;
@@ -21242,9 +19919,6 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("greetSound")]
 		private long _greetSound;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MenuId {
 			get {
 				return this._menuId;
@@ -21353,18 +20027,12 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("position")]
 		private long _position;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long AgentId {
 			get {
 				return this._agentId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long QueueId {
 			get {
 				return this._queueId;
@@ -21413,45 +20081,30 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("description")]
 		private string _description;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.TypeServiceEnum ServiceType {
 			get {
 				return this._serviceType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.TypeEnum FeatureType {
 			get {
 				return this._featureType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string[] Offers {
 			get {
 				return this._offers;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long SimultaneousLines {
 			get {
 				return this._simultaneousLines;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ServiceName {
 			get {
 				return this._serviceName;
@@ -21467,9 +20120,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -21497,27 +20147,18 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("description")]
 		private string _description;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.TypeServiceEnum ServiceType {
 			get {
 				return this._serviceType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ServiceName {
 			get {
 				return this._serviceName;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -21548,36 +20189,24 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("priceOutplan")]
 		private OvhApi.Models.Order.Price _priceOutplan;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.BillStatusEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price Price {
 			get {
 				return this._price;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceOutplan {
 			get {
 				return this._priceOutplan;
@@ -21647,9 +20276,6 @@ namespace OvhApi.Models.Telephony {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ExtensionId {
 			get {
 				return this._extensionId;
@@ -21710,63 +20336,42 @@ namespace OvhApi.Models.Telephony {
 		[JsonProperty("pages")]
 		private long _pages;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Calling {
 			get {
 				return this._calling;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long ConsumptionId {
 			get {
 				return this._consumptionId;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDatetime {
 			get {
 				return this._creationDatetime;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Order.Price PriceWithoutTax {
 			get {
 				return this._priceWithoutTax;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Telephony.FaxConsumptionWayTypeEnum WayType {
 			get {
 				return this._wayType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Called {
 			get {
 				return this._called;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Pages {
 			get {
 				return this._pages;
@@ -21842,9 +20447,6 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("value")]
 		private System.Nullable<double> _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Timestamp {
 			get {
 				return this._timestamp;
@@ -21854,9 +20456,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<double> Value {
 			get {
 				return this._value;
@@ -21920,18 +20519,12 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("geolocalization")]
 		private OvhApi.Models.Vps.Ip.GeolocalizationEnum _geolocalization;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string MacAddress {
 			get {
 				return this._macAddress;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.CoreTypes.IpVersionEnum Version {
 			get {
 				return this._version;
@@ -21947,18 +20540,12 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.Ip.TypeEnum Type {
 			get {
 				return this._type;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Reverse {
 			get {
 				return this._reverse;
@@ -21968,9 +20555,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.Ip.GeolocalizationEnum Geolocalization {
 			get {
 				return this._geolocalization;
@@ -22012,9 +20596,6 @@ namespace OvhApi.Models.Vps {
 			[JsonProperty("state")]
 			private OvhApi.Models.Vps.Ip.ServiceStatusStateEnum _state;
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public long Port {
 				get {
 					return this._port;
@@ -22024,9 +20605,6 @@ namespace OvhApi.Models.Vps {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusStateEnum State {
 				get {
 					return this._state;
@@ -22060,9 +20638,6 @@ namespace OvhApi.Models.Vps {
 			[JsonProperty("ssh")]
 			private OvhApi.Models.Vps.Ip.ServiceStatusService _ssh;
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusService Dns {
 				get {
 					return this._dns;
@@ -22072,9 +20647,6 @@ namespace OvhApi.Models.Vps {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusStateEnum Ping {
 				get {
 					return this._ping;
@@ -22084,9 +20656,6 @@ namespace OvhApi.Models.Vps {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusService Http {
 				get {
 					return this._http;
@@ -22096,9 +20665,6 @@ namespace OvhApi.Models.Vps {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusService Https {
 				get {
 					return this._https;
@@ -22108,9 +20674,6 @@ namespace OvhApi.Models.Vps {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusService Smtp {
 				get {
 					return this._smtp;
@@ -22120,9 +20683,6 @@ namespace OvhApi.Models.Vps {
 				}
 			}
 			
-			/// <summary>
-			/// 
-			/// </summary>
 			public OvhApi.Models.Vps.Ip.ServiceStatusService Ssh {
 				get {
 					return this._ssh;
@@ -22190,9 +20750,6 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("availableOptions")]
 		private OvhApi.Models.Vps.VpsOptionEnum[] _availableOptions;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MaximumAdditionnalIp {
 			get {
 				return this._maximumAdditionnalIp;
@@ -22202,9 +20759,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string[] Datacenter {
 			get {
 				return this._datacenter;
@@ -22214,9 +20768,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Disk {
 			get {
 				return this._disk;
@@ -22226,9 +20777,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Offer {
 			get {
 				return this._offer;
@@ -22238,9 +20786,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -22250,9 +20795,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Memory {
 			get {
 				return this._memory;
@@ -22262,9 +20804,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Vcore {
 			get {
 				return this._vcore;
@@ -22274,9 +20813,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.VpsOptionEnum[] AvailableOptions {
 			get {
 				return this._availableOptions;
@@ -22514,36 +21050,24 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("state")]
 		private OvhApi.Models.Vps.TaskStateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Progress {
 			get {
 				return this._progress;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Type {
 			get {
 				return this._type;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.TaskStateEnum State {
 			get {
 				return this._state;
@@ -22646,45 +21170,30 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("state")]
 		private OvhApi.Models.Vps.Disk.StateEnum _state;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long BandwidthLimit {
 			get {
 				return this._bandwidthLimit;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.Disk.TypeEnum Type {
 			get {
 				return this._type;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Size {
 			get {
 				return this._size;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.Disk.StateEnum State {
 			get {
 				return this._state;
@@ -22745,18 +21254,12 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("name")]
 		private string _name;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string LongName {
 			get {
 				return this._longName;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -22805,9 +21308,6 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("host")]
 		private string _host;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Password {
 			get {
 				return this._password;
@@ -22817,9 +21317,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Port {
 			get {
 				return this._port;
@@ -22829,9 +21326,6 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Host {
 			get {
 				return this._host;
@@ -22889,9 +21383,6 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("slaMonitoring")]
 		private bool _slaMonitoring;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long MemoryLimit {
 			get {
 				return this._memoryLimit;
@@ -22910,54 +21401,36 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.Model Model {
 			get {
 				return this._model;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.VpsStateEnum State {
 			get {
 				return this._state;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Vcore {
 			get {
 				return this._vcore;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.VpsOfferEnum OfferType {
 			get {
 				return this._offerType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool SlaMonitoring {
 			get {
 				return this._slaMonitoring;
@@ -23028,9 +21501,6 @@ namespace OvhApi.Models.ComplexType {
 		[JsonProperty("values")]
 		private string _values;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Unit {
 			get {
 				return this._unit;
@@ -23040,9 +21510,6 @@ namespace OvhApi.Models.ComplexType {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Values {
 			get {
 				return this._values;
@@ -23079,54 +21546,36 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("distribution")]
 		private string _distribution;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Vps.TemplateBitFormatEnum BitFormat {
 			get {
 				return this._bitFormat;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Locale {
 			get {
 				return this._locale;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string[] AvailableLanguage {
 			get {
 				return this._availableLanguage;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Distribution {
 			get {
 				return this._distribution;
@@ -23148,18 +21597,12 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("description")]
 		private string _description;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime CreationDate {
 			get {
 				return this._creationDate;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -23457,9 +21900,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("lineTest")]
 		private bool _lineTest;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Incident {
 			get {
 				return this._incident;
@@ -23469,9 +21909,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Ping {
 			get {
 				return this._ping;
@@ -23481,9 +21918,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Sync {
 			get {
 				return this._sync;
@@ -23493,9 +21927,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool IsModemConnected {
 			get {
 				return this._isModemConnected;
@@ -23505,9 +21936,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool ProposedProfileId {
 			get {
 				return this._proposedProfileId;
@@ -23517,9 +21945,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool LineTest {
 			get {
 				return this._lineTest;
@@ -23580,9 +22005,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("reverse")]
 		private string _reverse;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool MonitoringEnabled {
 			get {
 				return this._monitoringEnabled;
@@ -23601,36 +22023,24 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.CoreTypes.IpVersionEnum Version {
 			get {
 				return this._version;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Range {
 			get {
 				return this._range;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Net.IPAddress[] DnsList {
 			get {
 				return this._dnsList;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Reverse {
 			get {
 				return this._reverse;
@@ -23661,9 +22071,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("message")]
 		private string _message;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
@@ -23673,9 +22080,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Login {
 			get {
 				return this._login;
@@ -23685,9 +22089,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string State {
 			get {
 				return this._state;
@@ -23697,9 +22098,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Message {
 			get {
 				return this._message;
@@ -23757,9 +22155,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("rivoliCode")]
 		private string _rivoliCode;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string FirstName {
 			get {
 				return this._firstName;
@@ -23769,9 +22164,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string ZipCode {
 			get {
 				return this._zipCode;
@@ -23781,9 +22173,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Street {
 			get {
 				return this._street;
@@ -23793,9 +22182,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Floor {
 			get {
 				return this._floor;
@@ -23805,9 +22191,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Residence {
 			get {
 				return this._residence;
@@ -23817,9 +22200,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string NumberStreet {
 			get {
 				return this._numberStreet;
@@ -23829,9 +22209,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string City {
 			get {
 				return this._city;
@@ -23841,9 +22218,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Door {
 			get {
 				return this._door;
@@ -23853,9 +22227,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Building {
 			get {
 				return this._building;
@@ -23877,9 +22248,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string LastName {
 			get {
 				return this._lastName;
@@ -23889,9 +22257,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Stairs {
 			get {
 				return this._stairs;
@@ -23946,9 +22311,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("dmzIP")]
 		private System.Net.IPAddress _dmzIP;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string MacAddress {
 			get {
 				return this._macAddress;
@@ -23973,18 +22335,12 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string BrandName {
 			get {
 				return this._brandName;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Model {
 			get {
 				return this._model;
@@ -24222,9 +22578,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("name")]
 		private string _name;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string City {
 			get {
 				return this._city;
@@ -24234,9 +22587,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool IsCurrent {
 			get {
 				return this._isCurrent;
@@ -24246,9 +22596,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -24421,9 +22768,6 @@ namespace OvhApi.Models.Xdsl {
 namespace OvhApi.Models.Xdsl {
 	
 	
-	/// <summary>
-	/// 
-	/// </summary>
 	public sealed class LineSectionLength {
 		
 		[JsonProperty("length")]
@@ -24678,9 +23022,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("syncDown")]
 		private System.Nullable<double> _syncDown;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.DeconsolidationEnum Deconsolidation {
 			get {
 				return this._deconsolidation;
@@ -24714,9 +23055,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.FaultRepairTimeEnum FaultRepairTime {
 			get {
 				return this._faultRepairTime;
@@ -24786,27 +23124,18 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("id")]
 		private long _id;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Function {
 			get {
 				return this._function;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.TaskStatusEnum Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
@@ -24831,9 +23160,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("id")]
 		private long _id;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool IsCurrent {
 			get {
 				return this._isCurrent;
@@ -24843,9 +23169,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Name {
 			get {
 				return this._name;
@@ -24855,9 +23178,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
@@ -24903,45 +23223,30 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("nra")]
 		private string _nra;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Ipv6Enabled {
 			get {
 				return this._ipv6Enabled;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Status {
 			get {
 				return this._status;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long PairsNumber {
 			get {
 				return this._pairsNumber;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string AccessName {
 			get {
 				return this._accessName;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Description {
 			get {
 				return this._description;
@@ -24951,36 +23256,24 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.DslTypeEnum AccessType {
 			get {
 				return this._accessType;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.AccessCapabilities Capabilities {
 			get {
 				return this._capabilities;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.AddressDetail Address {
 			get {
 				return this._address;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Nra {
 			get {
 				return this._nra;
@@ -25125,18 +23418,12 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("action")]
 		private string _action;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime DateTodo {
 			get {
 				return this._dateTodo;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Action {
 			get {
 				return this._action;
@@ -25218,9 +23505,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("value")]
 		private System.Nullable<double> _value;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Timestamp {
 			get {
 				return this._timestamp;
@@ -25230,9 +23514,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.Nullable<double> Value {
 			get {
 				return this._value;
@@ -25299,18 +23580,12 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public System.DateTime Date {
 			get {
 				return this._date;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public string Message {
 			get {
 				return this._message;
@@ -25449,9 +23724,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("enabled")]
 		private bool _enabled;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.MonitoringNotifications.FrequencyEnum Frequency {
 			get {
 				return this._frequency;
@@ -25482,18 +23754,12 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public long Id {
 			get {
 				return this._id;
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.MonitoringNotifications.TypeEnum Type {
 			get {
 				return this._type;
@@ -25512,9 +23778,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool Enabled {
 			get {
 				return this._enabled;
@@ -25608,9 +23871,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("lastDesyncDate")]
 		private System.Nullable<System.DateTime> _lastDesyncDate;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.DslamLineProfile ProfileName {
 			get {
 				return this._profile;
@@ -25626,9 +23886,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public OvhApi.Models.Xdsl.DslamPortStatusEnum Status {
 			get {
 				return this._status;
@@ -25851,9 +24108,6 @@ namespace OvhApi.Models.Xdsl {
 		[JsonProperty("canChangeLns")]
 		private bool _canChangeLns;
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CanChangeDslamProfile {
 			get {
 				return this._canChangeDslamProfile;
@@ -25863,9 +24117,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CanGetRadiusConnectionLogs {
 			get {
 				return this._canGetRadiusConnectionLogs;
@@ -25875,9 +24126,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CanResetDslamPort {
 			get {
 				return this._canResetDslamPort;
@@ -25887,9 +24135,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool HasDslamPort {
 			get {
 				return this._hasDslamPort;
@@ -25899,9 +24144,6 @@ namespace OvhApi.Models.Xdsl {
 			}
 		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public bool CanChangeLns {
 			get {
 				return this._canChangeLns;
