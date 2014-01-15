@@ -76,7 +76,7 @@ namespace OVHApi.Parser
 				if (!p.Required)
 				{
 					param.Append(" = null");
-					nulllable.Add(param.ToString());
+					nulllable.Insert(0,param.ToString()); // To have have from date before to date
 				}
 				else
 				{
@@ -85,6 +85,7 @@ namespace OVHApi.Parser
 			}
 
 			result.Append('(');
+
 			for (int i = 0; i < required.Count; i++)
 			{
 				if (i > 0)

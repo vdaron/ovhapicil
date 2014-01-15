@@ -1458,7 +1458,7 @@ Ensure.NotNullNorEmpty("pcaServiceName",pcaServiceName);
 							/// <param name="serviceName">The internal name of your public cloud passport</param>
 							/// <param name="pcaServiceName">The internal name of your PCA offer</param>
 							/// </summary>
-						public async Task<string[]> GetCloudPcaTaskNames(string serviceName,string pcaServiceName,DateTime? todoDate_to = null,OvhApi.Models.Cloud.Pca.FunctionTypeEnum? function = null,OvhApi.Models.Cloud.Pca.TaskStateEnum? status = null,DateTime? todoDate_from = null)
+						public async Task<string[]> GetCloudPcaTaskNames(string serviceName,string pcaServiceName,DateTime? todoDate_from = null,OvhApi.Models.Cloud.Pca.TaskStateEnum? status = null,OvhApi.Models.Cloud.Pca.FunctionTypeEnum? function = null,DateTime? todoDate_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -1545,7 +1545,7 @@ Ensure.IdIsValid("billingId",billingId);
 							/// <param name="serviceName">The internal name of your public cloud passport</param>
 							/// <param name="pcaServiceName">The internal name of your PCA offer</param>
 							/// </summary>
-						public async Task<long[]> GetCloudPcaBillingIds(string serviceName,string pcaServiceName,DateTime? date_to = null,DateTime? date_from = null,bool? billed = null)
+						public async Task<long[]> GetCloudPcaBillingIds(string serviceName,string pcaServiceName,bool? billed = null,DateTime? date_from = null,DateTime? date_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -2837,7 +2837,7 @@ queryString.Add("type",type);
 							/// <param name="type">IPMI console access</param>
 							/// <param name="serviceName">The internal name of your dedicated server</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Dedicated.Server.Task> CreateDedicatedServerFeaturesIpmiAccess(OvhApi.Models.Dedicated.Server.CacheTTLEnum ttl,OvhApi.Models.Dedicated.Server.IpmiAccessTypeEnum type,string serviceName,System.Net.IPAddress ipToAllow = null,string sshKey = null)
+						public async Task<OvhApi.Models.Dedicated.Server.Task> CreateDedicatedServerFeaturesIpmiAccess(OvhApi.Models.Dedicated.Server.CacheTTLEnum ttl,OvhApi.Models.Dedicated.Server.IpmiAccessTypeEnum type,string serviceName,string sshKey = null,System.Net.IPAddress ipToAllow = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -2939,7 +2939,7 @@ queryString.Add("templateName",templateName);
 							/// <param name="details">parameters for default install</param>
 							/// <param name="serviceName">The internal name of your dedicated server</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Dedicated.Server.Task> CreateDedicatedServerInstallStart(string templateName,string serviceName,string partitionSchemeName = null,OvhApi.Models.Dedicated.Server.InstallCustom details = null)
+						public async Task<OvhApi.Models.Dedicated.Server.Task> CreateDedicatedServerInstallStart(string templateName,string serviceName,OvhApi.Models.Dedicated.Server.InstallCustom details = null,string partitionSchemeName = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -2960,7 +2960,7 @@ requestBody.Add("details",details);
 							/// <param name="status">Filter the value of status property (=)</param>
 							/// <param name="serviceName">The internal name of your dedicated server</param>
 							/// </summary>
-						public async Task<long[]> GetDedicatedServerTaskIds(string serviceName,OvhApi.Models.Dedicated.TaskFunctionEnum? function = null,OvhApi.Models.Dedicated.TaskStatusEnum? status = null)
+						public async Task<long[]> GetDedicatedServerTaskIds(string serviceName,OvhApi.Models.Dedicated.TaskStatusEnum? status = null,OvhApi.Models.Dedicated.TaskFunctionEnum? function = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -4295,7 +4295,7 @@ Ensure.IdIsValid("id",id);
 							/// <param name="subDomain">Filter the value of subDomain property (like)</param>
 							/// <param name="zoneName">The internal name of your zone</param>
 							/// </summary>
-						public async Task<long[]> GetDomainZoneRecordIds(string zoneName,OvhApi.Models.Zone.NamedResolutionFieldTypeEnum? fieldType = null,string subDomain = null)
+						public async Task<long[]> GetDomainZoneRecordIds(string zoneName,string subDomain = null,OvhApi.Models.Zone.NamedResolutionFieldTypeEnum? fieldType = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -4316,7 +4316,7 @@ queryString.Add("subDomain",subDomain);
 							/// <param name="subDomain">Resource record subdomain</param>
 							/// <param name="zoneName">The internal name of your zone</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Domain.Zone.Record> CreateDomainZoneRecord(string target,OvhApi.Models.Zone.NamedResolutionFieldTypeEnum fieldType,string zoneName,long? ttl = null,string subDomain = null)
+						public async Task<OvhApi.Models.Domain.Zone.Record> CreateDomainZoneRecord(string target,OvhApi.Models.Zone.NamedResolutionFieldTypeEnum fieldType,string zoneName,string subDomain = null,long? ttl = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -4492,7 +4492,7 @@ Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 							/// <param name="organizationName">The internal name of your exchange organization</param>
 							/// <param name="exchangeService">The internal name of your exchange service</param>
 							/// </summary>
-						public async Task<string[]> GetEmailExchangeServiceAccountNames(string organizationName,string exchangeService,string primaryEmailAddress = null,long? id = null)
+						public async Task<string[]> GetEmailExchangeServiceAccountNames(string organizationName,string exchangeService,long? id = null,string primaryEmailAddress = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -4522,7 +4522,7 @@ queryString.Add("id",id);
 							/// <param name="organizationName">The internal name of your exchange organization</param>
 							/// <param name="exchangeService">The internal name of your exchange service</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceAccount(OvhApi.Models.Email.Exchange.OvhLicenceEnum license,string login,string domain,string password,string organizationName,string exchangeService,string initials = null,string firstName = null,bool? hiddenFromGAL = null,OvhApi.Models.Email.Exchange.MailingFilterEnum[] mailingFilter = null,string lastName = null,bool? outlookLicense = null,string displayName = null)
+						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceAccount(OvhApi.Models.Email.Exchange.OvhLicenceEnum license,string login,string domain,string password,string organizationName,string exchangeService,string displayName = null,bool? outlookLicense = null,string lastName = null,OvhApi.Models.Email.Exchange.MailingFilterEnum[] mailingFilter = null,bool? hiddenFromGAL = null,string firstName = null,string initials = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -4990,7 +4990,7 @@ Ensure.IdIsValid("id",id);
 							/// <param name="organizationName">The internal name of your exchange organization</param>
 							/// <param name="exchangeService">The internal name of your exchange service</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Email.Exchange.DailyLicense[]> GetEmailExchangeServiceLicenses(string organizationName,string exchangeService,OvhApi.Models.Email.Exchange.OvhLicenceEnum? license = null,DateTime? toDate = null,DateTime? fromDate = null)
+						public async Task<OvhApi.Models.Email.Exchange.DailyLicense[]> GetEmailExchangeServiceLicenses(string organizationName,string exchangeService,DateTime? fromDate = null,DateTime? toDate = null,OvhApi.Models.Email.Exchange.OvhLicenceEnum? license = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -5187,7 +5187,7 @@ queryString.Add("state",state);
 							/// <param name="organizationName">The internal name of your exchange organization</param>
 							/// <param name="exchangeService">The internal name of your exchange service</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceDomain(string name,OvhApi.Models.Email.Exchange.DomainTypeEnum type,string organizationName,string exchangeService,bool? configureAutodiscover = null,bool? configureMx = null)
+						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceDomain(string name,OvhApi.Models.Email.Exchange.DomainTypeEnum type,string organizationName,string exchangeService,bool? configureMx = null,bool? configureAutodiscover = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -5237,7 +5237,7 @@ queryString.Add("mailingListAddress",mailingListAddress);
 							/// <param name="organizationName">The internal name of your exchange organization</param>
 							/// <param name="exchangeService">The internal name of your exchange service</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceMailinglist(OvhApi.Models.Email.Exchange.MailingListJoinRestrictionEnum joinRestriction,OvhApi.Models.Email.Exchange.MailingListDepartRestrictionEnum departRestriction,string mailingListAddress,string organizationName,string exchangeService,bool? hiddenFromGAL = null,bool? senderAuthentification = null,long? maxSendSize = null,long? maxReceiveSize = null,string displayName = null)
+						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceMailinglist(OvhApi.Models.Email.Exchange.MailingListJoinRestrictionEnum joinRestriction,OvhApi.Models.Email.Exchange.MailingListDepartRestrictionEnum departRestriction,string mailingListAddress,string organizationName,string exchangeService,string displayName = null,long? maxReceiveSize = null,long? maxSendSize = null,bool? senderAuthentification = null,bool? hiddenFromGAL = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -5518,7 +5518,7 @@ Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 							/// <param name="organizationName">The internal name of your exchange organization</param>
 							/// <param name="exchangeService">The internal name of your exchange service</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceResourceaccount(string resourceEmailAddress,OvhApi.Models.Email.Exchange.ResourceTypeEnum type,long capacity,string organizationName,string exchangeService,bool? allowConflict = null,string displayName = null)
+						public async Task<OvhApi.Models.Email.Exchange.Task> CreateEmailExchangeServiceResourceaccount(string resourceEmailAddress,OvhApi.Models.Email.Exchange.ResourceTypeEnum type,long capacity,string organizationName,string exchangeService,string displayName = null,bool? allowConflict = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -5974,7 +5974,7 @@ queryString.Add("state",state);
 							/// <param name="ip">To be written</param>
 							/// <param name="ipOnFirewall">To be written</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Ip.FirewallRule> CreateIpFirewallRules(OvhApi.Models.Ip.FirewallProtocolEnum protocol,OvhApi.Models.Ip.FirewallSequenceRangeEnum sequence,OvhApi.Models.Ip.FirewallActionEnum action,OVHApi.IPAddressBlock ip,System.Net.IPAddress ipOnFirewall,OVHApi.IPAddressBlock source = null,OvhApi.Models.ComplexType.Range<long> destinationPort = null,OvhApi.Models.Ip.FirewallUDPOption udpOption = null,OvhApi.Models.ComplexType.Range<long> sourcePort = null,OvhApi.Models.Ip.FirewallTCPOption tcpOption = null)
+						public async Task<OvhApi.Models.Ip.FirewallRule> CreateIpFirewallRules(OvhApi.Models.Ip.FirewallProtocolEnum protocol,OvhApi.Models.Ip.FirewallSequenceRangeEnum sequence,OvhApi.Models.Ip.FirewallActionEnum action,OVHApi.IPAddressBlock ip,System.Net.IPAddress ipOnFirewall,OvhApi.Models.Ip.FirewallTCPOption tcpOption = null,OvhApi.Models.ComplexType.Range<long> sourcePort = null,OvhApi.Models.Ip.FirewallUDPOption udpOption = null,OvhApi.Models.ComplexType.Range<long> destinationPort = null,OVHApi.IPAddressBlock source = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7439,7 +7439,7 @@ Ensure.NotNullNorEmpty("schemeName",schemeName);
 							/// <param name="templateName">This template name</param>
 							/// <param name="schemeName">name of this partitioning scheme</param>
 							/// </summary>
-						public async Task CreateMeInstallationtemplatePartitionschemePartition(long step,OvhApi.Models.Dedicated.TemplateOsFileSystemEnum filesystem,string mountpoint,OvhApi.Models.Dedicated.TemplatePartitionTypeEnum type,long size,string templateName,string schemeName,string volumeName = null,long? raid = null)
+						public async Task CreateMeInstallationtemplatePartitionschemePartition(long step,OvhApi.Models.Dedicated.TemplateOsFileSystemEnum filesystem,string mountpoint,OvhApi.Models.Dedicated.TemplatePartitionTypeEnum type,long size,string templateName,string schemeName,long? raid = null,string volumeName = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7538,7 +7538,7 @@ Ensure.NotNullNorEmpty("mountpoint",mountpoint);
 							/// <param name="date_to">Filter the value of date property (<=)</param>
 							/// <param name="date_from">Filter the value of date property (>=)</param>
 							/// </summary>
-						public async Task<string[]> GetMeRefundNames(DateTime? date_to = null,DateTime? date_from = null)
+						public async Task<string[]> GetMeRefundNames(DateTime? date_from = null,DateTime? date_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7642,7 +7642,7 @@ Ensure.IdIsValid("movementId",movementId);
 							/// <param name="date_from">Filter the value of date property (>=)</param>
 							/// <param name="ovhAccountId">To be written</param>
 							/// </summary>
-						public async Task<long[]> GetMeOvhaccountMovementIds(string ovhAccountId,DateTime? date_to = null,DateTime? date_from = null)
+						public async Task<long[]> GetMeOvhaccountMovementIds(string ovhAccountId,DateTime? date_from = null,DateTime? date_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7732,7 +7732,7 @@ requestBody.Add("amount",amount);
 							/// <param name="status">Filter the value of status property (like)</param>
 							/// <param name="applicationId">Filter the value of applicationId property (like)</param>
 							/// </summary>
-						public async Task<long[]> GetMeApiCredentialIds(OvhApi.Models.Auth.CredentialStateEnum? status = null,long? applicationId = null)
+						public async Task<long[]> GetMeApiCredentialIds(long? applicationId = null,OvhApi.Models.Auth.CredentialStateEnum? status = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7808,7 +7808,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 							/// <param name="date_to">Filter the value of date property (<=)</param>
 							/// <param name="date_from">Filter the value of date property (>=)</param>
 							/// </summary>
-						public async Task<long[]> GetMeOrderIds(DateTime? date_to = null,DateTime? date_from = null)
+						public async Task<long[]> GetMeOrderIds(DateTime? date_from = null,DateTime? date_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7897,7 +7897,7 @@ Ensure.IdIsValid("orderDetailId",orderDetailId);
 							/// <param name="agreed">Filter the value of agreed property (like)</param>
 							/// <param name="contractId">Filter the value of contractId property (like)</param>
 							/// </summary>
-						public async Task<long[]> GetMeAgreementIds(OvhApi.Models.Agreements.AgreementStateEnum? agreed = null,long? contractId = null)
+						public async Task<long[]> GetMeAgreementIds(long? contractId = null,OvhApi.Models.Agreements.AgreementStateEnum? agreed = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7956,7 +7956,7 @@ queryString.Add("contractId",contractId);
 							/// <param name="date_to">Filter the value of date property (<=)</param>
 							/// <param name="date_from">Filter the value of date property (>=)</param>
 							/// </summary>
-						public async Task<string[]> GetMeBillNames(DateTime? date_to = null,DateTime? date_from = null)
+						public async Task<string[]> GetMeBillNames(DateTime? date_from = null,DateTime? date_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -8094,7 +8094,7 @@ Ensure.NotNullNorEmpty("subscriptionType",subscriptionType);
 							/// <param name="corporationType">To be written</param>
 							/// <param name="legalform">To be written</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Nichandle.NewAccountAndToken> CreateNewaccount(OvhApi.Models.Nichandle.OvhSubsidiaryEnum ovhSubsidiary,OvhApi.Models.Nichandle.OvhCompanyEnum ovhCompany,string email,OvhApi.Models.Nichandle.CountryEnum country,OvhApi.Models.Nichandle.LegalFormEnum legalform,string firstname = null,string vat = null,string spareEmail = null,string nationalIdentificationNumber = null,string birthDay = null,string area = null,string city = null,string fax = null,string address = null,string companyNationalIdentificationNumber = null,string birthCity = null,string organisation = null,OvhApi.Models.Nichandle.LanguageEnum? language = null,string name = null,OvhApi.Models.Nichandle.GenderEnum? sex = null,string phone = null,string zip = null,string corporationType = null)
+						public async Task<OvhApi.Models.Nichandle.NewAccountAndToken> CreateNewaccount(OvhApi.Models.Nichandle.OvhSubsidiaryEnum ovhSubsidiary,OvhApi.Models.Nichandle.OvhCompanyEnum ovhCompany,string email,OvhApi.Models.Nichandle.CountryEnum country,OvhApi.Models.Nichandle.LegalFormEnum legalform,string corporationType = null,string zip = null,string phone = null,OvhApi.Models.Nichandle.GenderEnum? sex = null,string name = null,OvhApi.Models.Nichandle.LanguageEnum? language = null,string organisation = null,string birthCity = null,string companyNationalIdentificationNumber = null,string address = null,string fax = null,string city = null,string area = null,string birthDay = null,string nationalIdentificationNumber = null,string spareEmail = null,string vat = null,string firstname = null)
 		{
 					Ensure.NotNull("ovhSubsidiary",ovhSubsidiary);
 Ensure.NotNull("ovhCompany",ovhCompany);
@@ -8378,7 +8378,7 @@ requestBody.Add("networkName",networkName);
 							/// <param name="datacenterId">Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)</param>
 							/// <param name="serviceName">To be written</param>
 							/// </summary>
-						public async Task<string[]> GetOrderDedicatedcloudFilerNames(string name,string serviceName,long? quantity = null,long? datacenterId = null)
+						public async Task<string[]> GetOrderDedicatedcloudFilerNames(string name,string serviceName,long? datacenterId = null,long? quantity = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -8401,7 +8401,7 @@ queryString.Add("datacenterId",datacenterId);
 							/// <param name="serviceName">To be written</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> GetOrderDedicatedcloudFiler(string name,string serviceName,string duration,long? quantity = null,long? datacenterId = null)
+						public async Task<OvhApi.Models.Order.Order> GetOrderDedicatedcloudFiler(string name,string serviceName,string duration,long? datacenterId = null,long? quantity = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -8425,7 +8425,7 @@ queryString.Add("datacenterId",datacenterId);
 							/// <param name="serviceName">To be written</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> CreateOrderDedicatedcloudFiler(string name,string serviceName,string duration,long? quantity = null,long? datacenterId = null)
+						public async Task<OvhApi.Models.Order.Order> CreateOrderDedicatedcloudFiler(string name,string serviceName,string duration,long? datacenterId = null,long? quantity = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9885,7 +9885,7 @@ requestBody.Add("ip",ip);
 							/// <param name="domainNumber">This license domain number</param>
 							/// <param name="serviceName">The name of your Plesk license</param>
 							/// </summary>
-						public async Task<string[]> GetOrderLicensePleskUpgradeNames(string serviceName,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null,bool? powerpack = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,OvhApi.Models.License.OrderableAntispamEnum? antispam = null,OvhApi.Models.License.OrderablePleskDomainNumberEnum? domainNumber = null)
+						public async Task<string[]> GetOrderLicensePleskUpgradeNames(string serviceName,OvhApi.Models.License.OrderablePleskDomainNumberEnum? domainNumber = null,OvhApi.Models.License.OrderableAntispamEnum? antispam = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,bool? powerpack = null,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9911,7 +9911,7 @@ queryString.Add("domainNumber",domainNumber);
 							/// <param name="serviceName">The name of your Plesk license</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> GetOrderLicensePleskUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null,bool? powerpack = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,OvhApi.Models.License.OrderableAntispamEnum? antispam = null,OvhApi.Models.License.OrderablePleskDomainNumberEnum? domainNumber = null)
+						public async Task<OvhApi.Models.Order.Order> GetOrderLicensePleskUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderablePleskDomainNumberEnum? domainNumber = null,OvhApi.Models.License.OrderableAntispamEnum? antispam = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,bool? powerpack = null,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9938,7 +9938,7 @@ queryString.Add("domainNumber",domainNumber);
 							/// <param name="serviceName">The name of your Plesk license</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> CreateOrderLicensePleskUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null,bool? powerpack = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,OvhApi.Models.License.OrderableAntispamEnum? antispam = null,OvhApi.Models.License.OrderablePleskDomainNumberEnum? domainNumber = null)
+						public async Task<OvhApi.Models.Order.Order> CreateOrderLicensePleskUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderablePleskDomainNumberEnum? domainNumber = null,OvhApi.Models.License.OrderableAntispamEnum? antispam = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,bool? powerpack = null,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9977,7 +9977,7 @@ requestBody.Add("domainNumber",domainNumber);
 							/// <param name="antivirus">The antivirus to enable on this Plesk license</param>
 							/// <param name="domainNumber">This license domain number</param>
 							/// </summary>
-						public async Task<string[]> GetOrderLicensePleskNewNames(OvhApi.Models.License.LicenseTypeEnum serviceType,OvhApi.Models.License.OrderablePleskVersionEnum version,System.Net.IPAddress ip,OvhApi.Models.License.OrderablePleskDomainNumberEnum domainNumber,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null,bool? powerpack = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null)
+						public async Task<string[]> GetOrderLicensePleskNewNames(OvhApi.Models.License.LicenseTypeEnum serviceType,OvhApi.Models.License.OrderablePleskVersionEnum version,System.Net.IPAddress ip,OvhApi.Models.License.OrderablePleskDomainNumberEnum domainNumber,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,bool? powerpack = null,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -10009,7 +10009,7 @@ queryString.Add("domainNumber",domainNumber);
 							/// <param name="domainNumber">This license domain number</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> GetOrderLicensePleskNew(OvhApi.Models.License.LicenseTypeEnum serviceType,OvhApi.Models.License.OrderablePleskVersionEnum version,System.Net.IPAddress ip,OvhApi.Models.License.OrderablePleskDomainNumberEnum domainNumber,string duration,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null,bool? powerpack = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null)
+						public async Task<OvhApi.Models.Order.Order> GetOrderLicensePleskNew(OvhApi.Models.License.LicenseTypeEnum serviceType,OvhApi.Models.License.OrderablePleskVersionEnum version,System.Net.IPAddress ip,OvhApi.Models.License.OrderablePleskDomainNumberEnum domainNumber,string duration,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,bool? powerpack = null,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -10042,7 +10042,7 @@ queryString.Add("domainNumber",domainNumber);
 							/// <param name="domainNumber">This license domain number</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> CreateOrderLicensePleskNew(OvhApi.Models.License.LicenseTypeEnum serviceType,OvhApi.Models.License.OrderablePleskVersionEnum version,System.Net.IPAddress ip,OvhApi.Models.License.OrderablePleskDomainNumberEnum domainNumber,string duration,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null,bool? powerpack = null,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null)
+						public async Task<OvhApi.Models.Order.Order> CreateOrderLicensePleskNew(OvhApi.Models.License.LicenseTypeEnum serviceType,OvhApi.Models.License.OrderablePleskVersionEnum version,System.Net.IPAddress ip,OvhApi.Models.License.OrderablePleskDomainNumberEnum domainNumber,string duration,OvhApi.Models.License.OrderableAntivirusEnum? antivirus = null,bool? powerpack = null,OvhApi.Models.License.OrderablePleskLanguagePackEnum? languagePackNumber = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -11258,7 +11258,7 @@ requestBody.Add("code",code);
 							/// <param name="description">Sender description</param>
 							/// <param name="serviceName">The internal name of your SMS offer</param>
 							/// </summary>
-						public async Task<string> CreateSmsSenders(string sender,string serviceName,string reason = null,string description = null)
+						public async Task<string> CreateSmsSenders(string sender,string serviceName,string description = null,string reason = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -11436,7 +11436,7 @@ Ensure.NotNullNorEmpty("number",number);
 							/// <param name="class_">The sms class</param>
 							/// <param name="serviceName">The internal name of your SMS offer</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Sms.SmsSendingReport> CreateSmsJobs(string message,string serviceName,bool? noStopClause = null,OvhApi.Models.Sms.PriorityEnum? priority = null,long? validityPeriod = null,bool? senderForResponse = null,string[] receivers = null,OvhApi.Models.Sms.CharsetEnum? charset = null,OvhApi.Models.Sms.CodingEnum? coding = null,long? differedPeriod = null,string receiversSlotId = null,string sender = null,string tag = null,string receiversDocumentUrl = null,OvhApi.Models.Sms.ClassEnum? class_ = null)
+						public async Task<OvhApi.Models.Sms.SmsSendingReport> CreateSmsJobs(string message,string serviceName,OvhApi.Models.Sms.ClassEnum? class_ = null,string receiversDocumentUrl = null,string tag = null,string sender = null,string receiversSlotId = null,long? differedPeriod = null,OvhApi.Models.Sms.CodingEnum? coding = null,OvhApi.Models.Sms.CharsetEnum? charset = null,string[] receivers = null,bool? senderForResponse = null,long? validityPeriod = null,OvhApi.Models.Sms.PriorityEnum? priority = null,bool? noStopClause = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -11820,7 +11820,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 							/// <param name="billingAccount">The name of your billingAccount</param>
 							/// <param name="serviceName">To be written</param>
 							/// </summary>
-						public async Task<long[]> GetTelephonyServiceVoiceconsumptionIds(string billingAccount,string serviceName,OvhApi.Models.Telephony.VoiceConsumptionPlanTypeEnum? planType = null,OvhApi.Models.Telephony.VoiceConsumptionDestinationTypeEnum? destinationType = null,DateTime? creationDatetime_to = null,DateTime? creationDatetime_from = null,OvhApi.Models.Telephony.VoiceConsumptionWayTypeEnum? wayType = null)
+						public async Task<long[]> GetTelephonyServiceVoiceconsumptionIds(string billingAccount,string serviceName,OvhApi.Models.Telephony.VoiceConsumptionWayTypeEnum? wayType = null,DateTime? creationDatetime_from = null,DateTime? creationDatetime_to = null,OvhApi.Models.Telephony.VoiceConsumptionDestinationTypeEnum? destinationType = null,OvhApi.Models.Telephony.VoiceConsumptionPlanTypeEnum? planType = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -11863,7 +11863,7 @@ Ensure.IdIsValid("consumptionId",consumptionId);
 							/// <param name="billingAccount">The name of your billingAccount</param>
 							/// <param name="serviceName">To be written</param>
 							/// </summary>
-						public async Task<long[]> GetTelephonyServiceFaxconsumptionIds(string billingAccount,string serviceName,DateTime? creationDatetime_to = null,DateTime? creationDatetime_from = null,OvhApi.Models.Telephony.FaxConsumptionWayTypeEnum? wayType = null)
+						public async Task<long[]> GetTelephonyServiceFaxconsumptionIds(string billingAccount,string serviceName,OvhApi.Models.Telephony.FaxConsumptionWayTypeEnum? wayType = null,DateTime? creationDatetime_from = null,DateTime? creationDatetime_to = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -12353,7 +12353,7 @@ Ensure.IdIsValid("id",id);
 							/// <param name="serviceName">The internal name of your VPS offer</param>
 							/// <param name="id">Id of the object</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Vps.Task> CreateVpsVeeamRestorepointsRestore(bool full,string serviceName,long id,bool? changePassword = null,OvhApi.Models.Vps.Veeam.ExportTypeEnum? export = null)
+						public async Task<OvhApi.Models.Vps.Task> CreateVpsVeeamRestorepointsRestore(bool full,string serviceName,long id,OvhApi.Models.Vps.Veeam.ExportTypeEnum? export = null,bool? changePassword = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -13456,7 +13456,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 							/// <param name="externalPortEnd">The last port of the interval on the External Client that will get the connections</param>
 							/// <param name="serviceName">The internal name of your XDSL offer</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Xdsl.PortMapping> CreateXdslModemPortmappings(OvhApi.Models.Xdsl.XdslModemConfig.ProtocolTypeEnum protocol,System.Net.IPAddress internalClient,long internalPort,string name,long externalPortStart,string serviceName,string description = null,long? externalPortEnd = null)
+						public async Task<OvhApi.Models.Xdsl.PortMapping> CreateXdslModemPortmappings(OvhApi.Models.Xdsl.XdslModemConfig.ProtocolTypeEnum protocol,System.Net.IPAddress internalClient,long internalPort,string name,long externalPortStart,string serviceName,long? externalPortEnd = null,string description = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -13950,7 +13950,7 @@ Ensure.NotNull("ip",ip);
 							/// <param name="serviceName">The internal name of your XDSL offer</param>
 							/// <param name="ip">The IP address</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Xdsl.MonitoringNotification> CreateXdslIpsMonitoringnotifications(OvhApi.Models.Xdsl.MonitoringNotifications.FrequencyEnum frequency,OvhApi.Models.Xdsl.MonitoringNotifications.TypeEnum type,string serviceName,System.Net.IPAddress ip,string smsAccount = null,string email = null,string phone = null)
+						public async Task<OvhApi.Models.Xdsl.MonitoringNotification> CreateXdslIpsMonitoringnotifications(OvhApi.Models.Xdsl.MonitoringNotifications.FrequencyEnum frequency,OvhApi.Models.Xdsl.MonitoringNotifications.TypeEnum type,string serviceName,System.Net.IPAddress ip,string phone = null,string email = null,string smsAccount = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
