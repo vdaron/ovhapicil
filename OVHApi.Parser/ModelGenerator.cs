@@ -12,6 +12,25 @@ namespace OVHApi.Parser
 {
 	public class ModelGenerator
 	{
+		private class ModelType
+		{
+			private readonly List<ModelType> _children = new List<ModelType>();
+
+			public ModelType(Model model)
+			{
+				Model = model;
+			}
+
+			public Model Model { get; private set; }
+			public ModelType Parent { get; set; }
+			public void AddChild(ModelType type)
+			{
+				_children.Add(type);
+				type.Parent = this;
+			}
+			public IEnumerable<ModelType> Children { get { return _children; } } 
+		}
+
 		private readonly CodeCompileUnit _code = new CodeCompileUnit();
 
 		public string GetOutput()
@@ -44,78 +63,48 @@ namespace OVHApi.Parser
 
 		public void CreateModels(IEnumerable<OvhApi> apis)
 		{
-			Dictionary<string,Model> fullTypeNames = new Dictionary<string, Model>(); 
-			Dictionary<string,List<Model>> modelsByNamespaces = new Dictionary<string, List<Model>>();
-			Dictionary<string,List<Model>> subModels = new Dictionary<string, List<Model>>();
-
-			//Unify namespace case and remove duplicates
+			Dictionary<string,ModelType> modelsByNamespace = new Dictionary<string, ModelType>();
 			foreach (var ovhApi in apis)
 			{
 				foreach (var model in ovhApi.Models)
 				{
 					string fullTypeName = Util.GetType(model.Key);
 
-					if (fullTypeNames.ContainsKey(fullTypeName))
+					if (modelsByNamespace.ContainsKey(fullTypeName))
 						continue;
 
-					fullTypeNames.Add(fullTypeName, model.Value);
-
-					string modelNamespace = Util.GetNamespace(model.Value);
-
-					if (!modelsByNamespaces.ContainsKey(modelNamespace))
-					{
-						modelsByNamespaces.Add(modelNamespace,new List<Model>());
-					}
-					modelsByNamespaces[modelNamespace].Add(model.Value);
+					modelsByNamespace.Add(fullTypeName, new ModelType(model.Value));
 				}
 			}
 
-			foreach (string nsName in modelsByNamespaces.Keys)
+			foreach (var st in modelsByNamespace)
 			{
-				if (fullTypeNames.ContainsKey(nsName))
-				{
-					Model parent = fullTypeNames[nsName];
+				string modelNamespace = Util.GetNamespace(st.Value.Model);
 
-					subModels.Add(parent.Id, new List<Model>());
-					foreach (Model child in modelsByNamespaces[nsName])
-					{
-						subModels[parent.Id].Add(child);
-					}
-					modelsByNamespaces[nsName].Clear();
+				if (modelsByNamespace.ContainsKey(modelNamespace))
+				{
+					modelsByNamespace[modelNamespace].AddChild(st.Value);
 				}
 			}
 
-
-			foreach (string nsName in modelsByNamespaces.Keys)
+			foreach (var type in modelsByNamespace.Where(x => x.Value.Parent == null))
 			{
-				if (modelsByNamespaces[nsName].Count == 0)
-					continue;
-
-				CodeNamespace ns = new CodeNamespace(nsName);
-
-				foreach (Model model in modelsByNamespaces[nsName])
-				{
-					var type = CreateType(model);
-					if (subModels.ContainsKey(model.Id))
-					{
-						foreach (Model subModel in subModels[model.Id])
-						{
-							type.Members.Add(CreateType(subModel));
-						}
-					}
-					ns.Types.Add(type);
-				}
+				CodeNamespace ns = new CodeNamespace(Util.GetNamespace(type.Value.Model));
+				ns.Types.Add(CreateType(type.Value));
 				_code.Namespaces.Add(ns);
 			}
 		}
 
-		private static CodeTypeDeclaration CreateType(Model model)
+		private static CodeTypeDeclaration CreateType(ModelType model)
 		{
-			return model.IsEnum ? CreateEnum(model.Id, model) : CreateClass(model.Id, model);
+			return model.Model.IsEnum ? CreateEnum(model.Model.Id, model.Model) : CreateClass(model);
 		}
 
-		private static CodeTypeDeclaration CreateClass(string name, Model model)
+		private static CodeTypeDeclaration CreateClass(ModelType modelType)
 		{
+			string name = modelType.Model.Id;
+			Model model = modelType.Model;
+
 			var type = new CodeTypeDeclaration(Util.FixCase(name));
 			type.IsClass = true;
 			type.TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed;
@@ -128,6 +117,11 @@ namespace OVHApi.Parser
 			}
 
 			AddSummary(type.Comments,model.Description);
+
+			foreach (ModelType child in modelType.Children)
+			{
+				type.Members.Add(CreateType(child));
+			}
 
 			foreach (var prop in model.Properties)
 			{

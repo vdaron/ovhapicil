@@ -11,7 +11,7 @@ namespace OVHApi.Parser
 {
 	public class HttpFileLoader : IFileLoader
 	{
-		private readonly string[] Urls = new string[]
+		private readonly string[] _urls = new[]
 			                                 {
 				                                 //"https://api.ovh.com/1.0/domains.json", // fully deprecated
 				                                 "https://api.ovh.com/1.0/cdn/dedicated.json",
@@ -31,7 +31,7 @@ namespace OVHApi.Parser
 				                                 "https://api.ovh.com/1.0/license/plesk.json",
 				                                 "https://api.ovh.com/1.0/license/virtuozzo.json",
 				                                 "https://api.ovh.com/1.0/license/windows.json",
-				                                 //"https://api.ovh.com/1.0/me.json", //two levels of subtypes
+				                                 "https://api.ovh.com/1.0/me.json",
 				                                 "https://api.ovh.com/1.0/newAccount.json",
 				                                 "https://api.ovh.com/1.0/order.json",
 				                                 "https://api.ovh.com/1.0/price.json",
@@ -47,7 +47,7 @@ namespace OVHApi.Parser
 			List<OvhApi> apis = new List<OvhApi>();
 			WebClient client = new WebClient();
 
-			foreach (var url in Urls)
+			foreach (var url in _urls)
 			{
 				string json = client.DownloadString(url);
 				apis.Add(JsonConvert.DeserializeObject<OvhApi>(json));
