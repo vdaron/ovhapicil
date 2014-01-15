@@ -20,10 +20,15 @@ namespace OVHApi
 			foreach(var operation in a.Operations){
 				if(!String.IsNullOrEmpty(operation.Description)){#>
 		/// <summary>
-		/// <#= operation.Description #><# foreach(var param in operation.Parameters){#>
-		/// <param name="<#= Util.GetParameterName(param)#>"><#= param.Description ?? "To be written"#></param><#}#>
-		/// </summary><# } if(operation.ApiStatus.Value == ApiState.Deprecated){#>
-		[Obsolete("Deprecated since <#= operation.ApiStatus.DeprecatedDate#><# if(operation.ApiStatus.Replacement != null){#> use '<#=operation.ApiStatus.Replacement #>' instead<#}#>")]<#}#>
+		/// <#= operation.Description #>
+					<# foreach(var param in operation.Parameters){#>
+		/// <param name="<#= Util.GetParameterName(param)#>"><#= param.Description ?? "To be written"#></param>
+					<#}#>
+		/// </summary>
+				<# }
+		if(operation.ApiStatus.Value == ApiState.Deprecated){#>
+		[Obsolete("Deprecated since <#= operation.ApiStatus.DeprecatedDate#><# if(operation.ApiStatus.Replacement != null){#> use '<#=operation.ApiStatus.Replacement #>' instead<#}#>")]
+		<#}#>
 		public async Task<#= Util.GetMethodReturnTaskParameter(operation.ResponseType)#> <#= Util.GetMethodNameAndParameters(a,operation) #>
 		{
 		<# if (!operation.NoAuthentication){ #>
