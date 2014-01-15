@@ -1,9 +1,7 @@
 
 using System;
-using OVHApi.Commands;
-using OVHApi.Commands.Dedicated.Server;
-using OVHApi.Commands.Domain;
-using OVHApi.Commands.Me;
+using OvhApi.Models.Api;
+using OvhApi.Models.Billing;
 
 namespace OVHApi.testapp
 {
@@ -13,40 +11,39 @@ namespace OVHApi.testapp
 		{
 			OvhApiClient api = new OvhApiClient("YOUR_APPLICATION_KEY", "YOUR_APPLICATION_SECRET", OvhInfra.Europe);
 
-//			CredentialsResponse response = api.RequestCredential(new []{
-//				new AccessRule{ Method = "GET", Path = "/*"},
-//				new AccessRule{ Method = "PUT", Path = "/*"},
-//				new AccessRule{ Method = "POST", Path = "/*"},
-//				new AccessRule{ Method = "DELETE", Path = "/*"},
-//			}).Result;
+			CredentialsResponse response = api.RequestCredential(new[]{
+				new AccessRule{ Method = "GET", Path = "/*"},
+				new AccessRule{ Method = "PUT", Path = "/*"},
+				new AccessRule{ Method = "POST", Path = "/*"},
+				//new AccessRule{ Method = "DELETE", Path = "/*"},
+			}).Result;
 
 			api.ConsumerKey = "YOUR_CONSUMER_KEY";
 			try {
 
-				string[] billIds= api.GetBills(DateTime.Now.AddMonths(-5), DateTime.Now.AddMonths(-2)).Result;
+				string[] billIds= api.GetMeBillNames(DateTime.Now.AddMonths(-5), DateTime.Now.AddMonths(-2)).Result;
 				for (int i = 0; i < billIds.Length; i++) {
-					Bill b = api.GetBill(billIds[i]).Result;
-					Payment p = api.GetBillPayment(billIds[i]).Result;
+					Bill b = api.GetMeBill(billIds[i]).Result;
+					Payment p = api.GetMeBillPayment(billIds[i]).Result;
 
-					string[] billDetailIds = api.GetBillDetails(billIds[i]).Result;
+					string[] billDetailIds = api.GetMeBillDetailNames(billIds[i]).Result;
 					for (int j = 0; j < billDetailIds.Length; j++) {
-						BillDetail bd = api.GetBillDetail(b.BillId,billDetailIds[j]).Result;
+						BillDetail bd = api.GetMeBillDetails(b.BillId,billDetailIds[j]).Result;
 					}
-
 				}
 
-				long[] appIds = api.GetApiApplications().Result;
+				long[] appIds = api.GetMeApiApplicationIds().Result;
 				for (int i = 0; i < appIds.Length; i++) {
-					Application app = api.GetApiApplication(appIds[i]).Result;
+					Application app = api.GetMeApiApplication(appIds[i]).Result;
 					Console.WriteLine(app.ApplicationKey);
 				}
 
-				long[] credsIds = api.GetApiCredentials().Result;
+				long[] credsIds = api.GetMeApiCredentialIds().Result;
 				for (int i = 0; i < credsIds.Length; i++) {
-					Application app = api.GetApiCredentialApplication(credsIds[i]).Result;
-					Credential cred = api.GetApiCredential(credsIds[i]).Result;
+					Application app = api.GetMeApiCredentialApplication(credsIds[i]).Result;
+					Credential cred = api.GetMeApiCredential(credsIds[i]).Result;
 					if(cred.Expiration < DateTime.Now)
-						api.DeleteApiCredential(credsIds[i]).Wait();
+						api.DeleteMeApiCredential(credsIds[i]).Wait();
 				}
 
 				//var rfrf = api.CreateDomainRecord("daron.be",NamedResolutionFieldType.A,"10.0.0.1","test").Result;
