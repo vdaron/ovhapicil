@@ -3,13 +3,7 @@ ovhapicil
 
 .NET Client for OVH API ( More info about API can be found at [https://api.ovh.com/](https://api.ovh.com/))
 
-The folowing API are currently implemented
-
- * DNS Management, read, write, delete.
- * Dedicated Server, read.
- * Billing, Payment information, read.
- * Applications and access rights linked to OVH handle
- * **Please, submit your pull request for missing features !**
+The API is automatically generated from [OVH documentation](https://api.ovh.com/console/) using CodeDom and T4 templates
 
 How to use the API
 ==================
@@ -47,3 +41,4 @@ Once the application key and secret are created, you must retrieve a consumer ke
                                        
     //now, you can use your api to access your OVH Services
 ```
+
