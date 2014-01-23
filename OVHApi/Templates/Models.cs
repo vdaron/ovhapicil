@@ -3646,6 +3646,9 @@ namespace OvhApi.Models.License {
 		[JsonProperty("WINDOWS_SERVER_2012_DATACENTER_EDITION")]
 		WINDOWS_SERVER_2012_DATACENTER_EDITION,
 		
+		[JsonProperty("WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU")]
+		WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU,
+		
 		[JsonProperty("WINDOWS_SERVER_2012_STANDARD_EDITION")]
 		WINDOWS_SERVER_2012_STANDARD_EDITION,
 	}
@@ -5052,54 +5055,6 @@ namespace OvhApi.Models.Dedicated.Server {
 	
 	
 	/// <summary>
-	/// Backup Ftp ACL for this server and Backup Ftp
-	/// </summary>
-	public sealed class BackupFtpAcl {
-		
-		[JsonProperty("ipBlock")]
-		private OVHApi.IPAddressBlock _ipBlock;
-		
-		[JsonProperty("ftp")]
-		private bool _ftp;
-		
-		[JsonProperty("lastUpdate")]
-		private System.DateTime _lastUpdate;
-		
-		/// <summary>
-		/// The IP Block specific to this ACL
-		/// </summary>
-		public OVHApi.IPAddressBlock IpBlock {
-			get {
-				return this._ipBlock;
-			}
-		}
-		
-		/// <summary>
-		/// Wether to allow the FTP protocol for this ACL
-		/// </summary>
-		public bool Ftp {
-			get {
-				return this._ftp;
-			}
-			set {
-				this._ftp = value;
-			}
-		}
-		
-		/// <summary>
-		/// Date of the last object modification
-		/// </summary>
-		public System.DateTime LastUpdate {
-			get {
-				return this._lastUpdate;
-			}
-		}
-	}
-}
-namespace OvhApi.Models.Dedicated.Server {
-	
-	
-	/// <summary>
 	/// A structure describing ipmi access value
 	/// </summary>
 	public sealed class IpmiAccessValue {
@@ -5131,6 +5086,84 @@ namespace OvhApi.Models.Dedicated.Server {
 			}
 			set {
 				this._expiration = value;
+			}
+		}
+	}
+}
+namespace OvhApi.Models.Dedicated.Server {
+	
+	
+	/// <summary>
+	/// Backup Ftp ACL for this server and Backup Ftp
+	/// </summary>
+	public sealed class BackupFtpAcl {
+		
+		[JsonProperty("ipBlock")]
+		private OVHApi.IPAddressBlock _ipBlock;
+		
+		[JsonProperty("ftp")]
+		private bool _ftp;
+		
+		[JsonProperty("lastUpdate")]
+		private System.DateTime _lastUpdate;
+		
+		[JsonProperty("nfs")]
+		private bool _nfs;
+		
+		[JsonProperty("cifs")]
+		private bool _cifs;
+		
+		/// <summary>
+		/// The IP Block specific to this ACL
+		/// </summary>
+		public OVHApi.IPAddressBlock IpBlock {
+			get {
+				return this._ipBlock;
+			}
+		}
+		
+		/// <summary>
+		/// Wether to allow the FTP protocol for this ACL
+		/// </summary>
+		public bool Ftp {
+			get {
+				return this._ftp;
+			}
+			set {
+				this._ftp = value;
+			}
+		}
+		
+		/// <summary>
+		/// Date of the last object modification
+		/// </summary>
+		public System.DateTime LastUpdate {
+			get {
+				return this._lastUpdate;
+			}
+		}
+		
+		/// <summary>
+		/// Wether to allow the NFS protocol for this ACL
+		/// </summary>
+		public bool Nfs {
+			get {
+				return this._nfs;
+			}
+			set {
+				this._nfs = value;
+			}
+		}
+		
+		/// <summary>
+		/// Wether to allow the CIFS (SMB) protocol for this ACL
+		/// </summary>
+		public bool Cifs {
+			get {
+				return this._cifs;
+			}
+			set {
+				this._cifs = value;
 			}
 		}
 	}
@@ -5174,30 +5207,6 @@ namespace OvhApi.Models.Dedicated.Server {
 		}
 	}
 }
-namespace OvhApi.Models.Dedicated.Server {
-	
-	
-	/// <summary>
-	/// distincts MRTG period
-	/// </summary>
-	public enum MrtgPeriodEnum {
-		
-		[JsonProperty("daily")]
-		Daily,
-		
-		[JsonProperty("hourly")]
-		Hourly,
-		
-		[JsonProperty("monthly")]
-		Monthly,
-		
-		[JsonProperty("weekly")]
-		Weekly,
-		
-		[JsonProperty("yearly")]
-		Yearly,
-	}
-}
 namespace OvhApi.Models.Dedicated {
 	
 	
@@ -5226,6 +5235,30 @@ namespace OvhApi.Models.Dedicated {
 		
 		[JsonProperty("todo")]
 		Todo,
+	}
+}
+namespace OvhApi.Models.Dedicated.Server {
+	
+	
+	/// <summary>
+	/// distincts MRTG period
+	/// </summary>
+	public enum MrtgPeriodEnum {
+		
+		[JsonProperty("daily")]
+		Daily,
+		
+		[JsonProperty("hourly")]
+		Hourly,
+		
+		[JsonProperty("monthly")]
+		Monthly,
+		
+		[JsonProperty("weekly")]
+		Weekly,
+		
+		[JsonProperty("yearly")]
+		Yearly,
 	}
 }
 namespace OvhApi.Models.Dedicated.Server {
@@ -5370,6 +5403,60 @@ namespace OvhApi.Models.Dedicated.Server {
 		
 		[JsonProperty("smp")]
 		Smp,
+	}
+}
+namespace OvhApi.Models.Dedicated.Server {
+	
+	
+	/// <summary>
+	/// Available localization for this static IP
+	/// </summary>
+	public enum IpCountryEnum {
+		
+		[JsonProperty("be")]
+		Be,
+		
+		[JsonProperty("ca")]
+		Ca,
+		
+		[JsonProperty("cz")]
+		Cz,
+		
+		[JsonProperty("de")]
+		De,
+		
+		[JsonProperty("es")]
+		Es,
+		
+		[JsonProperty("fi")]
+		Fi,
+		
+		[JsonProperty("fr")]
+		Fr,
+		
+		[JsonProperty("ie")]
+		Ie,
+		
+		[JsonProperty("it")]
+		It,
+		
+		[JsonProperty("lt")]
+		Lt,
+		
+		[JsonProperty("nl")]
+		Nl,
+		
+		[JsonProperty("pl")]
+		Pl,
+		
+		[JsonProperty("pt")]
+		Pt,
+		
+		[JsonProperty("uk")]
+		Uk,
+		
+		[JsonProperty("us")]
+		Us,
 	}
 }
 namespace OvhApi.Models.Dedicated.Server {
@@ -6851,6 +6938,264 @@ namespace OvhApi.Models.DedicatedCloud {
 		Warning,
 	}
 }
+namespace OvhApi.Models.Zone {
+	
+	
+	/// <summary>
+	/// Resource record fieldType
+	/// </summary>
+	public enum NamedResolutionFieldTypeEnum {
+		
+		[JsonProperty("A")]
+		A,
+		
+		[JsonProperty("AAAA")]
+		AAAA,
+		
+		[JsonProperty("CNAME")]
+		CNAME,
+		
+		[JsonProperty("DKIM")]
+		DKIM,
+		
+		[JsonProperty("LOC")]
+		LOC,
+		
+		[JsonProperty("MX")]
+		MX,
+		
+		[JsonProperty("NAPTR")]
+		NAPTR,
+		
+		[JsonProperty("NS")]
+		NS,
+		
+		[JsonProperty("PTR")]
+		PTR,
+		
+		[JsonProperty("SPF")]
+		SPF,
+		
+		[JsonProperty("SRV")]
+		SRV,
+		
+		[JsonProperty("SSHFP")]
+		SSHFP,
+		
+		[JsonProperty("TXT")]
+		TXT,
+	}
+}
+namespace OvhApi.Models.Domain {
+	
+	
+	/// <summary>
+	/// Name server
+	/// </summary>
+	public sealed class DomainNs {
+		
+		[JsonProperty("ip")]
+		private System.Net.IPAddress _ip;
+		
+		[JsonProperty("host")]
+		private string _host;
+		
+		/// <summary>
+		/// Ip
+		/// </summary>
+		public System.Net.IPAddress Ip {
+			get {
+				return this._ip;
+			}
+			set {
+				this._ip = value;
+			}
+		}
+		
+		/// <summary>
+		/// Host
+		/// </summary>
+		public string Host {
+			get {
+				return this._host;
+			}
+			set {
+				this._host = value;
+			}
+		}
+	}
+}
+namespace OvhApi.Models.Domain.Zone {
+	
+	
+	/// <summary>
+	/// Zone resource records
+	/// </summary>
+	public sealed class Record {
+		
+		[JsonProperty("target")]
+		private string _target;
+		
+		[JsonProperty("ttl")]
+		private System.Nullable<long> _ttl;
+		
+		[JsonProperty("zone")]
+		private string _zone;
+		
+		[JsonProperty("fieldType")]
+		private OvhApi.Models.Zone.NamedResolutionFieldTypeEnum _fieldType;
+		
+		[JsonProperty("id")]
+		private long _id;
+		
+		[JsonProperty("subDomain")]
+		private string _subDomain;
+		
+		/// <summary>
+		/// Resource record target
+		/// </summary>
+		public string Target {
+			get {
+				return this._target;
+			}
+			set {
+				this._target = value;
+			}
+		}
+		
+		/// <summary>
+		/// Resource record ttl
+		/// </summary>
+		public System.Nullable<long> Ttl {
+			get {
+				return this._ttl;
+			}
+			set {
+				this._ttl = value;
+			}
+		}
+		
+		/// <summary>
+		/// Resource record zone
+		/// </summary>
+		public string Zone {
+			get {
+				return this._zone;
+			}
+		}
+		
+		/// <summary>
+		/// Resource record Name
+		/// </summary>
+		public OvhApi.Models.Zone.NamedResolutionFieldTypeEnum FieldType {
+			get {
+				return this._fieldType;
+			}
+		}
+		
+		/// <summary>
+		/// Id of the zone resource record
+		/// </summary>
+		public long Id {
+			get {
+				return this._id;
+			}
+		}
+		
+		/// <summary>
+		/// Resource record subdomain
+		/// </summary>
+		public string SubDomain {
+			get {
+				return this._subDomain;
+			}
+			set {
+				this._subDomain = value;
+			}
+		}
+	}
+}
+namespace OvhApi.Models.Domain {
+	
+	
+	/// <summary>
+	/// Whois obfuscable fields
+	/// </summary>
+	public enum WhoisObfuscatorFieldsEnum {
+		
+		[JsonProperty("address")]
+		Address,
+		
+		[JsonProperty("email")]
+		Email,
+		
+		[JsonProperty("phone")]
+		Phone,
+	}
+}
+namespace OvhApi.Models.Domain {
+	
+	
+	/// <summary>
+	/// DomainNS Type
+	/// </summary>
+	public enum DomainNsTypeEnum {
+		
+		[JsonProperty("external")]
+		External,
+		
+		[JsonProperty("hosted")]
+		Hosted,
+	}
+}
+namespace OvhApi.Models.Domain {
+	
+	
+	/// <summary>
+	/// Operation status
+	/// </summary>
+	public enum OperationStatusEnum {
+		
+		[JsonProperty("cancelled")]
+		Cancelled,
+		
+		[JsonProperty("doing")]
+		Doing,
+		
+		[JsonProperty("done")]
+		Done,
+		
+		[JsonProperty("error")]
+		Error,
+		
+		[JsonProperty("todo")]
+		Todo,
+	}
+}
+namespace OvhApi.Models.Domain {
+	
+	
+	/// <summary>
+	/// Domain lock status
+	/// </summary>
+	public enum DomainLockStatusEnum {
+		
+		[JsonProperty("locked")]
+		Locked,
+		
+		[JsonProperty("locking")]
+		Locking,
+		
+		[JsonProperty("unavailable")]
+		Unavailable,
+		
+		[JsonProperty("unlocked")]
+		Unlocked,
+		
+		[JsonProperty("unlocking")]
+		Unlocking,
+	}
+}
 namespace OvhApi.Models.Domain {
 	
 	
@@ -6965,93 +7310,6 @@ namespace OvhApi.Models.Domain {
 		}
 	}
 }
-namespace OvhApi.Models.Zone {
-	
-	
-	/// <summary>
-	/// Resource record fieldType
-	/// </summary>
-	public enum NamedResolutionFieldTypeEnum {
-		
-		[JsonProperty("A")]
-		A,
-		
-		[JsonProperty("AAAA")]
-		AAAA,
-		
-		[JsonProperty("CNAME")]
-		CNAME,
-		
-		[JsonProperty("DKIM")]
-		DKIM,
-		
-		[JsonProperty("LOC")]
-		LOC,
-		
-		[JsonProperty("MX")]
-		MX,
-		
-		[JsonProperty("NAPTR")]
-		NAPTR,
-		
-		[JsonProperty("NS")]
-		NS,
-		
-		[JsonProperty("PTR")]
-		PTR,
-		
-		[JsonProperty("SPF")]
-		SPF,
-		
-		[JsonProperty("SRV")]
-		SRV,
-		
-		[JsonProperty("SSHFP")]
-		SSHFP,
-		
-		[JsonProperty("TXT")]
-		TXT,
-	}
-}
-namespace OvhApi.Models.Domain {
-	
-	
-	/// <summary>
-	/// Name server
-	/// </summary>
-	public sealed class DomainNs {
-		
-		[JsonProperty("ip")]
-		private System.Net.IPAddress _ip;
-		
-		[JsonProperty("host")]
-		private string _host;
-		
-		/// <summary>
-		/// Ip
-		/// </summary>
-		public System.Net.IPAddress Ip {
-			get {
-				return this._ip;
-			}
-			set {
-				this._ip = value;
-			}
-		}
-		
-		/// <summary>
-		/// Host
-		/// </summary>
-		public string Host {
-			get {
-				return this._host;
-			}
-			set {
-				this._host = value;
-			}
-		}
-	}
-}
 namespace OvhApi.Models.Domain {
 	
 	
@@ -7123,96 +7381,6 @@ namespace OvhApi.Models.Domain {
 			}
 			set {
 				this._nameServerType = value;
-			}
-		}
-	}
-}
-namespace OvhApi.Models.Domain.Zone {
-	
-	
-	/// <summary>
-	/// Zone resource records
-	/// </summary>
-	public sealed class Record {
-		
-		[JsonProperty("target")]
-		private string _target;
-		
-		[JsonProperty("ttl")]
-		private System.Nullable<long> _ttl;
-		
-		[JsonProperty("zone")]
-		private string _zone;
-		
-		[JsonProperty("fieldType")]
-		private OvhApi.Models.Zone.NamedResolutionFieldTypeEnum _fieldType;
-		
-		[JsonProperty("id")]
-		private long _id;
-		
-		[JsonProperty("subDomain")]
-		private string _subDomain;
-		
-		/// <summary>
-		/// Resource record target
-		/// </summary>
-		public string Target {
-			get {
-				return this._target;
-			}
-			set {
-				this._target = value;
-			}
-		}
-		
-		/// <summary>
-		/// Resource record ttl
-		/// </summary>
-		public System.Nullable<long> Ttl {
-			get {
-				return this._ttl;
-			}
-			set {
-				this._ttl = value;
-			}
-		}
-		
-		/// <summary>
-		/// Resource record zone
-		/// </summary>
-		public string Zone {
-			get {
-				return this._zone;
-			}
-		}
-		
-		/// <summary>
-		/// Resource record Name
-		/// </summary>
-		public OvhApi.Models.Zone.NamedResolutionFieldTypeEnum FieldType {
-			get {
-				return this._fieldType;
-			}
-		}
-		
-		/// <summary>
-		/// Id of the zone resource record
-		/// </summary>
-		public long Id {
-			get {
-				return this._id;
-			}
-		}
-		
-		/// <summary>
-		/// Resource record subdomain
-		/// </summary>
-		public string SubDomain {
-			get {
-				return this._subDomain;
-			}
-			set {
-				this._subDomain = value;
 			}
 		}
 	}
@@ -7433,85 +7601,46 @@ namespace OvhApi.Models.Domain.Zone {
 		}
 	}
 }
-namespace OvhApi.Models.Domain {
+namespace OvhApi.Models.Dnssec {
 	
 	
 	/// <summary>
-	/// Whois obfuscable fields
+	/// Dnssec Signature Status
 	/// </summary>
-	public enum WhoisObfuscatorFieldsEnum {
+	public enum SignatureStatusEnum {
 		
-		[JsonProperty("address")]
-		Address,
+		[JsonProperty("disabling")]
+		Disabling,
 		
-		[JsonProperty("email")]
-		Email,
+		[JsonProperty("enabling")]
+		Enabling,
 		
-		[JsonProperty("phone")]
-		Phone,
+		[JsonProperty("not_signed")]
+		Not_signed,
+		
+		[JsonProperty("signed")]
+		Signed,
+		
+		[JsonProperty("signing")]
+		Signing,
 	}
 }
-namespace OvhApi.Models.Domain {
+namespace OvhApi.Models.Domain.Zone {
 	
 	
 	/// <summary>
-	/// DomainNS Type
+	/// Manage Dnssec for this zone
 	/// </summary>
-	public enum DomainNsTypeEnum {
+	public sealed class Dnssec {
 		
-		[JsonProperty("external")]
-		External,
+		[JsonProperty("signatureStatus")]
+		private OvhApi.Models.Dnssec.SignatureStatusEnum _signatureStatus;
 		
-		[JsonProperty("hosted")]
-		Hosted,
-	}
-}
-namespace OvhApi.Models.Domain {
-	
-	
-	/// <summary>
-	/// Operation status
-	/// </summary>
-	public enum OperationStatusEnum {
-		
-		[JsonProperty("cancelled")]
-		Cancelled,
-		
-		[JsonProperty("doing")]
-		Doing,
-		
-		[JsonProperty("done")]
-		Done,
-		
-		[JsonProperty("error")]
-		Error,
-		
-		[JsonProperty("todo")]
-		Todo,
-	}
-}
-namespace OvhApi.Models.Domain {
-	
-	
-	/// <summary>
-	/// Domain lock status
-	/// </summary>
-	public enum DomainLockStatusEnum {
-		
-		[JsonProperty("locked")]
-		Locked,
-		
-		[JsonProperty("locking")]
-		Locking,
-		
-		[JsonProperty("unavailable")]
-		Unavailable,
-		
-		[JsonProperty("unlocked")]
-		Unlocked,
-		
-		[JsonProperty("unlocking")]
-		Unlocking,
+		public OvhApi.Models.Dnssec.SignatureStatusEnum SignatureStatus {
+			get {
+				return this._signatureStatus;
+			}
+		}
 	}
 }
 namespace OvhApi.Models.Email.Exchange {
@@ -8485,6 +8614,153 @@ namespace OvhApi.Models.Email.Exchange {
 		public bool IsAaaaValid {
 			get {
 				return this._isAaaaValid;
+			}
+		}
+	}
+}
+namespace OvhApi.Models.Email.Exchange {
+	
+	
+	/// <summary>
+	/// get external contact for this exchange service
+	/// </summary>
+	public sealed class ExchangeExternalContact {
+		
+		[JsonProperty("initials")]
+		private string _initials;
+		
+		[JsonProperty("firstName")]
+		private string _firstName;
+		
+		[JsonProperty("hiddenFromGAL")]
+		private bool _hiddenFromGAL;
+		
+		[JsonProperty("state")]
+		private OvhApi.Models.Email.Exchange.ObjectStateEnum _state;
+		
+		[JsonProperty("creationDate")]
+		private System.DateTime _creationDate;
+		
+		[JsonProperty("id")]
+		private long _id;
+		
+		[JsonProperty("lastName")]
+		private string _lastName;
+		
+		[JsonProperty("taskPendingId")]
+		private long _taskPendingId;
+		
+		[JsonProperty("externalEmailAddress")]
+		private string _externalEmailAddress;
+		
+		[JsonProperty("displayName")]
+		private string _displayName;
+		
+		/// <summary>
+		/// Contact initals
+		/// </summary>
+		public string Initials {
+			get {
+				return this._initials;
+			}
+			set {
+				this._initials = value;
+			}
+		}
+		
+		/// <summary>
+		/// Contact first name
+		/// </summary>
+		public string FirstName {
+			get {
+				return this._firstName;
+			}
+			set {
+				this._firstName = value;
+			}
+		}
+		
+		/// <summary>
+		/// Hide the contact in Global Address List
+		/// </summary>
+		public bool HiddenFromGAL {
+			get {
+				return this._hiddenFromGAL;
+			}
+			set {
+				this._hiddenFromGAL = value;
+			}
+		}
+		
+		/// <summary>
+		/// Contact state
+		/// </summary>
+		public OvhApi.Models.Email.Exchange.ObjectStateEnum State {
+			get {
+				return this._state;
+			}
+		}
+		
+		/// <summary>
+		/// Creation date
+		/// </summary>
+		public System.DateTime CreationDate {
+			get {
+				return this._creationDate;
+			}
+		}
+		
+		/// <summary>
+		/// Contact id
+		/// </summary>
+		public long Id {
+			get {
+				return this._id;
+			}
+		}
+		
+		/// <summary>
+		/// Contact last name
+		/// </summary>
+		public string LastName {
+			get {
+				return this._lastName;
+			}
+			set {
+				this._lastName = value;
+			}
+		}
+		
+		/// <summary>
+		/// Task pending id
+		/// </summary>
+		public long TaskPendingId {
+			get {
+				return this._taskPendingId;
+			}
+		}
+		
+		/// <summary>
+		/// Contact email
+		/// </summary>
+		public string ExternalEmailAddress {
+			get {
+				return this._externalEmailAddress;
+			}
+			set {
+				this._externalEmailAddress = value;
+			}
+		}
+		
+		/// <summary>
+		/// Contact display name
+		/// </summary>
+		public string DisplayName {
+			get {
+				return this._displayName;
+			}
+			set {
+				this._displayName = value;
 			}
 		}
 	}
@@ -11435,6 +11711,9 @@ namespace OvhApi.Models.License {
 		[JsonProperty("todoDate")]
 		private System.DateTime _todoDate;
 		
+		[JsonProperty("action")]
+		private OvhApi.Models.License.ActionType _action;
+		
 		[JsonProperty("name")]
 		private string _name;
 		
@@ -11474,6 +11753,15 @@ namespace OvhApi.Models.License {
 		public System.DateTime TodoDate {
 			get {
 				return this._todoDate;
+			}
+		}
+		
+		/// <summary>
+		/// This Task description
+		/// </summary>
+		public OvhApi.Models.License.ActionType Action {
+			get {
+				return this._action;
 			}
 		}
 		
@@ -11524,6 +11812,15 @@ namespace OvhApi.Models.License {
 	
 	
 	/// <summary>
+	/// A short description of what does the Task on your license
+	/// </summary>
+	public sealed class ActionType {
+	}
+}
+namespace OvhApi.Models.License {
+	
+	
+	/// <summary>
 	/// All versions available for Cpanel products
 	/// </summary>
 	public enum CpanelVersionEnum {
@@ -11545,6 +11842,9 @@ namespace OvhApi.Models.License.Directadmin {
 	/// Your DirectAdmin license
 	/// </summary>
 	public sealed class DirectAdmin {
+		
+		[JsonProperty("clientId")]
+		private long _clientId;
 		
 		[JsonProperty("ip")]
 		private System.Net.IPAddress _ip;
@@ -11569,6 +11869,15 @@ namespace OvhApi.Models.License.Directadmin {
 		
 		[JsonProperty("deleteAtExpiration")]
 		private bool _deleteAtExpiration;
+		
+		/// <summary>
+		/// The client id on license provider side
+		/// </summary>
+		public long ClientId {
+			get {
+				return this._clientId;
+			}
+		}
 		
 		/// <summary>
 		/// The ip on which this license is attached
@@ -15522,6 +15831,24 @@ namespace OvhApi.Models.Goodies.Tshirt {
 		Without_ovh,
 	}
 }
+namespace OvhApi.Models.License {
+	
+	
+	/// <summary>
+	/// Possible values for license type
+	/// </summary>
+	public enum LicenseTypeEnum {
+		
+		[JsonProperty("dedicated")]
+		Dedicated,
+		
+		[JsonProperty("dedicatedCloud")]
+		DedicatedCloud,
+		
+		[JsonProperty("vps")]
+		Vps,
+	}
+}
 namespace OvhApi.Models.DedicatedCloud {
 	
 	
@@ -15544,24 +15871,6 @@ namespace OvhApi.Models.DedicatedCloud {
 		
 		[JsonProperty("28")]
 		_28,
-	}
-}
-namespace OvhApi.Models.License {
-	
-	
-	/// <summary>
-	/// Possible values for license type
-	/// </summary>
-	public enum LicenseTypeEnum {
-		
-		[JsonProperty("dedicated")]
-		Dedicated,
-		
-		[JsonProperty("dedicatedCloud")]
-		DedicatedCloud,
-		
-		[JsonProperty("vps")]
-		Vps,
 	}
 }
 namespace OvhApi.Models.Cdn.Webstorage {
@@ -16054,60 +16363,6 @@ namespace OvhApi.Models.Cdn.Webstorage {
 		
 		[JsonProperty("10000")]
 		_10000,
-	}
-}
-namespace OvhApi.Models.Dedicated.Server {
-	
-	
-	/// <summary>
-	/// Available localization for this static IP
-	/// </summary>
-	public enum IpCountryEnum {
-		
-		[JsonProperty("be")]
-		Be,
-		
-		[JsonProperty("ca")]
-		Ca,
-		
-		[JsonProperty("cz")]
-		Cz,
-		
-		[JsonProperty("de")]
-		De,
-		
-		[JsonProperty("es")]
-		Es,
-		
-		[JsonProperty("fi")]
-		Fi,
-		
-		[JsonProperty("fr")]
-		Fr,
-		
-		[JsonProperty("ie")]
-		Ie,
-		
-		[JsonProperty("it")]
-		It,
-		
-		[JsonProperty("lt")]
-		Lt,
-		
-		[JsonProperty("nl")]
-		Nl,
-		
-		[JsonProperty("pl")]
-		Pl,
-		
-		[JsonProperty("pt")]
-		Pt,
-		
-		[JsonProperty("uk")]
-		Uk,
-		
-		[JsonProperty("us")]
-		Us,
 	}
 }
 namespace OvhApi.Models.License {
@@ -19024,7 +19279,7 @@ namespace OvhApi.Models.Telephony {
 	
 	
 	/// <summary>
-	/// Telephony API related file hosted on PCS
+	/// Telephony API related file hosted
 	/// </summary>
 	public sealed class PcsFile {
 		
@@ -19438,6 +19693,15 @@ namespace OvhApi.Models.Telephony {
 				this._status = value;
 			}
 		}
+	}
+}
+namespace OvhApi.Models.Telephony {
+	
+	
+	/// <summary>
+	/// Document extension
+	/// </summary>
+	public sealed class BillDocumentExtension {
 	}
 }
 namespace OvhApi.Models.Telephony {
@@ -19903,6 +20167,24 @@ namespace OvhApi.Models.Telephony {
 	
 	
 	/// <summary>
+	/// Consumption way type
+	/// </summary>
+	public enum VoiceConsumptionWayTypeEnum {
+		
+		[JsonProperty("incoming")]
+		Incoming,
+		
+		[JsonProperty("outgoing")]
+		Outgoing,
+		
+		[JsonProperty("transfer")]
+		Transfer,
+	}
+}
+namespace OvhApi.Models.Telephony {
+	
+	
+	/// <summary>
 	/// IVR Menu
 	/// </summary>
 	public sealed class PabxMenu {
@@ -19960,24 +20242,6 @@ namespace OvhApi.Models.Telephony {
 				this._greetSound = value;
 			}
 		}
-	}
-}
-namespace OvhApi.Models.Telephony {
-	
-	
-	/// <summary>
-	/// Consumption way type
-	/// </summary>
-	public enum VoiceConsumptionWayTypeEnum {
-		
-		[JsonProperty("incoming")]
-		Incoming,
-		
-		[JsonProperty("outgoing")]
-		Outgoing,
-		
-		[JsonProperty("transfer")]
-		Transfer,
 	}
 }
 namespace OvhApi.Models.Telephony {
@@ -20513,6 +20777,9 @@ namespace OvhApi.Models.Vps {
 		[JsonProperty("type")]
 		private OvhApi.Models.Vps.Ip.TypeEnum _type;
 		
+		[JsonProperty("geolocation")]
+		private OvhApi.Models.Vps.Ip.GeolocationEnum _geolocation;
+		
 		[JsonProperty("reverse")]
 		private string _reverse;
 		
@@ -20546,6 +20813,12 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
+		public OvhApi.Models.Vps.Ip.GeolocationEnum Geolocation {
+			get {
+				return this._geolocation;
+			}
+		}
+		
 		public string Reverse {
 			get {
 				return this._reverse;
@@ -20555,6 +20828,9 @@ namespace OvhApi.Models.Vps {
 			}
 		}
 		
+		/// <summary>
+		/// DEPRECATED : replaced by geolocation
+		/// </summary>
 		public OvhApi.Models.Vps.Ip.GeolocalizationEnum Geolocalization {
 			get {
 				return this._geolocalization;
@@ -20562,9 +20838,12 @@ namespace OvhApi.Models.Vps {
 		}
 		
 		/// <summary>
-		/// Geolocalization of the IP Address
+		/// Geolocation of the IP Address
 		/// </summary>
-		public enum GeolocalizationEnum {
+		public enum GeolocationEnum {
+			
+			[JsonProperty("ca")]
+			Ca,
 			
 			[JsonProperty("de")]
 			De,
@@ -20613,6 +20892,30 @@ namespace OvhApi.Models.Vps {
 					this._state = value;
 				}
 			}
+		}
+		
+		/// <summary>
+		/// Geolocalization of the IP Address
+		/// </summary>
+		public enum GeolocalizationEnum {
+			
+			[JsonProperty("de")]
+			De,
+			
+			[JsonProperty("es")]
+			Es,
+			
+			[JsonProperty("fr")]
+			Fr,
+			
+			[JsonProperty("it")]
+			It,
+			
+			[JsonProperty("pl")]
+			Pl,
+			
+			[JsonProperty("uk")]
+			Uk,
 		}
 		
 		/// <summary>
@@ -21079,24 +21382,6 @@ namespace OvhApi.Models.Vps {
 	
 	
 	/// <summary>
-	/// All offers a VPS can have
-	/// </summary>
-	public enum VpsOfferEnum {
-		
-		[JsonProperty("classic")]
-		Classic,
-		
-		[JsonProperty("cloud")]
-		Cloud,
-		
-		[JsonProperty("lowlat")]
-		Lowlat,
-	}
-}
-namespace OvhApi.Models.Vps {
-	
-	
-	/// <summary>
 	/// Available periods for the VPS monitoring
 	/// </summary>
 	public enum VpsMonitoringPeriodEnum {
@@ -21115,6 +21400,24 @@ namespace OvhApi.Models.Vps {
 		
 		[JsonProperty("today")]
 		Today,
+	}
+}
+namespace OvhApi.Models.Vps {
+	
+	
+	/// <summary>
+	/// All offers a VPS can have
+	/// </summary>
+	public enum VpsOfferEnum {
+		
+		[JsonProperty("classic")]
+		Classic,
+		
+		[JsonProperty("cloud")]
+		Cloud,
+		
+		[JsonProperty("lowlat")]
+		Lowlat,
 	}
 }
 namespace OvhApi.Models.CoreTypes {

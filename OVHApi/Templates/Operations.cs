@@ -2763,6 +2763,110 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP/password",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 				/// <summary>
+		/// Get all IP blocks that can be used in the ACL
+							/// <param name="serviceName">The internal name of your dedicated server</param>
+							/// </summary>
+						public async Task<OVHApi.IPAddressBlock[]> GetDedicatedServerFeaturesBackupftpAuthorizableblocks(string serviceName)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+
+			
+			
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/authorizableBlocks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+		}
+				/// <summary>
+		/// List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
+							/// <param name="serviceName">The internal name of your dedicated server</param>
+							/// </summary>
+						public async Task<OVHApi.IPAddressBlock[]> GetDedicatedServerFeaturesBackupftpAccess(string serviceName)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+
+			
+			
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+		}
+				/// <summary>
+		/// Create a new Backup FTP ACL
+							/// <param name="ftp">Wether to allow the FTP protocol for this ACL</param>
+							/// <param name="ipBlock">The IP Block specific to this ACL. It musts belong to your server.</param>
+							/// <param name="nfs">Wether to allow the NFS protocol for this ACL</param>
+							/// <param name="cifs">Wether to allow the CIFS (SMB) protocol for this ACL</param>
+							/// <param name="serviceName">The internal name of your dedicated server</param>
+							/// </summary>
+						public async Task<OvhApi.Models.Dedicated.Server.Task> CreateDedicatedServerFeaturesBackupftpAccess(OVHApi.IPAddressBlock ipBlock,bool nfs,bool cifs,string serviceName,bool? ftp = null)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNull("ipBlock",ipBlock);
+Ensure.NotNull("nfs",nfs);
+Ensure.NotNull("cifs",cifs);
+Ensure.NotNullNorEmpty("serviceName",serviceName);
+
+			
+			var requestBody = new Dictionary<string, object>();
+requestBody.Add("ftp",ftp);
+requestBody.Add("ipBlock",ipBlock);
+requestBody.Add("nfs",nfs);
+requestBody.Add("cifs",cifs);
+
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
+		}
+				/// <summary>
+		/// Get this object properties
+							/// <param name="serviceName">The internal name of your dedicated server</param>
+							/// <param name="ipBlock">The IP Block specific to this ACL</param>
+							/// </summary>
+						public async Task<OvhApi.Models.Dedicated.Server.BackupFtpAcl> GetDedicatedServerFeaturesBackupftpAccess(string serviceName,OVHApi.IPAddressBlock ipBlock)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+Ensure.NotNull("ipBlock",ipBlock);
+
+			
+			
+			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtpAcl>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())));
+		}
+				/// <summary>
+		/// Alter this object properties
+							/// <param name="requestBody">New object properties</param>
+							/// <param name="serviceName">The internal name of your dedicated server</param>
+							/// <param name="ipBlock">The IP Block specific to this ACL</param>
+							/// </summary>
+						public async Task UpdateDedicatedServerFeaturesBackupftpAccess(OvhApi.Models.Dedicated.Server.BackupFtpAcl requestBody,string serviceName,OVHApi.IPAddressBlock ipBlock)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNull("requestBody",requestBody);
+Ensure.NotNullNorEmpty("serviceName",serviceName);
+Ensure.NotNull("ipBlock",ipBlock);
+
+			
+			
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())),requestBody);
+		}
+				/// <summary>
+		/// Revoke this ACL
+							/// <param name="serviceName">The internal name of your dedicated server</param>
+							/// <param name="ipBlock">The IP Block specific to this ACL</param>
+							/// </summary>
+						public async Task<OvhApi.Models.Dedicated.Server.Task> DeleteDedicatedServerFeaturesBackupftpAccess(string serviceName,OVHApi.IPAddressBlock ipBlock)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+Ensure.NotNull("ipBlock",ipBlock);
+
+			
+			
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())));
+		}
+				/// <summary>
 		/// Get this object properties
 							/// <param name="serviceName">The internal name of your dedicated server</param>
 							/// </summary>
@@ -6607,10 +6711,11 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 		}
 				/// <summary>
 		/// tasks linked to this license
-							/// <param name="status">Filter the value of status property (like)</param>
+							/// <param name="status">Filter the value of status property (=)</param>
+							/// <param name="action">Filter the value of action property (=)</param>
 							/// <param name="serviceName">The name of your Cpanel license</param>
 							/// </summary>
-						public async Task<long[]> GetLicenseCpanelTaskIds(string serviceName,OvhApi.Models.License.TaskStateEnum? status = null)
+						public async Task<long[]> GetLicenseCpanelTaskIds(string serviceName,OvhApi.Models.License.ActionType action = null,OvhApi.Models.License.TaskStateEnum? status = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -6618,6 +6723,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 
 			var queryString = new QueryString();
 queryString.Add("status",status);
+queryString.Add("action",action);
 
 			
 			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/cpanel/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
@@ -6714,10 +6820,11 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 		}
 				/// <summary>
 		/// tasks linked to this license
-							/// <param name="status">Filter the value of status property (like)</param>
+							/// <param name="status">Filter the value of status property (=)</param>
+							/// <param name="action">Filter the value of action property (=)</param>
 							/// <param name="serviceName">The name of your DirectAdmin license</param>
 							/// </summary>
-						public async Task<long[]> GetLicenseDirectadminTaskIds(string serviceName,OvhApi.Models.License.TaskStateEnum? status = null)
+						public async Task<long[]> GetLicenseDirectadminTaskIds(string serviceName,OvhApi.Models.License.ActionType action = null,OvhApi.Models.License.TaskStateEnum? status = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -6725,6 +6832,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 
 			var queryString = new QueryString();
 queryString.Add("status",status);
+queryString.Add("action",action);
 
 			
 			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/directadmin/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
@@ -6821,10 +6929,11 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 		}
 				/// <summary>
 		/// tasks linked to this license
-							/// <param name="status">Filter the value of status property (like)</param>
+							/// <param name="status">Filter the value of status property (=)</param>
+							/// <param name="action">Filter the value of action property (=)</param>
 							/// <param name="serviceName">The name of your Plesk license</param>
 							/// </summary>
-						public async Task<long[]> GetLicensePleskTaskIds(string serviceName,OvhApi.Models.License.TaskStateEnum? status = null)
+						public async Task<long[]> GetLicensePleskTaskIds(string serviceName,OvhApi.Models.License.ActionType action = null,OvhApi.Models.License.TaskStateEnum? status = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -6832,6 +6941,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 
 			var queryString = new QueryString();
 queryString.Add("status",status);
+queryString.Add("action",action);
 
 			
 			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
@@ -6974,10 +7084,11 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 		}
 				/// <summary>
 		/// tasks linked to this license
-							/// <param name="status">Filter the value of status property (like)</param>
+							/// <param name="status">Filter the value of status property (=)</param>
+							/// <param name="action">Filter the value of action property (=)</param>
 							/// <param name="serviceName">The name of your Virtuozzo license</param>
 							/// </summary>
-						public async Task<long[]> GetLicenseVirtuozzoTaskIds(string serviceName,OvhApi.Models.License.TaskStateEnum? status = null)
+						public async Task<long[]> GetLicenseVirtuozzoTaskIds(string serviceName,OvhApi.Models.License.ActionType action = null,OvhApi.Models.License.TaskStateEnum? status = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -6985,6 +7096,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 
 			var queryString = new QueryString();
 queryString.Add("status",status);
+queryString.Add("action",action);
 
 			
 			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
@@ -7112,10 +7224,11 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 		}
 				/// <summary>
 		/// tasks linked to this license
-							/// <param name="status">Filter the value of status property (like)</param>
+							/// <param name="status">Filter the value of status property (=)</param>
+							/// <param name="action">Filter the value of action property (=)</param>
 							/// <param name="serviceName">The name of your Windows license</param>
 							/// </summary>
-						public async Task<long[]> GetLicenseWindowsTaskIds(string serviceName,OvhApi.Models.License.TaskStateEnum? status = null)
+						public async Task<long[]> GetLicenseWindowsTaskIds(string serviceName,OvhApi.Models.License.ActionType action = null,OvhApi.Models.License.TaskStateEnum? status = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -7123,6 +7236,7 @@ Ensure.NotNullNorEmpty("serviceName",serviceName);
 
 			var queryString = new QueryString();
 queryString.Add("status",status);
+queryString.Add("action",action);
 
 			
 			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/windows/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
@@ -8950,11 +9064,11 @@ Ensure.NotNullNorEmpty("duration",duration);
 		}
 				/// <summary>
 		/// Get allowed durations for 'ip' option
-							/// <param name="country">Choose a geolocalization of your IP Address - DEFAULT : fr</param>
+							/// <param name="country">Choose a geolocation for your IP Address</param>
 							/// <param name="number">Number of IPs to order</param>
 							/// <param name="serviceName">The internal name of your VPS offer</param>
 							/// </summary>
-						public async Task<string[]> GetOrderVpsIpNames(long number,string serviceName,OvhApi.Models.Vps.Ip.GeolocalizationEnum? country = null)
+						public async Task<string[]> GetOrderVpsIpNames(long number,string serviceName,OvhApi.Models.Vps.Ip.GeolocationEnum? country = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -8970,12 +9084,12 @@ queryString.Add("number",number);
 		}
 				/// <summary>
 		/// Get prices and contracts information
-							/// <param name="country">Choose a geolocalization of your IP Address - DEFAULT : fr</param>
+							/// <param name="country">Choose a geolocation for your IP Address</param>
 							/// <param name="number">Number of IPs to order</param>
 							/// <param name="serviceName">The internal name of your VPS offer</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> GetOrderVpsIp(long number,string serviceName,string duration,OvhApi.Models.Vps.Ip.GeolocalizationEnum? country = null)
+						public async Task<OvhApi.Models.Order.Order> GetOrderVpsIp(long number,string serviceName,string duration,OvhApi.Models.Vps.Ip.GeolocationEnum? country = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -8992,12 +9106,12 @@ queryString.Add("number",number);
 		}
 				/// <summary>
 		/// Create order
-							/// <param name="country">Choose a geolocalization of your IP Address - DEFAULT : fr</param>
+							/// <param name="country">Choose a geolocation for your IP Address</param>
 							/// <param name="number">Number of IPs to order</param>
 							/// <param name="serviceName">The internal name of your VPS offer</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> CreateOrderVpsIp(long number,string serviceName,string duration,OvhApi.Models.Vps.Ip.GeolocalizationEnum? country = null)
+						public async Task<OvhApi.Models.Order.Order> CreateOrderVpsIp(long number,string serviceName,string duration,OvhApi.Models.Vps.Ip.GeolocationEnum? country = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9461,9 +9575,10 @@ requestBody.Add("domain",domain);
 				/// <summary>
 		/// Get allowed durations for 'upgrade' option
 							/// <param name="sqlVersion">The SQL Server version to enable on this license Windows license</param>
+							/// <param name="version">The windows version you want to enable on your windows license</param>
 							/// <param name="serviceName">The name of your Windows license</param>
 							/// </summary>
-						public async Task<string[]> GetOrderLicenseWindowsUpgradeNames(string serviceName,OvhApi.Models.License.OrderableWindowsSqlVersionEnum? sqlVersion = null)
+						public async Task<string[]> GetOrderLicenseWindowsUpgradeNames(string serviceName,OvhApi.Models.License.OrderableWindowsOsVersionEnum? version = null,OvhApi.Models.License.OrderableWindowsSqlVersionEnum? sqlVersion = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9471,6 +9586,7 @@ requestBody.Add("domain",domain);
 
 			var queryString = new QueryString();
 queryString.Add("sqlVersion",sqlVersion);
+queryString.Add("version",version);
 
 			
 			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/windows/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
@@ -9478,10 +9594,11 @@ queryString.Add("sqlVersion",sqlVersion);
 				/// <summary>
 		/// Get prices and contracts information
 							/// <param name="sqlVersion">The SQL Server version to enable on this license Windows license</param>
+							/// <param name="version">The windows version you want to enable on your windows license</param>
 							/// <param name="serviceName">The name of your Windows license</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> GetOrderLicenseWindowsUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderableWindowsSqlVersionEnum? sqlVersion = null)
+						public async Task<OvhApi.Models.Order.Order> GetOrderLicenseWindowsUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderableWindowsOsVersionEnum? version = null,OvhApi.Models.License.OrderableWindowsSqlVersionEnum? sqlVersion = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9490,6 +9607,7 @@ Ensure.NotNullNorEmpty("duration",duration);
 
 			var queryString = new QueryString();
 queryString.Add("sqlVersion",sqlVersion);
+queryString.Add("version",version);
 
 			
 			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/windows/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
@@ -9497,10 +9615,11 @@ queryString.Add("sqlVersion",sqlVersion);
 				/// <summary>
 		/// Create order
 							/// <param name="sqlVersion">The SQL Server version to enable on this license Windows license</param>
+							/// <param name="version">The windows version you want to enable on your windows license</param>
 							/// <param name="serviceName">The name of your Windows license</param>
 							/// <param name="duration">Duration</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Order.Order> CreateOrderLicenseWindowsUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderableWindowsSqlVersionEnum? sqlVersion = null)
+						public async Task<OvhApi.Models.Order.Order> CreateOrderLicenseWindowsUpgrade(string serviceName,string duration,OvhApi.Models.License.OrderableWindowsOsVersionEnum? version = null,OvhApi.Models.License.OrderableWindowsSqlVersionEnum? sqlVersion = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9510,6 +9629,7 @@ Ensure.NotNullNorEmpty("duration",duration);
 			
 			var requestBody = new Dictionary<string, object>();
 requestBody.Add("sqlVersion",sqlVersion);
+requestBody.Add("version",version);
 
 			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/windows/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
@@ -10972,17 +11092,28 @@ requestBody.Add("country",country);
 		}
 				/// <summary>
 		/// Sms sent associated to the sms account
+							/// <param name="receiver">Filter the value of receiver property (=)</param>
+							/// <param name="differedDelivery">Filter the value of differedDelivery property (=)</param>
+							/// <param name="deliveryReceipt">Filter the value of deliveryReceipt property (=)</param>
+							/// <param name="ptt">Filter the value of ptt property (=)</param>
+							/// <param name="sender">Filter the value of sender property (=)</param>
 							/// <param name="serviceName">The internal name of your SMS offer</param>
 							/// </summary>
-						public async Task<long[]> GetSmsOutgoingIds(string serviceName)
+						public async Task<long[]> GetSmsOutgoingIds(string serviceName,string sender = null,long? ptt = null,long? deliveryReceipt = null,long? differedDelivery = null,string receiver = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 					Ensure.NotNullNorEmpty("serviceName",serviceName);
 
+			var queryString = new QueryString();
+queryString.Add("receiver",receiver);
+queryString.Add("differedDelivery",differedDelivery);
+queryString.Add("deliveryReceipt",deliveryReceipt);
+queryString.Add("ptt",ptt);
+queryString.Add("sender",sender);
+
 			
-			
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/outgoing",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/outgoing{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 				/// <summary>
 		/// Get this object properties
@@ -11562,17 +11693,20 @@ Ensure.IdIsValid("id",id);
 		}
 				/// <summary>
 		/// Sms received associated to the sms account
+							/// <param name="sender">Filter the value of sender property (=)</param>
 							/// <param name="serviceName">The internal name of your SMS offer</param>
 							/// </summary>
-						public async Task<long[]> GetSmsIncomingIds(string serviceName)
+						public async Task<long[]> GetSmsIncomingIds(string serviceName,string sender = null)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 					Ensure.NotNullNorEmpty("serviceName",serviceName);
 
+			var queryString = new QueryString();
+queryString.Add("sender",sender);
+
 			
-			
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/incoming",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/incoming{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 				/// <summary>
 		/// Get this object properties
@@ -11729,52 +11863,24 @@ Ensure.NotNull("date",date);
 			return await RawCall<OvhApi.Models.Telephony.HistoryConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString())));
 		}
 				/// <summary>
-		/// Previous billed consumptions in CSV format
+		/// Previous billed consumptions in the given format
+							/// <param name="extension">Document extension</param>
 							/// <param name="billingAccount">The name of your billingAccount</param>
 							/// <param name="date">To be written</param>
 							/// </summary>
-						public async Task<OvhApi.Models.Telephony.PcsFile> GetTelephonyHistoryconsumptionCsv(string billingAccount,DateTime date)
+						public async Task<OvhApi.Models.Telephony.PcsFile> GetTelephonyHistoryconsumptionDocument(OvhApi.Models.Telephony.BillDocumentExtension extension,string billingAccount,DateTime date)
 		{
 					if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
-					Ensure.NotNullNorEmpty("billingAccount",billingAccount);
+					Ensure.NotNull("extension",extension);
+Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 Ensure.NotNull("date",date);
 
-			
-			
-			return await RawCall<OvhApi.Models.Telephony.PcsFile>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}/csv",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString())));
-		}
-				/// <summary>
-		/// Previous billed consumptions in PDF format
-							/// <param name="billingAccount">The name of your billingAccount</param>
-							/// <param name="date">To be written</param>
-							/// </summary>
-						public async Task<OvhApi.Models.Telephony.PcsFile> GetTelephonyHistoryconsumptionPdf(string billingAccount,DateTime date)
-		{
-					if(ConsumerKey == null)
-				throw new OvhException("This request must be authenticated");
-					Ensure.NotNullNorEmpty("billingAccount",billingAccount);
-Ensure.NotNull("date",date);
+			var queryString = new QueryString();
+queryString.Add("extension",extension);
 
 			
-			
-			return await RawCall<OvhApi.Models.Telephony.PcsFile>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}/pdf",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString())));
-		}
-				/// <summary>
-		/// Previous billed consumptions in XML format
-							/// <param name="billingAccount">The name of your billingAccount</param>
-							/// <param name="date">To be written</param>
-							/// </summary>
-						public async Task<OvhApi.Models.Telephony.PcsFile> GetTelephonyHistoryconsumptionXml(string billingAccount,DateTime date)
-		{
-					if(ConsumerKey == null)
-				throw new OvhException("This request must be authenticated");
-					Ensure.NotNullNorEmpty("billingAccount",billingAccount);
-Ensure.NotNull("date",date);
-
-			
-			
-			return await RawCall<OvhApi.Models.Telephony.PcsFile>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}/xml",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.PcsFile>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}/document{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString()),queryString));
 		}
 				/// <summary>
 		/// Get this object properties
@@ -12098,6 +12204,20 @@ requestBody.Add("ip",ip);
 			return await RawCall<OvhApi.Models.Vps.Ip.ServiceStatus>(HttpMethod.Get,String.Format("/vps/{0}/status",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 				/// <summary>
+		/// Get the countries you can select for your IPs geolocation
+							/// <param name="serviceName">The internal name of your VPS offer</param>
+							/// </summary>
+						public async Task<OvhApi.Models.Vps.Ip.GeolocationEnum[]> GetVpsIpcountryavailables(string serviceName)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+
+			
+			
+			return await RawCall<OvhApi.Models.Vps.Ip.GeolocationEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/ipCountryAvailable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+		}
+				/// <summary>
 		/// Return all models the virtual server can be upgraded to
 							/// <param name="serviceName">The internal name of your VPS offer</param>
 							/// </summary>
@@ -12412,36 +12532,6 @@ requestBody.Add("full",full);
 			return await RawCall<OvhApi.Models.Vps.Model[]>(HttpMethod.Get,String.Format("/vps/{0}/models",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 				/// <summary>
-		/// Tasks associated to this virtual server
-							/// <param name="serviceName">The internal name of your VPS offer</param>
-							/// </summary>
-						public async Task<long[]> GetVpsTaskIds(string serviceName)
-		{
-					if(ConsumerKey == null)
-				throw new OvhException("This request must be authenticated");
-					Ensure.NotNullNorEmpty("serviceName",serviceName);
-
-			
-			
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
-		}
-				/// <summary>
-		/// Get this object properties
-							/// <param name="serviceName">The internal name of your VPS offer</param>
-							/// <param name="id">Id of the object</param>
-							/// </summary>
-						public async Task<OvhApi.Models.Vps.Task> GetVpsTasks(string serviceName,long id)
-		{
-					if(ConsumerKey == null)
-				throw new OvhException("This request must be authenticated");
-					Ensure.NotNullNorEmpty("serviceName",serviceName);
-Ensure.IdIsValid("id",id);
-
-			
-			
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Get,String.Format("/vps/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
-		}
-				/// <summary>
 		/// Reinstall the virtual server
 							/// <param name="language">Distribution language. default : en</param>
 							/// <param name="templateId">Id of the vps.Template fetched in /templates list</param>
@@ -12474,6 +12564,36 @@ requestBody.Add("templateId",templateId);
 			
 			
 			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/reboot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+		}
+				/// <summary>
+		/// Tasks associated to this virtual server
+							/// <param name="serviceName">The internal name of your VPS offer</param>
+							/// </summary>
+						public async Task<long[]> GetVpsTaskIds(string serviceName)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+
+			
+			
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+		}
+				/// <summary>
+		/// Get this object properties
+							/// <param name="serviceName">The internal name of your VPS offer</param>
+							/// <param name="id">Id of the object</param>
+							/// </summary>
+						public async Task<OvhApi.Models.Vps.Task> GetVpsTasks(string serviceName,long id)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+Ensure.IdIsValid("id",id);
+
+			
+			
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Get,String.Format("/vps/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 				/// <summary>
 		/// Request the machine to stop
@@ -12629,20 +12749,6 @@ requestBody.Add("protocol",protocol);
 			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsNameServerAvailable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 				/// <summary>
-		/// Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
-							/// <param name="serviceName">The internal name of your VPS offer</param>
-							/// </summary>
-						public async Task<OvhApi.Models.Vps.Task> CreateVpsSetpassword(string serviceName)
-		{
-					if(ConsumerKey == null)
-				throw new OvhException("This request must be authenticated");
-					Ensure.NotNullNorEmpty("serviceName",serviceName);
-
-			
-			
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/setPassword",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
-		}
-				/// <summary>
 		/// Request the machine to start
 							/// <param name="serviceName">The internal name of your VPS offer</param>
 							/// </summary>
@@ -12655,6 +12761,20 @@ requestBody.Add("protocol",protocol);
 			
 			
 			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/start",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
+		}
+				/// <summary>
+		/// Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
+							/// <param name="serviceName">The internal name of your VPS offer</param>
+							/// </summary>
+						public async Task<OvhApi.Models.Vps.Task> CreateVpsSetpassword(string serviceName)
+		{
+					if(ConsumerKey == null)
+				throw new OvhException("This request must be authenticated");
+					Ensure.NotNullNorEmpty("serviceName",serviceName);
+
+			
+			
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/setPassword",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 				/// <summary>
 		/// Templates available for this virtual server
