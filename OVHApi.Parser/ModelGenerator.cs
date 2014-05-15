@@ -55,6 +55,7 @@ namespace OVHApi.Parser
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Net.Http"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Threading.Tasks"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
+			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Runtime.Serialization"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("Newtonsoft.Json"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("OVHApi.Tools"));
 			
@@ -168,7 +169,7 @@ namespace OVHApi.Parser
 			foreach (var val in model.Enum)
 			{
 				var member = new CodeMemberField(type.Name, Util.GetEnumValue(val));
-				AddJsonPropertyAttritbute(member.CustomAttributes, val);
+				AddEnumMemberAttribute(member.CustomAttributes, val);
 				type.Members.Add(member);
 			}
 			return type;
@@ -246,9 +247,15 @@ namespace OVHApi.Parser
 			comments.Add(new CodeCommentStatement("</summary>", true));
 		}
 
+		//[JsonProperty("extension")]
 		private static void AddJsonPropertyAttritbute(CodeAttributeDeclarationCollection attributes, string name)
 		{
 			attributes.Add(new CodeAttributeDeclaration("JsonProperty", new CodeAttributeArgument(new CodePrimitiveExpression(name))));
+		}
+		//[EnumMember(Value = "flash")]
+		private static void AddEnumMemberAttribute(CodeAttributeDeclarationCollection attributes, string name)
+		{
+			attributes.Add(new CodeAttributeDeclaration("EnumMember", new CodeAttributeArgument("Value",new CodePrimitiveExpression(name) )));
 		}
 	}
 

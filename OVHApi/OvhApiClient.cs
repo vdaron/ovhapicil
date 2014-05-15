@@ -7,6 +7,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Newtonsoft.Json.Converters;
 using OVHApi.Tools;
 
 namespace OVHApi
@@ -48,6 +49,8 @@ namespace OVHApi
 			Ensure.NotNullNorEmpty("applicationSecret", applicationSecret);
 
 			_settings.Converters.Add(new IPAddressConverter());
+			_settings.Converters.Add(new StringEnumConverter());
+
 			_settings.Formatting = Formatting.Indented;
 
 			_applicationKey = applicationKey;
@@ -125,6 +128,8 @@ namespace OVHApi
 				throw new OvhException(ParseResponse<Error>(r.Content).Result);
 			}
 		}
+
+
 
 		private async Task<HttpRequestMessage> BuildHttpRequest(HttpMethod method,
 		                                                        string path,
