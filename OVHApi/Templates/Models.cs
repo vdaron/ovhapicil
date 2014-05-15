@@ -13,6 +13,7 @@ using OVHApi.Tools;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 
@@ -24,13 +25,13 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum CacheRuleFileTypeEnum {
 		
-		[JsonProperty("extension")]
+		[EnumMember(Value="extension")]
 		Extension,
 		
-		[JsonProperty("file")]
+		[EnumMember(Value="file")]
 		File,
 		
-		[JsonProperty("folder")]
+		[EnumMember(Value="folder")]
 		Folder,
 	}
 }
@@ -153,10 +154,10 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum StatsValueEnum {
 		
-		[JsonProperty("bandwidth")]
+		[EnumMember(Value="bandwidth")]
 		Bandwidth,
 		
-		[JsonProperty("request")]
+		[EnumMember(Value="request")]
 		Request,
 	}
 }
@@ -213,13 +214,13 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum StatsPeriodEnum {
 		
-		[JsonProperty("day")]
+		[EnumMember(Value="day")]
 		Day,
 		
-		[JsonProperty("month")]
+		[EnumMember(Value="month")]
 		Month,
 		
-		[JsonProperty("week")]
+		[EnumMember(Value="week")]
 		Week,
 	}
 }
@@ -231,16 +232,16 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum PopStatusEnum {
 		
-		[JsonProperty("down")]
+		[EnumMember(Value="down")]
 		Down,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("rerouted")]
+		[EnumMember(Value="rerouted")]
 		Rerouted,
 		
-		[JsonProperty("unknown")]
+		[EnumMember(Value="unknown")]
 		Unknown,
 	}
 }
@@ -252,22 +253,22 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum TaskFunctionEnum {
 		
-		[JsonProperty("flush")]
+		[EnumMember(Value="flush")]
 		Flush,
 		
-		[JsonProperty("flushAll")]
+		[EnumMember(Value="flushAll")]
 		FlushAll,
 		
-		[JsonProperty("installSsl")]
+		[EnumMember(Value="installSsl")]
 		InstallSsl,
 		
-		[JsonProperty("removeDomain")]
+		[EnumMember(Value="removeDomain")]
 		RemoveDomain,
 		
-		[JsonProperty("uninstallSsl")]
+		[EnumMember(Value="uninstallSsl")]
 		UninstallSsl,
 		
-		[JsonProperty("updateCacheRule")]
+		[EnumMember(Value="updateCacheRule")]
 		UpdateCacheRule,
 	}
 }
@@ -279,10 +280,10 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum CacheRuleCacheTypeEnum {
 		
-		[JsonProperty("forceCache")]
+		[EnumMember(Value="forceCache")]
 		ForceCache,
 		
-		[JsonProperty("noCache")]
+		[EnumMember(Value="noCache")]
 		NoCache,
 	}
 }
@@ -402,22 +403,22 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum CacheRuleStatusEnum {
 		
-		[JsonProperty("creating")]
+		[EnumMember(Value="creating")]
 		Creating,
 		
-		[JsonProperty("deleting")]
+		[EnumMember(Value="deleting")]
 		Deleting,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("off")]
+		[EnumMember(Value="off")]
 		Off,
 		
-		[JsonProperty("on")]
+		[EnumMember(Value="on")]
 		On,
 		
-		[JsonProperty("updating")]
+		[EnumMember(Value="updating")]
 		Updating,
 	}
 }
@@ -483,19 +484,19 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -507,16 +508,16 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum DomainStatusEnum {
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("off")]
+		[EnumMember(Value="off")]
 		Off,
 		
-		[JsonProperty("on")]
+		[EnumMember(Value="on")]
 		On,
 		
-		[JsonProperty("removing")]
+		[EnumMember(Value="removing")]
 		Removing,
 	}
 }
@@ -624,22 +625,22 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum SslStateEnum {
 		
-		[JsonProperty("checking")]
+		[EnumMember(Value="checking")]
 		Checking,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("off")]
+		[EnumMember(Value="off")]
 		Off,
 		
-		[JsonProperty("on")]
+		[EnumMember(Value="on")]
 		On,
 		
-		[JsonProperty("removing")]
+		[EnumMember(Value="removing")]
 		Removing,
 		
-		[JsonProperty("uploading")]
+		[EnumMember(Value="uploading")]
 		Uploading,
 	}
 }
@@ -732,10 +733,10 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum DomainTypeEnum {
 		
-		[JsonProperty("plain")]
+		[EnumMember(Value="plain")]
 		Plain,
 		
-		[JsonProperty("ssl")]
+		[EnumMember(Value="ssl")]
 		Ssl,
 	}
 }
@@ -864,10 +865,10 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum StatsTypeEnum {
 		
-		[JsonProperty("backend")]
+		[EnumMember(Value="backend")]
 		Backend,
 		
-		[JsonProperty("cdn")]
+		[EnumMember(Value="cdn")]
 		Cdn,
 	}
 }
@@ -876,16 +877,16 @@ namespace OvhApi.Models.Service {
 	
 	public enum StateEnum {
 		
-		[JsonProperty("expired")]
+		[EnumMember(Value="expired")]
 		Expired,
 		
-		[JsonProperty("inCreation")]
+		[EnumMember(Value="inCreation")]
 		InCreation,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("unPaid")]
+		[EnumMember(Value="unPaid")]
 		UnPaid,
 	}
 }
@@ -897,16 +898,16 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum BackendStatusEnum {
 		
-		[JsonProperty("creating")]
+		[EnumMember(Value="creating")]
 		Creating,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("on")]
+		[EnumMember(Value="on")]
 		On,
 		
-		[JsonProperty("removing")]
+		[EnumMember(Value="removing")]
 		Removing,
 	}
 }
@@ -918,10 +919,10 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum StatsTypeEnum {
 		
-		[JsonProperty("backend")]
+		[EnumMember(Value="backend")]
 		Backend,
 		
-		[JsonProperty("cdn")]
+		[EnumMember(Value="cdn")]
 		Cdn,
 	}
 }
@@ -1005,19 +1006,19 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -1029,13 +1030,13 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum DomainZoneStatusEnum {
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("on")]
+		[EnumMember(Value="on")]
 		On,
 		
-		[JsonProperty("removing")]
+		[EnumMember(Value="removing")]
 		Removing,
 	}
 }
@@ -1080,13 +1081,13 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum DomainStatusEnum {
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("on")]
+		[EnumMember(Value="on")]
 		On,
 		
-		[JsonProperty("removing")]
+		[EnumMember(Value="removing")]
 		Removing,
 	}
 }
@@ -1125,10 +1126,10 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum StatsValueEnum {
 		
-		[JsonProperty("bandwidth")]
+		[EnumMember(Value="bandwidth")]
 		Bandwidth,
 		
-		[JsonProperty("request")]
+		[EnumMember(Value="request")]
 		Request,
 	}
 }
@@ -1167,19 +1168,19 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum TaskFunctionEnum {
 		
-		[JsonProperty("flushAll")]
+		[EnumMember(Value="flushAll")]
 		FlushAll,
 		
-		[JsonProperty("installBackend")]
+		[EnumMember(Value="installBackend")]
 		InstallBackend,
 		
-		[JsonProperty("removeBackend")]
+		[EnumMember(Value="removeBackend")]
 		RemoveBackend,
 		
-		[JsonProperty("removeDomain")]
+		[EnumMember(Value="removeDomain")]
 		RemoveDomain,
 		
-		[JsonProperty("removeZone")]
+		[EnumMember(Value="removeZone")]
 		RemoveZone,
 	}
 }
@@ -1191,13 +1192,13 @@ namespace OvhApi.Models.Cdn.Website {
 	/// </summary>
 	public enum StatsPeriodEnum {
 		
-		[JsonProperty("day")]
+		[EnumMember(Value="day")]
 		Day,
 		
-		[JsonProperty("month")]
+		[EnumMember(Value="month")]
 		Month,
 		
-		[JsonProperty("week")]
+		[EnumMember(Value="week")]
 		Week,
 	}
 }
@@ -1341,13 +1342,13 @@ namespace OvhApi.Models.Cdn.Webstorage {
 	/// </summary>
 	public enum StatsTypeEnum {
 		
-		[JsonProperty("backend")]
+		[EnumMember(Value="backend")]
 		Backend,
 		
-		[JsonProperty("cdn")]
+		[EnumMember(Value="cdn")]
 		Cdn,
 		
-		[JsonProperty("quota")]
+		[EnumMember(Value="quota")]
 		Quota,
 	}
 }
@@ -1392,13 +1393,13 @@ namespace OvhApi.Models.Cdn.Webstorage {
 	/// </summary>
 	public enum StatsPeriodEnum {
 		
-		[JsonProperty("day")]
+		[EnumMember(Value="day")]
 		Day,
 		
-		[JsonProperty("month")]
+		[EnumMember(Value="month")]
 		Month,
 		
-		[JsonProperty("week")]
+		[EnumMember(Value="week")]
 		Week,
 	}
 }
@@ -1641,13 +1642,13 @@ namespace OvhApi.Models.Cloud.Pca {
 	/// </summary>
 	public enum BillingRefEnum {
 		
-		[JsonProperty("backup")]
+		[EnumMember(Value="backup")]
 		Backup,
 		
-		[JsonProperty("delete")]
+		[EnumMember(Value="delete")]
 		Delete,
 		
-		[JsonProperty("restore")]
+		[EnumMember(Value="restore")]
 		Restore,
 	}
 }
@@ -1659,13 +1660,13 @@ namespace OvhApi.Models.Cloud.Pcs {
 	/// </summary>
 	public enum StatisticPeriodEnum {
 		
-		[JsonProperty("lastDay")]
+		[EnumMember(Value="lastDay")]
 		LastDay,
 		
-		[JsonProperty("lastMonth")]
+		[EnumMember(Value="lastMonth")]
 		LastMonth,
 		
-		[JsonProperty("lastWeek")]
+		[EnumMember(Value="lastWeek")]
 		LastWeek,
 	}
 }
@@ -1704,22 +1705,22 @@ namespace OvhApi.Models.Cloud.Pca {
 	/// </summary>
 	public enum FunctionTypeEnum {
 		
-		[JsonProperty("createUser")]
+		[EnumMember(Value="createUser")]
 		CreateUser,
 		
-		[JsonProperty("delete")]
+		[EnumMember(Value="delete")]
 		Delete,
 		
-		[JsonProperty("restore")]
+		[EnumMember(Value="restore")]
 		Restore,
 		
-		[JsonProperty("setPassword")]
+		[EnumMember(Value="setPassword")]
 		SetPassword,
 		
-		[JsonProperty("setSessionName")]
+		[EnumMember(Value="setSessionName")]
 		SetSessionName,
 		
-		[JsonProperty("setSshKey")]
+		[EnumMember(Value="setSshKey")]
 		SetSshKey,
 	}
 }
@@ -1731,10 +1732,10 @@ namespace OvhApi.Models.Cloud.Pca {
 	/// </summary>
 	public enum TaskTypeEnum {
 		
-		[JsonProperty("delete")]
+		[EnumMember(Value="delete")]
 		Delete,
 		
-		[JsonProperty("restore")]
+		[EnumMember(Value="restore")]
 		Restore,
 	}
 }
@@ -1918,28 +1919,28 @@ namespace OvhApi.Models.Cloud.Pcs {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("blocked")]
+		[EnumMember(Value="blocked")]
 		Blocked,
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("paused")]
+		[EnumMember(Value="paused")]
 		Paused,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 		
-		[JsonProperty("waitingAck")]
+		[EnumMember(Value="waitingAck")]
 		WaitingAck,
 	}
 }
@@ -1951,13 +1952,13 @@ namespace OvhApi.Models.Cloud.Pcs {
 	/// </summary>
 	public enum BillingRefEnum {
 		
-		[JsonProperty("add")]
+		[EnumMember(Value="add")]
 		Add,
 		
-		[JsonProperty("delete")]
+		[EnumMember(Value="delete")]
 		Delete,
 		
-		[JsonProperty("download")]
+		[EnumMember(Value="download")]
 		Download,
 	}
 }
@@ -1969,52 +1970,52 @@ namespace OvhApi.Models.Cloud.Pca {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("deleted")]
+		[EnumMember(Value="deleted")]
 		Deleted,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("doingBackup")]
+		[EnumMember(Value="doingBackup")]
 		DoingBackup,
 		
-		[JsonProperty("doingDelete")]
+		[EnumMember(Value="doingDelete")]
 		DoingDelete,
 		
-		[JsonProperty("doingRestore")]
+		[EnumMember(Value="doingRestore")]
 		DoingRestore,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("failedDelete")]
+		[EnumMember(Value="failedDelete")]
 		FailedDelete,
 		
-		[JsonProperty("failedRestore")]
+		[EnumMember(Value="failedRestore")]
 		FailedRestore,
 		
-		[JsonProperty("new")]
+		[EnumMember(Value="new")]
 		New,
 		
-		[JsonProperty("tagging")]
+		[EnumMember(Value="tagging")]
 		Tagging,
 		
-		[JsonProperty("toBackup")]
+		[EnumMember(Value="toBackup")]
 		ToBackup,
 		
-		[JsonProperty("toDelete")]
+		[EnumMember(Value="toDelete")]
 		ToDelete,
 		
-		[JsonProperty("toRestore")]
+		[EnumMember(Value="toRestore")]
 		ToRestore,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -2026,13 +2027,13 @@ namespace OvhApi.Models.Cloud.Pcs {
 	/// </summary>
 	public enum StatisticTypeEnum {
 		
-		[JsonProperty("incoming.bytes")]
+		[EnumMember(Value="incoming.bytes")]
 		Incoming_Bytes,
 		
-		[JsonProperty("objects.size")]
+		[EnumMember(Value="objects.size")]
 		Objects_Size,
 		
-		[JsonProperty("outgoing.bytes")]
+		[EnumMember(Value="outgoing.bytes")]
 		Outgoing_Bytes,
 	}
 }
@@ -2293,43 +2294,43 @@ namespace OvhApi.Models.Cloud.Pca {
 	/// </summary>
 	public enum SessionStateEnum {
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("doingBackup")]
+		[EnumMember(Value="doingBackup")]
 		DoingBackup,
 		
-		[JsonProperty("doingDelete")]
+		[EnumMember(Value="doingDelete")]
 		DoingDelete,
 		
-		[JsonProperty("doingRestore")]
+		[EnumMember(Value="doingRestore")]
 		DoingRestore,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("failedDelete")]
+		[EnumMember(Value="failedDelete")]
 		FailedDelete,
 		
-		[JsonProperty("failedRestore")]
+		[EnumMember(Value="failedRestore")]
 		FailedRestore,
 		
-		[JsonProperty("new")]
+		[EnumMember(Value="new")]
 		New,
 		
-		[JsonProperty("tagging")]
+		[EnumMember(Value="tagging")]
 		Tagging,
 		
-		[JsonProperty("toBackup")]
+		[EnumMember(Value="toBackup")]
 		ToBackup,
 		
-		[JsonProperty("toDelete")]
+		[EnumMember(Value="toDelete")]
 		ToDelete,
 		
-		[JsonProperty("toRestore")]
+		[EnumMember(Value="toRestore")]
 		ToRestore,
 	}
 }
@@ -2590,16 +2591,16 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TemplateOsTypeEnum {
 		
-		[JsonProperty("bsd")]
+		[EnumMember(Value="bsd")]
 		Bsd,
 		
-		[JsonProperty("linux")]
+		[EnumMember(Value="linux")]
 		Linux,
 		
-		[JsonProperty("solaris")]
+		[EnumMember(Value="solaris")]
 		Solaris,
 		
-		[JsonProperty("windows")]
+		[EnumMember(Value="windows")]
 		Windows,
 	}
 }
@@ -2611,22 +2612,22 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TemplateOsUsageEnum {
 		
-		[JsonProperty("basic")]
+		[EnumMember(Value="basic")]
 		Basic,
 		
-		[JsonProperty("customer")]
+		[EnumMember(Value="customer")]
 		Customer,
 		
-		[JsonProperty("hosting")]
+		[EnumMember(Value="hosting")]
 		Hosting,
 		
-		[JsonProperty("other")]
+		[EnumMember(Value="other")]
 		Other,
 		
-		[JsonProperty("readyToUse")]
+		[EnumMember(Value="readyToUse")]
 		ReadyToUse,
 		
-		[JsonProperty("virtualisation")]
+		[EnumMember(Value="virtualisation")]
 		Virtualisation,
 	}
 }
@@ -2959,25 +2960,25 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TemplateOsFileSystemEnum {
 		
-		[JsonProperty("btrfs")]
+		[EnumMember(Value="btrfs")]
 		Btrfs,
 		
-		[JsonProperty("ext3")]
+		[EnumMember(Value="ext3")]
 		Ext3,
 		
-		[JsonProperty("ext4")]
+		[EnumMember(Value="ext4")]
 		Ext4,
 		
-		[JsonProperty("ntfs")]
+		[EnumMember(Value="ntfs")]
 		Ntfs,
 		
-		[JsonProperty("reiserfs")]
+		[EnumMember(Value="reiserfs")]
 		Reiserfs,
 		
-		[JsonProperty("swap")]
+		[EnumMember(Value="swap")]
 		Swap,
 		
-		[JsonProperty("ufs")]
+		[EnumMember(Value="ufs")]
 		Ufs,
 	}
 }
@@ -2989,10 +2990,10 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BitFormatEnum {
 		
-		[JsonProperty("32")]
+		[EnumMember(Value="32")]
 		_32,
 		
-		[JsonProperty("64")]
+		[EnumMember(Value="64")]
 		_64,
 	}
 }
@@ -3004,112 +3005,112 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TemplateOsLanguageEnum {
 		
-		[JsonProperty("ar")]
+		[EnumMember(Value="ar")]
 		Ar,
 		
-		[JsonProperty("bg")]
+		[EnumMember(Value="bg")]
 		Bg,
 		
-		[JsonProperty("cs")]
+		[EnumMember(Value="cs")]
 		Cs,
 		
-		[JsonProperty("da")]
+		[EnumMember(Value="da")]
 		Da,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("el")]
+		[EnumMember(Value="el")]
 		El,
 		
-		[JsonProperty("en")]
+		[EnumMember(Value="en")]
 		En,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("et")]
+		[EnumMember(Value="et")]
 		Et,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("he")]
+		[EnumMember(Value="he")]
 		He,
 		
-		[JsonProperty("hr")]
+		[EnumMember(Value="hr")]
 		Hr,
 		
-		[JsonProperty("hu")]
+		[EnumMember(Value="hu")]
 		Hu,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("ja")]
+		[EnumMember(Value="ja")]
 		Ja,
 		
-		[JsonProperty("ko")]
+		[EnumMember(Value="ko")]
 		Ko,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("lv")]
+		[EnumMember(Value="lv")]
 		Lv,
 		
-		[JsonProperty("nb")]
+		[EnumMember(Value="nb")]
 		Nb,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("no")]
+		[EnumMember(Value="no")]
 		No,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("ro")]
+		[EnumMember(Value="ro")]
 		Ro,
 		
-		[JsonProperty("ru")]
+		[EnumMember(Value="ru")]
 		Ru,
 		
-		[JsonProperty("sk")]
+		[EnumMember(Value="sk")]
 		Sk,
 		
-		[JsonProperty("sl")]
+		[EnumMember(Value="sl")]
 		Sl,
 		
-		[JsonProperty("sr")]
+		[EnumMember(Value="sr")]
 		Sr,
 		
-		[JsonProperty("sv")]
+		[EnumMember(Value="sv")]
 		Sv,
 		
-		[JsonProperty("th")]
+		[EnumMember(Value="th")]
 		Th,
 		
-		[JsonProperty("tr")]
+		[EnumMember(Value="tr")]
 		Tr,
 		
-		[JsonProperty("tu")]
+		[EnumMember(Value="tu")]
 		Tu,
 		
-		[JsonProperty("uk")]
+		[EnumMember(Value="uk")]
 		Uk,
 		
-		[JsonProperty("zh-Hans-CN")]
+		[EnumMember(Value="zh-Hans-CN")]
 		Zh_Hans_CN,
 		
-		[JsonProperty("zh-Hans-HK")]
+		[EnumMember(Value="zh-Hans-HK")]
 		Zh_Hans_HK,
 	}
 }
@@ -3121,19 +3122,19 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum PartitionRaidEnum {
 		
-		[JsonProperty("0")]
+		[EnumMember(Value="0")]
 		_0,
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("5")]
+		[EnumMember(Value="5")]
 		_5,
 		
-		[JsonProperty("6")]
+		[EnumMember(Value="6")]
 		_6,
 	}
 }
@@ -3145,13 +3146,13 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TemplatePartitionTypeEnum {
 		
-		[JsonProperty("logical")]
+		[EnumMember(Value="logical")]
 		Logical,
 		
-		[JsonProperty("lv")]
+		[EnumMember(Value="lv")]
 		Lv,
 		
-		[JsonProperty("primary")]
+		[EnumMember(Value="primary")]
 		Primary,
 	}
 }
@@ -3250,13 +3251,13 @@ namespace OvhApi.Models.Dedicated.Storage {
 	/// </summary>
 	public enum ProtocolEnum {
 		
-		[JsonProperty("CIFS")]
+		[EnumMember(Value="CIFS")]
 		CIFS,
 		
-		[JsonProperty("NFS")]
+		[EnumMember(Value="NFS")]
 		NFS,
 		
-		[JsonProperty("NFS_CIFS")]
+		[EnumMember(Value="NFS_CIFS")]
 		NFS_CIFS,
 	}
 }
@@ -3373,43 +3374,43 @@ namespace OvhApi.Models.Dedicated.Storage {
 	/// </summary>
 	public enum TaskFunctionEnum {
 		
-		[JsonProperty("backupRecursiveDestroy")]
+		[EnumMember(Value="backupRecursiveDestroy")]
 		BackupRecursiveDestroy,
 		
-		[JsonProperty("clusterLeclercAclUpdate")]
+		[EnumMember(Value="clusterLeclercAclUpdate")]
 		ClusterLeclercAclUpdate,
 		
-		[JsonProperty("clusterLeclercDeleteSnapshotDirectory")]
+		[EnumMember(Value="clusterLeclercDeleteSnapshotDirectory")]
 		ClusterLeclercDeleteSnapshotDirectory,
 		
-		[JsonProperty("clusterLeclercPartitionAdd")]
+		[EnumMember(Value="clusterLeclercPartitionAdd")]
 		ClusterLeclercPartitionAdd,
 		
-		[JsonProperty("clusterLeclercPartitionDelete")]
+		[EnumMember(Value="clusterLeclercPartitionDelete")]
 		ClusterLeclercPartitionDelete,
 		
-		[JsonProperty("clusterLeclercPartitionUpdate")]
+		[EnumMember(Value="clusterLeclercPartitionUpdate")]
 		ClusterLeclercPartitionUpdate,
 		
-		[JsonProperty("clusterLeclercSnapshotUpdate")]
+		[EnumMember(Value="clusterLeclercSnapshotUpdate")]
 		ClusterLeclercSnapshotUpdate,
 		
-		[JsonProperty("nasAclUpdate")]
+		[EnumMember(Value="nasAclUpdate")]
 		NasAclUpdate,
 		
-		[JsonProperty("nasDeleteSnapshotDirectory")]
+		[EnumMember(Value="nasDeleteSnapshotDirectory")]
 		NasDeleteSnapshotDirectory,
 		
-		[JsonProperty("nasPartitionAdd")]
+		[EnumMember(Value="nasPartitionAdd")]
 		NasPartitionAdd,
 		
-		[JsonProperty("nasPartitionDelete")]
+		[EnumMember(Value="nasPartitionDelete")]
 		NasPartitionDelete,
 		
-		[JsonProperty("nasPartitionUpdate")]
+		[EnumMember(Value="nasPartitionUpdate")]
 		NasPartitionUpdate,
 		
-		[JsonProperty("remoteBackupRecursiveDestroy")]
+		[EnumMember(Value="remoteBackupRecursiveDestroy")]
 		RemoteBackupRecursiveDestroy,
 	}
 }
@@ -3550,25 +3551,25 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TaskStatusEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("customerError")]
+		[EnumMember(Value="customerError")]
 		CustomerError,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("init")]
+		[EnumMember(Value="init")]
 		Init,
 		
-		[JsonProperty("ovhError")]
+		[EnumMember(Value="ovhError")]
 		OvhError,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -3661,22 +3662,22 @@ namespace OvhApi.Models.Dedicated.Storage {
 	/// </summary>
 	public enum SnapshotEnum {
 		
-		[JsonProperty("day-1")]
+		[EnumMember(Value="day-1")]
 		Day_1,
 		
-		[JsonProperty("day-2")]
+		[EnumMember(Value="day-2")]
 		Day_2,
 		
-		[JsonProperty("day-3")]
+		[EnumMember(Value="day-3")]
 		Day_3,
 		
-		[JsonProperty("day-7")]
+		[EnumMember(Value="day-7")]
 		Day_7,
 		
-		[JsonProperty("hour-1")]
+		[EnumMember(Value="hour-1")]
 		Hour_1,
 		
-		[JsonProperty("hour-6")]
+		[EnumMember(Value="hour-6")]
 		Hour_6,
 	}
 }
@@ -4060,16 +4061,16 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BackupStorageCapacityEnum {
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 		
-		[JsonProperty("10000")]
+		[EnumMember(Value="10000")]
 		_10000,
 		
-		[JsonProperty("500")]
+		[EnumMember(Value="500")]
 		_500,
 		
-		[JsonProperty("5000")]
+		[EnumMember(Value="5000")]
 		_5000,
 	}
 }
@@ -4384,28 +4385,28 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum IpBlockSizeEnum {
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("128")]
+		[EnumMember(Value="128")]
 		_128,
 		
-		[JsonProperty("16")]
+		[EnumMember(Value="16")]
 		_16,
 		
-		[JsonProperty("256")]
+		[EnumMember(Value="256")]
 		_256,
 		
-		[JsonProperty("32")]
+		[EnumMember(Value="32")]
 		_32,
 		
-		[JsonProperty("4")]
+		[EnumMember(Value="4")]
 		_4,
 		
-		[JsonProperty("64")]
+		[EnumMember(Value="64")]
 		_64,
 		
-		[JsonProperty("8")]
+		[EnumMember(Value="8")]
 		_8,
 	}
 }
@@ -4813,16 +4814,16 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum RtmChartPeriodEnum {
 		
-		[JsonProperty("daily")]
+		[EnumMember(Value="daily")]
 		Daily,
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 		
-		[JsonProperty("weekly")]
+		[EnumMember(Value="weekly")]
 		Weekly,
 		
-		[JsonProperty("yearly")]
+		[EnumMember(Value="yearly")]
 		Yearly,
 	}
 }
@@ -4834,7 +4835,7 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum OptionRequiredEnum {
 		
-		[JsonProperty("professionalUse")]
+		[EnumMember(Value="professionalUse")]
 		ProfessionalUse,
 	}
 }
@@ -4846,19 +4847,19 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BandwidthTypeEnum {
 		
-		[JsonProperty("included")]
+		[EnumMember(Value="included")]
 		Included,
 		
-		[JsonProperty("platinum")]
+		[EnumMember(Value="platinum")]
 		Platinum,
 		
-		[JsonProperty("premium")]
+		[EnumMember(Value="premium")]
 		Premium,
 		
-		[JsonProperty("standard")]
+		[EnumMember(Value="standard")]
 		Standard,
 		
-		[JsonProperty("ultimate")]
+		[EnumMember(Value="ultimate")]
 		Ultimate,
 	}
 }
@@ -4870,13 +4871,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BandwidthOrderEnum {
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 		
-		[JsonProperty("2000")]
+		[EnumMember(Value="2000")]
 		_2000,
 		
-		[JsonProperty("3000")]
+		[EnumMember(Value="3000")]
 		_3000,
 	}
 }
@@ -4888,52 +4889,52 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum DatacenterEnum {
 		
-		[JsonProperty("bhs1")]
+		[EnumMember(Value="bhs1")]
 		Bhs1,
 		
-		[JsonProperty("bhs2")]
+		[EnumMember(Value="bhs2")]
 		Bhs2,
 		
-		[JsonProperty("dc1")]
+		[EnumMember(Value="dc1")]
 		Dc1,
 		
-		[JsonProperty("gra1")]
+		[EnumMember(Value="gra1")]
 		Gra1,
 		
-		[JsonProperty("gsw")]
+		[EnumMember(Value="gsw")]
 		Gsw,
 		
-		[JsonProperty("p19")]
+		[EnumMember(Value="p19")]
 		P19,
 		
-		[JsonProperty("rbx1")]
+		[EnumMember(Value="rbx1")]
 		Rbx1,
 		
-		[JsonProperty("rbx2")]
+		[EnumMember(Value="rbx2")]
 		Rbx2,
 		
-		[JsonProperty("rbx3")]
+		[EnumMember(Value="rbx3")]
 		Rbx3,
 		
-		[JsonProperty("rbx4")]
+		[EnumMember(Value="rbx4")]
 		Rbx4,
 		
-		[JsonProperty("rbx5")]
+		[EnumMember(Value="rbx5")]
 		Rbx5,
 		
-		[JsonProperty("rbx6")]
+		[EnumMember(Value="rbx6")]
 		Rbx6,
 		
-		[JsonProperty("sbg1")]
+		[EnumMember(Value="sbg1")]
 		Sbg1,
 		
-		[JsonProperty("sbg2")]
+		[EnumMember(Value="sbg2")]
 		Sbg2,
 		
-		[JsonProperty("sbg3")]
+		[EnumMember(Value="sbg3")]
 		Sbg3,
 		
-		[JsonProperty("sbg4")]
+		[EnumMember(Value="sbg4")]
 		Sbg4,
 	}
 }
@@ -4945,13 +4946,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BurstStatusEnum {
 		
-		[JsonProperty("active")]
+		[EnumMember(Value="active")]
 		Active,
 		
-		[JsonProperty("inactive")]
+		[EnumMember(Value="inactive")]
 		Inactive,
 		
-		[JsonProperty("inactiveLocked")]
+		[EnumMember(Value="inactiveLocked")]
 		InactiveLocked,
 	}
 }
@@ -5092,13 +5093,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum SplaTypeEnum {
 		
-		[JsonProperty("os")]
+		[EnumMember(Value="os")]
 		Os,
 		
-		[JsonProperty("sqlstd")]
+		[EnumMember(Value="sqlstd")]
 		Sqlstd,
 		
-		[JsonProperty("sqlweb")]
+		[EnumMember(Value="sqlweb")]
 		Sqlweb,
 	}
 }
@@ -5110,28 +5111,28 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum InstallationProgressStatusEnum {
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("expired")]
+		[EnumMember(Value="expired")]
 		Expired,
 		
-		[JsonProperty("idle")]
+		[EnumMember(Value="idle")]
 		Idle,
 		
-		[JsonProperty("pending")]
+		[EnumMember(Value="pending")]
 		Pending,
 		
-		[JsonProperty("stopping")]
+		[EnumMember(Value="stopping")]
 		Stopping,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -5227,13 +5228,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum IpmiAccessTypeEnum {
 		
-		[JsonProperty("kvmipJnlp")]
+		[EnumMember(Value="kvmipJnlp")]
 		KvmipJnlp,
 		
-		[JsonProperty("serialOverLanSshKey")]
+		[EnumMember(Value="serialOverLanSshKey")]
 		SerialOverLanSshKey,
 		
-		[JsonProperty("serialOverLanURL")]
+		[EnumMember(Value="serialOverLanURL")]
 		SerialOverLanURL,
 	}
 }
@@ -5278,19 +5279,19 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum UsbKeyCapacityEnum {
 		
-		[JsonProperty("128")]
+		[EnumMember(Value="128")]
 		_128,
 		
-		[JsonProperty("16")]
+		[EnumMember(Value="16")]
 		_16,
 		
-		[JsonProperty("256")]
+		[EnumMember(Value="256")]
 		_256,
 		
-		[JsonProperty("32")]
+		[EnumMember(Value="32")]
 		_32,
 		
-		[JsonProperty("64")]
+		[EnumMember(Value="64")]
 		_64,
 	}
 }
@@ -5356,13 +5357,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum StateEnum {
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("hacked")]
+		[EnumMember(Value="hacked")]
 		Hacked,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 	}
 }
@@ -5413,16 +5414,16 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BootOptionEnum {
 		
-		[JsonProperty("cpufamily")]
+		[EnumMember(Value="cpufamily")]
 		Cpufamily,
 		
-		[JsonProperty("grsec")]
+		[EnumMember(Value="grsec")]
 		Grsec,
 		
-		[JsonProperty("ipv6")]
+		[EnumMember(Value="ipv6")]
 		Ipv6,
 		
-		[JsonProperty("smp")]
+		[EnumMember(Value="smp")]
 		Smp,
 	}
 }
@@ -5578,13 +5579,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum SupportLevelOrderableEnum {
 		
-		[JsonProperty("critical")]
+		[EnumMember(Value="critical")]
 		Critical,
 		
-		[JsonProperty("fastpath")]
+		[EnumMember(Value="fastpath")]
 		Fastpath,
 		
-		[JsonProperty("gs")]
+		[EnumMember(Value="gs")]
 		Gs,
 	}
 }
@@ -5596,13 +5597,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum SplaStatusEnum {
 		
-		[JsonProperty("terminated")]
+		[EnumMember(Value="terminated")]
 		Terminated,
 		
-		[JsonProperty("used")]
+		[EnumMember(Value="used")]
 		Used,
 		
-		[JsonProperty("waitingToCheck")]
+		[EnumMember(Value="waitingToCheck")]
 		WaitingToCheck,
 	}
 }
@@ -5758,28 +5759,28 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum RtmChartTypeEnum {
 		
-		[JsonProperty("cpu")]
+		[EnumMember(Value="cpu")]
 		Cpu,
 		
-		[JsonProperty("loadavg1")]
+		[EnumMember(Value="loadavg1")]
 		Loadavg1,
 		
-		[JsonProperty("loadavg15")]
+		[EnumMember(Value="loadavg15")]
 		Loadavg15,
 		
-		[JsonProperty("loadavg5")]
+		[EnumMember(Value="loadavg5")]
 		Loadavg5,
 		
-		[JsonProperty("memory")]
+		[EnumMember(Value="memory")]
 		Memory,
 		
-		[JsonProperty("processCount")]
+		[EnumMember(Value="processCount")]
 		ProcessCount,
 		
-		[JsonProperty("processRunning")]
+		[EnumMember(Value="processRunning")]
 		ProcessRunning,
 		
-		[JsonProperty("swap")]
+		[EnumMember(Value="swap")]
 		Swap,
 	}
 }
@@ -5791,19 +5792,19 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum CacheTTLEnum {
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("15")]
+		[EnumMember(Value="15")]
 		_15,
 		
-		[JsonProperty("3")]
+		[EnumMember(Value="3")]
 		_3,
 		
-		[JsonProperty("5")]
+		[EnumMember(Value="5")]
 		_5,
 	}
 }
@@ -6271,94 +6272,94 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum WindowsOsVersionEnum {
 		
-		[JsonProperty("WINDOWS_SERVER_2003_ENTERPRISE_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_ENTERPRISE_EDITION")]
 		WINDOWS_SERVER_2003_ENTERPRISE_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU")]
 		WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_STANDARD_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_STANDARD_EDITION")]
 		WINDOWS_SERVER_2003_STANDARD_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_WEB_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_WEB_EDITION")]
 		WINDOWS_SERVER_2003_WEB_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_WEB_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_WEB_EDITION_2_CPU")]
 		WINDOWS_SERVER_2003_WEB_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION")]
 		WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_WEB_STANDARD_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_WEB_STANDARD_EDITION")]
 		WINDOWS_SERVER_2003_WEB_STANDARD_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU")]
 		WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_DATACENTER_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_DATACENTER_EDITION")]
 		WINDOWS_SERVER_2008_DATACENTER_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU")]
 		WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU")]
 		WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_ENTERPRISE_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_ENTERPRISE_EDITION")]
 		WINDOWS_SERVER_2008_ENTERPRISE_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU")]
 		WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU")]
 		WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_STANDARD_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_STANDARD_EDITION")]
 		WINDOWS_SERVER_2008_STANDARD_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU")]
 		WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU")]
 		WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_WEB_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_WEB_EDITION")]
 		WINDOWS_SERVER_2008_WEB_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_WEB_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_WEB_EDITION_2_CPU")]
 		WINDOWS_SERVER_2008_WEB_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_WEB_EDITION_4_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_WEB_EDITION_4_CPU")]
 		WINDOWS_SERVER_2008_WEB_EDITION_4_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2008_WEB_STANDARD_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2008_WEB_STANDARD_EDITION")]
 		WINDOWS_SERVER_2008_WEB_STANDARD_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_DATACENTER_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_DATACENTER_EDITION")]
 		WINDOWS_SERVER_2012_DATACENTER_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU")]
 		WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU")]
 		WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_ENTERPRISE_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_ENTERPRISE_EDITION")]
 		WINDOWS_SERVER_2012_ENTERPRISE_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU")]
 		WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_STANDARD_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_STANDARD_EDITION")]
 		WINDOWS_SERVER_2012_STANDARD_EDITION,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU")]
 		WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU")]
 		WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU,
 		
-		[JsonProperty("WINDOWS_SERVER_2012_WEB_EDITION")]
+		[EnumMember(Value="WINDOWS_SERVER_2012_WEB_EDITION")]
 		WINDOWS_SERVER_2012_WEB_EDITION,
 	}
 }
@@ -6370,13 +6371,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum FirewallModelEnum {
 		
-		[JsonProperty("asa5505")]
+		[EnumMember(Value="asa5505")]
 		Asa5505,
 		
-		[JsonProperty("asa5510")]
+		[EnumMember(Value="asa5510")]
 		Asa5510,
 		
-		[JsonProperty("asa5520")]
+		[EnumMember(Value="asa5520")]
 		Asa5520,
 	}
 }
@@ -6388,76 +6389,76 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum WindowsSqlVersionEnum {
 		
-		[JsonProperty("SQL_SERVER_2008_STANDARD_EDITION")]
+		[EnumMember(Value="SQL_SERVER_2008_STANDARD_EDITION")]
 		SQL_SERVER_2008_STANDARD_EDITION,
 		
-		[JsonProperty("SQL_SERVER_2008_STANDARD_EDITION_2_CPU")]
+		[EnumMember(Value="SQL_SERVER_2008_STANDARD_EDITION_2_CPU")]
 		SQL_SERVER_2008_STANDARD_EDITION_2_CPU,
 		
-		[JsonProperty("SQL_SERVER_2008_WEB_EDITION")]
+		[EnumMember(Value="SQL_SERVER_2008_WEB_EDITION")]
 		SQL_SERVER_2008_WEB_EDITION,
 		
-		[JsonProperty("SQL_SERVER_2008_WEB_EDITION_2_CPU")]
+		[EnumMember(Value="SQL_SERVER_2008_WEB_EDITION_2_CPU")]
 		SQL_SERVER_2008_WEB_EDITION_2_CPU,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION")]
 		SQL_SERVER_2012_STANDARD_EDITION,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_12_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_12_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_12_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_16_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_16_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_16_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_18_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_18_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_18_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_20_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_20_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_20_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_24_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_24_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_24_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_2_CPU")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_2_CPU")]
 		SQL_SERVER_2012_STANDARD_EDITION_2_CPU,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_32_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_32_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_32_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_4_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_4_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_4_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_6_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_6_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_6_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_STANDARD_EDITION_8_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_STANDARD_EDITION_8_CORES")]
 		SQL_SERVER_2012_STANDARD_EDITION_8_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_12_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_12_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_12_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_16_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_16_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_16_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_18_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_18_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_18_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_20_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_20_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_20_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_24_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_24_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_24_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_32_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_32_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_32_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_4_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_4_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_4_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_6_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_6_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_6_CORES,
 		
-		[JsonProperty("SQL_SERVER_2012_WEB_EDITION_8_CORES")]
+		[EnumMember(Value="SQL_SERVER_2012_WEB_EDITION_8_CORES")]
 		SQL_SERVER_2012_WEB_EDITION_8_CORES,
 	}
 }
@@ -6469,22 +6470,22 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum MrtgTypeEnum {
 		
-		[JsonProperty("errors:download")]
+		[EnumMember(Value="errors:download")]
 		Errors_download,
 		
-		[JsonProperty("errors:upload")]
+		[EnumMember(Value="errors:upload")]
 		Errors_upload,
 		
-		[JsonProperty("packets:download")]
+		[EnumMember(Value="packets:download")]
 		Packets_download,
 		
-		[JsonProperty("packets:upload")]
+		[EnumMember(Value="packets:upload")]
 		Packets_upload,
 		
-		[JsonProperty("traffic:download")]
+		[EnumMember(Value="traffic:download")]
 		Traffic_download,
 		
-		[JsonProperty("traffic:upload")]
+		[EnumMember(Value="traffic:upload")]
 		Traffic_upload,
 	}
 }
@@ -6634,13 +6635,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum IpmiTestTypeEnum {
 		
-		[JsonProperty("http")]
+		[EnumMember(Value="http")]
 		Http,
 		
-		[JsonProperty("password")]
+		[EnumMember(Value="password")]
 		Password,
 		
-		[JsonProperty("ping")]
+		[EnumMember(Value="ping")]
 		Ping,
 	}
 }
@@ -6742,13 +6743,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum IpTypeOrderableEnum {
 		
-		[JsonProperty("failover")]
+		[EnumMember(Value="failover")]
 		Failover,
 		
-		[JsonProperty("static")]
+		[EnumMember(Value="static")]
 		Static,
 		
-		[JsonProperty("unshielded")]
+		[EnumMember(Value="unshielded")]
 		Unshielded,
 	}
 }
@@ -6799,10 +6800,10 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum VmacTypeEnum {
 		
-		[JsonProperty("ovh")]
+		[EnumMember(Value="ovh")]
 		Ovh,
 		
-		[JsonProperty("vmware")]
+		[EnumMember(Value="vmware")]
 		Vmware,
 	}
 }
@@ -7012,13 +7013,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BootTypeEnum {
 		
-		[JsonProperty("harddisk")]
+		[EnumMember(Value="harddisk")]
 		Harddisk,
 		
-		[JsonProperty("network")]
+		[EnumMember(Value="network")]
 		Network,
 		
-		[JsonProperty("rescue")]
+		[EnumMember(Value="rescue")]
 		Rescue,
 	}
 }
@@ -7204,13 +7205,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum CpuFamilyEnum {
 		
-		[JsonProperty("x86")]
+		[EnumMember(Value="x86")]
 		X86,
 		
-		[JsonProperty("x86-ht")]
+		[EnumMember(Value="x86-ht")]
 		X86_ht,
 		
-		[JsonProperty("x86_64")]
+		[EnumMember(Value="x86_64")]
 		X86_64,
 	}
 }
@@ -7222,10 +7223,10 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum FirewallModeEnum {
 		
-		[JsonProperty("routed")]
+		[EnumMember(Value="routed")]
 		Routed,
 		
-		[JsonProperty("transparent")]
+		[EnumMember(Value="transparent")]
 		Transparent,
 	}
 }
@@ -7237,43 +7238,43 @@ namespace OvhApi.Models.Zone {
 	/// </summary>
 	public enum NamedResolutionFieldTypeEnum {
 		
-		[JsonProperty("A")]
+		[EnumMember(Value="A")]
 		A,
 		
-		[JsonProperty("AAAA")]
+		[EnumMember(Value="AAAA")]
 		AAAA,
 		
-		[JsonProperty("CNAME")]
+		[EnumMember(Value="CNAME")]
 		CNAME,
 		
-		[JsonProperty("DKIM")]
+		[EnumMember(Value="DKIM")]
 		DKIM,
 		
-		[JsonProperty("LOC")]
+		[EnumMember(Value="LOC")]
 		LOC,
 		
-		[JsonProperty("MX")]
+		[EnumMember(Value="MX")]
 		MX,
 		
-		[JsonProperty("NAPTR")]
+		[EnumMember(Value="NAPTR")]
 		NAPTR,
 		
-		[JsonProperty("NS")]
+		[EnumMember(Value="NS")]
 		NS,
 		
-		[JsonProperty("PTR")]
+		[EnumMember(Value="PTR")]
 		PTR,
 		
-		[JsonProperty("SPF")]
+		[EnumMember(Value="SPF")]
 		SPF,
 		
-		[JsonProperty("SRV")]
+		[EnumMember(Value="SRV")]
 		SRV,
 		
-		[JsonProperty("SSHFP")]
+		[EnumMember(Value="SSHFP")]
 		SSHFP,
 		
-		[JsonProperty("TXT")]
+		[EnumMember(Value="TXT")]
 		TXT,
 	}
 }
@@ -7594,70 +7595,70 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum TaskFunctionEnum {
 		
-		[JsonProperty("addWindowSplaFromExistingSerial")]
+		[EnumMember(Value="addWindowSplaFromExistingSerial")]
 		AddWindowSplaFromExistingSerial,
 		
-		[JsonProperty("applyBackupFtpAcls")]
+		[EnumMember(Value="applyBackupFtpAcls")]
 		ApplyBackupFtpAcls,
 		
-		[JsonProperty("applyBackupFtpQuota")]
+		[EnumMember(Value="applyBackupFtpQuota")]
 		ApplyBackupFtpQuota,
 		
-		[JsonProperty("changePasswordBackupFTP")]
+		[EnumMember(Value="changePasswordBackupFTP")]
 		ChangePasswordBackupFTP,
 		
-		[JsonProperty("createBackupFTP")]
+		[EnumMember(Value="createBackupFTP")]
 		CreateBackupFTP,
 		
-		[JsonProperty("createOrUpdateRipeOrg")]
+		[EnumMember(Value="createOrUpdateRipeOrg")]
 		CreateOrUpdateRipeOrg,
 		
-		[JsonProperty("createPrivateNetwork")]
+		[EnumMember(Value="createPrivateNetwork")]
 		CreatePrivateNetwork,
 		
-		[JsonProperty("disableFirewall")]
+		[EnumMember(Value="disableFirewall")]
 		DisableFirewall,
 		
-		[JsonProperty("enableFirewall")]
+		[EnumMember(Value="enableFirewall")]
 		EnableFirewall,
 		
-		[JsonProperty("hardReboot")]
+		[EnumMember(Value="hardReboot")]
 		HardReboot,
 		
-		[JsonProperty("migrateBackupFTP")]
+		[EnumMember(Value="migrateBackupFTP")]
 		MigrateBackupFTP,
 		
-		[JsonProperty("moveFloatingIp")]
+		[EnumMember(Value="moveFloatingIp")]
 		MoveFloatingIp,
 		
-		[JsonProperty("reinstallServer")]
+		[EnumMember(Value="reinstallServer")]
 		ReinstallServer,
 		
-		[JsonProperty("removeBackupFTP")]
+		[EnumMember(Value="removeBackupFTP")]
 		RemoveBackupFTP,
 		
-		[JsonProperty("requestAccessIPMI")]
+		[EnumMember(Value="requestAccessIPMI")]
 		RequestAccessIPMI,
 		
-		[JsonProperty("resetIPMI")]
+		[EnumMember(Value="resetIPMI")]
 		ResetIPMI,
 		
-		[JsonProperty("resetIPMISession")]
+		[EnumMember(Value="resetIPMISession")]
 		ResetIPMISession,
 		
-		[JsonProperty("testIPMIhttp")]
+		[EnumMember(Value="testIPMIhttp")]
 		TestIPMIhttp,
 		
-		[JsonProperty("testIPMIpassword")]
+		[EnumMember(Value="testIPMIpassword")]
 		TestIPMIpassword,
 		
-		[JsonProperty("testIPMIping")]
+		[EnumMember(Value="testIPMIping")]
 		TestIPMIping,
 		
-		[JsonProperty("virtualMacAdd")]
+		[EnumMember(Value="virtualMacAdd")]
 		VirtualMacAdd,
 		
-		[JsonProperty("virtualMacDelete")]
+		[EnumMember(Value="virtualMacDelete")]
 		VirtualMacDelete,
 	}
 }
@@ -7810,10 +7811,10 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BackupStorageTypeEnum {
 		
-		[JsonProperty("included")]
+		[EnumMember(Value="included")]
 		Included,
 		
-		[JsonProperty("storage")]
+		[EnumMember(Value="storage")]
 		Storage,
 	}
 }
@@ -7864,19 +7865,19 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum MrtgPeriodEnum {
 		
-		[JsonProperty("daily")]
+		[EnumMember(Value="daily")]
 		Daily,
 		
-		[JsonProperty("hourly")]
+		[EnumMember(Value="hourly")]
 		Hourly,
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 		
-		[JsonProperty("weekly")]
+		[EnumMember(Value="weekly")]
 		Weekly,
 		
-		[JsonProperty("yearly")]
+		[EnumMember(Value="yearly")]
 		Yearly,
 	}
 }
@@ -7888,16 +7889,16 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum SupportLevelEnum {
 		
-		[JsonProperty("critical")]
+		[EnumMember(Value="critical")]
 		Critical,
 		
-		[JsonProperty("fastpath")]
+		[EnumMember(Value="fastpath")]
 		Fastpath,
 		
-		[JsonProperty("gs")]
+		[EnumMember(Value="gs")]
 		Gs,
 		
-		[JsonProperty("pro")]
+		[EnumMember(Value="pro")]
 		Pro,
 	}
 }
@@ -8122,49 +8123,49 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum IpCountryEnum {
 		
-		[JsonProperty("be")]
+		[EnumMember(Value="be")]
 		Be,
 		
-		[JsonProperty("ca")]
+		[EnumMember(Value="ca")]
 		Ca,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("ie")]
+		[EnumMember(Value="ie")]
 		Ie,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("uk")]
+		[EnumMember(Value="uk")]
 		Uk,
 		
-		[JsonProperty("us")]
+		[EnumMember(Value="us")]
 		Us,
 	}
 }
@@ -8242,19 +8243,19 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum HypervisorVersionEnum {
 		
-		[JsonProperty("4.1")]
+		[EnumMember(Value="4.1")]
 		_4_1,
 		
-		[JsonProperty("5.0")]
+		[EnumMember(Value="5.0")]
 		_5_0,
 		
-		[JsonProperty("5.1")]
+		[EnumMember(Value="5.1")]
 		_5_1,
 		
-		[JsonProperty("5.5")]
+		[EnumMember(Value="5.5")]
 		_5_5,
 		
-		[JsonProperty("hv3.1")]
+		[EnumMember(Value="hv3.1")]
 		Hv3_1,
 	}
 }
@@ -8400,19 +8401,19 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("adding")]
+			[EnumMember(Value="adding")]
 			Adding,
 			
-			[JsonProperty("delivered")]
+			[EnumMember(Value="delivered")]
 			Delivered,
 			
-			[JsonProperty("error")]
+			[EnumMember(Value="error")]
 			Error,
 			
-			[JsonProperty("removing")]
+			[EnumMember(Value="removing")]
 			Removing,
 			
-			[JsonProperty("unknown")]
+			[EnumMember(Value="unknown")]
 			Unknown,
 		}
 		
@@ -8455,19 +8456,19 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("problem")]
+		[EnumMember(Value="problem")]
 		Problem,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -8479,22 +8480,22 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum BackupStateEnum {
 		
-		[JsonProperty("disabled")]
+		[EnumMember(Value="disabled")]
 		Disabled,
 		
-		[JsonProperty("disabling")]
+		[EnumMember(Value="disabling")]
 		Disabling,
 		
-		[JsonProperty("enabled")]
+		[EnumMember(Value="enabled")]
 		Enabled,
 		
-		[JsonProperty("enabling")]
+		[EnumMember(Value="enabling")]
 		Enabling,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("removing")]
+		[EnumMember(Value="removing")]
 		Removing,
 	}
 }
@@ -8574,16 +8575,16 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("creating")]
+			[EnumMember(Value="creating")]
 			Creating,
 			
-			[JsonProperty("deleting")]
+			[EnumMember(Value="deleting")]
 			Deleting,
 			
-			[JsonProperty("delivered")]
+			[EnumMember(Value="delivered")]
 			Delivered,
 			
-			[JsonProperty("error")]
+			[EnumMember(Value="error")]
 			Error,
 		}
 	}
@@ -8703,13 +8704,13 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum TypeEnum {
 			
-			[JsonProperty("admin")]
+			[EnumMember(Value="admin")]
 			Admin,
 			
-			[JsonProperty("free")]
+			[EnumMember(Value="free")]
 			Free,
 			
-			[JsonProperty("paid")]
+			[EnumMember(Value="paid")]
 			Paid,
 		}
 		
@@ -8718,22 +8719,22 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("available")]
+			[EnumMember(Value="available")]
 			Available,
 			
-			[JsonProperty("delivered")]
+			[EnumMember(Value="delivered")]
 			Delivered,
 			
-			[JsonProperty("disabled")]
+			[EnumMember(Value="disabled")]
 			Disabled,
 			
-			[JsonProperty("error")]
+			[EnumMember(Value="error")]
 			Error,
 			
-			[JsonProperty("removing")]
+			[EnumMember(Value="removing")]
 			Removing,
 			
-			[JsonProperty("reserved")]
+			[EnumMember(Value="reserved")]
 			Reserved,
 		}
 	}
@@ -8746,13 +8747,13 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum AllowedNetworkStateEnum {
 		
-		[JsonProperty("allowed")]
+		[EnumMember(Value="allowed")]
 		Allowed,
 		
-		[JsonProperty("toDelete")]
+		[EnumMember(Value="toDelete")]
 		ToDelete,
 		
-		[JsonProperty("toUpdate")]
+		[EnumMember(Value="toUpdate")]
 		ToUpdate,
 	}
 }
@@ -8818,52 +8819,52 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum IpCountriesEnum {
 		
-		[JsonProperty("be")]
+		[EnumMember(Value="be")]
 		Be,
 		
-		[JsonProperty("ca")]
+		[EnumMember(Value="ca")]
 		Ca,
 		
-		[JsonProperty("ch")]
+		[EnumMember(Value="ch")]
 		Ch,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("gb")]
+		[EnumMember(Value="gb")]
 		Gb,
 		
-		[JsonProperty("ie")]
+		[EnumMember(Value="ie")]
 		Ie,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("us")]
+		[EnumMember(Value="us")]
 		Us,
 	}
 }
@@ -8875,10 +8876,10 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum UserAccessPolicyEnum {
 		
-		[JsonProperty("filtered")]
+		[EnumMember(Value="filtered")]
 		Filtered,
 		
-		[JsonProperty("open")]
+		[EnumMember(Value="open")]
 		Open,
 	}
 }
@@ -8890,10 +8891,10 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum BillingTypeEnum {
 		
-		[JsonProperty("demo")]
+		[EnumMember(Value="demo")]
 		Demo,
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 	}
 }
@@ -8905,16 +8906,16 @@ namespace OvhApi.Models.DedicatedCloud.Ressources {
 	/// </summary>
 	public enum BillingTypeEnum {
 		
-		[JsonProperty("freeSpare")]
+		[EnumMember(Value="freeSpare")]
 		FreeSpare,
 		
-		[JsonProperty("hourly")]
+		[EnumMember(Value="hourly")]
 		Hourly,
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 		
-		[JsonProperty("undefined")]
+		[EnumMember(Value="undefined")]
 		Undefined,
 	}
 }
@@ -8926,16 +8927,16 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum ManagementInterfaceEnum {
 		
-		[JsonProperty("azure")]
+		[EnumMember(Value="azure")]
 		Azure,
 		
-		[JsonProperty("systemcenter")]
+		[EnumMember(Value="systemcenter")]
 		Systemcenter,
 		
-		[JsonProperty("vcloud")]
+		[EnumMember(Value="vcloud")]
 		Vcloud,
 		
-		[JsonProperty("vsphere")]
+		[EnumMember(Value="vsphere")]
 		Vsphere,
 	}
 }
@@ -8947,40 +8948,40 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum StateEnum {
 		
-		[JsonProperty("available")]
+		[EnumMember(Value="available")]
 		Available,
 		
-		[JsonProperty("delivered")]
+		[EnumMember(Value="delivered")]
 		Delivered,
 		
-		[JsonProperty("disabled")]
+		[EnumMember(Value="disabled")]
 		Disabled,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("migrating")]
+		[EnumMember(Value="migrating")]
 		Migrating,
 		
-		[JsonProperty("provisionning")]
+		[EnumMember(Value="provisionning")]
 		Provisionning,
 		
-		[JsonProperty("recycling")]
+		[EnumMember(Value="recycling")]
 		Recycling,
 		
-		[JsonProperty("reserved")]
+		[EnumMember(Value="reserved")]
 		Reserved,
 		
-		[JsonProperty("toProvision")]
+		[EnumMember(Value="toProvision")]
 		ToProvision,
 		
-		[JsonProperty("toRecycle")]
+		[EnumMember(Value="toRecycle")]
 		ToRecycle,
 		
-		[JsonProperty("toUnprovision")]
+		[EnumMember(Value="toUnprovision")]
 		ToUnprovision,
 		
-		[JsonProperty("unprovisionning")]
+		[EnumMember(Value="unprovisionning")]
 		Unprovisionning,
 	}
 }
@@ -9037,10 +9038,10 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum BlockRegisterEnum {
 		
-		[JsonProperty("arin")]
+		[EnumMember(Value="arin")]
 		Arin,
 		
-		[JsonProperty("ripe")]
+		[EnumMember(Value="ripe")]
 		Ripe,
 	}
 }
@@ -9135,13 +9136,13 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum VmNetworkRoleEnum {
 			
-			[JsonProperty("admin")]
+			[EnumMember(Value="admin")]
 			Admin,
 			
-			[JsonProperty("noAccess")]
+			[EnumMember(Value="noAccess")]
 			NoAccess,
 			
-			[JsonProperty("readonly")]
+			[EnumMember(Value="readonly")]
 			Readonly,
 		}
 		
@@ -9150,16 +9151,16 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum NetworkRoleEnum {
 			
-			[JsonProperty("admin")]
+			[EnumMember(Value="admin")]
 			Admin,
 			
-			[JsonProperty("manager")]
+			[EnumMember(Value="manager")]
 			Manager,
 			
-			[JsonProperty("noAccess")]
+			[EnumMember(Value="noAccess")]
 			NoAccess,
 			
-			[JsonProperty("readonly")]
+			[EnumMember(Value="readonly")]
 			Readonly,
 		}
 		
@@ -9168,13 +9169,13 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum RightEnum {
 			
-			[JsonProperty("disabled")]
+			[EnumMember(Value="disabled")]
 			Disabled,
 			
-			[JsonProperty("readonly")]
+			[EnumMember(Value="readonly")]
 			Readonly,
 			
-			[JsonProperty("readwrite")]
+			[EnumMember(Value="readwrite")]
 			Readwrite,
 		}
 	}
@@ -9423,19 +9424,19 @@ namespace OvhApi.Models.DedicatedCloud {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("adding")]
+			[EnumMember(Value="adding")]
 			Adding,
 			
-			[JsonProperty("delivered")]
+			[EnumMember(Value="delivered")]
 			Delivered,
 			
-			[JsonProperty("error")]
+			[EnumMember(Value="error")]
 			Error,
 			
-			[JsonProperty("removing")]
+			[EnumMember(Value="removing")]
 			Removing,
 			
-			[JsonProperty("unknown")]
+			[EnumMember(Value="unknown")]
 			Unknown,
 		}
 		
@@ -9544,10 +9545,10 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum UserLogoutPolicyEnum {
 		
-		[JsonProperty("first")]
+		[EnumMember(Value="first")]
 		First,
 		
-		[JsonProperty("last")]
+		[EnumMember(Value="last")]
 		Last,
 	}
 }
@@ -9625,13 +9626,13 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum BackupLogLevelEnum {
 		
-		[JsonProperty("failed")]
+		[EnumMember(Value="failed")]
 		Failed,
 		
-		[JsonProperty("success")]
+		[EnumMember(Value="success")]
 		Success,
 		
-		[JsonProperty("warning")]
+		[EnumMember(Value="warning")]
 		Warning,
 	}
 }
@@ -9829,13 +9830,13 @@ namespace OvhApi.Models.Domain {
 	/// </summary>
 	public enum WhoisObfuscatorFieldsEnum {
 		
-		[JsonProperty("address")]
+		[EnumMember(Value="address")]
 		Address,
 		
-		[JsonProperty("email")]
+		[EnumMember(Value="email")]
 		Email,
 		
-		[JsonProperty("phone")]
+		[EnumMember(Value="phone")]
 		Phone,
 	}
 }
@@ -9847,10 +9848,10 @@ namespace OvhApi.Models.Domain {
 	/// </summary>
 	public enum DomainNsTypeEnum {
 		
-		[JsonProperty("external")]
+		[EnumMember(Value="external")]
 		External,
 		
-		[JsonProperty("hosted")]
+		[EnumMember(Value="hosted")]
 		Hosted,
 	}
 }
@@ -9862,19 +9863,19 @@ namespace OvhApi.Models.Domain {
 	/// </summary>
 	public enum OperationStatusEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -9886,19 +9887,19 @@ namespace OvhApi.Models.Domain {
 	/// </summary>
 	public enum DomainLockStatusEnum {
 		
-		[JsonProperty("locked")]
+		[EnumMember(Value="locked")]
 		Locked,
 		
-		[JsonProperty("locking")]
+		[EnumMember(Value="locking")]
 		Locking,
 		
-		[JsonProperty("unavailable")]
+		[EnumMember(Value="unavailable")]
 		Unavailable,
 		
-		[JsonProperty("unlocked")]
+		[EnumMember(Value="unlocked")]
 		Unlocked,
 		
-		[JsonProperty("unlocking")]
+		[EnumMember(Value="unlocking")]
 		Unlocking,
 	}
 }
@@ -10345,16 +10346,16 @@ namespace OvhApi.Models.Dnssec {
 	/// </summary>
 	public enum DnssecStatusEnum {
 		
-		[JsonProperty("disableInProgress")]
+		[EnumMember(Value="disableInProgress")]
 		DisableInProgress,
 		
-		[JsonProperty("disabled")]
+		[EnumMember(Value="disabled")]
 		Disabled,
 		
-		[JsonProperty("enableInProgress")]
+		[EnumMember(Value="enableInProgress")]
 		EnableInProgress,
 		
-		[JsonProperty("enabled")]
+		[EnumMember(Value="enabled")]
 		Enabled,
 	}
 }
@@ -10468,22 +10469,22 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum ObjectStateEnum {
 		
-		[JsonProperty("creating")]
+		[EnumMember(Value="creating")]
 		Creating,
 		
-		[JsonProperty("deleting")]
+		[EnumMember(Value="deleting")]
 		Deleting,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("reopening")]
+		[EnumMember(Value="reopening")]
 		Reopening,
 		
-		[JsonProperty("suspended")]
+		[EnumMember(Value="suspended")]
 		Suspended,
 		
-		[JsonProperty("suspending")]
+		[EnumMember(Value="suspending")]
 		Suspending,
 	}
 }
@@ -10840,13 +10841,13 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum OvhLicenceEnum {
 		
-		[JsonProperty("basic")]
+		[EnumMember(Value="basic")]
 		Basic,
 		
-		[JsonProperty("enterprise")]
+		[EnumMember(Value="enterprise")]
 		Enterprise,
 		
-		[JsonProperty("standard")]
+		[EnumMember(Value="standard")]
 		Standard,
 	}
 }
@@ -10903,13 +10904,13 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum ServerStateEnum {
 		
-		[JsonProperty("configurationPending")]
+		[EnumMember(Value="configurationPending")]
 		ConfigurationPending,
 		
-		[JsonProperty("notConfigured")]
+		[EnumMember(Value="notConfigured")]
 		NotConfigured,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 	}
 }
@@ -11239,106 +11240,106 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum LanguageEnum {
 		
-		[JsonProperty("bg")]
+		[EnumMember(Value="bg")]
 		Bg,
 		
-		[JsonProperty("br")]
+		[EnumMember(Value="br")]
 		Br,
 		
-		[JsonProperty("cn")]
+		[EnumMember(Value="cn")]
 		Cn,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("dk")]
+		[EnumMember(Value="dk")]
 		Dk,
 		
-		[JsonProperty("ee")]
+		[EnumMember(Value="ee")]
 		Ee,
 		
-		[JsonProperty("en")]
+		[EnumMember(Value="en")]
 		En,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("gr")]
+		[EnumMember(Value="gr")]
 		Gr,
 		
-		[JsonProperty("hr")]
+		[EnumMember(Value="hr")]
 		Hr,
 		
-		[JsonProperty("hu")]
+		[EnumMember(Value="hu")]
 		Hu,
 		
-		[JsonProperty("in")]
+		[EnumMember(Value="in")]
 		In,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("jp")]
+		[EnumMember(Value="jp")]
 		Jp,
 		
-		[JsonProperty("kr")]
+		[EnumMember(Value="kr")]
 		Kr,
 		
-		[JsonProperty("kz")]
+		[EnumMember(Value="kz")]
 		Kz,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("lv")]
+		[EnumMember(Value="lv")]
 		Lv,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("no")]
+		[EnumMember(Value="no")]
 		No,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("ro")]
+		[EnumMember(Value="ro")]
 		Ro,
 		
-		[JsonProperty("rs")]
+		[EnumMember(Value="rs")]
 		Rs,
 		
-		[JsonProperty("ru")]
+		[EnumMember(Value="ru")]
 		Ru,
 		
-		[JsonProperty("se")]
+		[EnumMember(Value="se")]
 		Se,
 		
-		[JsonProperty("si")]
+		[EnumMember(Value="si")]
 		Si,
 		
-		[JsonProperty("sk")]
+		[EnumMember(Value="sk")]
 		Sk,
 		
-		[JsonProperty("th")]
+		[EnumMember(Value="th")]
 		Th,
 		
-		[JsonProperty("tr")]
+		[EnumMember(Value="tr")]
 		Tr,
 		
-		[JsonProperty("ua")]
+		[EnumMember(Value="ua")]
 		Ua,
 	}
 }
@@ -11395,7 +11396,7 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum MailingFilterEnum {
 		
-		[JsonProperty("vaderetro")]
+		[EnumMember(Value="vaderetro")]
 		Vaderetro,
 	}
 }
@@ -11722,16 +11723,16 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum PublicFolderTypeEnum {
 		
-		[JsonProperty("calendar")]
+		[EnumMember(Value="calendar")]
 		Calendar,
 		
-		[JsonProperty("contacts")]
+		[EnumMember(Value="contacts")]
 		Contacts,
 		
-		[JsonProperty("plain")]
+		[EnumMember(Value="plain")]
 		Plain,
 		
-		[JsonProperty("tasks")]
+		[EnumMember(Value="tasks")]
 		Tasks,
 	}
 }
@@ -11902,19 +11903,19 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum TaskStatusEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -11926,13 +11927,13 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum PublicFolderRightTypeEnum {
 		
-		[JsonProperty("editor")]
+		[EnumMember(Value="editor")]
 		Editor,
 		
-		[JsonProperty("none")]
+		[EnumMember(Value="none")]
 		None,
 		
-		[JsonProperty("reviewer")]
+		[EnumMember(Value="reviewer")]
 		Reviewer,
 	}
 }
@@ -12046,10 +12047,10 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum MailingListDepartRestrictionEnum {
 		
-		[JsonProperty("closed")]
+		[EnumMember(Value="closed")]
 		Closed,
 		
-		[JsonProperty("open")]
+		[EnumMember(Value="open")]
 		Open,
 	}
 }
@@ -12061,79 +12062,79 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum DisclaimerAttributeEnum {
 		
-		[JsonProperty("City")]
+		[EnumMember(Value="City")]
 		City,
 		
-		[JsonProperty("Company")]
+		[EnumMember(Value="Company")]
 		Company,
 		
-		[JsonProperty("Country")]
+		[EnumMember(Value="Country")]
 		Country,
 		
-		[JsonProperty("Department")]
+		[EnumMember(Value="Department")]
 		Department,
 		
-		[JsonProperty("DisplayName")]
+		[EnumMember(Value="DisplayName")]
 		DisplayName,
 		
-		[JsonProperty("Email")]
+		[EnumMember(Value="Email")]
 		Email,
 		
-		[JsonProperty("FaxNumber")]
+		[EnumMember(Value="FaxNumber")]
 		FaxNumber,
 		
-		[JsonProperty("FirstName")]
+		[EnumMember(Value="FirstName")]
 		FirstName,
 		
-		[JsonProperty("HomePhoneNumber")]
+		[EnumMember(Value="HomePhoneNumber")]
 		HomePhoneNumber,
 		
-		[JsonProperty("Initials")]
+		[EnumMember(Value="Initials")]
 		Initials,
 		
-		[JsonProperty("LastName")]
+		[EnumMember(Value="LastName")]
 		LastName,
 		
-		[JsonProperty("Manager")]
+		[EnumMember(Value="Manager")]
 		Manager,
 		
-		[JsonProperty("MobileNumber")]
+		[EnumMember(Value="MobileNumber")]
 		MobileNumber,
 		
-		[JsonProperty("Notes")]
+		[EnumMember(Value="Notes")]
 		Notes,
 		
-		[JsonProperty("Office")]
+		[EnumMember(Value="Office")]
 		Office,
 		
-		[JsonProperty("OtherFaxNumber")]
+		[EnumMember(Value="OtherFaxNumber")]
 		OtherFaxNumber,
 		
-		[JsonProperty("OtherHomePhoneNumber")]
+		[EnumMember(Value="OtherHomePhoneNumber")]
 		OtherHomePhoneNumber,
 		
-		[JsonProperty("OtherPhoneNumber")]
+		[EnumMember(Value="OtherPhoneNumber")]
 		OtherPhoneNumber,
 		
-		[JsonProperty("PagerNumber")]
+		[EnumMember(Value="PagerNumber")]
 		PagerNumber,
 		
-		[JsonProperty("PhoneNumber")]
+		[EnumMember(Value="PhoneNumber")]
 		PhoneNumber,
 		
-		[JsonProperty("State")]
+		[EnumMember(Value="State")]
 		State,
 		
-		[JsonProperty("Street")]
+		[EnumMember(Value="Street")]
 		Street,
 		
-		[JsonProperty("Title")]
+		[EnumMember(Value="Title")]
 		Title,
 		
-		[JsonProperty("UserLogonName")]
+		[EnumMember(Value="UserLogonName")]
 		UserLogonName,
 		
-		[JsonProperty("ZipCode")]
+		[EnumMember(Value="ZipCode")]
 		ZipCode,
 	}
 }
@@ -12289,13 +12290,13 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum ServiceStateEnum {
 		
-		[JsonProperty("inMaintenance")]
+		[EnumMember(Value="inMaintenance")]
 		InMaintenance,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("suspended")]
+		[EnumMember(Value="suspended")]
 		Suspended,
 	}
 }
@@ -12421,10 +12422,10 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum ResourceTypeEnum {
 		
-		[JsonProperty("equipment")]
+		[EnumMember(Value="equipment")]
 		Equipment,
 		
-		[JsonProperty("room")]
+		[EnumMember(Value="room")]
 		Room,
 	}
 }
@@ -12829,19 +12830,19 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum OutlookVersionEnum {
 		
-		[JsonProperty("mac_x86_2011")]
+		[EnumMember(Value="mac_x86_2011")]
 		Mac_x86_2011,
 		
-		[JsonProperty("windows_x64_2010")]
+		[EnumMember(Value="windows_x64_2010")]
 		Windows_x64_2010,
 		
-		[JsonProperty("windows_x64_2013")]
+		[EnumMember(Value="windows_x64_2013")]
 		Windows_x64_2013,
 		
-		[JsonProperty("windows_x86_2010")]
+		[EnumMember(Value="windows_x86_2010")]
 		Windows_x86_2010,
 		
-		[JsonProperty("windows_x86_2013")]
+		[EnumMember(Value="windows_x86_2013")]
 		Windows_x86_2013,
 	}
 }
@@ -12853,232 +12854,232 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum TaskFunctionEnum {
 		
-		[JsonProperty("addAccount")]
+		[EnumMember(Value="addAccount")]
 		AddAccount,
 		
-		[JsonProperty("addAlias")]
+		[EnumMember(Value="addAlias")]
 		AddAlias,
 		
-		[JsonProperty("addDistributionGroup")]
+		[EnumMember(Value="addDistributionGroup")]
 		AddDistributionGroup,
 		
-		[JsonProperty("addDistributionGroupManager")]
+		[EnumMember(Value="addDistributionGroupManager")]
 		AddDistributionGroupManager,
 		
-		[JsonProperty("addDistributionGroupMember")]
+		[EnumMember(Value="addDistributionGroupMember")]
 		AddDistributionGroupMember,
 		
-		[JsonProperty("addDistributionGroupSendAs")]
+		[EnumMember(Value="addDistributionGroupSendAs")]
 		AddDistributionGroupSendAs,
 		
-		[JsonProperty("addDistributionGroupSendOnBehalfTo")]
+		[EnumMember(Value="addDistributionGroupSendOnBehalfTo")]
 		AddDistributionGroupSendOnBehalfTo,
 		
-		[JsonProperty("addDomain")]
+		[EnumMember(Value="addDomain")]
 		AddDomain,
 		
-		[JsonProperty("addDomainDisclaimer")]
+		[EnumMember(Value="addDomainDisclaimer")]
 		AddDomainDisclaimer,
 		
-		[JsonProperty("addExportPstRequest")]
+		[EnumMember(Value="addExportPstRequest")]
 		AddExportPstRequest,
 		
-		[JsonProperty("addExternalContact")]
+		[EnumMember(Value="addExternalContact")]
 		AddExternalContact,
 		
-		[JsonProperty("addFullAccess")]
+		[EnumMember(Value="addFullAccess")]
 		AddFullAccess,
 		
-		[JsonProperty("addOutlookLicense")]
+		[EnumMember(Value="addOutlookLicense")]
 		AddOutlookLicense,
 		
-		[JsonProperty("addPublicFolder")]
+		[EnumMember(Value="addPublicFolder")]
 		AddPublicFolder,
 		
-		[JsonProperty("addPublicFolderPermission")]
+		[EnumMember(Value="addPublicFolderPermission")]
 		AddPublicFolderPermission,
 		
-		[JsonProperty("addResourceAccount")]
+		[EnumMember(Value="addResourceAccount")]
 		AddResourceAccount,
 		
-		[JsonProperty("addResourceDelegate")]
+		[EnumMember(Value="addResourceDelegate")]
 		AddResourceDelegate,
 		
-		[JsonProperty("addSendAs")]
+		[EnumMember(Value="addSendAs")]
 		AddSendAs,
 		
-		[JsonProperty("addSendOnBehalfTo")]
+		[EnumMember(Value="addSendOnBehalfTo")]
 		AddSendOnBehalfTo,
 		
-		[JsonProperty("changeHostname")]
+		[EnumMember(Value="changeHostname")]
 		ChangeHostname,
 		
-		[JsonProperty("changePassword")]
+		[EnumMember(Value="changePassword")]
 		ChangePassword,
 		
-		[JsonProperty("cloneTemplateExchangePrivate")]
+		[EnumMember(Value="cloneTemplateExchangePrivate")]
 		CloneTemplateExchangePrivate,
 		
-		[JsonProperty("configureExchangeCustomer")]
+		[EnumMember(Value="configureExchangeCustomer")]
 		ConfigureExchangeCustomer,
 		
-		[JsonProperty("deleteAccount")]
+		[EnumMember(Value="deleteAccount")]
 		DeleteAccount,
 		
-		[JsonProperty("deleteAlias")]
+		[EnumMember(Value="deleteAlias")]
 		DeleteAlias,
 		
-		[JsonProperty("deleteDistributionGroup")]
+		[EnumMember(Value="deleteDistributionGroup")]
 		DeleteDistributionGroup,
 		
-		[JsonProperty("deleteDistributionGroupManager")]
+		[EnumMember(Value="deleteDistributionGroupManager")]
 		DeleteDistributionGroupManager,
 		
-		[JsonProperty("deleteDistributionGroupMember")]
+		[EnumMember(Value="deleteDistributionGroupMember")]
 		DeleteDistributionGroupMember,
 		
-		[JsonProperty("deleteDistributionGroupSendAs")]
+		[EnumMember(Value="deleteDistributionGroupSendAs")]
 		DeleteDistributionGroupSendAs,
 		
-		[JsonProperty("deleteDistributionGroupSendOnBehalfTo")]
+		[EnumMember(Value="deleteDistributionGroupSendOnBehalfTo")]
 		DeleteDistributionGroupSendOnBehalfTo,
 		
-		[JsonProperty("deleteDomain")]
+		[EnumMember(Value="deleteDomain")]
 		DeleteDomain,
 		
-		[JsonProperty("deleteDomainDisclaimer")]
+		[EnumMember(Value="deleteDomainDisclaimer")]
 		DeleteDomainDisclaimer,
 		
-		[JsonProperty("deleteExportPstRequest")]
+		[EnumMember(Value="deleteExportPstRequest")]
 		DeleteExportPstRequest,
 		
-		[JsonProperty("deleteExternalContact")]
+		[EnumMember(Value="deleteExternalContact")]
 		DeleteExternalContact,
 		
-		[JsonProperty("deleteFullAccess")]
+		[EnumMember(Value="deleteFullAccess")]
 		DeleteFullAccess,
 		
-		[JsonProperty("deleteOutlookLicense")]
+		[EnumMember(Value="deleteOutlookLicense")]
 		DeleteOutlookLicense,
 		
-		[JsonProperty("deletePublicFolder")]
+		[EnumMember(Value="deletePublicFolder")]
 		DeletePublicFolder,
 		
-		[JsonProperty("deletePublicFolderPermission")]
+		[EnumMember(Value="deletePublicFolderPermission")]
 		DeletePublicFolderPermission,
 		
-		[JsonProperty("deleteResourceAccount")]
+		[EnumMember(Value="deleteResourceAccount")]
 		DeleteResourceAccount,
 		
-		[JsonProperty("deleteResourceDelegate")]
+		[EnumMember(Value="deleteResourceDelegate")]
 		DeleteResourceDelegate,
 		
-		[JsonProperty("deleteSendAs")]
+		[EnumMember(Value="deleteSendAs")]
 		DeleteSendAs,
 		
-		[JsonProperty("deleteSendOnBehalfTo")]
+		[EnumMember(Value="deleteSendOnBehalfTo")]
 		DeleteSendOnBehalfTo,
 		
-		[JsonProperty("destroyPrivateVm")]
+		[EnumMember(Value="destroyPrivateVm")]
 		DestroyPrivateVm,
 		
-		[JsonProperty("expandDrive")]
+		[EnumMember(Value="expandDrive")]
 		ExpandDrive,
 		
-		[JsonProperty("generateOutlookUrl")]
+		[EnumMember(Value="generateOutlookUrl")]
 		GenerateOutlookUrl,
 		
-		[JsonProperty("generatePstUrl")]
+		[EnumMember(Value="generatePstUrl")]
 		GeneratePstUrl,
 		
-		[JsonProperty("installExchange")]
+		[EnumMember(Value="installExchange")]
 		InstallExchange,
 		
-		[JsonProperty("installSSL")]
+		[EnumMember(Value="installSSL")]
 		InstallSSL,
 		
-		[JsonProperty("maintenance")]
+		[EnumMember(Value="maintenance")]
 		Maintenance,
 		
-		[JsonProperty("migrationAccount")]
+		[EnumMember(Value="migrationAccount")]
 		MigrationAccount,
 		
-		[JsonProperty("migrationDisclaimer")]
+		[EnumMember(Value="migrationDisclaimer")]
 		MigrationDisclaimer,
 		
-		[JsonProperty("migrationExternalContact")]
+		[EnumMember(Value="migrationExternalContact")]
 		MigrationExternalContact,
 		
-		[JsonProperty("migrationHistory")]
+		[EnumMember(Value="migrationHistory")]
 		MigrationHistory,
 		
-		[JsonProperty("migrationMailingList")]
+		[EnumMember(Value="migrationMailingList")]
 		MigrationMailingList,
 		
-		[JsonProperty("migrationResourceAccount")]
+		[EnumMember(Value="migrationResourceAccount")]
 		MigrationResourceAccount,
 		
-		[JsonProperty("migrationService")]
+		[EnumMember(Value="migrationService")]
 		MigrationService,
 		
-		[JsonProperty("reOpenHostedAccount")]
+		[EnumMember(Value="reOpenHostedAccount")]
 		ReOpenHostedAccount,
 		
-		[JsonProperty("reOpenOutlookLicense")]
+		[EnumMember(Value="reOpenOutlookLicense")]
 		ReOpenOutlookLicense,
 		
-		[JsonProperty("reOpenPrivateAccount")]
+		[EnumMember(Value="reOpenPrivateAccount")]
 		ReOpenPrivateAccount,
 		
-		[JsonProperty("reOpenPrivateVm")]
+		[EnumMember(Value="reOpenPrivateVm")]
 		ReOpenPrivateVm,
 		
-		[JsonProperty("setAccount")]
+		[EnumMember(Value="setAccount")]
 		SetAccount,
 		
-		[JsonProperty("setAlias")]
+		[EnumMember(Value="setAlias")]
 		SetAlias,
 		
-		[JsonProperty("setDistributionGroup")]
+		[EnumMember(Value="setDistributionGroup")]
 		SetDistributionGroup,
 		
-		[JsonProperty("setDns")]
+		[EnumMember(Value="setDns")]
 		SetDns,
 		
-		[JsonProperty("setDomain")]
+		[EnumMember(Value="setDomain")]
 		SetDomain,
 		
-		[JsonProperty("setDomainDisclaimer")]
+		[EnumMember(Value="setDomainDisclaimer")]
 		SetDomainDisclaimer,
 		
-		[JsonProperty("setExternalContact")]
+		[EnumMember(Value="setExternalContact")]
 		SetExternalContact,
 		
-		[JsonProperty("setPublicFolder")]
+		[EnumMember(Value="setPublicFolder")]
 		SetPublicFolder,
 		
-		[JsonProperty("setPublicFolderPermission")]
+		[EnumMember(Value="setPublicFolderPermission")]
 		SetPublicFolderPermission,
 		
-		[JsonProperty("setResourceAccount")]
+		[EnumMember(Value="setResourceAccount")]
 		SetResourceAccount,
 		
-		[JsonProperty("setService")]
+		[EnumMember(Value="setService")]
 		SetService,
 		
-		[JsonProperty("suspendHostedAccount")]
+		[EnumMember(Value="suspendHostedAccount")]
 		SuspendHostedAccount,
 		
-		[JsonProperty("suspendOutlookLicense")]
+		[EnumMember(Value="suspendOutlookLicense")]
 		SuspendOutlookLicense,
 		
-		[JsonProperty("suspendPrivateAccount")]
+		[EnumMember(Value="suspendPrivateAccount")]
 		SuspendPrivateAccount,
 		
-		[JsonProperty("suspendPrivateVm")]
+		[EnumMember(Value="suspendPrivateVm")]
 		SuspendPrivateVm,
 		
-		[JsonProperty("unsuspendHostedAccount")]
+		[EnumMember(Value="unsuspendHostedAccount")]
 		UnsuspendHostedAccount,
 	}
 }
@@ -13090,13 +13091,13 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum ServiceOfferEnum {
 		
-		[JsonProperty("dedicated")]
+		[EnumMember(Value="dedicated")]
 		Dedicated,
 		
-		[JsonProperty("hosted")]
+		[EnumMember(Value="hosted")]
 		Hosted,
 		
-		[JsonProperty("provider")]
+		[EnumMember(Value="provider")]
 		Provider,
 	}
 }
@@ -13348,10 +13349,10 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum RenewPeriodEnum {
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 		
-		[JsonProperty("yearly")]
+		[EnumMember(Value="yearly")]
 		Yearly,
 	}
 }
@@ -13441,13 +13442,13 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum MailingListJoinRestrictionEnum {
 		
-		[JsonProperty("approvalRequired")]
+		[EnumMember(Value="approvalRequired")]
 		ApprovalRequired,
 		
-		[JsonProperty("closed")]
+		[EnumMember(Value="closed")]
 		Closed,
 		
-		[JsonProperty("open")]
+		[EnumMember(Value="open")]
 		Open,
 	}
 }
@@ -13459,10 +13460,10 @@ namespace OvhApi.Models.Email.Exchange {
 	/// </summary>
 	public enum DomainTypeEnum {
 		
-		[JsonProperty("authoritative")]
+		[EnumMember(Value="authoritative")]
 		Authoritative,
 		
-		[JsonProperty("nonAuthoritative")]
+		[EnumMember(Value="nonAuthoritative")]
 		NonAuthoritative,
 	}
 }
@@ -13520,160 +13521,160 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum OfferCapabilitiesEnum {
 		
-		[JsonProperty("1000gp")]
+		[EnumMember(Value="1000gp")]
 		_1000gp,
 		
-		[JsonProperty("20gp")]
+		[EnumMember(Value="20gp")]
 		_20gp,
 		
-		[JsonProperty("240gp")]
+		[EnumMember(Value="240gp")]
 		_240gp,
 		
-		[JsonProperty("240pack")]
+		[EnumMember(Value="240pack")]
 		_240pack,
 		
-		[JsonProperty("240plan")]
+		[EnumMember(Value="240plan")]
 		_240plan,
 		
-		[JsonProperty("300gp")]
+		[EnumMember(Value="300gp")]
 		_300gp,
 		
-		[JsonProperty("60free")]
+		[EnumMember(Value="60free")]
 		_60free,
 		
-		[JsonProperty("60gp")]
+		[EnumMember(Value="60gp")]
 		_60gp,
 		
-		[JsonProperty("720pack")]
+		[EnumMember(Value="720pack")]
 		_720pack,
 		
-		[JsonProperty("720plan")]
+		[EnumMember(Value="720plan")]
 		_720plan,
 		
-		[JsonProperty("90pack")]
+		[EnumMember(Value="90pack")]
 		_90pack,
 		
-		[JsonProperty("90plan")]
+		[EnumMember(Value="90plan")]
 		_90plan,
 		
-		[JsonProperty("aspfree")]
+		[EnumMember(Value="aspfree")]
 		Aspfree,
 		
-		[JsonProperty("business")]
+		[EnumMember(Value="business")]
 		Business,
 		
-		[JsonProperty("demo1g")]
+		[EnumMember(Value="demo1g")]
 		Demo1g,
 		
-		[JsonProperty("depro2012")]
+		[EnumMember(Value="depro2012")]
 		Depro2012,
 		
-		[JsonProperty("deprol2012")]
+		[EnumMember(Value="deprol2012")]
 		Deprol2012,
 		
-		[JsonProperty("deproxl2012")]
+		[EnumMember(Value="deproxl2012")]
 		Deproxl2012,
 		
-		[JsonProperty("deproxxl2012")]
+		[EnumMember(Value="deproxxl2012")]
 		Deproxxl2012,
 		
-		[JsonProperty("destart2012")]
+		[EnumMember(Value="destart2012")]
 		Destart2012,
 		
-		[JsonProperty("destartl2012")]
+		[EnumMember(Value="destartl2012")]
 		Destartl2012,
 		
-		[JsonProperty("destartxl2012")]
+		[EnumMember(Value="destartxl2012")]
 		Destartxl2012,
 		
-		[JsonProperty("domainpack")]
+		[EnumMember(Value="domainpack")]
 		Domainpack,
 		
-		[JsonProperty("itbusiness2012")]
+		[EnumMember(Value="itbusiness2012")]
 		Itbusiness2012,
 		
-		[JsonProperty("itperso2012")]
+		[EnumMember(Value="itperso2012")]
 		Itperso2012,
 		
-		[JsonProperty("itpremium2012")]
+		[EnumMember(Value="itpremium2012")]
 		Itpremium2012,
 		
-		[JsonProperty("mailpack")]
+		[EnumMember(Value="mailpack")]
 		Mailpack,
 		
-		[JsonProperty("mailplan")]
+		[EnumMember(Value="mailplan")]
 		Mailplan,
 		
-		[JsonProperty("mediapack")]
+		[EnumMember(Value="mediapack")]
 		Mediapack,
 		
-		[JsonProperty("mediaplan")]
+		[EnumMember(Value="mediaplan")]
 		Mediaplan,
 		
-		[JsonProperty("ovhpro1To")]
+		[EnumMember(Value="ovhpro1To")]
 		Ovhpro1To,
 		
-		[JsonProperty("ovhpro2To")]
+		[EnumMember(Value="ovhpro2To")]
 		Ovhpro2To,
 		
-		[JsonProperty("ovhpro5To")]
+		[EnumMember(Value="ovhpro5To")]
 		Ovhpro5To,
 		
-		[JsonProperty("paas2014beta")]
+		[EnumMember(Value="paas2014beta")]
 		Paas2014beta,
 		
-		[JsonProperty("perf2014x1")]
+		[EnumMember(Value="perf2014x1")]
 		Perf2014x1,
 		
-		[JsonProperty("perf2014x2")]
+		[EnumMember(Value="perf2014x2")]
 		Perf2014x2,
 		
-		[JsonProperty("perf2014x3")]
+		[EnumMember(Value="perf2014x3")]
 		Perf2014x3,
 		
-		[JsonProperty("perf2014x4")]
+		[EnumMember(Value="perf2014x4")]
 		Perf2014x4,
 		
-		[JsonProperty("perso")]
+		[EnumMember(Value="perso")]
 		Perso,
 		
-		[JsonProperty("perso2014")]
+		[EnumMember(Value="perso2014")]
 		Perso2014,
 		
-		[JsonProperty("premium")]
+		[EnumMember(Value="premium")]
 		Premium,
 		
-		[JsonProperty("pro")]
+		[EnumMember(Value="pro")]
 		Pro,
 		
-		[JsonProperty("pro2014")]
+		[EnumMember(Value="pro2014")]
 		Pro2014,
 		
-		[JsonProperty("start10g")]
+		[EnumMember(Value="start10g")]
 		Start10g,
 		
-		[JsonProperty("start10m")]
+		[EnumMember(Value="start10m")]
 		Start10m,
 		
-		[JsonProperty("start1g")]
+		[EnumMember(Value="start1g")]
 		Start1g,
 		
-		[JsonProperty("start1ges")]
+		[EnumMember(Value="start1ges")]
 		Start1ges,
 		
-		[JsonProperty("start1m")]
+		[EnumMember(Value="start1m")]
 		Start1m,
 		
-		[JsonProperty("start5g")]
+		[EnumMember(Value="start5g")]
 		Start5g,
 		
-		[JsonProperty("starter")]
+		[EnumMember(Value="starter")]
 		Starter,
 		
-		[JsonProperty("xxlpack")]
+		[EnumMember(Value="xxlpack")]
 		Xxlpack,
 		
-		[JsonProperty("xxlplan")]
+		[EnumMember(Value="xxlplan")]
 		Xxlplan,
 	}
 }
@@ -13805,13 +13806,13 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum StatisticsTypeEnum {
 		
-		[JsonProperty("in.httpHits")]
+		[EnumMember(Value="in.httpHits")]
 		In_HttpHits,
 		
-		[JsonProperty("in.httpMeanResponseTime")]
+		[EnumMember(Value="in.httpMeanResponseTime")]
 		In_HttpMeanResponseTime,
 		
-		[JsonProperty("out.tcpConn")]
+		[EnumMember(Value="out.tcpConn")]
 		Out_TcpConn,
 	}
 }
@@ -13823,10 +13824,10 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum OperatingSystemEnum {
 		
-		[JsonProperty("linux")]
+		[EnumMember(Value="linux")]
 		Linux,
 		
-		[JsonProperty("windows")]
+		[EnumMember(Value="windows")]
 		Windows,
 	}
 }
@@ -13927,22 +13928,22 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum StatusEnum {
 			
-			[JsonProperty("cancelled")]
+			[EnumMember(Value="cancelled")]
 			Cancelled,
 			
-			[JsonProperty("doing")]
+			[EnumMember(Value="doing")]
 			Doing,
 			
-			[JsonProperty("done")]
+			[EnumMember(Value="done")]
 			Done,
 			
-			[JsonProperty("error")]
+			[EnumMember(Value="error")]
 			Error,
 			
-			[JsonProperty("init")]
+			[EnumMember(Value="init")]
 			Init,
 			
-			[JsonProperty("todo")]
+			[EnumMember(Value="todo")]
 			Todo,
 		}
 	}
@@ -14044,13 +14045,13 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum IisRightsEnum {
 			
-			[JsonProperty("off")]
+			[EnumMember(Value="off")]
 			Off,
 			
-			[JsonProperty("read")]
+			[EnumMember(Value="read")]
 			Read,
 			
-			[JsonProperty("rw")]
+			[EnumMember(Value="rw")]
 			Rw,
 		}
 		
@@ -14059,10 +14060,10 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("off")]
+			[EnumMember(Value="off")]
 			Off,
 			
-			[JsonProperty("rw")]
+			[EnumMember(Value="rw")]
 			Rw,
 		}
 		
@@ -14071,13 +14072,13 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum WebDavRightsEnum {
 			
-			[JsonProperty("off")]
+			[EnumMember(Value="off")]
 			Off,
 			
-			[JsonProperty("read")]
+			[EnumMember(Value="read")]
 			Read,
 			
-			[JsonProperty("rw")]
+			[EnumMember(Value="rw")]
 			Rw,
 		}
 	}
@@ -14207,13 +14208,13 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum StateEnum {
 		
-		[JsonProperty("active")]
+		[EnumMember(Value="active")]
 		Active,
 		
-		[JsonProperty("bloqued")]
+		[EnumMember(Value="bloqued")]
 		Bloqued,
 		
-		[JsonProperty("maintenance")]
+		[EnumMember(Value="maintenance")]
 		Maintenance,
 	}
 }
@@ -14539,37 +14540,37 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum LanguageEnum {
 			
-			[JsonProperty("cz")]
+			[EnumMember(Value="cz")]
 			Cz,
 			
-			[JsonProperty("de")]
+			[EnumMember(Value="de")]
 			De,
 			
-			[JsonProperty("en")]
+			[EnumMember(Value="en")]
 			En,
 			
-			[JsonProperty("es")]
+			[EnumMember(Value="es")]
 			Es,
 			
-			[JsonProperty("fi")]
+			[EnumMember(Value="fi")]
 			Fi,
 			
-			[JsonProperty("fr")]
+			[EnumMember(Value="fr")]
 			Fr,
 			
-			[JsonProperty("it")]
+			[EnumMember(Value="it")]
 			It,
 			
-			[JsonProperty("lt")]
+			[EnumMember(Value="lt")]
 			Lt,
 			
-			[JsonProperty("nl")]
+			[EnumMember(Value="nl")]
 			Nl,
 			
-			[JsonProperty("pl")]
+			[EnumMember(Value="pl")]
 			Pl,
 			
-			[JsonProperty("pt")]
+			[EnumMember(Value="pt")]
 			Pt,
 		}
 		
@@ -14704,7 +14705,7 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum DependencyActionEnum {
 			
-			[JsonProperty("use")]
+			[EnumMember(Value="use")]
 			Use,
 		}
 		
@@ -14713,7 +14714,7 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum DependencyTypeEnum {
 			
-			[JsonProperty("mysql")]
+			[EnumMember(Value="mysql")]
 			Mysql,
 		}
 	}
@@ -14726,13 +14727,13 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum ResourceEnum {
 		
-		[JsonProperty("bestEffort")]
+		[EnumMember(Value="bestEffort")]
 		BestEffort,
 		
-		[JsonProperty("dedicated")]
+		[EnumMember(Value="dedicated")]
 		Dedicated,
 		
-		[JsonProperty("shared")]
+		[EnumMember(Value="shared")]
 		Shared,
 	}
 }
@@ -14744,16 +14745,16 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum StatisticsPeriodEnum {
 		
-		[JsonProperty("daily")]
+		[EnumMember(Value="daily")]
 		Daily,
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 		
-		[JsonProperty("weekly")]
+		[EnumMember(Value="weekly")]
 		Weekly,
 		
-		[JsonProperty("yearly")]
+		[EnumMember(Value="yearly")]
 		Yearly,
 	}
 }
@@ -14866,10 +14867,10 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum StatisticsTypeEnum {
 			
-			[JsonProperty("cpu")]
+			[EnumMember(Value="cpu")]
 			Cpu,
 			
-			[JsonProperty("request")]
+			[EnumMember(Value="request")]
 			Request,
 		}
 		
@@ -14878,10 +14879,10 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum DatabaseTypeEnum {
 			
-			[JsonProperty("mysql")]
+			[EnumMember(Value="mysql")]
 			Mysql,
 			
-			[JsonProperty("postgresql")]
+			[EnumMember(Value="postgresql")]
 			Postgresql,
 		}
 		
@@ -14890,16 +14891,16 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum DatabaseCapabilitiesTypeEnum {
 			
-			[JsonProperty("extraSqlPerso")]
+			[EnumMember(Value="extraSqlPerso")]
 			ExtraSqlPerso,
 			
-			[JsonProperty("privateSql")]
+			[EnumMember(Value="privateSql")]
 			PrivateSql,
 			
-			[JsonProperty("sqlPerso")]
+			[EnumMember(Value="sqlPerso")]
 			SqlPerso,
 			
-			[JsonProperty("sqlPro")]
+			[EnumMember(Value="sqlPro")]
 			SqlPro,
 		}
 		
@@ -14908,10 +14909,10 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum ModeEnum {
 			
-			[JsonProperty("besteffort")]
+			[EnumMember(Value="besteffort")]
 			Besteffort,
 			
-			[JsonProperty("classic")]
+			[EnumMember(Value="classic")]
 			Classic,
 		}
 		
@@ -14920,13 +14921,13 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum DumpDateEnum {
 			
-			[JsonProperty("daily.1")]
+			[EnumMember(Value="daily.1")]
 			Daily_1,
 			
-			[JsonProperty("now")]
+			[EnumMember(Value="now")]
 			Now,
 			
-			[JsonProperty("weekly.1")]
+			[EnumMember(Value="weekly.1")]
 			Weekly_1,
 		}
 		
@@ -14980,16 +14981,16 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum ExtraSqlQuotaEnum {
 			
-			[JsonProperty("100")]
+			[EnumMember(Value="100")]
 			_100,
 			
-			[JsonProperty("200")]
+			[EnumMember(Value="200")]
 			_200,
 			
-			[JsonProperty("400")]
+			[EnumMember(Value="400")]
 			_400,
 			
-			[JsonProperty("800")]
+			[EnumMember(Value="800")]
 			_800,
 		}
 		
@@ -14998,13 +14999,13 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("close")]
+			[EnumMember(Value="close")]
 			Close,
 			
-			[JsonProperty("ok")]
+			[EnumMember(Value="ok")]
 			Ok,
 			
-			[JsonProperty("readonly")]
+			[EnumMember(Value="readonly")]
 			Readonly,
 		}
 		
@@ -15013,40 +15014,40 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum SqlPersoOfferEnum {
 			
-			[JsonProperty("SQLPERSO_1_BASES_400_MB")]
+			[EnumMember(Value="SQLPERSO_1_BASES_400_MB")]
 			SQLPERSO_1_BASES_400_MB,
 			
-			[JsonProperty("SQLPERSO_1_BASES_800_MB")]
+			[EnumMember(Value="SQLPERSO_1_BASES_800_MB")]
 			SQLPERSO_1_BASES_800_MB,
 			
-			[JsonProperty("SQLPERSO_20_BASES_100_MB")]
+			[EnumMember(Value="SQLPERSO_20_BASES_100_MB")]
 			SQLPERSO_20_BASES_100_MB,
 			
-			[JsonProperty("SQLPERSO_20_BASES_200_MB")]
+			[EnumMember(Value="SQLPERSO_20_BASES_200_MB")]
 			SQLPERSO_20_BASES_200_MB,
 			
-			[JsonProperty("SQLPERSO_2_BASES_400_MB")]
+			[EnumMember(Value="SQLPERSO_2_BASES_400_MB")]
 			SQLPERSO_2_BASES_400_MB,
 			
-			[JsonProperty("SQLPERSO_2_BASES_800_MB")]
+			[EnumMember(Value="SQLPERSO_2_BASES_800_MB")]
 			SQLPERSO_2_BASES_800_MB,
 			
-			[JsonProperty("SQLPERSO_50_BASES_100_MB")]
+			[EnumMember(Value="SQLPERSO_50_BASES_100_MB")]
 			SQLPERSO_50_BASES_100_MB,
 			
-			[JsonProperty("SQLPERSO_50_BASES_200_MB")]
+			[EnumMember(Value="SQLPERSO_50_BASES_200_MB")]
 			SQLPERSO_50_BASES_200_MB,
 			
-			[JsonProperty("SQLPERSO_5_BASES_100_MB")]
+			[EnumMember(Value="SQLPERSO_5_BASES_100_MB")]
 			SQLPERSO_5_BASES_100_MB,
 			
-			[JsonProperty("SQLPERSO_5_BASES_200_MB")]
+			[EnumMember(Value="SQLPERSO_5_BASES_200_MB")]
 			SQLPERSO_5_BASES_200_MB,
 			
-			[JsonProperty("SQLPERSO_5_BASES_400_MB")]
+			[EnumMember(Value="SQLPERSO_5_BASES_400_MB")]
 			SQLPERSO_5_BASES_400_MB,
 			
-			[JsonProperty("SQLPERSO_5_BASES_800_MB")]
+			[EnumMember(Value="SQLPERSO_5_BASES_800_MB")]
 			SQLPERSO_5_BASES_800_MB,
 		}
 	}
@@ -15151,19 +15152,19 @@ namespace OvhApi.Models.Hosting.Web {
 		/// </summary>
 		public enum LanguageEnum {
 			
-			[JsonProperty("other")]
+			[EnumMember(Value="other")]
 			Other,
 			
-			[JsonProperty("php4")]
+			[EnumMember(Value="php4")]
 			Php4,
 			
-			[JsonProperty("php5.2")]
+			[EnumMember(Value="php5.2")]
 			Php5_2,
 			
-			[JsonProperty("php5.3")]
+			[EnumMember(Value="php5.3")]
 			Php5_3,
 			
-			[JsonProperty("php5.4")]
+			[EnumMember(Value="php5.4")]
 			Php5_4,
 		}
 	}
@@ -15176,13 +15177,13 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum MitigationStatsScaleEnum {
 		
-		[JsonProperty("10s")]
+		[EnumMember(Value="10s")]
 		_10s,
 		
-		[JsonProperty("1m")]
+		[EnumMember(Value="1m")]
 		_1m,
 		
-		[JsonProperty("5m")]
+		[EnumMember(Value="5m")]
 		_5m,
 	}
 }
@@ -15194,16 +15195,16 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum LoadBalancingZoneEnum {
 		
-		[JsonProperty("bhs")]
+		[EnumMember(Value="bhs")]
 		Bhs,
 		
-		[JsonProperty("gra")]
+		[EnumMember(Value="gra")]
 		Gra,
 		
-		[JsonProperty("rbx")]
+		[EnumMember(Value="rbx")]
 		Rbx,
 		
-		[JsonProperty("sbg")]
+		[EnumMember(Value="sbg")]
 		Sbg,
 	}
 }
@@ -15711,22 +15712,22 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum LoadBalancingStateEnum {
 		
-		[JsonProperty("blacklisted")]
+		[EnumMember(Value="blacklisted")]
 		Blacklisted,
 		
-		[JsonProperty("deleted")]
+		[EnumMember(Value="deleted")]
 		Deleted,
 		
-		[JsonProperty("free")]
+		[EnumMember(Value="free")]
 		Free,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("quarantined")]
+		[EnumMember(Value="quarantined")]
 		Quarantined,
 		
-		[JsonProperty("suspended")]
+		[EnumMember(Value="suspended")]
 		Suspended,
 	}
 }
@@ -15738,13 +15739,13 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum FirewallRuleStateEnum {
 		
-		[JsonProperty("creationPending")]
+		[EnumMember(Value="creationPending")]
 		CreationPending,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("removalPending")]
+		[EnumMember(Value="removalPending")]
 		RemovalPending,
 	}
 }
@@ -15837,10 +15838,10 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum ArpStateEnum {
 		
-		[JsonProperty("blocked")]
+		[EnumMember(Value="blocked")]
 		Blocked,
 		
-		[JsonProperty("unblocking")]
+		[EnumMember(Value="unblocking")]
 		Unblocking,
 	}
 }
@@ -15981,19 +15982,19 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum MitigationProfileAutoMitigationTimeOutEnum {
 		
-		[JsonProperty("0")]
+		[EnumMember(Value="0")]
 		_0,
 		
-		[JsonProperty("15")]
+		[EnumMember(Value="15")]
 		_15,
 		
-		[JsonProperty("1560")]
+		[EnumMember(Value="1560")]
 		_1560,
 		
-		[JsonProperty("360")]
+		[EnumMember(Value="360")]
 		_360,
 		
-		[JsonProperty("60")]
+		[EnumMember(Value="60")]
 		_60,
 	}
 }
@@ -16005,46 +16006,46 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum IpTypeEnum {
 		
-		[JsonProperty("cdn")]
+		[EnumMember(Value="cdn")]
 		Cdn,
 		
-		[JsonProperty("dedicated")]
+		[EnumMember(Value="dedicated")]
 		Dedicated,
 		
-		[JsonProperty("failover")]
+		[EnumMember(Value="failover")]
 		Failover,
 		
-		[JsonProperty("hosted_ssl")]
+		[EnumMember(Value="hosted_ssl")]
 		Hosted_ssl,
 		
-		[JsonProperty("housing")]
+		[EnumMember(Value="housing")]
 		Housing,
 		
-		[JsonProperty("loadBalancing")]
+		[EnumMember(Value="loadBalancing")]
 		LoadBalancing,
 		
-		[JsonProperty("mail")]
+		[EnumMember(Value="mail")]
 		Mail,
 		
-		[JsonProperty("pcc")]
+		[EnumMember(Value="pcc")]
 		Pcc,
 		
-		[JsonProperty("pci")]
+		[EnumMember(Value="pci")]
 		Pci,
 		
-		[JsonProperty("private")]
+		[EnumMember(Value="private")]
 		Private,
 		
-		[JsonProperty("vpn")]
+		[EnumMember(Value="vpn")]
 		Vpn,
 		
-		[JsonProperty("vps")]
+		[EnumMember(Value="vps")]
 		Vps,
 		
-		[JsonProperty("vrack")]
+		[EnumMember(Value="vrack")]
 		Vrack,
 		
-		[JsonProperty("xdsl")]
+		[EnumMember(Value="xdsl")]
 		Xdsl,
 	}
 }
@@ -16056,10 +16057,10 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum FirewallActionEnum {
 		
-		[JsonProperty("deny")]
+		[EnumMember(Value="deny")]
 		Deny,
 		
-		[JsonProperty("permit")]
+		[EnumMember(Value="permit")]
 		Permit,
 	}
 }
@@ -16071,40 +16072,40 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum LoadBalancingTaskActionEnum {
 		
-		[JsonProperty("activateSsl")]
+		[EnumMember(Value="activateSsl")]
 		ActivateSsl,
 		
-		[JsonProperty("addBackend")]
+		[EnumMember(Value="addBackend")]
 		AddBackend,
 		
-		[JsonProperty("addIpToBackend")]
+		[EnumMember(Value="addIpToBackend")]
 		AddIpToBackend,
 		
-		[JsonProperty("announceIpLoadBalancing")]
+		[EnumMember(Value="announceIpLoadBalancing")]
 		AnnounceIpLoadBalancing,
 		
-		[JsonProperty("backupStateSet")]
+		[EnumMember(Value="backupStateSet")]
 		BackupStateSet,
 		
-		[JsonProperty("backupStateUnset")]
+		[EnumMember(Value="backupStateUnset")]
 		BackupStateUnset,
 		
-		[JsonProperty("changeProbe")]
+		[EnumMember(Value="changeProbe")]
 		ChangeProbe,
 		
-		[JsonProperty("delBackend")]
+		[EnumMember(Value="delBackend")]
 		DelBackend,
 		
-		[JsonProperty("desactivateSsl")]
+		[EnumMember(Value="desactivateSsl")]
 		DesactivateSsl,
 		
-		[JsonProperty("removeIpFromBackend")]
+		[EnumMember(Value="removeIpFromBackend")]
 		RemoveIpFromBackend,
 		
-		[JsonProperty("setWeight")]
+		[EnumMember(Value="setWeight")]
 		SetWeight,
 		
-		[JsonProperty("unannounceIpLoadBalancing")]
+		[EnumMember(Value="unannounceIpLoadBalancing")]
 		UnannounceIpLoadBalancing,
 	}
 }
@@ -16116,25 +16117,25 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum TaskStatusEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("customerError")]
+		[EnumMember(Value="customerError")]
 		CustomerError,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("init")]
+		[EnumMember(Value="init")]
 		Init,
 		
-		[JsonProperty("ovhError")]
+		[EnumMember(Value="ovhError")]
 		OvhError,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -16401,64 +16402,64 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum FirewallSequenceRangeEnum {
 		
-		[JsonProperty("0")]
+		[EnumMember(Value="0")]
 		_0,
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("11")]
+		[EnumMember(Value="11")]
 		_11,
 		
-		[JsonProperty("12")]
+		[EnumMember(Value="12")]
 		_12,
 		
-		[JsonProperty("13")]
+		[EnumMember(Value="13")]
 		_13,
 		
-		[JsonProperty("14")]
+		[EnumMember(Value="14")]
 		_14,
 		
-		[JsonProperty("15")]
+		[EnumMember(Value="15")]
 		_15,
 		
-		[JsonProperty("16")]
+		[EnumMember(Value="16")]
 		_16,
 		
-		[JsonProperty("17")]
+		[EnumMember(Value="17")]
 		_17,
 		
-		[JsonProperty("18")]
+		[EnumMember(Value="18")]
 		_18,
 		
-		[JsonProperty("19")]
+		[EnumMember(Value="19")]
 		_19,
 		
-		[JsonProperty("2")]
+		[EnumMember(Value="2")]
 		_2,
 		
-		[JsonProperty("3")]
+		[EnumMember(Value="3")]
 		_3,
 		
-		[JsonProperty("4")]
+		[EnumMember(Value="4")]
 		_4,
 		
-		[JsonProperty("5")]
+		[EnumMember(Value="5")]
 		_5,
 		
-		[JsonProperty("6")]
+		[EnumMember(Value="6")]
 		_6,
 		
-		[JsonProperty("7")]
+		[EnumMember(Value="7")]
 		_7,
 		
-		[JsonProperty("8")]
+		[EnumMember(Value="8")]
 		_8,
 		
-		[JsonProperty("9")]
+		[EnumMember(Value="9")]
 		_9,
 	}
 }
@@ -16470,13 +16471,13 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum MitigationStateEnum {
 		
-		[JsonProperty("creationPending")]
+		[EnumMember(Value="creationPending")]
 		CreationPending,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("removalPending")]
+		[EnumMember(Value="removalPending")]
 		RemovalPending,
 	}
 }
@@ -16488,16 +16489,16 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum LoadBalancingBackendProbeEnum {
 		
-		[JsonProperty("http")]
+		[EnumMember(Value="http")]
 		Http,
 		
-		[JsonProperty("icmp")]
+		[EnumMember(Value="icmp")]
 		Icmp,
 		
-		[JsonProperty("none")]
+		[EnumMember(Value="none")]
 		None,
 		
-		[JsonProperty("oco")]
+		[EnumMember(Value="oco")]
 		Oco,
 	}
 }
@@ -16737,13 +16738,13 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum FirewallStateEnum {
 		
-		[JsonProperty("disableFirewallPending")]
+		[EnumMember(Value="disableFirewallPending")]
 		DisableFirewallPending,
 		
-		[JsonProperty("enableFirewallPending")]
+		[EnumMember(Value="enableFirewallPending")]
 		EnableFirewallPending,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 	}
 }
@@ -16755,10 +16756,10 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum FirewallTCPOptionEnum {
 		
-		[JsonProperty("established")]
+		[EnumMember(Value="established")]
 		Established,
 		
-		[JsonProperty("syn")]
+		[EnumMember(Value="syn")]
 		Syn,
 	}
 }
@@ -16770,25 +16771,25 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum FirewallProtocolEnum {
 		
-		[JsonProperty("ah")]
+		[EnumMember(Value="ah")]
 		Ah,
 		
-		[JsonProperty("esp")]
+		[EnumMember(Value="esp")]
 		Esp,
 		
-		[JsonProperty("gre")]
+		[EnumMember(Value="gre")]
 		Gre,
 		
-		[JsonProperty("icmp")]
+		[EnumMember(Value="icmp")]
 		Icmp,
 		
-		[JsonProperty("ipv4")]
+		[EnumMember(Value="ipv4")]
 		Ipv4,
 		
-		[JsonProperty("tcp")]
+		[EnumMember(Value="tcp")]
 		Tcp,
 		
-		[JsonProperty("udp")]
+		[EnumMember(Value="udp")]
 		Udp,
 	}
 }
@@ -16800,13 +16801,13 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum LoadBalancingSslEnum {
 		
-		[JsonProperty("customer")]
+		[EnumMember(Value="customer")]
 		Customer,
 		
-		[JsonProperty("none")]
+		[EnumMember(Value="none")]
 		None,
 		
-		[JsonProperty("ovh")]
+		[EnumMember(Value="ovh")]
 		Ovh,
 	}
 }
@@ -16875,13 +16876,13 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum SpamStateEnum {
 		
-		[JsonProperty("blockedForSpam")]
+		[EnumMember(Value="blockedForSpam")]
 		BlockedForSpam,
 		
-		[JsonProperty("unblocked")]
+		[EnumMember(Value="unblocked")]
 		Unblocked,
 		
-		[JsonProperty("unblocking")]
+		[EnumMember(Value="unblocking")]
 		Unblocking,
 	}
 }
@@ -17130,43 +17131,43 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum TaskFunctionEnum {
 		
-		[JsonProperty("activateSsl")]
+		[EnumMember(Value="activateSsl")]
 		ActivateSsl,
 		
-		[JsonProperty("addBackend")]
+		[EnumMember(Value="addBackend")]
 		AddBackend,
 		
-		[JsonProperty("announceIpLoadBalancing")]
+		[EnumMember(Value="announceIpLoadBalancing")]
 		AnnounceIpLoadBalancing,
 		
-		[JsonProperty("backupStateSet")]
+		[EnumMember(Value="backupStateSet")]
 		BackupStateSet,
 		
-		[JsonProperty("backupStateUnset")]
+		[EnumMember(Value="backupStateUnset")]
 		BackupStateUnset,
 		
-		[JsonProperty("changeProbe")]
+		[EnumMember(Value="changeProbe")]
 		ChangeProbe,
 		
-		[JsonProperty("delBackend")]
+		[EnumMember(Value="delBackend")]
 		DelBackend,
 		
-		[JsonProperty("desactivateSsl")]
+		[EnumMember(Value="desactivateSsl")]
 		DesactivateSsl,
 		
-		[JsonProperty("moveFloatingIp")]
+		[EnumMember(Value="moveFloatingIp")]
 		MoveFloatingIp,
 		
-		[JsonProperty("reagregateBlock")]
+		[EnumMember(Value="reagregateBlock")]
 		ReagregateBlock,
 		
-		[JsonProperty("releaseIp")]
+		[EnumMember(Value="releaseIp")]
 		ReleaseIp,
 		
-		[JsonProperty("setWeight")]
+		[EnumMember(Value="setWeight")]
 		SetWeight,
 		
-		[JsonProperty("unannounceIpLoadBalancing")]
+		[EnumMember(Value="unannounceIpLoadBalancing")]
 		UnannounceIpLoadBalancing,
 	}
 }
@@ -17178,10 +17179,10 @@ namespace OvhApi.Models.Ip {
 	/// </summary>
 	public enum MitigationProfileStateEnum {
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("tasksPending")]
+		[EnumMember(Value="tasksPending")]
 		TasksPending,
 	}
 }
@@ -17331,25 +17332,25 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum ChangeIpMessageEnum {
 		
-		[JsonProperty("OK")]
+		[EnumMember(Value="OK")]
 		OK,
 		
-		[JsonProperty("destinationNotAllowed")]
+		[EnumMember(Value="destinationNotAllowed")]
 		DestinationNotAllowed,
 		
-		[JsonProperty("licenseAlreadyExists")]
+		[EnumMember(Value="licenseAlreadyExists")]
 		LicenseAlreadyExists,
 		
-		[JsonProperty("notAllowedToHandleThis")]
+		[EnumMember(Value="notAllowedToHandleThis")]
 		NotAllowedToHandleThis,
 		
-		[JsonProperty("notSameType")]
+		[EnumMember(Value="notSameType")]
 		NotSameType,
 		
-		[JsonProperty("sameIp")]
+		[EnumMember(Value="sameIp")]
 		SameIp,
 		
-		[JsonProperty("versionNotAllowed")]
+		[EnumMember(Value="versionNotAllowed")]
 		VersionNotAllowed,
 	}
 }
@@ -17490,16 +17491,16 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum StateEnum {
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("released")]
+		[EnumMember(Value="released")]
 		Released,
 		
-		[JsonProperty("terminated")]
+		[EnumMember(Value="terminated")]
 		Terminated,
 		
-		[JsonProperty("toDeliver")]
+		[EnumMember(Value="toDeliver")]
 		ToDeliver,
 	}
 }
@@ -17625,19 +17626,19 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -17691,13 +17692,13 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum CpanelVersionEnum {
 		
-		[JsonProperty("VERSION_11_FOR_LINUX")]
+		[EnumMember(Value="VERSION_11_FOR_LINUX")]
 		VERSION_11_FOR_LINUX,
 		
-		[JsonProperty("VERSION_11_FOR_VIRTUOZZO")]
+		[EnumMember(Value="VERSION_11_FOR_VIRTUOZZO")]
 		VERSION_11_FOR_VIRTUOZZO,
 		
-		[JsonProperty("VERSION_11_FOR_VPS")]
+		[EnumMember(Value="VERSION_11_FOR_VPS")]
 		VERSION_11_FOR_VPS,
 	}
 }
@@ -17709,28 +17710,28 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum LicenseTypeEnum {
 		
-		[JsonProperty("dedicated")]
+		[EnumMember(Value="dedicated")]
 		Dedicated,
 		
-		[JsonProperty("dedicatedCloud")]
+		[EnumMember(Value="dedicatedCloud")]
 		DedicatedCloud,
 		
-		[JsonProperty("dedicatedFailover")]
+		[EnumMember(Value="dedicatedFailover")]
 		DedicatedFailover,
 		
-		[JsonProperty("failover")]
+		[EnumMember(Value="failover")]
 		Failover,
 		
-		[JsonProperty("vm")]
+		[EnumMember(Value="vm")]
 		Vm,
 		
-		[JsonProperty("vps")]
+		[EnumMember(Value="vps")]
 		Vps,
 		
-		[JsonProperty("vps_classic")]
+		[EnumMember(Value="vps_classic")]
 		Vps_classic,
 		
-		[JsonProperty("vps_cloud")]
+		[EnumMember(Value="vps_cloud")]
 		Vps_cloud,
 	}
 }
@@ -17742,13 +17743,13 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderableCpanelVersionEnum {
 		
-		[JsonProperty("VERSION_11_FOR_LINUX")]
+		[EnumMember(Value="VERSION_11_FOR_LINUX")]
 		VERSION_11_FOR_LINUX,
 		
-		[JsonProperty("VERSION_11_FOR_VIRTUOZZO")]
+		[EnumMember(Value="VERSION_11_FOR_VIRTUOZZO")]
 		VERSION_11_FOR_VIRTUOZZO,
 		
-		[JsonProperty("VERSION_11_FOR_VPS")]
+		[EnumMember(Value="VERSION_11_FOR_VPS")]
 		VERSION_11_FOR_VPS,
 	}
 }
@@ -17904,7 +17905,7 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum DirectAdminVersionEnum {
 		
-		[JsonProperty("DIRECTADMIN_1")]
+		[EnumMember(Value="DIRECTADMIN_1")]
 		DIRECTADMIN_1,
 	}
 }
@@ -17916,7 +17917,7 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderableDirectAdminVersionEnum {
 		
-		[JsonProperty("DIRECTADMIN_1")]
+		[EnumMember(Value="DIRECTADMIN_1")]
 		DIRECTADMIN_1,
 	}
 }
@@ -17928,37 +17929,37 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum DirectAdminOsEnum {
 		
-		[JsonProperty("CentOs_5.0_32")]
+		[EnumMember(Value="CentOs_5.0_32")]
 		CentOs_5_0_32,
 		
-		[JsonProperty("CentOs_5.0_64")]
+		[EnumMember(Value="CentOs_5.0_64")]
 		CentOs_5_0_64,
 		
-		[JsonProperty("CentOs_6_32")]
+		[EnumMember(Value="CentOs_6_32")]
 		CentOs_6_32,
 		
-		[JsonProperty("CentOs_6_64")]
+		[EnumMember(Value="CentOs_6_64")]
 		CentOs_6_64,
 		
-		[JsonProperty("Debian_6.0_32")]
+		[EnumMember(Value="Debian_6.0_32")]
 		Debian_6_0_32,
 		
-		[JsonProperty("Debian_6.0_64")]
+		[EnumMember(Value="Debian_6.0_64")]
 		Debian_6_0_64,
 		
-		[JsonProperty("Debian_7.0_64")]
+		[EnumMember(Value="Debian_7.0_64")]
 		Debian_7_0_64,
 		
-		[JsonProperty("FreeBSD_7.x_32")]
+		[EnumMember(Value="FreeBSD_7.x_32")]
 		FreeBSD_7_X_32,
 		
-		[JsonProperty("FreeBSD_7.x_64")]
+		[EnumMember(Value="FreeBSD_7.x_64")]
 		FreeBSD_7_X_64,
 		
-		[JsonProperty("FreeBSD_8.x_64")]
+		[EnumMember(Value="FreeBSD_8.x_64")]
 		FreeBSD_8_X_64,
 		
-		[JsonProperty("FreeBSD_9.x_64")]
+		[EnumMember(Value="FreeBSD_9.x_64")]
 		FreeBSD_9_X_64,
 	}
 }
@@ -18012,58 +18013,58 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum PleskVersionEnum {
 		
-		[JsonProperty("PLESK_10_AND_LATER")]
+		[EnumMember(Value="PLESK_10_AND_LATER")]
 		PLESK_10_AND_LATER,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_VMWARE")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_VMWARE")]
 		PLESK_10_AND_LATER_FOR_VMWARE,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_VZ")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_VZ")]
 		PLESK_10_AND_LATER_FOR_VZ,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN")]
 		PLESK_10_AND_LATER_FOR_WIN,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE")]
 		PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN_FOR_VZ")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN_FOR_VZ")]
 		PLESK_10_AND_LATER_FOR_WIN_FOR_VZ,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN_FOR_XEN")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN_FOR_XEN")]
 		PLESK_10_AND_LATER_FOR_WIN_FOR_XEN,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_XEN")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_XEN")]
 		PLESK_10_AND_LATER_FOR_XEN,
 		
-		[JsonProperty("PLESK_75_RELOADED")]
+		[EnumMember(Value="PLESK_75_RELOADED")]
 		PLESK_75_RELOADED,
 		
-		[JsonProperty("PLESK_80")]
+		[EnumMember(Value="PLESK_80")]
 		PLESK_80,
 		
-		[JsonProperty("PLESK_80_FOR_VZ")]
+		[EnumMember(Value="PLESK_80_FOR_VZ")]
 		PLESK_80_FOR_VZ,
 		
-		[JsonProperty("PLESK_81_FOR_WIN")]
+		[EnumMember(Value="PLESK_81_FOR_WIN")]
 		PLESK_81_FOR_WIN,
 		
-		[JsonProperty("PLESK_9")]
+		[EnumMember(Value="PLESK_9")]
 		PLESK_9,
 		
-		[JsonProperty("PLESK_95")]
+		[EnumMember(Value="PLESK_95")]
 		PLESK_95,
 		
-		[JsonProperty("PLESK_95_FOR_VZ")]
+		[EnumMember(Value="PLESK_95_FOR_VZ")]
 		PLESK_95_FOR_VZ,
 		
-		[JsonProperty("PLESK_95_FOR_WIN")]
+		[EnumMember(Value="PLESK_95_FOR_WIN")]
 		PLESK_95_FOR_WIN,
 		
-		[JsonProperty("PLESK_9_FOR_VZ")]
+		[EnumMember(Value="PLESK_9_FOR_VZ")]
 		PLESK_9_FOR_VZ,
 		
-		[JsonProperty("PLESK_9_FOR_WIN")]
+		[EnumMember(Value="PLESK_9_FOR_WIN")]
 		PLESK_9_FOR_WIN,
 	}
 }
@@ -18075,25 +18076,25 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum PotentialProblemPleskEnum {
 		
-		[JsonProperty("isHostOsHyperVLike")]
+		[EnumMember(Value="isHostOsHyperVLike")]
 		IsHostOsHyperVLike,
 		
-		[JsonProperty("isHostOsVMwareLike")]
+		[EnumMember(Value="isHostOsVMwareLike")]
 		IsHostOsVMwareLike,
 		
-		[JsonProperty("isHostOsVirtuozzo4Like")]
+		[EnumMember(Value="isHostOsVirtuozzo4Like")]
 		IsHostOsVirtuozzo4Like,
 		
-		[JsonProperty("isHostOsXenLike")]
+		[EnumMember(Value="isHostOsXenLike")]
 		IsHostOsXenLike,
 		
-		[JsonProperty("isLinuxOs")]
+		[EnumMember(Value="isLinuxOs")]
 		IsLinuxOs,
 		
-		[JsonProperty("isOsPlesk10andLater")]
+		[EnumMember(Value="isOsPlesk10andLater")]
 		IsOsPlesk10andLater,
 		
-		[JsonProperty("isWindowsOs")]
+		[EnumMember(Value="isWindowsOs")]
 		IsWindowsOs,
 	}
 }
@@ -18105,25 +18106,25 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum DomainNumberEnum {
 		
-		[JsonProperty("0")]
+		[EnumMember(Value="0")]
 		_0,
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("30")]
+		[EnumMember(Value="30")]
 		_30,
 		
-		[JsonProperty("300")]
+		[EnumMember(Value="300")]
 		_300,
 		
-		[JsonProperty("unlimited")]
+		[EnumMember(Value="unlimited")]
 		Unlimited,
 	}
 }
@@ -18168,22 +18169,22 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderablePleskDomainNumberEnum {
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("30")]
+		[EnumMember(Value="30")]
 		_30,
 		
-		[JsonProperty("300")]
+		[EnumMember(Value="300")]
 		_300,
 		
-		[JsonProperty("hostingsuite")]
+		[EnumMember(Value="hostingsuite")]
 		Hostingsuite,
 		
-		[JsonProperty("unlimited")]
+		[EnumMember(Value="unlimited")]
 		Unlimited,
 	}
 }
@@ -18339,10 +18340,10 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderableAntivirusEnum {
 		
-		[JsonProperty("DR_WEB")]
+		[EnumMember(Value="DR_WEB")]
 		DR_WEB,
 		
-		[JsonProperty("KASPERSKY_UNLIMITED_MAILBOXES")]
+		[EnumMember(Value="KASPERSKY_UNLIMITED_MAILBOXES")]
 		KASPERSKY_UNLIMITED_MAILBOXES,
 	}
 }
@@ -18423,28 +18424,28 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderablePleskVersionEnum {
 		
-		[JsonProperty("PLESK_10_AND_LATER")]
+		[EnumMember(Value="PLESK_10_AND_LATER")]
 		PLESK_10_AND_LATER,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_VMWARE")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_VMWARE")]
 		PLESK_10_AND_LATER_FOR_VMWARE,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_VZ")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_VZ")]
 		PLESK_10_AND_LATER_FOR_VZ,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN")]
 		PLESK_10_AND_LATER_FOR_WIN,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE")]
 		PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN_FOR_VZ")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN_FOR_VZ")]
 		PLESK_10_AND_LATER_FOR_WIN_FOR_VZ,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_WIN_FOR_XEN")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_WIN_FOR_XEN")]
 		PLESK_10_AND_LATER_FOR_WIN_FOR_XEN,
 		
-		[JsonProperty("PLESK_10_AND_LATER_FOR_XEN")]
+		[EnumMember(Value="PLESK_10_AND_LATER_FOR_XEN")]
 		PLESK_10_AND_LATER_FOR_XEN,
 	}
 }
@@ -18537,19 +18538,19 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderablePleskLanguagePackEnum {
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("2")]
+		[EnumMember(Value="2")]
 		_2,
 		
-		[JsonProperty("3")]
+		[EnumMember(Value="3")]
 		_3,
 		
-		[JsonProperty("4")]
+		[EnumMember(Value="4")]
 		_4,
 		
-		[JsonProperty("5")]
+		[EnumMember(Value="5")]
 		_5,
 	}
 }
@@ -18561,22 +18562,22 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderableVirtuozzoContainerNumberEnum {
 		
-		[JsonProperty("2_CPU_001_CONTAINER")]
+		[EnumMember(Value="2_CPU_001_CONTAINER")]
 		_2_CPU_001_CONTAINER,
 		
-		[JsonProperty("2_CPU_003_CONTAINER")]
+		[EnumMember(Value="2_CPU_003_CONTAINER")]
 		_2_CPU_003_CONTAINER,
 		
-		[JsonProperty("2_CPU_010_CONTAINER")]
+		[EnumMember(Value="2_CPU_010_CONTAINER")]
 		_2_CPU_010_CONTAINER,
 		
-		[JsonProperty("2_CPU_030_CONTAINER")]
+		[EnumMember(Value="2_CPU_030_CONTAINER")]
 		_2_CPU_030_CONTAINER,
 		
-		[JsonProperty("2_CPU_060_CONTAINER")]
+		[EnumMember(Value="2_CPU_060_CONTAINER")]
 		_2_CPU_060_CONTAINER,
 		
-		[JsonProperty("2_CPU_100_CONTAINER")]
+		[EnumMember(Value="2_CPU_100_CONTAINER")]
 		_2_CPU_100_CONTAINER,
 	}
 }
@@ -18588,10 +18589,10 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderableVirtuozzoVersionEnum {
 		
-		[JsonProperty("VIRTUOZZO_CONTAINERS_4_FOR_LINUX")]
+		[EnumMember(Value="VIRTUOZZO_CONTAINERS_4_FOR_LINUX")]
 		VIRTUOZZO_CONTAINERS_4_FOR_LINUX,
 		
-		[JsonProperty("VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS")]
+		[EnumMember(Value="VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS")]
 		VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS,
 	}
 }
@@ -18636,10 +18637,10 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum VirtuozzoVersionEnum {
 		
-		[JsonProperty("VIRTUOZZO_CONTAINERS_4_FOR_LINUX")]
+		[EnumMember(Value="VIRTUOZZO_CONTAINERS_4_FOR_LINUX")]
 		VIRTUOZZO_CONTAINERS_4_FOR_LINUX,
 		
-		[JsonProperty("VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS")]
+		[EnumMember(Value="VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS")]
 		VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS,
 	}
 }
@@ -18696,22 +18697,22 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum VirtuozzoContainerNumberEnum {
 		
-		[JsonProperty("2_CPU_001_CONTAINER")]
+		[EnumMember(Value="2_CPU_001_CONTAINER")]
 		_2_CPU_001_CONTAINER,
 		
-		[JsonProperty("2_CPU_003_CONTAINER")]
+		[EnumMember(Value="2_CPU_003_CONTAINER")]
 		_2_CPU_003_CONTAINER,
 		
-		[JsonProperty("2_CPU_010_CONTAINER")]
+		[EnumMember(Value="2_CPU_010_CONTAINER")]
 		_2_CPU_010_CONTAINER,
 		
-		[JsonProperty("2_CPU_030_CONTAINER")]
+		[EnumMember(Value="2_CPU_030_CONTAINER")]
 		_2_CPU_030_CONTAINER,
 		
-		[JsonProperty("2_CPU_060_CONTAINER")]
+		[EnumMember(Value="2_CPU_060_CONTAINER")]
 		_2_CPU_060_CONTAINER,
 		
-		[JsonProperty("2_CPU_100_CONTAINER")]
+		[EnumMember(Value="2_CPU_100_CONTAINER")]
 		_2_CPU_100_CONTAINER,
 	}
 }
@@ -18723,13 +18724,13 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum PotentialProblemVirtuozzoEnum {
 		
-		[JsonProperty("isLinuxOs")]
+		[EnumMember(Value="isLinuxOs")]
 		IsLinuxOs,
 		
-		[JsonProperty("isOsVirtuozzo4Like")]
+		[EnumMember(Value="isOsVirtuozzo4Like")]
 		IsOsVirtuozzo4Like,
 		
-		[JsonProperty("isWindowsOs")]
+		[EnumMember(Value="isWindowsOs")]
 		IsWindowsOs,
 	}
 }
@@ -19035,13 +19036,13 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum OvhCompanyEnum {
 		
-		[JsonProperty("kimsufi")]
+		[EnumMember(Value="kimsufi")]
 		Kimsufi,
 		
-		[JsonProperty("ovh")]
+		[EnumMember(Value="ovh")]
 		Ovh,
 		
-		[JsonProperty("soyoustart")]
+		[EnumMember(Value="soyoustart")]
 		Soyoustart,
 	}
 }
@@ -19164,16 +19165,16 @@ namespace OvhApi.Models.Api {
 	/// </summary>
 	public enum ApplicationStatusEnum {
 		
-		[JsonProperty("active")]
+		[EnumMember(Value="active")]
 		Active,
 		
-		[JsonProperty("blocked")]
+		[EnumMember(Value="blocked")]
 		Blocked,
 		
-		[JsonProperty("inactive")]
+		[EnumMember(Value="inactive")]
 		Inactive,
 		
-		[JsonProperty("trusted")]
+		[EnumMember(Value="trusted")]
 		Trusted,
 	}
 }
@@ -19281,16 +19282,16 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum IncidentHardwareEnum {
 		
-		[JsonProperty("CPU_COOLING_CHECK")]
+		[EnumMember(Value="CPU_COOLING_CHECK")]
 		CPU_COOLING_CHECK,
 		
-		[JsonProperty("HARDWARE_DIAGNOSIS")]
+		[EnumMember(Value="HARDWARE_DIAGNOSIS")]
 		HARDWARE_DIAGNOSIS,
 		
-		[JsonProperty("HDD_REPLACEMENT")]
+		[EnumMember(Value="HDD_REPLACEMENT")]
 		HDD_REPLACEMENT,
 		
-		[JsonProperty("RAID_DISK_REPLACEMENT")]
+		[EnumMember(Value="RAID_DISK_REPLACEMENT")]
 		RAID_DISK_REPLACEMENT,
 	}
 }
@@ -19743,61 +19744,61 @@ namespace OvhApi.Models.Billing {
 	/// </summary>
 	public enum PaymentMeanEnum {
 		
-		[JsonProperty("cash")]
+		[EnumMember(Value="cash")]
 		Cash,
 		
-		[JsonProperty("chargeback")]
+		[EnumMember(Value="chargeback")]
 		Chargeback,
 		
-		[JsonProperty("cheque")]
+		[EnumMember(Value="cheque")]
 		Cheque,
 		
-		[JsonProperty("creditCard")]
+		[EnumMember(Value="creditCard")]
 		CreditCard,
 		
-		[JsonProperty("deposit")]
+		[EnumMember(Value="deposit")]
 		Deposit,
 		
-		[JsonProperty("edinar")]
+		[EnumMember(Value="edinar")]
 		Edinar,
 		
-		[JsonProperty("fidelityPoints")]
+		[EnumMember(Value="fidelityPoints")]
 		FidelityPoints,
 		
-		[JsonProperty("free")]
+		[EnumMember(Value="free")]
 		Free,
 		
-		[JsonProperty("ideal")]
+		[EnumMember(Value="ideal")]
 		Ideal,
 		
-		[JsonProperty("mandat")]
+		[EnumMember(Value="mandat")]
 		Mandat,
 		
-		[JsonProperty("multibanco")]
+		[EnumMember(Value="multibanco")]
 		Multibanco,
 		
-		[JsonProperty("none")]
+		[EnumMember(Value="none")]
 		None,
 		
-		[JsonProperty("ovhAccount")]
+		[EnumMember(Value="ovhAccount")]
 		OvhAccount,
 		
-		[JsonProperty("paymentMandate")]
+		[EnumMember(Value="paymentMandate")]
 		PaymentMandate,
 		
-		[JsonProperty("paypal")]
+		[EnumMember(Value="paypal")]
 		Paypal,
 		
-		[JsonProperty("platnosci")]
+		[EnumMember(Value="platnosci")]
 		Platnosci,
 		
-		[JsonProperty("refund")]
+		[EnumMember(Value="refund")]
 		Refund,
 		
-		[JsonProperty("transfer")]
+		[EnumMember(Value="transfer")]
 		Transfer,
 		
-		[JsonProperty("withdrawal")]
+		[EnumMember(Value="withdrawal")]
 		Withdrawal,
 	}
 }
@@ -19809,16 +19810,16 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum LegalFormEnum {
 		
-		[JsonProperty("association")]
+		[EnumMember(Value="association")]
 		Association,
 		
-		[JsonProperty("corporation")]
+		[EnumMember(Value="corporation")]
 		Corporation,
 		
-		[JsonProperty("individual")]
+		[EnumMember(Value="individual")]
 		Individual,
 		
-		[JsonProperty("other")]
+		[EnumMember(Value="other")]
 		Other,
 	}
 }
@@ -19998,40 +19999,40 @@ namespace OvhApi.Models.Order {
 	
 	public enum CurrencyCodeEnum {
 		
-		[JsonProperty("CAD")]
+		[EnumMember(Value="CAD")]
 		CAD,
 		
-		[JsonProperty("CZK")]
+		[EnumMember(Value="CZK")]
 		CZK,
 		
-		[JsonProperty("EUR")]
+		[EnumMember(Value="EUR")]
 		EUR,
 		
-		[JsonProperty("GBP")]
+		[EnumMember(Value="GBP")]
 		GBP,
 		
-		[JsonProperty("LTL")]
+		[EnumMember(Value="LTL")]
 		LTL,
 		
-		[JsonProperty("MAD")]
+		[EnumMember(Value="MAD")]
 		MAD,
 		
-		[JsonProperty("N/A")]
+		[EnumMember(Value="N/A")]
 		N_A,
 		
-		[JsonProperty("PLN")]
+		[EnumMember(Value="PLN")]
 		PLN,
 		
-		[JsonProperty("TND")]
+		[EnumMember(Value="TND")]
 		TND,
 		
-		[JsonProperty("USD")]
+		[EnumMember(Value="USD")]
 		USD,
 		
-		[JsonProperty("XOF")]
+		[EnumMember(Value="XOF")]
 		XOF,
 		
-		[JsonProperty("points")]
+		[EnumMember(Value="points")]
 		Points,
 	}
 }
@@ -20376,49 +20377,49 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum LanguageEnum {
 		
-		[JsonProperty("cs_CZ")]
+		[EnumMember(Value="cs_CZ")]
 		Cs_CZ,
 		
-		[JsonProperty("de_DE")]
+		[EnumMember(Value="de_DE")]
 		De_DE,
 		
-		[JsonProperty("en_GB")]
+		[EnumMember(Value="en_GB")]
 		En_GB,
 		
-		[JsonProperty("en_IE")]
+		[EnumMember(Value="en_IE")]
 		En_IE,
 		
-		[JsonProperty("es_ES")]
+		[EnumMember(Value="es_ES")]
 		Es_ES,
 		
-		[JsonProperty("fi_FI")]
+		[EnumMember(Value="fi_FI")]
 		Fi_FI,
 		
-		[JsonProperty("fr_FR")]
+		[EnumMember(Value="fr_FR")]
 		Fr_FR,
 		
-		[JsonProperty("fr_MA")]
+		[EnumMember(Value="fr_MA")]
 		Fr_MA,
 		
-		[JsonProperty("fr_SN")]
+		[EnumMember(Value="fr_SN")]
 		Fr_SN,
 		
-		[JsonProperty("fr_TN")]
+		[EnumMember(Value="fr_TN")]
 		Fr_TN,
 		
-		[JsonProperty("it_IT")]
+		[EnumMember(Value="it_IT")]
 		It_IT,
 		
-		[JsonProperty("lt_LT")]
+		[EnumMember(Value="lt_LT")]
 		Lt_LT,
 		
-		[JsonProperty("nl_NL")]
+		[EnumMember(Value="nl_NL")]
 		Nl_NL,
 		
-		[JsonProperty("pl_PL")]
+		[EnumMember(Value="pl_PL")]
 		Pl_PL,
 		
-		[JsonProperty("pt_PT")]
+		[EnumMember(Value="pt_PT")]
 		Pt_PT,
 	}
 }
@@ -20635,16 +20636,16 @@ namespace OvhApi.Models.Billing {
 			/// </summary>
 			public enum TypeEnum {
 				
-				[JsonProperty("Bill")]
+				[EnumMember(Value="Bill")]
 				Bill,
 				
-				[JsonProperty("Refund")]
+				[EnumMember(Value="Refund")]
 				Refund,
 				
-				[JsonProperty("StatementIncome")]
+				[EnumMember(Value="StatementIncome")]
 				StatementIncome,
 				
-				[JsonProperty("StatementOutcome")]
+				[EnumMember(Value="StatementOutcome")]
 				StatementOutcome,
 			}
 		}
@@ -21003,10 +21004,10 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum NotificationStatusEnum {
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("waitingForValidation")]
+		[EnumMember(Value="waitingForValidation")]
 		WaitingForValidation,
 	}
 }
@@ -21107,25 +21108,25 @@ namespace OvhApi.Models.Billing {
 		/// </summary>
 		public enum OperationEnum {
 			
-			[JsonProperty("cancel-credit")]
+			[EnumMember(Value="cancel-credit")]
 			Cancel_credit,
 			
-			[JsonProperty("cancel-debit")]
+			[EnumMember(Value="cancel-debit")]
 			Cancel_debit,
 			
-			[JsonProperty("cancel-pre-debit")]
+			[EnumMember(Value="cancel-pre-debit")]
 			Cancel_pre_debit,
 			
-			[JsonProperty("credit")]
+			[EnumMember(Value="credit")]
 			Credit,
 			
-			[JsonProperty("debit")]
+			[EnumMember(Value="debit")]
 			Debit,
 			
-			[JsonProperty("pre-credit")]
+			[EnumMember(Value="pre-credit")]
 			Pre_credit,
 			
-			[JsonProperty("pre-debit")]
+			[EnumMember(Value="pre-debit")]
 			Pre_debit,
 		}
 	}
@@ -21138,10 +21139,10 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum GenderEnum {
 		
-		[JsonProperty("female")]
+		[EnumMember(Value="female")]
 		Female,
 		
-		[JsonProperty("male")]
+		[EnumMember(Value="male")]
 		Male,
 	}
 }
@@ -21306,745 +21307,745 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum CountryEnum {
 		
-		[JsonProperty("AD")]
+		[EnumMember(Value="AD")]
 		AD,
 		
-		[JsonProperty("AE")]
+		[EnumMember(Value="AE")]
 		AE,
 		
-		[JsonProperty("AF")]
+		[EnumMember(Value="AF")]
 		AF,
 		
-		[JsonProperty("AG")]
+		[EnumMember(Value="AG")]
 		AG,
 		
-		[JsonProperty("AI")]
+		[EnumMember(Value="AI")]
 		AI,
 		
-		[JsonProperty("AL")]
+		[EnumMember(Value="AL")]
 		AL,
 		
-		[JsonProperty("AM")]
+		[EnumMember(Value="AM")]
 		AM,
 		
-		[JsonProperty("AO")]
+		[EnumMember(Value="AO")]
 		AO,
 		
-		[JsonProperty("AR")]
+		[EnumMember(Value="AR")]
 		AR,
 		
-		[JsonProperty("AS")]
+		[EnumMember(Value="AS")]
 		AS,
 		
-		[JsonProperty("AT")]
+		[EnumMember(Value="AT")]
 		AT,
 		
-		[JsonProperty("AU")]
+		[EnumMember(Value="AU")]
 		AU,
 		
-		[JsonProperty("AW")]
+		[EnumMember(Value="AW")]
 		AW,
 		
-		[JsonProperty("AX")]
+		[EnumMember(Value="AX")]
 		AX,
 		
-		[JsonProperty("AZ")]
+		[EnumMember(Value="AZ")]
 		AZ,
 		
-		[JsonProperty("BA")]
+		[EnumMember(Value="BA")]
 		BA,
 		
-		[JsonProperty("BB")]
+		[EnumMember(Value="BB")]
 		BB,
 		
-		[JsonProperty("BD")]
+		[EnumMember(Value="BD")]
 		BD,
 		
-		[JsonProperty("BE")]
+		[EnumMember(Value="BE")]
 		BE,
 		
-		[JsonProperty("BF")]
+		[EnumMember(Value="BF")]
 		BF,
 		
-		[JsonProperty("BG")]
+		[EnumMember(Value="BG")]
 		BG,
 		
-		[JsonProperty("BH")]
+		[EnumMember(Value="BH")]
 		BH,
 		
-		[JsonProperty("BI")]
+		[EnumMember(Value="BI")]
 		BI,
 		
-		[JsonProperty("BJ")]
+		[EnumMember(Value="BJ")]
 		BJ,
 		
-		[JsonProperty("BL")]
+		[EnumMember(Value="BL")]
 		BL,
 		
-		[JsonProperty("BM")]
+		[EnumMember(Value="BM")]
 		BM,
 		
-		[JsonProperty("BN")]
+		[EnumMember(Value="BN")]
 		BN,
 		
-		[JsonProperty("BO")]
+		[EnumMember(Value="BO")]
 		BO,
 		
-		[JsonProperty("BQ")]
+		[EnumMember(Value="BQ")]
 		BQ,
 		
-		[JsonProperty("BR")]
+		[EnumMember(Value="BR")]
 		BR,
 		
-		[JsonProperty("BS")]
+		[EnumMember(Value="BS")]
 		BS,
 		
-		[JsonProperty("BT")]
+		[EnumMember(Value="BT")]
 		BT,
 		
-		[JsonProperty("BW")]
+		[EnumMember(Value="BW")]
 		BW,
 		
-		[JsonProperty("BY")]
+		[EnumMember(Value="BY")]
 		BY,
 		
-		[JsonProperty("BZ")]
+		[EnumMember(Value="BZ")]
 		BZ,
 		
-		[JsonProperty("CA")]
+		[EnumMember(Value="CA")]
 		CA,
 		
-		[JsonProperty("CC")]
+		[EnumMember(Value="CC")]
 		CC,
 		
-		[JsonProperty("CD")]
+		[EnumMember(Value="CD")]
 		CD,
 		
-		[JsonProperty("CF")]
+		[EnumMember(Value="CF")]
 		CF,
 		
-		[JsonProperty("CG")]
+		[EnumMember(Value="CG")]
 		CG,
 		
-		[JsonProperty("CH")]
+		[EnumMember(Value="CH")]
 		CH,
 		
-		[JsonProperty("CI")]
+		[EnumMember(Value="CI")]
 		CI,
 		
-		[JsonProperty("CK")]
+		[EnumMember(Value="CK")]
 		CK,
 		
-		[JsonProperty("CL")]
+		[EnumMember(Value="CL")]
 		CL,
 		
-		[JsonProperty("CM")]
+		[EnumMember(Value="CM")]
 		CM,
 		
-		[JsonProperty("CN")]
+		[EnumMember(Value="CN")]
 		CN,
 		
-		[JsonProperty("CO")]
+		[EnumMember(Value="CO")]
 		CO,
 		
-		[JsonProperty("CR")]
+		[EnumMember(Value="CR")]
 		CR,
 		
-		[JsonProperty("CU")]
+		[EnumMember(Value="CU")]
 		CU,
 		
-		[JsonProperty("CV")]
+		[EnumMember(Value="CV")]
 		CV,
 		
-		[JsonProperty("CW")]
+		[EnumMember(Value="CW")]
 		CW,
 		
-		[JsonProperty("CX")]
+		[EnumMember(Value="CX")]
 		CX,
 		
-		[JsonProperty("CY")]
+		[EnumMember(Value="CY")]
 		CY,
 		
-		[JsonProperty("CZ")]
+		[EnumMember(Value="CZ")]
 		CZ,
 		
-		[JsonProperty("DE")]
+		[EnumMember(Value="DE")]
 		DE,
 		
-		[JsonProperty("DJ")]
+		[EnumMember(Value="DJ")]
 		DJ,
 		
-		[JsonProperty("DK")]
+		[EnumMember(Value="DK")]
 		DK,
 		
-		[JsonProperty("DM")]
+		[EnumMember(Value="DM")]
 		DM,
 		
-		[JsonProperty("DO")]
+		[EnumMember(Value="DO")]
 		DO,
 		
-		[JsonProperty("DZ")]
+		[EnumMember(Value="DZ")]
 		DZ,
 		
-		[JsonProperty("EC")]
+		[EnumMember(Value="EC")]
 		EC,
 		
-		[JsonProperty("EE")]
+		[EnumMember(Value="EE")]
 		EE,
 		
-		[JsonProperty("EG")]
+		[EnumMember(Value="EG")]
 		EG,
 		
-		[JsonProperty("EH")]
+		[EnumMember(Value="EH")]
 		EH,
 		
-		[JsonProperty("ER")]
+		[EnumMember(Value="ER")]
 		ER,
 		
-		[JsonProperty("ES")]
+		[EnumMember(Value="ES")]
 		ES,
 		
-		[JsonProperty("ET")]
+		[EnumMember(Value="ET")]
 		ET,
 		
-		[JsonProperty("FI")]
+		[EnumMember(Value="FI")]
 		FI,
 		
-		[JsonProperty("FJ")]
+		[EnumMember(Value="FJ")]
 		FJ,
 		
-		[JsonProperty("FK")]
+		[EnumMember(Value="FK")]
 		FK,
 		
-		[JsonProperty("FM")]
+		[EnumMember(Value="FM")]
 		FM,
 		
-		[JsonProperty("FO")]
+		[EnumMember(Value="FO")]
 		FO,
 		
-		[JsonProperty("FR")]
+		[EnumMember(Value="FR")]
 		FR,
 		
-		[JsonProperty("GA")]
+		[EnumMember(Value="GA")]
 		GA,
 		
-		[JsonProperty("GB")]
+		[EnumMember(Value="GB")]
 		GB,
 		
-		[JsonProperty("GD")]
+		[EnumMember(Value="GD")]
 		GD,
 		
-		[JsonProperty("GE")]
+		[EnumMember(Value="GE")]
 		GE,
 		
-		[JsonProperty("GF")]
+		[EnumMember(Value="GF")]
 		GF,
 		
-		[JsonProperty("GG")]
+		[EnumMember(Value="GG")]
 		GG,
 		
-		[JsonProperty("GH")]
+		[EnumMember(Value="GH")]
 		GH,
 		
-		[JsonProperty("GI")]
+		[EnumMember(Value="GI")]
 		GI,
 		
-		[JsonProperty("GL")]
+		[EnumMember(Value="GL")]
 		GL,
 		
-		[JsonProperty("GM")]
+		[EnumMember(Value="GM")]
 		GM,
 		
-		[JsonProperty("GN")]
+		[EnumMember(Value="GN")]
 		GN,
 		
-		[JsonProperty("GP")]
+		[EnumMember(Value="GP")]
 		GP,
 		
-		[JsonProperty("GQ")]
+		[EnumMember(Value="GQ")]
 		GQ,
 		
-		[JsonProperty("GR")]
+		[EnumMember(Value="GR")]
 		GR,
 		
-		[JsonProperty("GS")]
+		[EnumMember(Value="GS")]
 		GS,
 		
-		[JsonProperty("GT")]
+		[EnumMember(Value="GT")]
 		GT,
 		
-		[JsonProperty("GU")]
+		[EnumMember(Value="GU")]
 		GU,
 		
-		[JsonProperty("GW")]
+		[EnumMember(Value="GW")]
 		GW,
 		
-		[JsonProperty("GY")]
+		[EnumMember(Value="GY")]
 		GY,
 		
-		[JsonProperty("HK")]
+		[EnumMember(Value="HK")]
 		HK,
 		
-		[JsonProperty("HN")]
+		[EnumMember(Value="HN")]
 		HN,
 		
-		[JsonProperty("HR")]
+		[EnumMember(Value="HR")]
 		HR,
 		
-		[JsonProperty("HT")]
+		[EnumMember(Value="HT")]
 		HT,
 		
-		[JsonProperty("HU")]
+		[EnumMember(Value="HU")]
 		HU,
 		
-		[JsonProperty("ID")]
+		[EnumMember(Value="ID")]
 		ID,
 		
-		[JsonProperty("IE")]
+		[EnumMember(Value="IE")]
 		IE,
 		
-		[JsonProperty("IL")]
+		[EnumMember(Value="IL")]
 		IL,
 		
-		[JsonProperty("IM")]
+		[EnumMember(Value="IM")]
 		IM,
 		
-		[JsonProperty("IN")]
+		[EnumMember(Value="IN")]
 		IN,
 		
-		[JsonProperty("IO")]
+		[EnumMember(Value="IO")]
 		IO,
 		
-		[JsonProperty("IQ")]
+		[EnumMember(Value="IQ")]
 		IQ,
 		
-		[JsonProperty("IR")]
+		[EnumMember(Value="IR")]
 		IR,
 		
-		[JsonProperty("IS")]
+		[EnumMember(Value="IS")]
 		IS,
 		
-		[JsonProperty("IT")]
+		[EnumMember(Value="IT")]
 		IT,
 		
-		[JsonProperty("JE")]
+		[EnumMember(Value="JE")]
 		JE,
 		
-		[JsonProperty("JM")]
+		[EnumMember(Value="JM")]
 		JM,
 		
-		[JsonProperty("JO")]
+		[EnumMember(Value="JO")]
 		JO,
 		
-		[JsonProperty("JP")]
+		[EnumMember(Value="JP")]
 		JP,
 		
-		[JsonProperty("KE")]
+		[EnumMember(Value="KE")]
 		KE,
 		
-		[JsonProperty("KG")]
+		[EnumMember(Value="KG")]
 		KG,
 		
-		[JsonProperty("KH")]
+		[EnumMember(Value="KH")]
 		KH,
 		
-		[JsonProperty("KI")]
+		[EnumMember(Value="KI")]
 		KI,
 		
-		[JsonProperty("KM")]
+		[EnumMember(Value="KM")]
 		KM,
 		
-		[JsonProperty("KN")]
+		[EnumMember(Value="KN")]
 		KN,
 		
-		[JsonProperty("KP")]
+		[EnumMember(Value="KP")]
 		KP,
 		
-		[JsonProperty("KR")]
+		[EnumMember(Value="KR")]
 		KR,
 		
-		[JsonProperty("KW")]
+		[EnumMember(Value="KW")]
 		KW,
 		
-		[JsonProperty("KY")]
+		[EnumMember(Value="KY")]
 		KY,
 		
-		[JsonProperty("KZ")]
+		[EnumMember(Value="KZ")]
 		KZ,
 		
-		[JsonProperty("LA")]
+		[EnumMember(Value="LA")]
 		LA,
 		
-		[JsonProperty("LB")]
+		[EnumMember(Value="LB")]
 		LB,
 		
-		[JsonProperty("LC")]
+		[EnumMember(Value="LC")]
 		LC,
 		
-		[JsonProperty("LI")]
+		[EnumMember(Value="LI")]
 		LI,
 		
-		[JsonProperty("LK")]
+		[EnumMember(Value="LK")]
 		LK,
 		
-		[JsonProperty("LR")]
+		[EnumMember(Value="LR")]
 		LR,
 		
-		[JsonProperty("LS")]
+		[EnumMember(Value="LS")]
 		LS,
 		
-		[JsonProperty("LT")]
+		[EnumMember(Value="LT")]
 		LT,
 		
-		[JsonProperty("LU")]
+		[EnumMember(Value="LU")]
 		LU,
 		
-		[JsonProperty("LV")]
+		[EnumMember(Value="LV")]
 		LV,
 		
-		[JsonProperty("LY")]
+		[EnumMember(Value="LY")]
 		LY,
 		
-		[JsonProperty("MA")]
+		[EnumMember(Value="MA")]
 		MA,
 		
-		[JsonProperty("MC")]
+		[EnumMember(Value="MC")]
 		MC,
 		
-		[JsonProperty("MD")]
+		[EnumMember(Value="MD")]
 		MD,
 		
-		[JsonProperty("ME")]
+		[EnumMember(Value="ME")]
 		ME,
 		
-		[JsonProperty("MF")]
+		[EnumMember(Value="MF")]
 		MF,
 		
-		[JsonProperty("MG")]
+		[EnumMember(Value="MG")]
 		MG,
 		
-		[JsonProperty("MH")]
+		[EnumMember(Value="MH")]
 		MH,
 		
-		[JsonProperty("MK")]
+		[EnumMember(Value="MK")]
 		MK,
 		
-		[JsonProperty("ML")]
+		[EnumMember(Value="ML")]
 		ML,
 		
-		[JsonProperty("MM")]
+		[EnumMember(Value="MM")]
 		MM,
 		
-		[JsonProperty("MN")]
+		[EnumMember(Value="MN")]
 		MN,
 		
-		[JsonProperty("MO")]
+		[EnumMember(Value="MO")]
 		MO,
 		
-		[JsonProperty("MP")]
+		[EnumMember(Value="MP")]
 		MP,
 		
-		[JsonProperty("MQ")]
+		[EnumMember(Value="MQ")]
 		MQ,
 		
-		[JsonProperty("MR")]
+		[EnumMember(Value="MR")]
 		MR,
 		
-		[JsonProperty("MS")]
+		[EnumMember(Value="MS")]
 		MS,
 		
-		[JsonProperty("MT")]
+		[EnumMember(Value="MT")]
 		MT,
 		
-		[JsonProperty("MU")]
+		[EnumMember(Value="MU")]
 		MU,
 		
-		[JsonProperty("MV")]
+		[EnumMember(Value="MV")]
 		MV,
 		
-		[JsonProperty("MW")]
+		[EnumMember(Value="MW")]
 		MW,
 		
-		[JsonProperty("MX")]
+		[EnumMember(Value="MX")]
 		MX,
 		
-		[JsonProperty("MY")]
+		[EnumMember(Value="MY")]
 		MY,
 		
-		[JsonProperty("MZ")]
+		[EnumMember(Value="MZ")]
 		MZ,
 		
-		[JsonProperty("NA")]
+		[EnumMember(Value="NA")]
 		NA,
 		
-		[JsonProperty("NC")]
+		[EnumMember(Value="NC")]
 		NC,
 		
-		[JsonProperty("NE")]
+		[EnumMember(Value="NE")]
 		NE,
 		
-		[JsonProperty("NF")]
+		[EnumMember(Value="NF")]
 		NF,
 		
-		[JsonProperty("NG")]
+		[EnumMember(Value="NG")]
 		NG,
 		
-		[JsonProperty("NI")]
+		[EnumMember(Value="NI")]
 		NI,
 		
-		[JsonProperty("NL")]
+		[EnumMember(Value="NL")]
 		NL,
 		
-		[JsonProperty("NO")]
+		[EnumMember(Value="NO")]
 		NO,
 		
-		[JsonProperty("NP")]
+		[EnumMember(Value="NP")]
 		NP,
 		
-		[JsonProperty("NR")]
+		[EnumMember(Value="NR")]
 		NR,
 		
-		[JsonProperty("NU")]
+		[EnumMember(Value="NU")]
 		NU,
 		
-		[JsonProperty("NZ")]
+		[EnumMember(Value="NZ")]
 		NZ,
 		
-		[JsonProperty("OM")]
+		[EnumMember(Value="OM")]
 		OM,
 		
-		[JsonProperty("PA")]
+		[EnumMember(Value="PA")]
 		PA,
 		
-		[JsonProperty("PE")]
+		[EnumMember(Value="PE")]
 		PE,
 		
-		[JsonProperty("PF")]
+		[EnumMember(Value="PF")]
 		PF,
 		
-		[JsonProperty("PG")]
+		[EnumMember(Value="PG")]
 		PG,
 		
-		[JsonProperty("PH")]
+		[EnumMember(Value="PH")]
 		PH,
 		
-		[JsonProperty("PK")]
+		[EnumMember(Value="PK")]
 		PK,
 		
-		[JsonProperty("PL")]
+		[EnumMember(Value="PL")]
 		PL,
 		
-		[JsonProperty("PM")]
+		[EnumMember(Value="PM")]
 		PM,
 		
-		[JsonProperty("PN")]
+		[EnumMember(Value="PN")]
 		PN,
 		
-		[JsonProperty("PR")]
+		[EnumMember(Value="PR")]
 		PR,
 		
-		[JsonProperty("PS")]
+		[EnumMember(Value="PS")]
 		PS,
 		
-		[JsonProperty("PT")]
+		[EnumMember(Value="PT")]
 		PT,
 		
-		[JsonProperty("PW")]
+		[EnumMember(Value="PW")]
 		PW,
 		
-		[JsonProperty("PY")]
+		[EnumMember(Value="PY")]
 		PY,
 		
-		[JsonProperty("QA")]
+		[EnumMember(Value="QA")]
 		QA,
 		
-		[JsonProperty("QC")]
+		[EnumMember(Value="QC")]
 		QC,
 		
-		[JsonProperty("RE")]
+		[EnumMember(Value="RE")]
 		RE,
 		
-		[JsonProperty("RO")]
+		[EnumMember(Value="RO")]
 		RO,
 		
-		[JsonProperty("RS")]
+		[EnumMember(Value="RS")]
 		RS,
 		
-		[JsonProperty("RU")]
+		[EnumMember(Value="RU")]
 		RU,
 		
-		[JsonProperty("RW")]
+		[EnumMember(Value="RW")]
 		RW,
 		
-		[JsonProperty("SA")]
+		[EnumMember(Value="SA")]
 		SA,
 		
-		[JsonProperty("SB")]
+		[EnumMember(Value="SB")]
 		SB,
 		
-		[JsonProperty("SC")]
+		[EnumMember(Value="SC")]
 		SC,
 		
-		[JsonProperty("SD")]
+		[EnumMember(Value="SD")]
 		SD,
 		
-		[JsonProperty("SE")]
+		[EnumMember(Value="SE")]
 		SE,
 		
-		[JsonProperty("SG")]
+		[EnumMember(Value="SG")]
 		SG,
 		
-		[JsonProperty("SH")]
+		[EnumMember(Value="SH")]
 		SH,
 		
-		[JsonProperty("SI")]
+		[EnumMember(Value="SI")]
 		SI,
 		
-		[JsonProperty("SJ")]
+		[EnumMember(Value="SJ")]
 		SJ,
 		
-		[JsonProperty("SK")]
+		[EnumMember(Value="SK")]
 		SK,
 		
-		[JsonProperty("SL")]
+		[EnumMember(Value="SL")]
 		SL,
 		
-		[JsonProperty("SM")]
+		[EnumMember(Value="SM")]
 		SM,
 		
-		[JsonProperty("SN")]
+		[EnumMember(Value="SN")]
 		SN,
 		
-		[JsonProperty("SO")]
+		[EnumMember(Value="SO")]
 		SO,
 		
-		[JsonProperty("SR")]
+		[EnumMember(Value="SR")]
 		SR,
 		
-		[JsonProperty("SS")]
+		[EnumMember(Value="SS")]
 		SS,
 		
-		[JsonProperty("ST")]
+		[EnumMember(Value="ST")]
 		ST,
 		
-		[JsonProperty("SV")]
+		[EnumMember(Value="SV")]
 		SV,
 		
-		[JsonProperty("SX")]
+		[EnumMember(Value="SX")]
 		SX,
 		
-		[JsonProperty("SY")]
+		[EnumMember(Value="SY")]
 		SY,
 		
-		[JsonProperty("SZ")]
+		[EnumMember(Value="SZ")]
 		SZ,
 		
-		[JsonProperty("TC")]
+		[EnumMember(Value="TC")]
 		TC,
 		
-		[JsonProperty("TD")]
+		[EnumMember(Value="TD")]
 		TD,
 		
-		[JsonProperty("TF")]
+		[EnumMember(Value="TF")]
 		TF,
 		
-		[JsonProperty("TG")]
+		[EnumMember(Value="TG")]
 		TG,
 		
-		[JsonProperty("TH")]
+		[EnumMember(Value="TH")]
 		TH,
 		
-		[JsonProperty("TJ")]
+		[EnumMember(Value="TJ")]
 		TJ,
 		
-		[JsonProperty("TK")]
+		[EnumMember(Value="TK")]
 		TK,
 		
-		[JsonProperty("TL")]
+		[EnumMember(Value="TL")]
 		TL,
 		
-		[JsonProperty("TM")]
+		[EnumMember(Value="TM")]
 		TM,
 		
-		[JsonProperty("TN")]
+		[EnumMember(Value="TN")]
 		TN,
 		
-		[JsonProperty("TO")]
+		[EnumMember(Value="TO")]
 		TO,
 		
-		[JsonProperty("TR")]
+		[EnumMember(Value="TR")]
 		TR,
 		
-		[JsonProperty("TT")]
+		[EnumMember(Value="TT")]
 		TT,
 		
-		[JsonProperty("TV")]
+		[EnumMember(Value="TV")]
 		TV,
 		
-		[JsonProperty("TW")]
+		[EnumMember(Value="TW")]
 		TW,
 		
-		[JsonProperty("TZ")]
+		[EnumMember(Value="TZ")]
 		TZ,
 		
-		[JsonProperty("UA")]
+		[EnumMember(Value="UA")]
 		UA,
 		
-		[JsonProperty("UG")]
+		[EnumMember(Value="UG")]
 		UG,
 		
-		[JsonProperty("UM")]
+		[EnumMember(Value="UM")]
 		UM,
 		
-		[JsonProperty("US")]
+		[EnumMember(Value="US")]
 		US,
 		
-		[JsonProperty("UY")]
+		[EnumMember(Value="UY")]
 		UY,
 		
-		[JsonProperty("UZ")]
+		[EnumMember(Value="UZ")]
 		UZ,
 		
-		[JsonProperty("VA")]
+		[EnumMember(Value="VA")]
 		VA,
 		
-		[JsonProperty("VC")]
+		[EnumMember(Value="VC")]
 		VC,
 		
-		[JsonProperty("VE")]
+		[EnumMember(Value="VE")]
 		VE,
 		
-		[JsonProperty("VG")]
+		[EnumMember(Value="VG")]
 		VG,
 		
-		[JsonProperty("VI")]
+		[EnumMember(Value="VI")]
 		VI,
 		
-		[JsonProperty("VN")]
+		[EnumMember(Value="VN")]
 		VN,
 		
-		[JsonProperty("VU")]
+		[EnumMember(Value="VU")]
 		VU,
 		
-		[JsonProperty("WF")]
+		[EnumMember(Value="WF")]
 		WF,
 		
-		[JsonProperty("WS")]
+		[EnumMember(Value="WS")]
 		WS,
 		
-		[JsonProperty("YE")]
+		[EnumMember(Value="YE")]
 		YE,
 		
-		[JsonProperty("YT")]
+		[EnumMember(Value="YT")]
 		YT,
 		
-		[JsonProperty("ZA")]
+		[EnumMember(Value="ZA")]
 		ZA,
 		
-		[JsonProperty("ZM")]
+		[EnumMember(Value="ZM")]
 		ZM,
 		
-		[JsonProperty("ZW")]
+		[EnumMember(Value="ZW")]
 		ZW,
 	}
 }
@@ -22056,10 +22057,10 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum IpRegistryEnum {
 		
-		[JsonProperty("ARIN")]
+		[EnumMember(Value="ARIN")]
 		ARIN,
 		
-		[JsonProperty("RIPE")]
+		[EnumMember(Value="RIPE")]
 		RIPE,
 	}
 }
@@ -22155,19 +22156,19 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum SupportStatusEnum {
 		
-		[JsonProperty("anti-hack")]
+		[EnumMember(Value="anti-hack")]
 		Anti_hack,
 		
-		[JsonProperty("close")]
+		[EnumMember(Value="close")]
 		Close,
 		
-		[JsonProperty("datacenter")]
+		[EnumMember(Value="datacenter")]
 		Datacenter,
 		
-		[JsonProperty("open")]
+		[EnumMember(Value="open")]
 		Open,
 		
-		[JsonProperty("referred")]
+		[EnumMember(Value="referred")]
 		Referred,
 	}
 }
@@ -22260,37 +22261,37 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum SupportCategoryEnum {
 		
-		[JsonProperty("DEDICATED")]
+		[EnumMember(Value="DEDICATED")]
 		DEDICATED,
 		
-		[JsonProperty("EXCHANGE")]
+		[EnumMember(Value="EXCHANGE")]
 		EXCHANGE,
 		
-		[JsonProperty("HOSTING")]
+		[EnumMember(Value="HOSTING")]
 		HOSTING,
 		
-		[JsonProperty("HUBIC")]
+		[EnumMember(Value="HUBIC")]
 		HUBIC,
 		
-		[JsonProperty("OTHER")]
+		[EnumMember(Value="OTHER")]
 		OTHER,
 		
-		[JsonProperty("PRIVATE_CLOUD")]
+		[EnumMember(Value="PRIVATE_CLOUD")]
 		PRIVATE_CLOUD,
 		
-		[JsonProperty("PUBLIC_CLOUD")]
+		[EnumMember(Value="PUBLIC_CLOUD")]
 		PUBLIC_CLOUD,
 		
-		[JsonProperty("SITE_BUILDER")]
+		[EnumMember(Value="SITE_BUILDER")]
 		SITE_BUILDER,
 		
-		[JsonProperty("TELEPHONY")]
+		[EnumMember(Value="TELEPHONY")]
 		TELEPHONY,
 		
-		[JsonProperty("VPS")]
+		[EnumMember(Value="VPS")]
 		VPS,
 		
-		[JsonProperty("XDSL")]
+		[EnumMember(Value="XDSL")]
 		XDSL,
 	}
 }
@@ -22302,16 +22303,16 @@ namespace OvhApi.Models.Agreements {
 	/// </summary>
 	public enum AgreementStateEnum {
 		
-		[JsonProperty("ko")]
+		[EnumMember(Value="ko")]
 		Ko,
 		
-		[JsonProperty("obsolete")]
+		[EnumMember(Value="obsolete")]
 		Obsolete,
 		
-		[JsonProperty("ok")]
+		[EnumMember(Value="ok")]
 		Ok,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -22323,10 +22324,10 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum StateEnum {
 		
-		[JsonProperty("complete")]
+		[EnumMember(Value="complete")]
 		Complete,
 		
-		[JsonProperty("incomplete")]
+		[EnumMember(Value="incomplete")]
 		Incomplete,
 	}
 }
@@ -22338,16 +22339,16 @@ namespace OvhApi.Models.Auth {
 	/// </summary>
 	public enum MethodEnum {
 		
-		[JsonProperty("DELETE")]
+		[EnumMember(Value="DELETE")]
 		DELETE,
 		
-		[JsonProperty("GET")]
+		[EnumMember(Value="GET")]
 		GET,
 		
-		[JsonProperty("POST")]
+		[EnumMember(Value="POST")]
 		POST,
 		
-		[JsonProperty("PUT")]
+		[EnumMember(Value="PUT")]
 		PUT,
 	}
 }
@@ -22359,16 +22360,16 @@ namespace OvhApi.Models.Auth {
 	/// </summary>
 	public enum CredentialStateEnum {
 		
-		[JsonProperty("expired")]
+		[EnumMember(Value="expired")]
 		Expired,
 		
-		[JsonProperty("pendingValidation")]
+		[EnumMember(Value="pendingValidation")]
 		PendingValidation,
 		
-		[JsonProperty("refused")]
+		[EnumMember(Value="refused")]
 		Refused,
 		
-		[JsonProperty("validated")]
+		[EnumMember(Value="validated")]
 		Validated,
 	}
 }
@@ -22557,64 +22558,64 @@ namespace OvhApi.Models.Nichandle {
 	/// </summary>
 	public enum OvhSubsidiaryEnum {
 		
-		[JsonProperty("CA")]
+		[EnumMember(Value="CA")]
 		CA,
 		
-		[JsonProperty("CZ")]
+		[EnumMember(Value="CZ")]
 		CZ,
 		
-		[JsonProperty("DE")]
+		[EnumMember(Value="DE")]
 		DE,
 		
-		[JsonProperty("ES")]
+		[EnumMember(Value="ES")]
 		ES,
 		
-		[JsonProperty("EU")]
+		[EnumMember(Value="EU")]
 		EU,
 		
-		[JsonProperty("FI")]
+		[EnumMember(Value="FI")]
 		FI,
 		
-		[JsonProperty("FR")]
+		[EnumMember(Value="FR")]
 		FR,
 		
-		[JsonProperty("GB")]
+		[EnumMember(Value="GB")]
 		GB,
 		
-		[JsonProperty("IE")]
+		[EnumMember(Value="IE")]
 		IE,
 		
-		[JsonProperty("IT")]
+		[EnumMember(Value="IT")]
 		IT,
 		
-		[JsonProperty("LT")]
+		[EnumMember(Value="LT")]
 		LT,
 		
-		[JsonProperty("MA")]
+		[EnumMember(Value="MA")]
 		MA,
 		
-		[JsonProperty("NL")]
+		[EnumMember(Value="NL")]
 		NL,
 		
-		[JsonProperty("PL")]
+		[EnumMember(Value="PL")]
 		PL,
 		
-		[JsonProperty("PT")]
+		[EnumMember(Value="PT")]
 		PT,
 		
-		[JsonProperty("QC")]
+		[EnumMember(Value="QC")]
 		QC,
 		
-		[JsonProperty("SN")]
+		[EnumMember(Value="SN")]
 		SN,
 		
-		[JsonProperty("TN")]
+		[EnumMember(Value="TN")]
 		TN,
 		
-		[JsonProperty("WE")]
+		[EnumMember(Value="WE")]
 		WE,
 		
-		[JsonProperty("WS")]
+		[EnumMember(Value="WS")]
 		WS,
 	}
 }
@@ -23148,16 +23149,16 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum PleskLicenseDomainNumberEnum {
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("300")]
+		[EnumMember(Value="300")]
 		_300,
 		
-		[JsonProperty("hostingsuite")]
+		[EnumMember(Value="hostingsuite")]
 		Hostingsuite,
 	}
 }
@@ -23169,13 +23170,13 @@ namespace OvhApi.Models.DedicatedCloud.Ressources {
 	/// </summary>
 	public enum UpgradeRessourceTypeEnum {
 		
-		[JsonProperty("all")]
+		[EnumMember(Value="all")]
 		All,
 		
-		[JsonProperty("filer")]
+		[EnumMember(Value="filer")]
 		Filer,
 		
-		[JsonProperty("host")]
+		[EnumMember(Value="host")]
 		Host,
 	}
 }
@@ -23187,7 +23188,7 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum OrderableAntispamEnum {
 		
-		[JsonProperty("SPAM_ASSASSIN")]
+		[EnumMember(Value="SPAM_ASSASSIN")]
 		SPAM_ASSASSIN,
 	}
 }
@@ -23199,19 +23200,19 @@ namespace OvhApi.Models.Goodies.Tshirt {
 	/// </summary>
 	public enum SizeEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XXL")]
+		[EnumMember(Value="XXL")]
 		XXL,
 	}
 }
@@ -23223,19 +23224,19 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum OrderableIpBlockRangeEnum {
 		
-		[JsonProperty("24")]
+		[EnumMember(Value="24")]
 		_24,
 		
-		[JsonProperty("25")]
+		[EnumMember(Value="25")]
 		_25,
 		
-		[JsonProperty("26")]
+		[EnumMember(Value="26")]
 		_26,
 		
-		[JsonProperty("27")]
+		[EnumMember(Value="27")]
 		_27,
 		
-		[JsonProperty("28")]
+		[EnumMember(Value="28")]
 		_28,
 	}
 }
@@ -23247,10 +23248,10 @@ namespace OvhApi.Models.Goodies.Tshirt {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("square-root")]
+		[EnumMember(Value="square-root")]
 		Square_root,
 		
-		[JsonProperty("without-ovh")]
+		[EnumMember(Value="without-ovh")]
 		Without_ovh,
 	}
 }
@@ -23262,13 +23263,13 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum BandwidthOrderTypeEnum {
 		
-		[JsonProperty("platinum")]
+		[EnumMember(Value="platinum")]
 		Platinum,
 		
-		[JsonProperty("premium")]
+		[EnumMember(Value="premium")]
 		Premium,
 		
-		[JsonProperty("ultimate")]
+		[EnumMember(Value="ultimate")]
 		Ultimate,
 	}
 }
@@ -23280,22 +23281,22 @@ namespace OvhApi.Models.Cdn.Webstorage {
 	/// </summary>
 	public enum OrderStorageEnum {
 		
-		[JsonProperty("100GB")]
+		[EnumMember(Value="100GB")]
 		_100GB,
 		
-		[JsonProperty("10TB")]
+		[EnumMember(Value="10TB")]
 		_10TB,
 		
-		[JsonProperty("1TB")]
+		[EnumMember(Value="1TB")]
 		_1TB,
 		
-		[JsonProperty("500GB")]
+		[EnumMember(Value="500GB")]
 		_500GB,
 		
-		[JsonProperty("50TB")]
+		[EnumMember(Value="50TB")]
 		_50TB,
 		
-		[JsonProperty("5TB")]
+		[EnumMember(Value="5TB")]
 		_5TB,
 	}
 }
@@ -23307,13 +23308,13 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum OrderQuotaEnum {
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 	}
 }
@@ -23325,13 +23326,13 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum NasHAZoneEnum {
 		
-		[JsonProperty("bhs")]
+		[EnumMember(Value="bhs")]
 		Bhs,
 		
-		[JsonProperty("rbx")]
+		[EnumMember(Value="rbx")]
 		Rbx,
 		
-		[JsonProperty("sbg")]
+		[EnumMember(Value="sbg")]
 		Sbg,
 	}
 }
@@ -23343,10 +23344,10 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum MininasProtocolOrderEnum {
 		
-		[JsonProperty("CIFS")]
+		[EnumMember(Value="CIFS")]
 		CIFS,
 		
-		[JsonProperty("NFS")]
+		[EnumMember(Value="NFS")]
 		NFS,
 	}
 }
@@ -23403,7 +23404,7 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum CdnOfferEnum {
 		
-		[JsonProperty("CDN_BUSINESS")]
+		[EnumMember(Value="CDN_BUSINESS")]
 		CDN_BUSINESS,
 	}
 }
@@ -23415,10 +23416,10 @@ namespace OvhApi.Models.Cdnanycast {
 	/// </summary>
 	public enum OrderCacheRuleEnum {
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 	}
 }
@@ -23430,10 +23431,10 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum NasOfferEnum {
 		
-		[JsonProperty("1000g")]
+		[EnumMember(Value="1000g")]
 		_1000g,
 		
-		[JsonProperty("100g")]
+		[EnumMember(Value="100g")]
 		_100g,
 	}
 }
@@ -23445,19 +23446,19 @@ namespace OvhApi.Models.License {
 	/// </summary>
 	public enum WorkLightVersionEnum {
 		
-		[JsonProperty("VERSION-6.1U.1CPU")]
+		[EnumMember(Value="VERSION-6.1U.1CPU")]
 		VERSION_6_1U_1CPU,
 		
-		[JsonProperty("VERSION-6.1U.2CPU")]
+		[EnumMember(Value="VERSION-6.1U.2CPU")]
 		VERSION_6_1U_2CPU,
 		
-		[JsonProperty("VERSION-6.2U.1CPU")]
+		[EnumMember(Value="VERSION-6.2U.1CPU")]
 		VERSION_6_2U_1CPU,
 		
-		[JsonProperty("VERSION-6.2U.2CPU")]
+		[EnumMember(Value="VERSION-6.2U.2CPU")]
 		VERSION_6_2U_2CPU,
 		
-		[JsonProperty("VERSION-6.EVALUATION")]
+		[EnumMember(Value="VERSION-6.EVALUATION")]
 		VERSION_6_EVALUATION,
 	}
 }
@@ -23469,25 +23470,25 @@ namespace OvhApi.Models.Vrack {
 	/// </summary>
 	public enum BlockSizeEnum {
 		
-		[JsonProperty("128")]
+		[EnumMember(Value="128")]
 		_128,
 		
-		[JsonProperty("16")]
+		[EnumMember(Value="16")]
 		_16,
 		
-		[JsonProperty("256")]
+		[EnumMember(Value="256")]
 		_256,
 		
-		[JsonProperty("32")]
+		[EnumMember(Value="32")]
 		_32,
 		
-		[JsonProperty("4")]
+		[EnumMember(Value="4")]
 		_4,
 		
-		[JsonProperty("64")]
+		[EnumMember(Value="64")]
 		_64,
 		
-		[JsonProperty("8")]
+		[EnumMember(Value="8")]
 		_8,
 	}
 }
@@ -23499,43 +23500,43 @@ namespace OvhApi.Models.Vrack {
 	/// </summary>
 	public enum BlockCountryEnum {
 		
-		[JsonProperty("be")]
+		[EnumMember(Value="be")]
 		Be,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("ie")]
+		[EnumMember(Value="ie")]
 		Ie,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("uk")]
+		[EnumMember(Value="uk")]
 		Uk,
 	}
 }
@@ -23547,40 +23548,40 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum PackQuantityEnum {
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 		
-		[JsonProperty("10000")]
+		[EnumMember(Value="10000")]
 		_10000,
 		
-		[JsonProperty("100000")]
+		[EnumMember(Value="100000")]
 		_100000,
 		
-		[JsonProperty("1000000")]
+		[EnumMember(Value="1000000")]
 		_1000000,
 		
-		[JsonProperty("200")]
+		[EnumMember(Value="200")]
 		_200,
 		
-		[JsonProperty("250")]
+		[EnumMember(Value="250")]
 		_250,
 		
-		[JsonProperty("2500")]
+		[EnumMember(Value="2500")]
 		_2500,
 		
-		[JsonProperty("25000")]
+		[EnumMember(Value="25000")]
 		_25000,
 		
-		[JsonProperty("500")]
+		[EnumMember(Value="500")]
 		_500,
 		
-		[JsonProperty("5000")]
+		[EnumMember(Value="5000")]
 		_5000,
 		
-		[JsonProperty("50000")]
+		[EnumMember(Value="50000")]
 		_50000,
 	}
 }
@@ -23637,22 +23638,22 @@ namespace OvhApi.Models.Hosting.Web {
 	/// </summary>
 	public enum OfferEnum {
 		
-		[JsonProperty("PERFORMANCE_1")]
+		[EnumMember(Value="PERFORMANCE_1")]
 		PERFORMANCE_1,
 		
-		[JsonProperty("PERFORMANCE_2")]
+		[EnumMember(Value="PERFORMANCE_2")]
 		PERFORMANCE_2,
 		
-		[JsonProperty("PERFORMANCE_3")]
+		[EnumMember(Value="PERFORMANCE_3")]
 		PERFORMANCE_3,
 		
-		[JsonProperty("PERFORMANCE_4")]
+		[EnumMember(Value="PERFORMANCE_4")]
 		PERFORMANCE_4,
 		
-		[JsonProperty("PERSO")]
+		[EnumMember(Value="PERSO")]
 		PERSO,
 		
-		[JsonProperty("PRO")]
+		[EnumMember(Value="PRO")]
 		PRO,
 	}
 }
@@ -23733,7 +23734,7 @@ namespace OvhApi.Models.DedicatedCloud {
 	/// </summary>
 	public enum AdditionalBandwidthEnum {
 		
-		[JsonProperty("1500")]
+		[EnumMember(Value="1500")]
 		_1500,
 	}
 }
@@ -23745,19 +23746,19 @@ namespace OvhApi.Models.Cdn.Webstorage {
 	/// </summary>
 	public enum OrderTrafficEnum {
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 		
-		[JsonProperty("10000")]
+		[EnumMember(Value="10000")]
 		_10000,
 	}
 }
@@ -23769,7 +23770,7 @@ namespace OvhApi.Models.DedicatedCloud.Ressources {
 	/// </summary>
 	public enum UpgradeTypeEnum {
 		
-		[JsonProperty("hourlyToMonthly")]
+		[EnumMember(Value="hourlyToMonthly")]
 		HourlyToMonthly,
 	}
 }
@@ -23781,28 +23782,28 @@ namespace OvhApi.Models.Dedicated {
 	/// </summary>
 	public enum NasHAOfferEnum {
 		
-		[JsonProperty("1200g")]
+		[EnumMember(Value="1200g")]
 		_1200g,
 		
-		[JsonProperty("13200g")]
+		[EnumMember(Value="13200g")]
 		_13200g,
 		
-		[JsonProperty("2400g")]
+		[EnumMember(Value="2400g")]
 		_2400g,
 		
-		[JsonProperty("300g")]
+		[EnumMember(Value="300g")]
 		_300g,
 		
-		[JsonProperty("3600g")]
+		[EnumMember(Value="3600g")]
 		_3600g,
 		
-		[JsonProperty("600g")]
+		[EnumMember(Value="600g")]
 		_600g,
 		
-		[JsonProperty("7200g")]
+		[EnumMember(Value="7200g")]
 		_7200g,
 		
-		[JsonProperty("ssd")]
+		[EnumMember(Value="ssd")]
 		Ssd,
 	}
 }
@@ -23883,43 +23884,43 @@ namespace OvhApi.Models.Dedicated.Server {
 	/// </summary>
 	public enum IpStaticCountryEnum {
 		
-		[JsonProperty("be")]
+		[EnumMember(Value="be")]
 		Be,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("ie")]
+		[EnumMember(Value="ie")]
 		Ie,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("uk")]
+		[EnumMember(Value="uk")]
 		Uk,
 	}
 }
@@ -23931,22 +23932,22 @@ namespace OvhApi.Models.Price.Vps._2013v1.Cloud {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 		
-		[JsonProperty("model4")]
+		[EnumMember(Value="model4")]
 		Model4,
 		
-		[JsonProperty("model5")]
+		[EnumMember(Value="model5")]
 		Model5,
 		
-		[JsonProperty("model6")]
+		[EnumMember(Value="model6")]
 		Model6,
 	}
 }
@@ -23958,22 +23959,22 @@ namespace OvhApi.Models.Price.DedicatedCloud.Sbg1a.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -23985,22 +23986,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24012,19 +24013,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer 
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24036,19 +24037,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24060,16 +24061,16 @@ namespace OvhApi.Models.Price.Vps._2014v1.Cloud {
 	/// </summary>
 	public enum OptionEnum {
 		
-		[JsonProperty("ftpbackup")]
+		[EnumMember(Value="ftpbackup")]
 		Ftpbackup,
 		
-		[JsonProperty("ip")]
+		[EnumMember(Value="ip")]
 		Ip,
 		
-		[JsonProperty("snapshot")]
+		[EnumMember(Value="snapshot")]
 		Snapshot,
 		
-		[JsonProperty("veeam")]
+		[EnumMember(Value="veeam")]
 		Veeam,
 	}
 }
@@ -24081,28 +24082,28 @@ namespace OvhApi.Models.Price.Dedicated.Nasha {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("1200g")]
+		[EnumMember(Value="1200g")]
 		_1200g,
 		
-		[JsonProperty("13200g")]
+		[EnumMember(Value="13200g")]
 		_13200g,
 		
-		[JsonProperty("2400g")]
+		[EnumMember(Value="2400g")]
 		_2400g,
 		
-		[JsonProperty("300g")]
+		[EnumMember(Value="300g")]
 		_300g,
 		
-		[JsonProperty("3600g")]
+		[EnumMember(Value="3600g")]
 		_3600g,
 		
-		[JsonProperty("600g")]
+		[EnumMember(Value="600g")]
 		_600g,
 		
-		[JsonProperty("7200g")]
+		[EnumMember(Value="7200g")]
 		_7200g,
 		
-		[JsonProperty("ssd")]
+		[EnumMember(Value="ssd")]
 		Ssd,
 	}
 }
@@ -24114,34 +24115,34 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Sbg1a.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24153,22 +24154,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Bhs1a.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24180,22 +24181,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24207,19 +24208,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer 
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24231,22 +24232,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24258,7 +24259,7 @@ namespace OvhApi.Models.Price.Cdn.Anycast {
 	/// </summary>
 	public enum OptionEnum {
 		
-		[JsonProperty("backend")]
+		[EnumMember(Value="backend")]
 		Backend,
 	}
 }
@@ -24270,22 +24271,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24297,19 +24298,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24321,22 +24322,22 @@ namespace OvhApi.Models.Price.DedicatedCloud.Sbg1a.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24348,22 +24349,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Sbg1a.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24375,34 +24376,34 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Rbx2a.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24414,16 +24415,16 @@ namespace OvhApi.Models.Price.Vps.Cloud {
 	/// </summary>
 	public enum OptionEnum {
 		
-		[JsonProperty("ftpbackup")]
+		[EnumMember(Value="ftpbackup")]
 		Ftpbackup,
 		
-		[JsonProperty("ip")]
+		[EnumMember(Value="ip")]
 		Ip,
 		
-		[JsonProperty("snapshot")]
+		[EnumMember(Value="snapshot")]
 		Snapshot,
 		
-		[JsonProperty("veeam")]
+		[EnumMember(Value="veeam")]
 		Veeam,
 	}
 }
@@ -24435,22 +24436,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Rbx2a.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24462,22 +24463,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24489,13 +24490,13 @@ namespace OvhApi.Models.Price.Cdn.Anycast.Option {
 	/// </summary>
 	public enum QuotaEnum {
 		
-		[JsonProperty("1")]
+		[EnumMember(Value="1")]
 		_1,
 		
-		[JsonProperty("10")]
+		[EnumMember(Value="10")]
 		_10,
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 	}
 }
@@ -24507,10 +24508,10 @@ namespace OvhApi.Models.Price.Cdn.Anycast.Option {
 	/// </summary>
 	public enum CacherulesEnum {
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 	}
 }
@@ -24522,22 +24523,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24549,34 +24550,34 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Bhs1a.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24588,7 +24589,7 @@ namespace OvhApi.Models.Price.Cdn.Anycast {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("classic")]
+		[EnumMember(Value="classic")]
 		Classic,
 	}
 }
@@ -24600,10 +24601,10 @@ namespace OvhApi.Models.Price.Dedicated.Nas {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("1000g")]
+		[EnumMember(Value="1000g")]
 		_1000g,
 		
-		[JsonProperty("100g")]
+		[EnumMember(Value="100g")]
 		_100g,
 	}
 }
@@ -24615,19 +24616,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer 
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24639,22 +24640,22 @@ namespace OvhApi.Models.Price.DedicatedCloud.Bhs1a.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24666,22 +24667,22 @@ namespace OvhApi.Models.Price.DedicatedCloud.Bhs1a.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24693,22 +24694,22 @@ namespace OvhApi.Models.Price.DedicatedCloud.Rbx2a.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24720,19 +24721,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24744,7 +24745,7 @@ namespace OvhApi.Models.Price.Dedicated.Server {
 	/// </summary>
 	public enum AntiDDoSProEnum {
 		
-		[JsonProperty("sk")]
+		[EnumMember(Value="sk")]
 		Sk,
 	}
 }
@@ -24756,7 +24757,7 @@ namespace OvhApi.Models.Price.Hosting.Web {
 	/// </summary>
 	public enum SslEnum {
 		
-		[JsonProperty("HOSTEDSSL")]
+		[EnumMember(Value="HOSTEDSSL")]
 		HOSTEDSSL,
 	}
 }
@@ -24768,22 +24769,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24795,22 +24796,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24822,22 +24823,22 @@ namespace OvhApi.Models.Price.Vps.Classic {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 		
-		[JsonProperty("model4")]
+		[EnumMember(Value="model4")]
 		Model4,
 		
-		[JsonProperty("model5")]
+		[EnumMember(Value="model5")]
 		Model5,
 		
-		[JsonProperty("model6")]
+		[EnumMember(Value="model6")]
 		Model6,
 	}
 }
@@ -24849,19 +24850,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer 
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -24873,13 +24874,13 @@ namespace OvhApi.Models.Price.Vps.Lowlat {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 	}
 }
@@ -24891,22 +24892,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24918,7 +24919,7 @@ namespace OvhApi.Models.Price.Hosting.Web {
 	/// </summary>
 	public enum CdnEnum {
 		
-		[JsonProperty("CDN_BUSINESS")]
+		[EnumMember(Value="CDN_BUSINESS")]
 		CDN_BUSINESS,
 	}
 }
@@ -24930,22 +24931,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -24957,16 +24958,16 @@ namespace OvhApi.Models.Price.Vps._2014v1.Classic {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 		
-		[JsonProperty("model4")]
+		[EnumMember(Value="model4")]
 		Model4,
 	}
 }
@@ -24978,16 +24979,16 @@ namespace OvhApi.Models.Price.Vps._2014v1.Cloud {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 		
-		[JsonProperty("model4")]
+		[EnumMember(Value="model4")]
 		Model4,
 	}
 }
@@ -24999,22 +25000,22 @@ namespace OvhApi.Models.Price.DedicatedCloud.Rbx2a.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25026,19 +25027,19 @@ namespace OvhApi.Models.Price.Dedicated.Server {
 	/// </summary>
 	public enum ProfessionalUseEnum {
 		
-		[JsonProperty("bhg")]
+		[EnumMember(Value="bhg")]
 		Bhg,
 		
-		[JsonProperty("eg")]
+		[EnumMember(Value="eg")]
 		Eg,
 		
-		[JsonProperty("hg")]
+		[EnumMember(Value="hg")]
 		Hg,
 		
-		[JsonProperty("mg")]
+		[EnumMember(Value="mg")]
 		Mg,
 		
-		[JsonProperty("sp")]
+		[EnumMember(Value="sp")]
 		Sp,
 	}
 }
@@ -25050,34 +25051,34 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Bhs1a.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25089,19 +25090,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25113,19 +25114,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25137,22 +25138,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Bhs1a.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25164,19 +25165,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer 
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25188,19 +25189,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25212,19 +25213,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25236,34 +25237,34 @@ namespace OvhApi.Models.Price.DedicatedCloud.Bhs1a.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25275,34 +25276,34 @@ namespace OvhApi.Models.Price.DedicatedCloud.Sbg1a.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25314,34 +25315,34 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Sbg1a.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25353,19 +25354,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25377,34 +25378,34 @@ namespace OvhApi.Models.Price.DedicatedCloud.Bhs1a.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25416,22 +25417,22 @@ namespace OvhApi.Models.Price.Vps.Cloud {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 		
-		[JsonProperty("model4")]
+		[EnumMember(Value="model4")]
 		Model4,
 		
-		[JsonProperty("model5")]
+		[EnumMember(Value="model5")]
 		Model5,
 		
-		[JsonProperty("model6")]
+		[EnumMember(Value="model6")]
 		Model6,
 	}
 }
@@ -25443,34 +25444,34 @@ namespace OvhApi.Models.Price.DedicatedCloud.Rbx2a.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25482,40 +25483,40 @@ namespace OvhApi.Models.Price.Hosting.Web {
 	/// </summary>
 	public enum ExtraSqlPersoEnum {
 		
-		[JsonProperty("SQLPERSO_1_BASES_400_MB")]
+		[EnumMember(Value="SQLPERSO_1_BASES_400_MB")]
 		SQLPERSO_1_BASES_400_MB,
 		
-		[JsonProperty("SQLPERSO_1_BASES_800_MB")]
+		[EnumMember(Value="SQLPERSO_1_BASES_800_MB")]
 		SQLPERSO_1_BASES_800_MB,
 		
-		[JsonProperty("SQLPERSO_20_BASES_100_MB")]
+		[EnumMember(Value="SQLPERSO_20_BASES_100_MB")]
 		SQLPERSO_20_BASES_100_MB,
 		
-		[JsonProperty("SQLPERSO_20_BASES_200_MB")]
+		[EnumMember(Value="SQLPERSO_20_BASES_200_MB")]
 		SQLPERSO_20_BASES_200_MB,
 		
-		[JsonProperty("SQLPERSO_2_BASES_400_MB")]
+		[EnumMember(Value="SQLPERSO_2_BASES_400_MB")]
 		SQLPERSO_2_BASES_400_MB,
 		
-		[JsonProperty("SQLPERSO_2_BASES_800_MB")]
+		[EnumMember(Value="SQLPERSO_2_BASES_800_MB")]
 		SQLPERSO_2_BASES_800_MB,
 		
-		[JsonProperty("SQLPERSO_50_BASES_100_MB")]
+		[EnumMember(Value="SQLPERSO_50_BASES_100_MB")]
 		SQLPERSO_50_BASES_100_MB,
 		
-		[JsonProperty("SQLPERSO_50_BASES_200_MB")]
+		[EnumMember(Value="SQLPERSO_50_BASES_200_MB")]
 		SQLPERSO_50_BASES_200_MB,
 		
-		[JsonProperty("SQLPERSO_5_BASES_100_MB")]
+		[EnumMember(Value="SQLPERSO_5_BASES_100_MB")]
 		SQLPERSO_5_BASES_100_MB,
 		
-		[JsonProperty("SQLPERSO_5_BASES_200_MB")]
+		[EnumMember(Value="SQLPERSO_5_BASES_200_MB")]
 		SQLPERSO_5_BASES_200_MB,
 		
-		[JsonProperty("SQLPERSO_5_BASES_400_MB")]
+		[EnumMember(Value="SQLPERSO_5_BASES_400_MB")]
 		SQLPERSO_5_BASES_400_MB,
 		
-		[JsonProperty("SQLPERSO_5_BASES_800_MB")]
+		[EnumMember(Value="SQLPERSO_5_BASES_800_MB")]
 		SQLPERSO_5_BASES_800_MB,
 	}
 }
@@ -25527,13 +25528,13 @@ namespace OvhApi.Models.Price.Vps._2013v1.Lowlat {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 	}
 }
@@ -25545,19 +25546,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer 
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25569,22 +25570,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25596,22 +25597,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Rbx2a.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25623,22 +25624,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25650,22 +25651,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Sbg1a.Filer {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200g-GB")]
+		[EnumMember(Value="nfs-13200g-GB")]
 		Nfs_13200g_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-3600-GB")]
+		[EnumMember(Value="nfs-3600-GB")]
 		Nfs_3600_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25677,19 +25678,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer 
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25701,34 +25702,34 @@ namespace OvhApi.Models.Price.DedicatedCloud._2013v1.Rbx2a.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25740,16 +25741,16 @@ namespace OvhApi.Models.Price.Dedicated.Server {
 	/// </summary>
 	public enum BackupStorageEnum {
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 		
-		[JsonProperty("10000")]
+		[EnumMember(Value="10000")]
 		_10000,
 		
-		[JsonProperty("500")]
+		[EnumMember(Value="500")]
 		_500,
 		
-		[JsonProperty("5000")]
+		[EnumMember(Value="5000")]
 		_5000,
 	}
 }
@@ -25761,34 +25762,34 @@ namespace OvhApi.Models.Price.DedicatedCloud.Sbg1a.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25800,19 +25801,19 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer 
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("nfs-100-GB")]
+		[EnumMember(Value="nfs-100-GB")]
 		Nfs_100_GB,
 		
-		[JsonProperty("nfs-1200-GB")]
+		[EnumMember(Value="nfs-1200-GB")]
 		Nfs_1200_GB,
 		
-		[JsonProperty("nfs-13200-GB")]
+		[EnumMember(Value="nfs-13200-GB")]
 		Nfs_13200_GB,
 		
-		[JsonProperty("nfs-3300-GB")]
+		[EnumMember(Value="nfs-3300-GB")]
 		Nfs_3300_GB,
 		
-		[JsonProperty("nfs-6600-GB")]
+		[EnumMember(Value="nfs-6600-GB")]
 		Nfs_6600_GB,
 	}
 }
@@ -25824,22 +25825,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25851,22 +25852,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25878,7 +25879,7 @@ namespace OvhApi.Models.Price.Domain.Zone {
 	/// </summary>
 	public enum OptionEnum {
 		
-		[JsonProperty("dnsAnycast")]
+		[EnumMember(Value="dnsAnycast")]
 		DnsAnycast,
 	}
 }
@@ -25890,7 +25891,7 @@ namespace OvhApi.Models.Price.Xdsl.Options {
 	/// </summary>
 	public enum Ipv4Enum {
 		
-		[JsonProperty("29")]
+		[EnumMember(Value="29")]
 		_29,
 	}
 }
@@ -25902,16 +25903,16 @@ namespace OvhApi.Models.Price.Vps._2013v1.Cloud {
 	/// </summary>
 	public enum OptionEnum {
 		
-		[JsonProperty("ftpbackup")]
+		[EnumMember(Value="ftpbackup")]
 		Ftpbackup,
 		
-		[JsonProperty("ip")]
+		[EnumMember(Value="ip")]
 		Ip,
 		
-		[JsonProperty("snapshot")]
+		[EnumMember(Value="snapshot")]
 		Snapshot,
 		
-		[JsonProperty("veeam")]
+		[EnumMember(Value="veeam")]
 		Veeam,
 	}
 }
@@ -25923,22 +25924,22 @@ namespace OvhApi.Models.Price.Vps._2013v1.Classic {
 	/// </summary>
 	public enum ModelEnum {
 		
-		[JsonProperty("model1")]
+		[EnumMember(Value="model1")]
 		Model1,
 		
-		[JsonProperty("model2")]
+		[EnumMember(Value="model2")]
 		Model2,
 		
-		[JsonProperty("model3")]
+		[EnumMember(Value="model3")]
 		Model3,
 		
-		[JsonProperty("model4")]
+		[EnumMember(Value="model4")]
 		Model4,
 		
-		[JsonProperty("model5")]
+		[EnumMember(Value="model5")]
 		Model5,
 		
-		[JsonProperty("model6")]
+		[EnumMember(Value="model6")]
 		Model6,
 	}
 }
@@ -25950,22 +25951,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host {
 	/// </summary>
 	public enum MonthlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -25977,22 +25978,22 @@ namespace OvhApi.Models.Price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -26004,13 +26005,13 @@ namespace OvhApi.Models.Price.Dedicated.Server {
 	/// </summary>
 	public enum FirewallEnum {
 		
-		[JsonProperty("asa5505")]
+		[EnumMember(Value="asa5505")]
 		Asa5505,
 		
-		[JsonProperty("asa5510")]
+		[EnumMember(Value="asa5510")]
 		Asa5510,
 		
-		[JsonProperty("asa5520")]
+		[EnumMember(Value="asa5520")]
 		Asa5520,
 	}
 }
@@ -26022,34 +26023,34 @@ namespace OvhApi.Models.Price.DedicatedCloud.Rbx2a.Host {
 	/// </summary>
 	public enum HourlyEnum {
 		
-		[JsonProperty("L")]
+		[EnumMember(Value="L")]
 		L,
 		
-		[JsonProperty("L+")]
+		[EnumMember(Value="L+")]
 		LPlus,
 		
-		[JsonProperty("L++")]
+		[EnumMember(Value="L++")]
 		LPlusPlus,
 		
-		[JsonProperty("L2")]
+		[EnumMember(Value="L2")]
 		L2,
 		
-		[JsonProperty("L2+")]
+		[EnumMember(Value="L2+")]
 		L2Plus,
 		
-		[JsonProperty("M")]
+		[EnumMember(Value="M")]
 		M,
 		
-		[JsonProperty("S")]
+		[EnumMember(Value="S")]
 		S,
 		
-		[JsonProperty("S++")]
+		[EnumMember(Value="S++")]
 		SPlusPlus,
 		
-		[JsonProperty("XL")]
+		[EnumMember(Value="XL")]
 		XL,
 		
-		[JsonProperty("XL+")]
+		[EnumMember(Value="XL+")]
 		XLPlus,
 	}
 }
@@ -26061,16 +26062,16 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum ClassEnum {
 		
-		[JsonProperty("flash")]
+		[EnumMember(Value="flash")]
 		Flash,
 		
-		[JsonProperty("phoneDisplay")]
+		[EnumMember(Value="phoneDisplay")]
 		PhoneDisplay,
 		
-		[JsonProperty("sim")]
+		[EnumMember(Value="sim")]
 		Sim,
 		
-		[JsonProperty("toolkit")]
+		[EnumMember(Value="toolkit")]
 		Toolkit,
 	}
 }
@@ -26082,19 +26083,19 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum RefererSenderEnum {
 		
-		[JsonProperty("custom")]
+		[EnumMember(Value="custom")]
 		Custom,
 		
-		[JsonProperty("domain")]
+		[EnumMember(Value="domain")]
 		Domain,
 		
-		[JsonProperty("line")]
+		[EnumMember(Value="line")]
 		Line,
 		
-		[JsonProperty("nic")]
+		[EnumMember(Value="nic")]
 		Nic,
 		
-		[JsonProperty("owner")]
+		[EnumMember(Value="owner")]
 		Owner,
 	}
 }
@@ -26106,10 +26107,10 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum StatusAccountEnum {
 		
-		[JsonProperty("disable")]
+		[EnumMember(Value="disable")]
 		Disable,
 		
-		[JsonProperty("enable")]
+		[EnumMember(Value="enable")]
 		Enable,
 	}
 }
@@ -26121,73 +26122,73 @@ namespace OvhApi.Models.Reference {
 	/// </summary>
 	public enum CountryEnum {
 		
-		[JsonProperty("all")]
+		[EnumMember(Value="all")]
 		All,
 		
-		[JsonProperty("ca")]
+		[EnumMember(Value="ca")]
 		Ca,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("en")]
+		[EnumMember(Value="en")]
 		En,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("gb")]
+		[EnumMember(Value="gb")]
 		Gb,
 		
-		[JsonProperty("ie")]
+		[EnumMember(Value="ie")]
 		Ie,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("ma")]
+		[EnumMember(Value="ma")]
 		Ma,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pp")]
+		[EnumMember(Value="pp")]
 		Pp,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("qc")]
+		[EnumMember(Value="qc")]
 		Qc,
 		
-		[JsonProperty("ru")]
+		[EnumMember(Value="ru")]
 		Ru,
 		
-		[JsonProperty("sk")]
+		[EnumMember(Value="sk")]
 		Sk,
 		
-		[JsonProperty("sn")]
+		[EnumMember(Value="sn")]
 		Sn,
 		
-		[JsonProperty("tn")]
+		[EnumMember(Value="tn")]
 		Tn,
 		
-		[JsonProperty("we")]
+		[EnumMember(Value="we")]
 		We,
 	}
 }
@@ -26565,19 +26566,19 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum PackQuantityAutomaticRecreditEnum {
 		
-		[JsonProperty("100")]
+		[EnumMember(Value="100")]
 		_100,
 		
-		[JsonProperty("1000")]
+		[EnumMember(Value="1000")]
 		_1000,
 		
-		[JsonProperty("200")]
+		[EnumMember(Value="200")]
 		_200,
 		
-		[JsonProperty("250")]
+		[EnumMember(Value="250")]
 		_250,
 		
-		[JsonProperty("500")]
+		[EnumMember(Value="500")]
 		_500,
 	}
 }
@@ -26589,16 +26590,16 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum PriorityEnum {
 		
-		[JsonProperty("high")]
+		[EnumMember(Value="high")]
 		High,
 		
-		[JsonProperty("low")]
+		[EnumMember(Value="low")]
 		Low,
 		
-		[JsonProperty("medium")]
+		[EnumMember(Value="medium")]
 		Medium,
 		
-		[JsonProperty("veryLow")]
+		[EnumMember(Value="veryLow")]
 		VeryLow,
 	}
 }
@@ -26610,10 +26611,10 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum CodingEnum {
 		
-		[JsonProperty("7bit")]
+		[EnumMember(Value="7bit")]
 		_7bit,
 		
-		[JsonProperty("8bit")]
+		[EnumMember(Value="8bit")]
 		_8bit,
 	}
 }
@@ -27012,10 +27013,10 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum TypeSenderEnum {
 		
-		[JsonProperty("alpha")]
+		[EnumMember(Value="alpha")]
 		Alpha,
 		
-		[JsonProperty("numeric")]
+		[EnumMember(Value="numeric")]
 		Numeric,
 	}
 }
@@ -27144,13 +27145,13 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum SupportEnum {
 		
-		[JsonProperty("both")]
+		[EnumMember(Value="both")]
 		Both,
 		
-		[JsonProperty("mail")]
+		[EnumMember(Value="mail")]
 		Mail,
 		
-		[JsonProperty("sms")]
+		[EnumMember(Value="sms")]
 		Sms,
 	}
 }
@@ -27219,316 +27220,316 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum CountryEnum {
 		
-		[JsonProperty("ag")]
+		[EnumMember(Value="ag")]
 		Ag,
 		
-		[JsonProperty("ai")]
+		[EnumMember(Value="ai")]
 		Ai,
 		
-		[JsonProperty("all")]
+		[EnumMember(Value="all")]
 		All,
 		
-		[JsonProperty("an")]
+		[EnumMember(Value="an")]
 		An,
 		
-		[JsonProperty("ar")]
+		[EnumMember(Value="ar")]
 		Ar,
 		
-		[JsonProperty("at")]
+		[EnumMember(Value="at")]
 		At,
 		
-		[JsonProperty("au")]
+		[EnumMember(Value="au")]
 		Au,
 		
-		[JsonProperty("aw")]
+		[EnumMember(Value="aw")]
 		Aw,
 		
-		[JsonProperty("ba")]
+		[EnumMember(Value="ba")]
 		Ba,
 		
-		[JsonProperty("bb")]
+		[EnumMember(Value="bb")]
 		Bb,
 		
-		[JsonProperty("be")]
+		[EnumMember(Value="be")]
 		Be,
 		
-		[JsonProperty("bg")]
+		[EnumMember(Value="bg")]
 		Bg,
 		
-		[JsonProperty("bh")]
+		[EnumMember(Value="bh")]
 		Bh,
 		
-		[JsonProperty("bm")]
+		[EnumMember(Value="bm")]
 		Bm,
 		
-		[JsonProperty("bo")]
+		[EnumMember(Value="bo")]
 		Bo,
 		
-		[JsonProperty("br")]
+		[EnumMember(Value="br")]
 		Br,
 		
-		[JsonProperty("bz")]
+		[EnumMember(Value="bz")]
 		Bz,
 		
-		[JsonProperty("ch")]
+		[EnumMember(Value="ch")]
 		Ch,
 		
-		[JsonProperty("cl")]
+		[EnumMember(Value="cl")]
 		Cl,
 		
-		[JsonProperty("cn")]
+		[EnumMember(Value="cn")]
 		Cn,
 		
-		[JsonProperty("co")]
+		[EnumMember(Value="co")]
 		Co,
 		
-		[JsonProperty("cr")]
+		[EnumMember(Value="cr")]
 		Cr,
 		
-		[JsonProperty("cu")]
+		[EnumMember(Value="cu")]
 		Cu,
 		
-		[JsonProperty("cy")]
+		[EnumMember(Value="cy")]
 		Cy,
 		
-		[JsonProperty("cz")]
+		[EnumMember(Value="cz")]
 		Cz,
 		
-		[JsonProperty("de")]
+		[EnumMember(Value="de")]
 		De,
 		
-		[JsonProperty("dk")]
+		[EnumMember(Value="dk")]
 		Dk,
 		
-		[JsonProperty("dm")]
+		[EnumMember(Value="dm")]
 		Dm,
 		
-		[JsonProperty("dz")]
+		[EnumMember(Value="dz")]
 		Dz,
 		
-		[JsonProperty("ec")]
+		[EnumMember(Value="ec")]
 		Ec,
 		
-		[JsonProperty("ee")]
+		[EnumMember(Value="ee")]
 		Ee,
 		
-		[JsonProperty("eg")]
+		[EnumMember(Value="eg")]
 		Eg,
 		
-		[JsonProperty("es")]
+		[EnumMember(Value="es")]
 		Es,
 		
-		[JsonProperty("fi")]
+		[EnumMember(Value="fi")]
 		Fi,
 		
-		[JsonProperty("fr")]
+		[EnumMember(Value="fr")]
 		Fr,
 		
-		[JsonProperty("gb")]
+		[EnumMember(Value="gb")]
 		Gb,
 		
-		[JsonProperty("gd")]
+		[EnumMember(Value="gd")]
 		Gd,
 		
-		[JsonProperty("gp")]
+		[EnumMember(Value="gp")]
 		Gp,
 		
-		[JsonProperty("gr")]
+		[EnumMember(Value="gr")]
 		Gr,
 		
-		[JsonProperty("gy")]
+		[EnumMember(Value="gy")]
 		Gy,
 		
-		[JsonProperty("hk")]
+		[EnumMember(Value="hk")]
 		Hk,
 		
-		[JsonProperty("hn")]
+		[EnumMember(Value="hn")]
 		Hn,
 		
-		[JsonProperty("hr")]
+		[EnumMember(Value="hr")]
 		Hr,
 		
-		[JsonProperty("ht")]
+		[EnumMember(Value="ht")]
 		Ht,
 		
-		[JsonProperty("hu")]
+		[EnumMember(Value="hu")]
 		Hu,
 		
-		[JsonProperty("id")]
+		[EnumMember(Value="id")]
 		Id,
 		
-		[JsonProperty("ie")]
+		[EnumMember(Value="ie")]
 		Ie,
 		
-		[JsonProperty("il")]
+		[EnumMember(Value="il")]
 		Il,
 		
-		[JsonProperty("in")]
+		[EnumMember(Value="in")]
 		In,
 		
-		[JsonProperty("is")]
+		[EnumMember(Value="is")]
 		Is,
 		
-		[JsonProperty("it")]
+		[EnumMember(Value="it")]
 		It,
 		
-		[JsonProperty("jm")]
+		[EnumMember(Value="jm")]
 		Jm,
 		
-		[JsonProperty("jo")]
+		[EnumMember(Value="jo")]
 		Jo,
 		
-		[JsonProperty("jp")]
+		[EnumMember(Value="jp")]
 		Jp,
 		
-		[JsonProperty("kr")]
+		[EnumMember(Value="kr")]
 		Kr,
 		
-		[JsonProperty("kw")]
+		[EnumMember(Value="kw")]
 		Kw,
 		
-		[JsonProperty("ky")]
+		[EnumMember(Value="ky")]
 		Ky,
 		
-		[JsonProperty("lb")]
+		[EnumMember(Value="lb")]
 		Lb,
 		
-		[JsonProperty("lc")]
+		[EnumMember(Value="lc")]
 		Lc,
 		
-		[JsonProperty("lt")]
+		[EnumMember(Value="lt")]
 		Lt,
 		
-		[JsonProperty("lu")]
+		[EnumMember(Value="lu")]
 		Lu,
 		
-		[JsonProperty("lv")]
+		[EnumMember(Value="lv")]
 		Lv,
 		
-		[JsonProperty("ma")]
+		[EnumMember(Value="ma")]
 		Ma,
 		
-		[JsonProperty("me")]
+		[EnumMember(Value="me")]
 		Me,
 		
-		[JsonProperty("mq")]
+		[EnumMember(Value="mq")]
 		Mq,
 		
-		[JsonProperty("ms")]
+		[EnumMember(Value="ms")]
 		Ms,
 		
-		[JsonProperty("mt")]
+		[EnumMember(Value="mt")]
 		Mt,
 		
-		[JsonProperty("my")]
+		[EnumMember(Value="my")]
 		My,
 		
-		[JsonProperty("nc")]
+		[EnumMember(Value="nc")]
 		Nc,
 		
-		[JsonProperty("ng")]
+		[EnumMember(Value="ng")]
 		Ng,
 		
-		[JsonProperty("nl")]
+		[EnumMember(Value="nl")]
 		Nl,
 		
-		[JsonProperty("no")]
+		[EnumMember(Value="no")]
 		No,
 		
-		[JsonProperty("nz")]
+		[EnumMember(Value="nz")]
 		Nz,
 		
-		[JsonProperty("pa")]
+		[EnumMember(Value="pa")]
 		Pa,
 		
-		[JsonProperty("pe")]
+		[EnumMember(Value="pe")]
 		Pe,
 		
-		[JsonProperty("pf")]
+		[EnumMember(Value="pf")]
 		Pf,
 		
-		[JsonProperty("ph")]
+		[EnumMember(Value="ph")]
 		Ph,
 		
-		[JsonProperty("pk")]
+		[EnumMember(Value="pk")]
 		Pk,
 		
-		[JsonProperty("pl")]
+		[EnumMember(Value="pl")]
 		Pl,
 		
-		[JsonProperty("pt")]
+		[EnumMember(Value="pt")]
 		Pt,
 		
-		[JsonProperty("py")]
+		[EnumMember(Value="py")]
 		Py,
 		
-		[JsonProperty("re")]
+		[EnumMember(Value="re")]
 		Re,
 		
-		[JsonProperty("ro")]
+		[EnumMember(Value="ro")]
 		Ro,
 		
-		[JsonProperty("rs")]
+		[EnumMember(Value="rs")]
 		Rs,
 		
-		[JsonProperty("ru")]
+		[EnumMember(Value="ru")]
 		Ru,
 		
-		[JsonProperty("sa")]
+		[EnumMember(Value="sa")]
 		Sa,
 		
-		[JsonProperty("se")]
+		[EnumMember(Value="se")]
 		Se,
 		
-		[JsonProperty("sg")]
+		[EnumMember(Value="sg")]
 		Sg,
 		
-		[JsonProperty("si")]
+		[EnumMember(Value="si")]
 		Si,
 		
-		[JsonProperty("sk")]
+		[EnumMember(Value="sk")]
 		Sk,
 		
-		[JsonProperty("sr")]
+		[EnumMember(Value="sr")]
 		Sr,
 		
-		[JsonProperty("tc")]
+		[EnumMember(Value="tc")]
 		Tc,
 		
-		[JsonProperty("th")]
+		[EnumMember(Value="th")]
 		Th,
 		
-		[JsonProperty("tn")]
+		[EnumMember(Value="tn")]
 		Tn,
 		
-		[JsonProperty("tr")]
+		[EnumMember(Value="tr")]
 		Tr,
 		
-		[JsonProperty("tt")]
+		[EnumMember(Value="tt")]
 		Tt,
 		
-		[JsonProperty("tw")]
+		[EnumMember(Value="tw")]
 		Tw,
 		
-		[JsonProperty("ua")]
+		[EnumMember(Value="ua")]
 		Ua,
 		
-		[JsonProperty("uy")]
+		[EnumMember(Value="uy")]
 		Uy,
 		
-		[JsonProperty("vc")]
+		[EnumMember(Value="vc")]
 		Vc,
 		
-		[JsonProperty("ve")]
+		[EnumMember(Value="ve")]
 		Ve,
 		
-		[JsonProperty("vg")]
+		[EnumMember(Value="vg")]
 		Vg,
 		
-		[JsonProperty("vn")]
+		[EnumMember(Value="vn")]
 		Vn,
 		
-		[JsonProperty("za")]
+		[EnumMember(Value="za")]
 		Za,
 	}
 }
@@ -27621,13 +27622,13 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum ResponseTypeEnum {
 		
-		[JsonProperty("cgi")]
+		[EnumMember(Value="cgi")]
 		Cgi,
 		
-		[JsonProperty("none")]
+		[EnumMember(Value="none")]
 		None,
 		
-		[JsonProperty("text")]
+		[EnumMember(Value="text")]
 		Text,
 	}
 }
@@ -27720,16 +27721,16 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum StatusSenderEnum {
 		
-		[JsonProperty("disable")]
+		[EnumMember(Value="disable")]
 		Disable,
 		
-		[JsonProperty("enable")]
+		[EnumMember(Value="enable")]
 		Enable,
 		
-		[JsonProperty("refused")]
+		[EnumMember(Value="refused")]
 		Refused,
 		
-		[JsonProperty("waitingValidation")]
+		[EnumMember(Value="waitingValidation")]
 		WaitingValidation,
 	}
 }
@@ -27741,13 +27742,13 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum ResponseTrackingMediaEnum {
 		
-		[JsonProperty("email")]
+		[EnumMember(Value="email")]
 		Email,
 		
-		[JsonProperty("sms")]
+		[EnumMember(Value="sms")]
 		Sms,
 		
-		[JsonProperty("voice")]
+		[EnumMember(Value="voice")]
 		Voice,
 	}
 }
@@ -27759,10 +27760,10 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum QuotaStatusUserEnum {
 		
-		[JsonProperty("active")]
+		[EnumMember(Value="active")]
 		Active,
 		
-		[JsonProperty("inactive")]
+		[EnumMember(Value="inactive")]
 		Inactive,
 	}
 }
@@ -27774,7 +27775,7 @@ namespace OvhApi.Models.Sms {
 	/// </summary>
 	public enum CharsetEnum {
 		
-		[JsonProperty("UTF-8")]
+		[EnumMember(Value="UTF-8")]
 		UTF_8,
 	}
 }
@@ -27978,10 +27979,10 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxHuntingAgentStatusEnum {
 		
-		[JsonProperty("available")]
+		[EnumMember(Value="available")]
 		Available,
 		
-		[JsonProperty("loggedOut")]
+		[EnumMember(Value="loggedOut")]
 		LoggedOut,
 	}
 }
@@ -28170,19 +28171,19 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum SchedulerCategoryEnum {
 		
-		[JsonProperty("holidays")]
+		[EnumMember(Value="holidays")]
 		Holidays,
 		
-		[JsonProperty("scheduler1")]
+		[EnumMember(Value="scheduler1")]
 		Scheduler1,
 		
-		[JsonProperty("scheduler2")]
+		[EnumMember(Value="scheduler2")]
 		Scheduler2,
 		
-		[JsonProperty("scheduler3")]
+		[EnumMember(Value="scheduler3")]
 		Scheduler3,
 		
-		[JsonProperty("scheduler4")]
+		[EnumMember(Value="scheduler4")]
 		Scheduler4,
 	}
 }
@@ -28275,13 +28276,13 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxDialplanNumberPresentationEnum {
 		
-		[JsonProperty("alias")]
+		[EnumMember(Value="alias")]
 		Alias,
 		
-		[JsonProperty("both")]
+		[EnumMember(Value="both")]
 		Both,
 		
-		[JsonProperty("caller")]
+		[EnumMember(Value="caller")]
 		Caller,
 	}
 }
@@ -28293,28 +28294,28 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxDialplanExtensionRuleActionEnum {
 		
-		[JsonProperty("bridge")]
+		[EnumMember(Value="bridge")]
 		Bridge,
 		
-		[JsonProperty("hangup")]
+		[EnumMember(Value="hangup")]
 		Hangup,
 		
-		[JsonProperty("hunting")]
+		[EnumMember(Value="hunting")]
 		Hunting,
 		
-		[JsonProperty("ivr")]
+		[EnumMember(Value="ivr")]
 		Ivr,
 		
-		[JsonProperty("playback")]
+		[EnumMember(Value="playback")]
 		Playback,
 		
-		[JsonProperty("setCallerName")]
+		[EnumMember(Value="setCallerName")]
 		SetCallerName,
 		
-		[JsonProperty("sleep")]
+		[EnumMember(Value="sleep")]
 		Sleep,
 		
-		[JsonProperty("voicemail")]
+		[EnumMember(Value="voicemail")]
 		Voicemail,
 	}
 }
@@ -28746,10 +28747,10 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum FaxConsumptionWayTypeEnum {
 		
-		[JsonProperty("received")]
+		[EnumMember(Value="received")]
 		Received,
 		
-		[JsonProperty("sent")]
+		[EnumMember(Value="sent")]
 		Sent,
 	}
 }
@@ -28899,13 +28900,13 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum LineOptionForwardNatureTypeEnum {
 		
-		[JsonProperty("fax")]
+		[EnumMember(Value="fax")]
 		Fax,
 		
-		[JsonProperty("number")]
+		[EnumMember(Value="number")]
 		Number,
 		
-		[JsonProperty("voicemail")]
+		[EnumMember(Value="voicemail")]
 		Voicemail,
 	}
 }
@@ -29802,16 +29803,16 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum BillStatusEnum {
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -29823,13 +29824,13 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum ScreenListChoosingEnum {
 		
-		[JsonProperty("blacklist")]
+		[EnumMember(Value="blacklist")]
 		Blacklist,
 		
-		[JsonProperty("disabled")]
+		[EnumMember(Value="disabled")]
 		Disabled,
 		
-		[JsonProperty("whitelist")]
+		[EnumMember(Value="whitelist")]
 		Whitelist,
 	}
 }
@@ -30024,7 +30025,7 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum PropertyEnum {
 		
-		[JsonProperty("xdsl")]
+		[EnumMember(Value="xdsl")]
 		Xdsl,
 	}
 }
@@ -30165,10 +30166,10 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum EasyMiniPabxHuntingPatternEnum {
 		
-		[JsonProperty("cumulated")]
+		[EnumMember(Value="cumulated")]
 		Cumulated,
 		
-		[JsonProperty("sequential")]
+		[EnumMember(Value="sequential")]
 		Sequential,
 	}
 }
@@ -30180,10 +30181,10 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum TypeServiceEnum {
 		
-		[JsonProperty("alias")]
+		[EnumMember(Value="alias")]
 		Alias,
 		
-		[JsonProperty("line")]
+		[EnumMember(Value="line")]
 		Line,
 	}
 }
@@ -30195,25 +30196,25 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum EasyMiniPabxHuntingStrategyEnum {
 		
-		[JsonProperty("cyclic")]
+		[EnumMember(Value="cyclic")]
 		Cyclic,
 		
-		[JsonProperty("leastIdleSinceLastCall")]
+		[EnumMember(Value="leastIdleSinceLastCall")]
 		LeastIdleSinceLastCall,
 		
-		[JsonProperty("linear")]
+		[EnumMember(Value="linear")]
 		Linear,
 		
-		[JsonProperty("mostIdleSinceLastCall")]
+		[EnumMember(Value="mostIdleSinceLastCall")]
 		MostIdleSinceLastCall,
 		
-		[JsonProperty("mostIdleSinceLogging")]
+		[EnumMember(Value="mostIdleSinceLogging")]
 		MostIdleSinceLogging,
 		
-		[JsonProperty("parallel")]
+		[EnumMember(Value="parallel")]
 		Parallel,
 		
-		[JsonProperty("random")]
+		[EnumMember(Value="random")]
 		Random,
 	}
 }
@@ -30225,61 +30226,61 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum TypeEnum {
 		
-		[JsonProperty("cloudHunting")]
+		[EnumMember(Value="cloudHunting")]
 		CloudHunting,
 		
-		[JsonProperty("cloudIvr")]
+		[EnumMember(Value="cloudIvr")]
 		CloudIvr,
 		
-		[JsonProperty("conference")]
+		[EnumMember(Value="conference")]
 		Conference,
 		
-		[JsonProperty("ddi")]
+		[EnumMember(Value="ddi")]
 		Ddi,
 		
-		[JsonProperty("easyHunting")]
+		[EnumMember(Value="easyHunting")]
 		EasyHunting,
 		
-		[JsonProperty("easyPabx")]
+		[EnumMember(Value="easyPabx")]
 		EasyPabx,
 		
-		[JsonProperty("empty")]
+		[EnumMember(Value="empty")]
 		Empty,
 		
-		[JsonProperty("fax")]
+		[EnumMember(Value="fax")]
 		Fax,
 		
-		[JsonProperty("freefax")]
+		[EnumMember(Value="freefax")]
 		Freefax,
 		
-		[JsonProperty("mgcp")]
+		[EnumMember(Value="mgcp")]
 		Mgcp,
 		
-		[JsonProperty("miniPabx")]
+		[EnumMember(Value="miniPabx")]
 		MiniPabx,
 		
-		[JsonProperty("oldConference")]
+		[EnumMember(Value="oldConference")]
 		OldConference,
 		
-		[JsonProperty("plugAndFax")]
+		[EnumMember(Value="plugAndFax")]
 		PlugAndFax,
 		
-		[JsonProperty("redirect")]
+		[EnumMember(Value="redirect")]
 		Redirect,
 		
-		[JsonProperty("sip")]
+		[EnumMember(Value="sip")]
 		Sip,
 		
-		[JsonProperty("svi")]
+		[EnumMember(Value="svi")]
 		Svi,
 		
-		[JsonProperty("voicefax")]
+		[EnumMember(Value="voicefax")]
 		Voicefax,
 		
-		[JsonProperty("voicemail")]
+		[EnumMember(Value="voicemail")]
 		Voicemail,
 		
-		[JsonProperty("vxml")]
+		[EnumMember(Value="vxml")]
 		Vxml,
 	}
 }
@@ -30585,25 +30586,25 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxHuntingQueueStrategyEnum {
 		
-		[JsonProperty("cumulationByAgentOrder")]
+		[EnumMember(Value="cumulationByAgentOrder")]
 		CumulationByAgentOrder,
 		
-		[JsonProperty("longestHangupAgent")]
+		[EnumMember(Value="longestHangupAgent")]
 		LongestHangupAgent,
 		
-		[JsonProperty("longestIdleAgent")]
+		[EnumMember(Value="longestIdleAgent")]
 		LongestIdleAgent,
 		
-		[JsonProperty("random")]
+		[EnumMember(Value="random")]
 		Random,
 		
-		[JsonProperty("ringAll")]
+		[EnumMember(Value="ringAll")]
 		RingAll,
 		
-		[JsonProperty("roundRobin")]
+		[EnumMember(Value="roundRobin")]
 		RoundRobin,
 		
-		[JsonProperty("sequentiallyByAgentOrder")]
+		[EnumMember(Value="sequentiallyByAgentOrder")]
 		SequentiallyByAgentOrder,
 	}
 }
@@ -30675,13 +30676,13 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum VoiceConsumptionDestinationTypeEnum {
 		
-		[JsonProperty("landline")]
+		[EnumMember(Value="landline")]
 		Landline,
 		
-		[JsonProperty("mobile")]
+		[EnumMember(Value="mobile")]
 		Mobile,
 		
-		[JsonProperty("special")]
+		[EnumMember(Value="special")]
 		Special,
 	}
 }
@@ -30693,13 +30694,13 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum VoiceConsumptionWayTypeEnum {
 		
-		[JsonProperty("incoming")]
+		[EnumMember(Value="incoming")]
 		Incoming,
 		
-		[JsonProperty("outgoing")]
+		[EnumMember(Value="outgoing")]
 		Outgoing,
 		
-		[JsonProperty("transfer")]
+		[EnumMember(Value="transfer")]
 		Transfer,
 	}
 }
@@ -31194,19 +31195,19 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum ScreenListNatureEnum {
 		
-		[JsonProperty("fax")]
+		[EnumMember(Value="fax")]
 		Fax,
 		
-		[JsonProperty("international")]
+		[EnumMember(Value="international")]
 		International,
 		
-		[JsonProperty("services")]
+		[EnumMember(Value="services")]
 		Services,
 		
-		[JsonProperty("special")]
+		[EnumMember(Value="special")]
 		Special,
 		
-		[JsonProperty("voicemail")]
+		[EnumMember(Value="voicemail")]
 		Voicemail,
 	}
 }
@@ -31218,22 +31219,22 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxIvrMenuEntryActionEnum {
 		
-		[JsonProperty("bridge")]
+		[EnumMember(Value="bridge")]
 		Bridge,
 		
-		[JsonProperty("menuBack")]
+		[EnumMember(Value="menuBack")]
 		MenuBack,
 		
-		[JsonProperty("menuExit")]
+		[EnumMember(Value="menuExit")]
 		MenuExit,
 		
-		[JsonProperty("menuSub")]
+		[EnumMember(Value="menuSub")]
 		MenuSub,
 		
-		[JsonProperty("menuTop")]
+		[EnumMember(Value="menuTop")]
 		MenuTop,
 		
-		[JsonProperty("playback")]
+		[EnumMember(Value="playback")]
 		Playback,
 	}
 }
@@ -31290,16 +31291,16 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum ScreenListTypeEnum {
 		
-		[JsonProperty("incomingblacklist")]
+		[EnumMember(Value="incomingblacklist")]
 		Incomingblacklist,
 		
-		[JsonProperty("incomingwhitelist")]
+		[EnumMember(Value="incomingwhitelist")]
 		Incomingwhitelist,
 		
-		[JsonProperty("outgoingblacklist")]
+		[EnumMember(Value="outgoingblacklist")]
 		Outgoingblacklist,
 		
-		[JsonProperty("outgoingwhitelist")]
+		[EnumMember(Value="outgoingwhitelist")]
 		Outgoingwhitelist,
 	}
 }
@@ -31311,19 +31312,19 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum TaskStatusEnum {
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("pause")]
+		[EnumMember(Value="pause")]
 		Pause,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -31413,25 +31414,25 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxDialplanExtensionConditionTimeWeekDayEnum {
 		
-		[JsonProperty("friday")]
+		[EnumMember(Value="friday")]
 		Friday,
 		
-		[JsonProperty("monday")]
+		[EnumMember(Value="monday")]
 		Monday,
 		
-		[JsonProperty("saturday")]
+		[EnumMember(Value="saturday")]
 		Saturday,
 		
-		[JsonProperty("sunday")]
+		[EnumMember(Value="sunday")]
 		Sunday,
 		
-		[JsonProperty("thursday")]
+		[EnumMember(Value="thursday")]
 		Thursday,
 		
-		[JsonProperty("tuesday")]
+		[EnumMember(Value="tuesday")]
 		Tuesday,
 		
-		[JsonProperty("wednesday")]
+		[EnumMember(Value="wednesday")]
 		Wednesday,
 	}
 }
@@ -31443,10 +31444,10 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum OvhPabxDialplanExtensionConditionScreenListTypeEnum {
 		
-		[JsonProperty("incomingblacklist")]
+		[EnumMember(Value="incomingblacklist")]
 		Incomingblacklist,
 		
-		[JsonProperty("incomingwhitelist")]
+		[EnumMember(Value="incomingwhitelist")]
 		Incomingwhitelist,
 	}
 }
@@ -31536,10 +31537,10 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum VoiceConsumptionPlanTypeEnum {
 		
-		[JsonProperty("outplan")]
+		[EnumMember(Value="outplan")]
 		Outplan,
 		
-		[JsonProperty("priceplan")]
+		[EnumMember(Value="priceplan")]
 		Priceplan,
 	}
 }
@@ -31719,16 +31720,16 @@ namespace OvhApi.Models.Telephony {
 	/// </summary>
 	public enum PcsFileStatusEnum {
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -31812,28 +31813,28 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum TaskStateEnum {
 		
-		[JsonProperty("blocked")]
+		[EnumMember(Value="blocked")]
 		Blocked,
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("paused")]
+		[EnumMember(Value="paused")]
 		Paused,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 		
-		[JsonProperty("waitingAck")]
+		[EnumMember(Value="waitingAck")]
 		WaitingAck,
 	}
 }
@@ -31935,22 +31936,22 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsStatisticTypeEnum {
 		
-		[JsonProperty("cpu:max")]
+		[EnumMember(Value="cpu:max")]
 		Cpu_max,
 		
-		[JsonProperty("cpu:used")]
+		[EnumMember(Value="cpu:used")]
 		Cpu_used,
 		
-		[JsonProperty("mem:max")]
+		[EnumMember(Value="mem:max")]
 		Mem_max,
 		
-		[JsonProperty("mem:used")]
+		[EnumMember(Value="mem:used")]
 		Mem_used,
 		
-		[JsonProperty("net:rx")]
+		[EnumMember(Value="net:rx")]
 		Net_rx,
 		
-		[JsonProperty("net:tx")]
+		[EnumMember(Value="net:tx")]
 		Net_tx,
 	}
 }
@@ -32039,28 +32040,28 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum GeolocationEnum {
 			
-			[JsonProperty("ca")]
+			[EnumMember(Value="ca")]
 			Ca,
 			
-			[JsonProperty("de")]
+			[EnumMember(Value="de")]
 			De,
 			
-			[JsonProperty("es")]
+			[EnumMember(Value="es")]
 			Es,
 			
-			[JsonProperty("fr")]
+			[EnumMember(Value="fr")]
 			Fr,
 			
-			[JsonProperty("it")]
+			[EnumMember(Value="it")]
 			It,
 			
-			[JsonProperty("pl")]
+			[EnumMember(Value="pl")]
 			Pl,
 			
-			[JsonProperty("uk")]
+			[EnumMember(Value="uk")]
 			Uk,
 			
-			[JsonProperty("us")]
+			[EnumMember(Value="us")]
 			Us,
 		}
 		
@@ -32099,28 +32100,28 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum GeolocalizationEnum {
 			
-			[JsonProperty("ca")]
+			[EnumMember(Value="ca")]
 			Ca,
 			
-			[JsonProperty("de")]
+			[EnumMember(Value="de")]
 			De,
 			
-			[JsonProperty("es")]
+			[EnumMember(Value="es")]
 			Es,
 			
-			[JsonProperty("fr")]
+			[EnumMember(Value="fr")]
 			Fr,
 			
-			[JsonProperty("it")]
+			[EnumMember(Value="it")]
 			It,
 			
-			[JsonProperty("pl")]
+			[EnumMember(Value="pl")]
 			Pl,
 			
-			[JsonProperty("uk")]
+			[EnumMember(Value="uk")]
 			Uk,
 			
-			[JsonProperty("us")]
+			[EnumMember(Value="us")]
 			Us,
 		}
 		
@@ -32207,10 +32208,10 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum ServiceStatusStateEnum {
 			
-			[JsonProperty("down")]
+			[EnumMember(Value="down")]
 			Down,
 			
-			[JsonProperty("up")]
+			[EnumMember(Value="up")]
 			Up,
 		}
 		
@@ -32219,10 +32220,10 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum TypeEnum {
 			
-			[JsonProperty("additional")]
+			[EnumMember(Value="additional")]
 			Additional,
 			
-			[JsonProperty("primary")]
+			[EnumMember(Value="primary")]
 			Primary,
 		}
 	}
@@ -32405,10 +32406,10 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum ExportTypeEnum {
 			
-			[JsonProperty("nfs")]
+			[EnumMember(Value="nfs")]
 			Nfs,
 			
-			[JsonProperty("smb")]
+			[EnumMember(Value="smb")]
 			Smb,
 		}
 		
@@ -32417,16 +32418,16 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("mounted")]
+			[EnumMember(Value="mounted")]
 			Mounted,
 			
-			[JsonProperty("restoring")]
+			[EnumMember(Value="restoring")]
 			Restoring,
 			
-			[JsonProperty("unmounted")]
+			[EnumMember(Value="unmounted")]
 			Unmounted,
 			
-			[JsonProperty("unmounting")]
+			[EnumMember(Value="unmounting")]
 			Unmounting,
 		}
 		
@@ -32511,10 +32512,10 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum TemplateBitFormatEnum {
 		
-		[JsonProperty("32")]
+		[EnumMember(Value="32")]
 		_32,
 		
-		[JsonProperty("64")]
+		[EnumMember(Value="64")]
 		_64,
 	}
 }
@@ -32559,13 +32560,13 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum SoftwareStatusEnum {
 		
-		[JsonProperty("deprecated")]
+		[EnumMember(Value="deprecated")]
 		Deprecated,
 		
-		[JsonProperty("stable")]
+		[EnumMember(Value="stable")]
 		Stable,
 		
-		[JsonProperty("testing")]
+		[EnumMember(Value="testing")]
 		Testing,
 	}
 }
@@ -32622,13 +32623,13 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsOfferEnum {
 		
-		[JsonProperty("classic")]
+		[EnumMember(Value="classic")]
 		Classic,
 		
-		[JsonProperty("cloud")]
+		[EnumMember(Value="cloud")]
 		Cloud,
 		
-		[JsonProperty("lowlat")]
+		[EnumMember(Value="lowlat")]
 		Lowlat,
 	}
 }
@@ -32640,19 +32641,19 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsMonitoringPeriodEnum {
 		
-		[JsonProperty("lastday")]
+		[EnumMember(Value="lastday")]
 		Lastday,
 		
-		[JsonProperty("lastmonth")]
+		[EnumMember(Value="lastmonth")]
 		Lastmonth,
 		
-		[JsonProperty("lastweek")]
+		[EnumMember(Value="lastweek")]
 		Lastweek,
 		
-		[JsonProperty("lastyear")]
+		[EnumMember(Value="lastyear")]
 		Lastyear,
 		
-		[JsonProperty("today")]
+		[EnumMember(Value="today")]
 		Today,
 	}
 }
@@ -32664,10 +32665,10 @@ namespace OvhApi.Models.CoreTypes {
 	/// </summary>
 	public enum IpVersionEnum {
 		
-		[JsonProperty("v4")]
+		[EnumMember(Value="v4")]
 		V4,
 		
-		[JsonProperty("v6")]
+		[EnumMember(Value="v6")]
 		V6,
 	}
 }
@@ -32724,10 +32725,10 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsOptionStateEnum {
 		
-		[JsonProperty("released")]
+		[EnumMember(Value="released")]
 		Released,
 		
-		[JsonProperty("subscribed")]
+		[EnumMember(Value="subscribed")]
 		Subscribed,
 	}
 }
@@ -32789,13 +32790,13 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum StateEnum {
 			
-			[JsonProperty("connected")]
+			[EnumMember(Value="connected")]
 			Connected,
 			
-			[JsonProperty("disconnected")]
+			[EnumMember(Value="disconnected")]
 			Disconnected,
 			
-			[JsonProperty("pending")]
+			[EnumMember(Value="pending")]
 			Pending,
 		}
 		
@@ -32804,10 +32805,10 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum TypeEnum {
 			
-			[JsonProperty("additional")]
+			[EnumMember(Value="additional")]
 			Additional,
 			
-			[JsonProperty("primary")]
+			[EnumMember(Value="primary")]
 			Primary,
 		}
 		
@@ -32816,10 +32817,10 @@ namespace OvhApi.Models.Vps {
 		/// </summary>
 		public enum StatisticTypeEnum {
 			
-			[JsonProperty("max")]
+			[EnumMember(Value="max")]
 			Max,
 			
-			[JsonProperty("used")]
+			[EnumMember(Value="used")]
 			Used,
 		}
 	}
@@ -32859,19 +32860,19 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsOptionEnum {
 		
-		[JsonProperty("cpanel")]
+		[EnumMember(Value="cpanel")]
 		Cpanel,
 		
-		[JsonProperty("ftpbackup")]
+		[EnumMember(Value="ftpbackup")]
 		Ftpbackup,
 		
-		[JsonProperty("plesk")]
+		[EnumMember(Value="plesk")]
 		Plesk,
 		
-		[JsonProperty("snapshot")]
+		[EnumMember(Value="snapshot")]
 		Snapshot,
 		
-		[JsonProperty("veeam")]
+		[EnumMember(Value="veeam")]
 		Veeam,
 	}
 }
@@ -32883,10 +32884,10 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VncProtocolEnum {
 		
-		[JsonProperty("VNC")]
+		[EnumMember(Value="VNC")]
 		VNC,
 		
-		[JsonProperty("VNCOverWebSocket")]
+		[EnumMember(Value="VNCOverWebSocket")]
 		VNCOverWebSocket,
 	}
 }
@@ -33033,10 +33034,10 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsNetbootEnum {
 		
-		[JsonProperty("local")]
+		[EnumMember(Value="local")]
 		Local,
 		
-		[JsonProperty("rescue")]
+		[EnumMember(Value="rescue")]
 		Rescue,
 	}
 }
@@ -33048,10 +33049,10 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsVersionEnum {
 		
-		[JsonProperty("2013v1")]
+		[EnumMember(Value="2013v1")]
 		_2013v1,
 		
-		[JsonProperty("2014v1")]
+		[EnumMember(Value="2014v1")]
 		_2014v1,
 	}
 }
@@ -33063,25 +33064,25 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum VpsStateEnum {
 		
-		[JsonProperty("installing")]
+		[EnumMember(Value="installing")]
 		Installing,
 		
-		[JsonProperty("maintenance")]
+		[EnumMember(Value="maintenance")]
 		Maintenance,
 		
-		[JsonProperty("rebooting")]
+		[EnumMember(Value="rebooting")]
 		Rebooting,
 		
-		[JsonProperty("running")]
+		[EnumMember(Value="running")]
 		Running,
 		
-		[JsonProperty("stopped")]
+		[EnumMember(Value="stopped")]
 		Stopped,
 		
-		[JsonProperty("stopping")]
+		[EnumMember(Value="stopping")]
 		Stopping,
 		
-		[JsonProperty("upgrading")]
+		[EnumMember(Value="upgrading")]
 		Upgrading,
 	}
 }
@@ -33190,13 +33191,13 @@ namespace OvhApi.Models.Vps {
 	/// </summary>
 	public enum SoftwareTypeEnum {
 		
-		[JsonProperty("database")]
+		[EnumMember(Value="database")]
 		Database,
 		
-		[JsonProperty("environment")]
+		[EnumMember(Value="environment")]
 		Environment,
 		
-		[JsonProperty("webserver")]
+		[EnumMember(Value="webserver")]
 		Webserver,
 	}
 }
@@ -33367,16 +33368,16 @@ namespace OvhApi.Models.Vrack {
 	/// </summary>
 	public enum VrackZoneEnum {
 		
-		[JsonProperty("bhs")]
+		[EnumMember(Value="bhs")]
 		Bhs,
 		
-		[JsonProperty("gra")]
+		[EnumMember(Value="gra")]
 		Gra,
 		
-		[JsonProperty("rbx")]
+		[EnumMember(Value="rbx")]
 		Rbx,
 		
-		[JsonProperty("sbg")]
+		[EnumMember(Value="sbg")]
 		Sbg,
 	}
 }
@@ -33634,19 +33635,19 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum StatisticsPeriodEnum {
 		
-		[JsonProperty("daily")]
+		[EnumMember(Value="daily")]
 		Daily,
 		
-		[JsonProperty("monthly")]
+		[EnumMember(Value="monthly")]
 		Monthly,
 		
-		[JsonProperty("preview")]
+		[EnumMember(Value="preview")]
 		Preview,
 		
-		[JsonProperty("weekly")]
+		[EnumMember(Value="weekly")]
 		Weekly,
 		
-		[JsonProperty("yearly")]
+		[EnumMember(Value="yearly")]
 		Yearly,
 	}
 }
@@ -34102,10 +34103,10 @@ namespace OvhApi.Models.Xdsl.MonitoringNotifications {
 	/// </summary>
 	public enum TypeEnum {
 		
-		[JsonProperty("mail")]
+		[EnumMember(Value="mail")]
 		Mail,
 		
-		[JsonProperty("sms")]
+		[EnumMember(Value="sms")]
 		Sms,
 	}
 }
@@ -34117,10 +34118,10 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum ProtocolTypeEnum {
 		
-		[JsonProperty("TCP")]
+		[EnumMember(Value="TCP")]
 		TCP,
 		
-		[JsonProperty("UDP")]
+		[EnumMember(Value="UDP")]
 		UDP,
 	}
 }
@@ -34267,13 +34268,13 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum FaultRepairTimeEnum {
 		
-		[JsonProperty("4HNO")]
+		[EnumMember(Value="4HNO")]
 		_4HNO,
 		
-		[JsonProperty("4HO")]
+		[EnumMember(Value="4HO")]
 		_4HO,
 		
-		[JsonProperty("NORMAL")]
+		[EnumMember(Value="NORMAL")]
 		NORMAL,
 	}
 }
@@ -34285,16 +34286,16 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum DeconsolidationEnum {
 		
-		[JsonProperty("createNeighbour")]
+		[EnumMember(Value="createNeighbour")]
 		CreateNeighbour,
 		
-		[JsonProperty("creation")]
+		[EnumMember(Value="creation")]
 		Creation,
 		
-		[JsonProperty("partial")]
+		[EnumMember(Value="partial")]
 		Partial,
 		
-		[JsonProperty("total")]
+		[EnumMember(Value="total")]
 		Total,
 	}
 }
@@ -34630,22 +34631,22 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum TaskStatusEnum {
 		
-		[JsonProperty("cancelled")]
+		[EnumMember(Value="cancelled")]
 		Cancelled,
 		
-		[JsonProperty("doing")]
+		[EnumMember(Value="doing")]
 		Doing,
 		
-		[JsonProperty("done")]
+		[EnumMember(Value="done")]
 		Done,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("problem")]
+		[EnumMember(Value="problem")]
 		Problem,
 		
-		[JsonProperty("todo")]
+		[EnumMember(Value="todo")]
 		Todo,
 	}
 }
@@ -34657,22 +34658,22 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum LineStatisticsTypeEnum {
 		
-		[JsonProperty("attenuation:download")]
+		[EnumMember(Value="attenuation:download")]
 		Attenuation_download,
 		
-		[JsonProperty("attenuation:upload")]
+		[EnumMember(Value="attenuation:upload")]
 		Attenuation_upload,
 		
-		[JsonProperty("snr:download")]
+		[EnumMember(Value="snr:download")]
 		Snr_download,
 		
-		[JsonProperty("snr:upload")]
+		[EnumMember(Value="snr:upload")]
 		Snr_upload,
 		
-		[JsonProperty("synchronization:download")]
+		[EnumMember(Value="synchronization:download")]
 		Synchronization_download,
 		
-		[JsonProperty("synchronization:upload")]
+		[EnumMember(Value="synchronization:upload")]
 		Synchronization_upload,
 	}
 }
@@ -34684,10 +34685,10 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum OperatorTypeEnum {
 		
-		[JsonProperty("collect")]
+		[EnumMember(Value="collect")]
 		Collect,
 		
-		[JsonProperty("ovh")]
+		[EnumMember(Value="ovh")]
 		Ovh,
 	}
 }
@@ -34903,19 +34904,19 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum LineTestEnum {
 		
-		[JsonProperty("actionPending")]
+		[EnumMember(Value="actionPending")]
 		ActionPending,
 		
-		[JsonProperty("customerSideProblem")]
+		[EnumMember(Value="customerSideProblem")]
 		CustomerSideProblem,
 		
-		[JsonProperty("error")]
+		[EnumMember(Value="error")]
 		Error,
 		
-		[JsonProperty("noProblem")]
+		[EnumMember(Value="noProblem")]
 		NoProblem,
 		
-		[JsonProperty("ovhSideProblem")]
+		[EnumMember(Value="ovhSideProblem")]
 		OvhSideProblem,
 	}
 }
@@ -35020,16 +35021,16 @@ namespace OvhApi.Models.Xdsl.MonitoringNotifications {
 	/// </summary>
 	public enum FrequencyEnum {
 		
-		[JsonProperty("1h")]
+		[EnumMember(Value="1h")]
 		_1h,
 		
-		[JsonProperty("5m")]
+		[EnumMember(Value="5m")]
 		_5m,
 		
-		[JsonProperty("6h")]
+		[EnumMember(Value="6h")]
 		_6h,
 		
-		[JsonProperty("once")]
+		[EnumMember(Value="once")]
 		Once,
 	}
 }
@@ -35119,13 +35120,13 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum ConnectedDeviceAddressSourceEnum {
 		
-		[JsonProperty("DHCP")]
+		[EnumMember(Value="DHCP")]
 		DHCP,
 		
-		[JsonProperty("Static")]
+		[EnumMember(Value="Static")]
 		Static,
 		
-		[JsonProperty("Unknown")]
+		[EnumMember(Value="Unknown")]
 		Unknown,
 	}
 }
@@ -35164,19 +35165,19 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum SecurityTypeEnum {
 		
-		[JsonProperty("None")]
+		[EnumMember(Value="None")]
 		None,
 		
-		[JsonProperty("WEP")]
+		[EnumMember(Value="WEP")]
 		WEP,
 		
-		[JsonProperty("WPA")]
+		[EnumMember(Value="WPA")]
 		WPA,
 		
-		[JsonProperty("WPA2")]
+		[EnumMember(Value="WPA2")]
 		WPA2,
 		
-		[JsonProperty("WPAandWPA2")]
+		[EnumMember(Value="WPAandWPA2")]
 		WPAandWPA2,
 	}
 }
@@ -35188,13 +35189,13 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum AccessStatisticsTypeEnum {
 		
-		[JsonProperty("ping")]
+		[EnumMember(Value="ping")]
 		Ping,
 		
-		[JsonProperty("traffic:download")]
+		[EnumMember(Value="traffic:download")]
 		Traffic_download,
 		
-		[JsonProperty("traffic:upload")]
+		[EnumMember(Value="traffic:upload")]
 		Traffic_upload,
 	}
 }
@@ -35311,13 +35312,13 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum DslamPortStatusEnum {
 		
-		[JsonProperty("activated")]
+		[EnumMember(Value="activated")]
 		Activated,
 		
-		[JsonProperty("deactivated")]
+		[EnumMember(Value="deactivated")]
 		Deactivated,
 		
-		[JsonProperty("outofsync")]
+		[EnumMember(Value="outofsync")]
 		Outofsync,
 	}
 }
@@ -35431,13 +35432,13 @@ namespace OvhApi.Models.Xdsl {
 	/// </summary>
 	public enum DslTypeEnum {
 		
-		[JsonProperty("adsl")]
+		[EnumMember(Value="adsl")]
 		Adsl,
 		
-		[JsonProperty("sdsl")]
+		[EnumMember(Value="sdsl")]
 		Sdsl,
 		
-		[JsonProperty("vdsl")]
+		[EnumMember(Value="vdsl")]
 		Vdsl,
 	}
 }
@@ -35626,10 +35627,10 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum AddressingTypeEnum {
 		
-		[JsonProperty("DHCP")]
+		[EnumMember(Value="DHCP")]
 		DHCP,
 		
-		[JsonProperty("Static")]
+		[EnumMember(Value="Static")]
 		Static,
 	}
 }
@@ -35788,13 +35789,13 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum MTUSizeEnum {
 		
-		[JsonProperty("1432")]
+		[EnumMember(Value="1432")]
 		_1432,
 		
-		[JsonProperty("1456")]
+		[EnumMember(Value="1456")]
 		_1456,
 		
-		[JsonProperty("1492")]
+		[EnumMember(Value="1492")]
 		_1492,
 	}
 }
@@ -35920,13 +35921,13 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum EasyFirewallLevelEnum {
 		
-		[JsonProperty("BlockAll")]
+		[EnumMember(Value="BlockAll")]
 		BlockAll,
 		
-		[JsonProperty("Disabled")]
+		[EnumMember(Value="Disabled")]
 		Disabled,
 		
-		[JsonProperty("Normal")]
+		[EnumMember(Value="Normal")]
 		Normal,
 	}
 }
@@ -35938,10 +35939,10 @@ namespace OvhApi.Models.Xdsl.XdslModemConfig {
 	/// </summary>
 	public enum ChannelModeEnum {
 		
-		[JsonProperty("Auto")]
+		[EnumMember(Value="Auto")]
 		Auto,
 		
-		[JsonProperty("Manual")]
+		[EnumMember(Value="Manual")]
 		Manual,
 	}
 }
