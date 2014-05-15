@@ -25,7 +25,8 @@ namespace OVHApi.Parser
 
 			if (operation.ResponseType.EndsWith("[]"))
 			{
-				if (result[result.Length - 1] == 's') // remove existing 's'
+
+				if (result[result.Length - 1] == 's' && result[result.Length - 2] != 'm' && result[result.Length - 3] != 'S') // remove existing 's'
 				{
 					result.Remove(result.Length - 1, 1);
 				}
@@ -150,7 +151,7 @@ namespace OVHApi.Parser
 
 			if (type.Contains("."))
 			{
-				return ModelsNamespaces + FixCase(result);
+				return ModelsNamespaces + FixCase(FixNamespace(result));
 			}
 
 			if (type.EndsWith("[]"))
@@ -398,7 +399,21 @@ namespace OVHApi.Parser
 
 		public static string GetNamespace(Model model)
 		{
-			return ModelsNamespaces + Util.FixCase(model.Namespace);
+			return ModelsNamespaces + Util.FixCase(Util.FixNamespace(model.Namespace));
+		}
+
+		/// <summary>
+		/// Add an '_' before namespaces starting with a number
+		/// </summary>
+		/// <param name="ns"></param>
+		/// <returns></returns>
+		private static string FixNamespace(string ns)
+		{
+			return Regex.Replace(ns, @"\.[0-9]", delegate(Match match)
+				{
+					string v = match.ToString();
+					return "._" + v.Substring(1);
+				});
 		}
 
 		private static string GetMethodPrefix(Operation operation)
