@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>OVHApi.NET</id>
+    <title>OVHApi.NET</title>
+    <version>$version$</version>
+    <authors>Vincent DARON</authors>
+    <owners>Vincent DARON</owners>
+    <licenseUrl>https://github.com/vdaron/ovhapicil/blob/develop/LICENCE</licenseUrl>
+    <projectUrl>https://github.com/vdaron/ovhapicil/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First official release.</releaseNotes>
+    <copyright>Copyright 2014 - Vincent DARON</copyright>
+    <tags>MusicXml</tags>
+  </metadata>
+</package>
