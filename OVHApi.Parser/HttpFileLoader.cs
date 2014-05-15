@@ -25,6 +25,7 @@ namespace OVHApi.Parser
 				                                 "https://api.ovh.com/1.0/dedicatedCloud.json",
 				                                 "https://api.ovh.com/1.0/domain.json",
 				                                 "https://api.ovh.com/1.0/email/exchange.json",
+				                                 "https://api.ovh.com/1.0/hosting/web.json",
 				                                 "https://api.ovh.com/1.0/ip.json",
 				                                 "https://api.ovh.com/1.0/license/cpanel.json",
 				                                 "https://api.ovh.com/1.0/license/directadmin.json",
