@@ -2,8 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("OVHApi.net 4.0 Async")]
-[assembly: AssemblyDescription("Async .NET 4.0 wrapper for OVH API")]
+[assembly: AssemblyTitle("OVHApi.net 4.0 Sync")]
+[assembly: AssemblyDescription("Sync .NET 4.0 wrapper for OVH API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("OVHApi.net")]
@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
-[assembly: Guid("6c4dd5d2-30ae-4ebe-b8d8-584eb4551618")]
+[assembly: Guid("e7976f57-84df-4d6e-bafc-d47a83908c81")]
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

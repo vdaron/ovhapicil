@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 using Newtonsoft.Json;
@@ -9,9 +8,14 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Newtonsoft.Json.Converters;
 using OVHApi.Tools;
+using OVHApi.Http;
 
 namespace OVHApi
 {
+#if ASYNC
+    using System.Net.Http;
+#endif
+
 	public enum OvhInfra
 	{
 		Europe, Canada
@@ -19,15 +23,6 @@ namespace OVHApi
 
 	public partial class OvhApiClient
 	{
-		class JsonContent: StringContent
-		{
-			public JsonContent(string str)
-				:base(str)
-			{
-				base.Headers.ContentType.MediaType = "application/json";
-			}
-		}
-
 		private static readonly Uri OVH_API_EU = new Uri("https://api.ovh.com/1.0");         // Root URL of OVH european API
 		private static readonly Uri OVH_API_CA = new Uri("https://ca.api.ovh.com/1.0");      // Root URL of OVH canadian API
 

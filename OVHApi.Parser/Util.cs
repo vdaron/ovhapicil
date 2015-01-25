@@ -250,8 +250,10 @@ namespace OVHApi.Parser
 
 		public static string GetMethodReturnTaskParameter(string type, bool async = true)
 		{
-			if(type == "void")
-				return String.Empty;
+            if (type == "void")
+            {
+                return async ? String.Empty : "void";
+            }
 
             var item = GetType(type);
 

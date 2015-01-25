@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 using OVHApi.Tools;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 

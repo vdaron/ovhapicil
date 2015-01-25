@@ -12,6 +12,7 @@ namespace OVHApi
     using System.Security.Cryptography;
     using Newtonsoft.Json.Converters;
     using OVHApi.Tools;
+    using OVHApi.Http;
     
     partial class OvhApiClient
     {

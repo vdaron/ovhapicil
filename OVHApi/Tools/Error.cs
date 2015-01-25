@@ -1,3 +1,4 @@
+
 namespace OVHApi.Tools
 {
 	public class Error
