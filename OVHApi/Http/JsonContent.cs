@@ -20,12 +20,10 @@ namespace OVHApi.Http
         }
 
         public JsonContent(string content, Encoding encoding)
-            : base(content, encoding)
+            : base(content, encoding, "application/json; charset=" + encoding.WebName)
         {
 #if ASYNC
             base.Headers.ContentType.MediaType = "application/json";
-#else
-            this.Headers.Set(HttpRequestHeader.ContentType, "application/json; charset=" + encoding.WebName);
 #endif
         }
     }

@@ -12,7 +12,13 @@ namespace OVHApi.Http
         public StringContent(string content, Encoding encoding)
             : base(StringContent.GetContentByteArray(content, encoding))
         {
-            this.Headers.Set(HttpRequestHeader.ContentType, "text/plain; charset=" + encoding.WebName);
+            this.Headers[HttpRequestHeader.ContentType] = "text/plain; charset=" + encoding.WebName;
+        }
+
+        public StringContent(string content, Encoding encoding, string contentType)
+            : base(StringContent.GetContentByteArray(content, encoding))
+        {
+            this.Headers[HttpRequestHeader.ContentType] = contentType ?? "text/plain; charset=" + encoding.WebName;
         }
 
         private static byte[] GetContentByteArray(string content, Encoding encoding)

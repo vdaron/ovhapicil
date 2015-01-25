@@ -36,26 +36,20 @@ namespace OVHApi.Http
             var httpRequest = (HttpWebRequest)HttpWebRequest.Create(request.RequestUri);
             httpRequest.Method = request.Method.ToString().ToUpperInvariant();
 
-            foreach (string header in this.defaultRequestHeaders)
-            {
-                httpRequest.Headers.Set(header, this.defaultRequestHeaders[header]);
-            }
-
-            foreach (string header in request.Headers)
-            {
-                httpRequest.Headers.Set(header, request.Headers[header]);
-            }
+            this.SetHeaders(this.defaultRequestHeaders, httpRequest);
+            this.SetHeaders(request.Headers, httpRequest);
 
             if (request.Content != null)
             {
-                foreach (string header in request.Content.Headers)
-                {
-                    httpRequest.Headers.Set(header, request.Content.Headers[header]);
-                }
+                this.SetHeaders(request.Content.Headers, httpRequest);
 
-                var requestStream = httpRequest.GetRequestStream();
                 var bytes = request.Content.GetBytes();
-                requestStream.Write(bytes, 0, bytes.Length);
+                if (bytes.Length > 0)
+                {
+                    var requestStream = httpRequest.GetRequestStream();
+                    requestStream.Write(bytes, 0, bytes.Length);
+                    requestStream.Flush();
+                }
             }
 
             HttpWebResponse httpResponse;
@@ -74,12 +68,28 @@ namespace OVHApi.Http
             }
         }
 
+        private void SetHeaders(WebHeaderCollection collection, HttpWebRequest httpRequest)
+        {
+            foreach (string header in collection)
+            {
+                if (header == "Content-Type")
+                {
+                    httpRequest.ContentType = collection[header];
+                }
+                else
+                {
+                    httpRequest.Headers[header] = collection[header];
+                }
+            }
+        }
+
         private HttpResponseMessage CreateResponse(HttpRequestMessage request, HttpWebResponse httpResponse)
         {
             HttpResponseMessage response;
             response = new HttpResponseMessage(httpResponse.StatusCode);
             response.Request = request;
             response.CopyHeadersFrom(httpResponse.Headers);
+            response.StatusCode = httpResponse.StatusCode;
 
             MemoryStream memory;
             var contentLength = response.Headers[HttpResponseHeader.ContentLength];

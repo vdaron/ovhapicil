@@ -12,6 +12,25 @@ namespace OVHApi
 
     partial class OvhApiClient
     {
+        /// <summary>
+        /// Request a Consumer Key to the API. That key will need to be validated with the link returned in the answer.
+        /// </summary>
+        /// <param name="accessRules">list of dictionaries listing the accesses your application will need. Each <see cref="AccessRule"/> is composed of method, of the four HTTP methods, and path, the path you will need access for, with * as a wildcard</param>
+        /// <param name="redirectUrl">Url where you want the user to be redirected to after he successfully validates the consumer key</param>
+        public CredentialsResponse RequestCredential(IEnumerable<AccessRule> accessRules, string redirectUrl = null)
+        {
+            Ensure.NotNull("accessRules", accessRules);
+
+            CredentialsRequest cmd = new CredentialsRequest();
+            cmd.AccessRules.AddRange(accessRules);
+            cmd.Redirection = redirectUrl;
+
+            if (cmd.AccessRules.Count == 0)
+                throw new ArgumentException("You must specify at least one accessRule");
+
+            return RawCall<CredentialsResponse>(HttpMethod.Post, "/auth/credential", cmd);
+        }
+
         private void RawCall(HttpMethod method, string path, object content = null)
         {
             var request = BuildHttpRequest(method, path, content);

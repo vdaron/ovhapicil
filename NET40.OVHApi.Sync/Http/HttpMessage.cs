@@ -32,7 +32,7 @@ namespace OVHApi.Http
             var headers = this.Headers;
             foreach (string header in collection)
             {
-                headers.Set(header, collection[header]);
+                headers[header] = collection[header];
             }
         }
     }

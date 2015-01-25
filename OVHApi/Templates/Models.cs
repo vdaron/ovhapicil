@@ -30186,7 +30186,7 @@ namespace OvhApi.Models.Sms {
 		[JsonProperty("creditsHoldByQuota")]
 		private double _creditsHoldByQuota;
 		
-		[JsonProperty("automaticRecreditAmount")]
+		[JsonProperty("automaticRecreditAmount", NullValueHandling = NullValueHandling.Ignore)]
 		private OvhApi.Models.Sms.PackQuantityAutomaticRecreditEnum _automaticRecreditAmount;
 		
 		[JsonProperty("templates")]
