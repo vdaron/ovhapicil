@@ -2,6 +2,7 @@
 <#@ assembly name="$(SolutionDir)/OVHApi.Parser/bin/Debug/OVHApi.Parser.exe" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="OVHApi.Parser" #>
+<#@ output extension=".sync.cs" #>
 <#
 	List<OvhApi> apis = new List<OvhApi>();
 	apis.AddRange(new HttpFileLoader().Load());

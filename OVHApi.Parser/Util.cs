@@ -137,7 +137,7 @@ namespace OVHApi.Parser
 
 		public static string GetType(string type)
 		{
-			//TODO: Process Recursive Generic types (complexType.UnitAndValues<xdsl.TimestampAndValue>>)
+			// TODO: Process Recursive Generic types (complexType.UnitAndValues<xdsl.TimestampAndValue>>)
 			bool isArray = false;
 			string result = type;
 
@@ -146,13 +146,30 @@ namespace OVHApi.Parser
 			if(r.IsMatch(result))
 			{
 				Match genericMatch = r.Match(type);
-				result = r.Replace(result,"<" + GetType(genericMatch.Groups[1].Value) + ">");
+                var genericResult = GetType(genericMatch.Groups[1].Value);
+
+                if (genericResult.StartsWith("complexType"))
+                {
+                    genericResult = genericResult.Replace("complexType", "OvhApi.Models.ComplexType");
+                }
+
+                result = r.Replace(result, "<" + genericResult + ">");
 			}
 
 			if (type.Contains("."))
 			{
+            if (type.StartsWith("complexType"))
+            {
+                type = type.Replace("complexType", "OvhApi.Models.ComplexType");
+            }
+
 				return ModelsNamespaces + FixCase(FixNamespace(result));
 			}
+
+            if (type.StartsWith("complexType"))
+            {
+                type = type.Replace("complexType", "OvhApi.Models.ComplexType");
+            }
 
 			if (type.EndsWith("[]"))
 			{
@@ -173,6 +190,9 @@ namespace OVHApi.Parser
 				case "datetime":
 				case "date":
 					result = "DateTime";
+					break;
+				case "time":
+					result = "TimeSpan";
 					break;
 				case "ipv4":
 				case "ipv6":
@@ -195,7 +215,7 @@ namespace OVHApi.Parser
 		public static string GetEnumValue(string name)
 		{
 			string n = FixCase(name);
-			n = n.Replace(":", "_").Replace('-', '_').Replace('.', '_').Replace('/', '_').Replace("+","Plus");
+            n = n.Replace(":", "_").Replace('-', '_').Replace('.', '_').Replace('/', '_').Replace("+", "Plus").Replace(" ", "_").Replace("(", "_").Replace(")", "_");
 			if (char.IsDigit(n[0]))
 			{
 				n = "_" + n;
@@ -228,14 +248,24 @@ namespace OVHApi.Parser
 			return '_' + n;
 		}
 
-		public static string GetMethodReturnTaskParameter(string type)
+		public static string GetMethodReturnTaskParameter(string type, bool async = true)
 		{
 			if(type == "void")
 				return String.Empty;
-			return "<" + GetType(type) + ">";
+
+            var item = GetType(type);
+
+            if (item.Contains("complexType"))
+            {
+                item = item.Replace("complexType", "OvhApi.Models.ComplexType");
+            }
+
+            if (async)
+                return "<" + item + ">";
+            return item;
 		}
 
-		public static string CreateParameterChecks(Parameter[] parameters)
+		public static string CreateParameterChecks(Parameter[] parameters, int indent = 3)
 		{
 			StringBuilder result = new StringBuilder();
 			for (int i = 0; i < parameters.Length; i++)
@@ -245,6 +275,7 @@ namespace OVHApi.Parser
 
 				string type = GetType(parameters[i].DataType);
 
+                result.Append(GetIndent(indent));
 				switch (type)
 				{
 					case "string":
@@ -260,6 +291,17 @@ namespace OVHApi.Parser
 			}
 			return result.ToString();
 		}
+
+        public static string GetIndent(int value)
+        {
+            var chars = new char[value];
+            for (int i = 0; i < chars.Length; i++)
+            {
+                chars[i] = '\t';
+            }
+
+            return new string(chars);
+        }
 
 		public static string GetApiPath(Api api, Operation operation)
 		{
@@ -289,10 +331,10 @@ namespace OVHApi.Parser
 			if (hasQueryString)
 				result.AppendFormat("{{{0}}}",count);
 			result.Append('"');
-
+            
 			foreach (var arg in args)
 			{
-				result.AppendFormat(",System.Net.WebUtility.UrlEncode({0}.ToString())", arg);
+				result.AppendFormat(",System.Uri.EscapeDataString({0}.ToString())", arg);
 			}
 			if (hasQueryString)
 				result.Append(",queryString");
@@ -301,7 +343,7 @@ namespace OVHApi.Parser
 			return result.ToString();
 		}
 
-		public static string CreateQueryString(Parameter[] parameters)
+        public static string CreateQueryString(Parameter[] parameters, int indent = 3)
 		{
 			//var queryString = new QueryString();
 			//queryString["fieldType"] = fieldType;
@@ -312,11 +354,14 @@ namespace OVHApi.Parser
 			{
 				if (parameter.ParamType == ParamType.Query)
 				{
-					if (result.Length == 0)
+                    if (result.Length == 0)
 					{
-						result.AppendLine("var queryString = new QueryString();");
+                        result.Append(GetIndent(indent));
+                        result.AppendLine("var queryString = new QueryString();");
 					}
-					result.AppendLine(String.Format("queryString.Add(\"{0}\",{1});", parameter.Name, GetParameterName(parameter)));
+
+                    result.Append(GetIndent(indent));
+                    result.AppendLine(String.Format("queryString.Add(\"{0}\",{1});", parameter.Name, GetParameterName(parameter)));
 				}
 			}
 
@@ -344,19 +389,25 @@ namespace OVHApi.Parser
 			return result.ToString();
 		}
 
-		public static string CreateMethodReturn(Api api, Operation operation)
+        public static string CreateMethodReturn(Api api, Operation operation, int indent = 3, bool async = true)
 		{
 			StringBuilder result = new StringBuilder();
 
 			string methodReturnType = GetMethodReturnTaskParameter(operation.ResponseType);
+
+            result.Append(GetIndent(indent));
 
 			if (methodReturnType != String.Empty)
 			{
 				result.Append("return ");
 			}
 
-			result.Append("await RawCall");
-			result.Append(methodReturnType);
+            if (async)
+                result.Append("await RawCall");
+            else
+                result.Append("RawCall");
+            
+            result.Append(methodReturnType);
 			result.AppendFormat("(HttpMethod.{0},", FirstUpperCase(operation.HttpMethod));
 			result.Append(GetApiPath(api,operation));
 			if (operation.Parameters.Any(parameter => parameter.ParamType == ParamType.Body))

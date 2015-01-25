@@ -21,7 +21,7 @@ namespace OVHApi
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -37,7 +37,7 @@ namespace OVHApi
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cdn/dedicated/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cdn/dedicated/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Return quota history
@@ -51,11 +51,10 @@ namespace OVHApi
 			Ensure.NotNull("period",period);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/quota{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Cdnanycast.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/quota{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -69,7 +68,7 @@ namespace OVHApi
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Anycast>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Anycast>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -85,7 +84,7 @@ namespace OVHApi
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Domain>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Domain>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -103,7 +102,7 @@ namespace OVHApi
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cdn/dedicated/{0}/domains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cdn/dedicated/{0}/domains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove a domain from the CDN
@@ -119,7 +118,7 @@ namespace OVHApi
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/domains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/domains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Backend associated to the domain
@@ -135,7 +134,7 @@ namespace OVHApi
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/backends",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/backends",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Add a backend IP
@@ -155,7 +154,7 @@ namespace OVHApi
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Backend>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/backends",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdnanycast.Backend>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/backends",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -173,7 +172,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Backend>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/backends/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Backend>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/backends/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Remove a backend IP
@@ -191,7 +190,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<System.Net.IPAddress>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/domains/{1}/backends/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<System.Net.IPAddress>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/domains/{1}/backends/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Task associated to the domain
@@ -207,7 +206,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/tasks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -225,7 +224,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/tasks/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/tasks/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Flush all cache
@@ -241,7 +240,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/flush",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/flush",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Return stats about a domain
@@ -261,13 +260,12 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("domain",domain);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("value",value);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/statistics{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Cdnanycast.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/statistics{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),queryString));
 		}
 		/// <summary>
 		/// Cache rules associated to the domain
@@ -282,11 +280,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("domain",domain);
 
-			var queryString = new QueryString();
 			queryString.Add("fileMatch",fileMatch);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),queryString));
 		}
 		/// <summary>
 		/// Add a cache rule to a domain
@@ -315,7 +312,7 @@ requestBody.Add("ttl",ttl);
 requestBody.Add("fileMatch",fileMatch);
 requestBody.Add("fileType",fileType);
 
-			return await RawCall<OvhApi.Models.Cdnanycast.CacheRule>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdnanycast.CacheRule>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -333,7 +330,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.CacheRule>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(cacheRuleId.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.CacheRule>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(cacheRuleId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -353,7 +350,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(cacheRuleId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(cacheRuleId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove cache rule
@@ -371,7 +368,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(cacheRuleId.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(cacheRuleId.ToString())));
 		}
 		/// <summary>
 		/// Task associated to the cache rule
@@ -389,7 +386,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}/tasks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(cacheRuleId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(cacheRuleId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -409,7 +406,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}/tasks/{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(cacheRuleId.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}/tasks/{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(cacheRuleId.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Flush the cache
@@ -427,7 +424,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}/flush",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(cacheRuleId.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains/{1}/cacheRules/{2}/flush",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(cacheRuleId.ToString())));
 		}
 		/// <summary>
 		/// Domains associated to this anycast
@@ -441,7 +438,7 @@ requestBody.Add("fileType",fileType);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/domains",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a domain on CDN
@@ -459,7 +456,7 @@ requestBody.Add("fileType",fileType);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("domain",domain);
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Domain>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdnanycast.Domain>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/domains",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -473,7 +470,7 @@ requestBody.Add("domain",domain);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Ssl>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/ssl",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Ssl>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/ssl",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a SSL on CDN
@@ -499,7 +496,7 @@ requestBody.Add("certificate",certificate);
 requestBody.Add("name",name);
 requestBody.Add("key",key);
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Ssl>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/ssl",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdnanycast.Ssl>(HttpMethod.Post,String.Format("/cdn/dedicated/{0}/ssl",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove SSL of the CDN
@@ -513,7 +510,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/ssl",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Delete,String.Format("/cdn/dedicated/{0}/ssl",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Task associated to the ssl
@@ -527,12 +524,11 @@ requestBody.Add("key",key);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("function",function);
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/ssl/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/ssl/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -548,7 +544,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/ssl/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Task>(HttpMethod.Get,String.Format("/cdn/dedicated/{0}/ssl/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -582,7 +578,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Cdnanycast.Pop>(HttpMethod.Get,String.Format("/cdn/dedicated/pops/{0}",System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Cdnanycast.Pop>(HttpMethod.Get,String.Format("/cdn/dedicated/pops/{0}",System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -596,7 +592,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cdn/website/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cdn/website/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -612,7 +608,7 @@ requestBody.Add("key",key);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cdn/website/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cdn/website/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -626,7 +622,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Website>(HttpMethod.Get,String.Format("/cdn/website/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Website>(HttpMethod.Get,String.Format("/cdn/website/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -640,7 +636,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Zone>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Zone>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Configure a zone on CDN
@@ -658,7 +654,7 @@ requestBody.Add("key",key);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("zone",zone);
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Zone>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdn.Website.Zone>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove a zone from the CDN
@@ -672,7 +668,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Delete,String.Format("/cdn/website/{0}/zone",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Delete,String.Format("/cdn/website/{0}/zone",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -688,7 +684,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Domain>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Domain>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Remove a domain from the CDN
@@ -704,7 +700,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Delete,String.Format("/cdn/website/{0}/zone/domains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Delete,String.Format("/cdn/website/{0}/zone/domains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Task associated to this domain
@@ -720,7 +716,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}/tasks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -738,7 +734,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}/tasks/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}/tasks/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Flush all cache
@@ -754,7 +750,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone/domains/{1}/flush",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone/domains/{1}/flush",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Get statistics about request on CDN, bandwidth value in Bytes
@@ -774,13 +770,12 @@ requestBody.Add("zone",zone);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("domain",domain);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("value",value);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}/statistics{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Cdn.Website.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains/{1}/statistics{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString()),queryString));
 		}
 		/// <summary>
 		/// Domain associated to this zone
@@ -794,7 +789,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/domains",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Configure a domain on CDN
@@ -812,7 +807,7 @@ requestBody.Add("zone",zone);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("domain",domain);
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Domain>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone/domains",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdn.Website.Domain>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone/domains",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Backend associated to this zone
@@ -826,7 +821,7 @@ requestBody.Add("domain",domain);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Configure a backend on the zone
@@ -844,7 +839,7 @@ requestBody.Add("domain",domain);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ipv4",ipv4);
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone/backends",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Post,String.Format("/cdn/website/{0}/zone/backends",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -860,7 +855,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Backend>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipv4.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Backend>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipv4.ToString())));
 		}
 		/// <summary>
 		/// Remove a backend from the zone
@@ -876,7 +871,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Delete,String.Format("/cdn/website/{0}/zone/backends/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipv4.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Delete,String.Format("/cdn/website/{0}/zone/backends/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipv4.ToString())));
 		}
 		/// <summary>
 		/// Task associated to this backend
@@ -892,7 +887,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends/{1}/tasks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipv4.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends/{1}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipv4.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -910,7 +905,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends/{1}/tasks/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipv4.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/backends/{1}/tasks/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipv4.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Task associated to this zone
@@ -924,7 +919,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/tasks",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -940,7 +935,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Website.Task>(HttpMethod.Get,String.Format("/cdn/website/{0}/zone/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -966,7 +961,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -982,7 +977,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cdn/webstorage/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cdn/webstorage/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -996,7 +991,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Webstorage.Account>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Webstorage.Account>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Return stats about bandwidth consumption
@@ -1012,12 +1007,11 @@ requestBody.Add("ipv4",ipv4);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Cdn.Webstorage.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}/statistics{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Cdn.Webstorage.StatsDataType[]>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}/statistics{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Gives for customer credentials to accesss swift account
@@ -1031,7 +1025,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cdn.Webstorage.AccountCredentials>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}/credentials",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Cdn.Webstorage.AccountCredentials>(HttpMethod.Get,String.Format("/cdn/webstorage/{0}/credentials",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -1057,7 +1051,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pcs",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pcs",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1073,7 +1067,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1091,7 +1085,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pcs/{1}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pcs/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1107,7 +1101,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pcs.Account>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<OvhApi.Models.Pcs.Account>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Tasks associated to this PCS account
@@ -1123,7 +1117,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/tasks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1141,7 +1135,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pcs.Task>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/tasks/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Pcs.Task>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/tasks/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// View Account Total Usage (bytes)
@@ -1157,7 +1151,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValue<double>>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/globalUsage",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValue<double>>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/globalUsage",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Gives for customer credentials to accesss swift account
@@ -1173,7 +1167,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Cloud.Pcs.AccountCredentials>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/credentials",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<OvhApi.Models.Cloud.Pcs.AccountCredentials>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/credentials",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Reset the credentials of the swift account and send them by email
@@ -1189,7 +1183,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pcs.Task>(HttpMethod.Post,String.Format("/cloud/{0}/pcs/{1}/resetCredentials",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<OvhApi.Models.Pcs.Task>(HttpMethod.Post,String.Format("/cloud/{0}/pcs/{1}/resetCredentials",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1207,7 +1201,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pcs.Billing>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/billing/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString()),System.Uri.EscapeDataString(billingId.ToString())));
+			return await RawCall<OvhApi.Models.Pcs.Billing>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/billing/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString()),System.Net.WebUtility.UrlEncode(billingId.ToString())));
 		}
 		/// <summary>
 		/// cloud storage billing items
@@ -1223,7 +1217,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/billing",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcsServiceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cloud/{0}/pcs/{1}/billing",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcsServiceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1239,7 +1233,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1257,7 +1251,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pca/{1}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pca/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// View account current total sessions usage (bytes)
@@ -1273,7 +1267,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<long>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/usage",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString())));
+			return await RawCall<long>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/usage",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString())));
 		}
 		/// <summary>
 		/// cloud archives sessions for account
@@ -1288,11 +1282,10 @@ requestBody.Add("ipv4",ipv4);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("pcaServiceName",pcaServiceName);
 
-			var queryString = new QueryString();
 			queryString.Add("name",name);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1310,7 +1303,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.Session>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(sessionId.ToString())));
+			return await RawCall<OvhApi.Models.Pca.Session>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(sessionId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1330,7 +1323,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pca/{1}/sessions/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(sessionId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pca/{1}/sessions/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(sessionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Create a delete task for all files in session
@@ -1348,7 +1341,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Delete,String.Format("/cloud/{0}/pca/{1}/sessions/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(sessionId.ToString())));
+			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Delete,String.Format("/cloud/{0}/pca/{1}/sessions/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(sessionId.ToString())));
 		}
 		/// <summary>
 		/// cloud archives files in session
@@ -1365,11 +1358,10 @@ requestBody.Add("ipv4",ipv4);
 			Ensure.NotNullNorEmpty("pcaServiceName",pcaServiceName);
 			Ensure.NotNullNorEmpty("sessionId",sessionId);
 
-			var queryString = new QueryString();
 			queryString.Add("name",name);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions/{2}/files{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(sessionId.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions/{2}/files{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(sessionId.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1389,7 +1381,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.File>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions/{2}/files/{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(sessionId.ToString()),System.Uri.EscapeDataString(fileId.ToString())));
+			return await RawCall<OvhApi.Models.Pca.File>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/sessions/{2}/files/{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(sessionId.ToString()),System.Net.WebUtility.UrlEncode(fileId.ToString())));
 		}
 		/// <summary>
 		/// Create a restore task for session
@@ -1407,7 +1399,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Post,String.Format("/cloud/{0}/pca/{1}/sessions/{2}/restore",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(sessionId.ToString())));
+			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Post,String.Format("/cloud/{0}/pca/{1}/sessions/{2}/restore",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(sessionId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1423,7 +1415,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.Account>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString())));
+			return await RawCall<OvhApi.Models.Pca.Account>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1441,7 +1433,7 @@ requestBody.Add("ipv4",ipv4);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pca/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/cloud/{0}/pca/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// cloud archives tasks for account
@@ -1459,14 +1451,13 @@ requestBody.Add("ipv4",ipv4);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("pcaServiceName",pcaServiceName);
 
-			var queryString = new QueryString();
 			queryString.Add("todoDate.to",todoDate_to);
 			queryString.Add("function",function);
 			queryString.Add("status",status);
 			queryString.Add("todoDate.from",todoDate_from);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/tasks{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/tasks{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a cloud archives task
@@ -1493,7 +1484,7 @@ requestBody.Add("sessionId",sessionId);
 requestBody.Add("taskFunction",taskFunction);
 requestBody.Add("fileIds",fileIds);
 
-			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Post,String.Format("/cloud/{0}/pca/{1}/tasks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Post,String.Format("/cloud/{0}/pca/{1}/tasks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1511,7 +1502,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/tasks/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Pca.Task>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/tasks/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1529,7 +1520,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Pca.Billing>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/billing/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),System.Uri.EscapeDataString(billingId.ToString())));
+			return await RawCall<OvhApi.Models.Pca.Billing>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/billing/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),System.Net.WebUtility.UrlEncode(billingId.ToString())));
 		}
 		/// <summary>
 		/// cloud Archives billing items
@@ -1546,13 +1537,12 @@ requestBody.Add("fileIds",fileIds);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("pcaServiceName",pcaServiceName);
 
-			var queryString = new QueryString();
 			queryString.Add("date.to",date_to);
 			queryString.Add("date.from",date_from);
 			queryString.Add("billed",billed);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/billing{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(pcaServiceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca/{1}/billing{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(pcaServiceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// List available services
@@ -1566,7 +1556,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/cloud/{0}/pca",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -1604,7 +1594,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.Templates>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}",System.Uri.EscapeDataString(templateName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.Templates>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}",System.Net.WebUtility.UrlEncode(templateName.ToString())));
 		}
 		/// <summary>
 		/// Partitioning schemes available on this template
@@ -1618,7 +1608,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme",System.Uri.EscapeDataString(templateName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme",System.Net.WebUtility.UrlEncode(templateName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1634,7 +1624,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitioningSchemes>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme/{1}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitioningSchemes>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme/{1}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())));
 		}
 		/// <summary>
 		/// Partitions defined in this partitioning scheme
@@ -1650,7 +1640,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme/{1}/partition",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme/{1}/partition",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1668,7 +1658,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitions>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString()),System.Uri.EscapeDataString(mountpoint.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitions>(HttpMethod.Get,String.Format("/dedicated/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString()),System.Net.WebUtility.UrlEncode(mountpoint.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1682,7 +1672,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1698,7 +1688,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/nas/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/nas/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1712,7 +1702,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nas.Nas>(HttpMethod.Get,String.Format("/dedicated/nas/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nas.Nas>(HttpMethod.Get,String.Format("/dedicated/nas/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1728,7 +1718,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/nas/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/nas/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// View task list
@@ -1742,12 +1732,11 @@ requestBody.Add("fileIds",fileIds);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("operation",operation);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/task{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/task{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1763,7 +1752,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Get partition list
@@ -1777,7 +1766,7 @@ requestBody.Add("fileIds",fileIds);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a  new partition
@@ -1801,7 +1790,7 @@ requestBody.Add("protocol",protocol);
 requestBody.Add("partitionName",partitionName);
 requestBody.Add("size",size);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nas/{0}/partition",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nas/{0}/partition",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get quota for this partition
@@ -1817,7 +1806,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/quota",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/quota",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Set a new quota
@@ -1840,7 +1829,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("uid",uid);
 requestBody.Add("size",size);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nas/{0}/partition/{1}/quota",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nas/{0}/partition/{1}/quota",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1858,7 +1847,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nas.Quota>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/quota/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(uid.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nas.Quota>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/quota/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(uid.ToString())));
 		}
 		/// <summary>
 		/// Delete a given quota
@@ -1876,7 +1865,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nas/{0}/partition/{1}/quota/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(uid.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nas/{0}/partition/{1}/quota/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(uid.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1892,7 +1881,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nas.Partition>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nas.Partition>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -1910,7 +1899,7 @@ requestBody.Add("size",size);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/nas/{0}/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/nas/{0}/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete this partition
@@ -1926,7 +1915,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nas/{0}/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nas/{0}/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Get all IPs that can be used in the ACL
@@ -1942,7 +1931,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/authorizableIps",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/authorizableIps",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// get ACL for this partition
@@ -1958,7 +1947,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/access",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/access",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Add an Acl to this  partition
@@ -1978,7 +1967,7 @@ requestBody.Add("size",size);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nas/{0}/partition/{1}/access",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nas/{0}/partition/{1}/access",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -1996,7 +1985,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nas.Access>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/access/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nas.Access>(HttpMethod.Get,String.Format("/dedicated/nas/{0}/partition/{1}/access/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Delete a given snapshot
@@ -2014,7 +2003,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nas/{0}/partition/{1}/access/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nas/{0}/partition/{1}/access/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -2040,7 +2029,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -2056,7 +2045,7 @@ requestBody.Add("ip",ip);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/nasha/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/nasha/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2070,7 +2059,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nasha.Storage>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nasha.Storage>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -2086,7 +2075,7 @@ requestBody.Add("ip",ip);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/nasha/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/nasha/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// View task list
@@ -2100,12 +2089,11 @@ requestBody.Add("ip",ip);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("operation",operation);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/task{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/task{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2121,7 +2109,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Get partition list
@@ -2135,7 +2123,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new partition
@@ -2159,7 +2147,7 @@ requestBody.Add("protocol",protocol);
 requestBody.Add("partitionName",partitionName);
 requestBody.Add("size",size);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get quota for this partition
@@ -2175,7 +2163,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/quota",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/quota",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Set a new quota
@@ -2198,7 +2186,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("uid",uid);
 requestBody.Add("size",size);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition/{1}/quota",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition/{1}/quota",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2216,7 +2204,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nasha.Quota>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/quota/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(uid.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nasha.Quota>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/quota/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(uid.ToString())));
 		}
 		/// <summary>
 		/// Delete a given quota
@@ -2234,7 +2222,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}/quota/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(uid.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}/quota/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(uid.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2250,7 +2238,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nasha.Partition>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nasha.Partition>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -2268,7 +2256,7 @@ requestBody.Add("size",size);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/nasha/{0}/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/nasha/{0}/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete this partition
@@ -2284,7 +2272,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Get all RIPE/ARIN blocks that can be used in the ACL
@@ -2300,7 +2288,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/authorizableBlocks",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/authorizableBlocks",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Get all IPs that can be used in the ACL
@@ -2316,7 +2304,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/authorizableIps",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/authorizableIps",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// get ACL for this partition
@@ -2332,7 +2320,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/access",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/access",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Add a new ACL entry
@@ -2352,7 +2340,7 @@ requestBody.Add("size",size);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition/{1}/access",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition/{1}/access",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2370,7 +2358,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nasha.Access>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/access/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nasha.Access>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/access/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Delete an ACL entry
@@ -2388,7 +2376,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}/access/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}/access/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Get scheduled snapshot types for this partition
@@ -2404,7 +2392,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Storage.SnapshotEnum[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Storage.SnapshotEnum[]>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())));
 		}
 		/// <summary>
 		/// Schedule a new snapshot type
@@ -2424,7 +2412,7 @@ requestBody.Add("ip",ip);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("snapshotType",snapshotType);
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Post,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2442,7 +2430,7 @@ requestBody.Add("snapshotType",snapshotType);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Nasha.Snapshot>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(snapshotType.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Nasha.Snapshot>(HttpMethod.Get,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(snapshotType.ToString())));
 		}
 		/// <summary>
 		/// Delete a given snapshot
@@ -2460,7 +2448,7 @@ requestBody.Add("snapshotType",snapshotType);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partitionName.ToString()),System.Uri.EscapeDataString(snapshotType.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.NasTask.Task>(HttpMethod.Delete,String.Format("/dedicated/nasha/{0}/partition/{1}/snapshot/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partitionName.ToString()),System.Net.WebUtility.UrlEncode(snapshotType.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -2486,7 +2474,7 @@ requestBody.Add("snapshotType",snapshotType);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicated/server/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicated/server/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -2502,7 +2490,7 @@ requestBody.Add("snapshotType",snapshotType);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Move an Ip failover to this server
@@ -2520,7 +2508,7 @@ requestBody.Add("snapshotType",snapshotType);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/ipMove",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/ipMove",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2534,7 +2522,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Dedicated>(HttpMethod.Get,String.Format("/dedicated/server/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Dedicated>(HttpMethod.Get,String.Format("/dedicated/server/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -2550,7 +2538,7 @@ requestBody.Add("ip",ip);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Merge a splitted block and route it to the choosen server. You cannot undo this operation
@@ -2568,7 +2556,7 @@ requestBody.Add("ip",ip);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("block",block);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/ipBlockMerge",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/ipBlockMerge",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2584,7 +2572,7 @@ requestBody.Add("block",block);
 
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNS>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNS>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -2602,7 +2590,7 @@ requestBody.Add("block",block);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())),requestBody);
 		}
 		/// <summary>
 		/// remove this domain
@@ -2618,7 +2606,7 @@ requestBody.Add("block",block);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// domain name server informations
@@ -2634,7 +2622,7 @@ requestBody.Add("block",block);
 
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}/dnsServer",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsDomains/{1}/dnsServer",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// List of secondary dns domain name
@@ -2648,7 +2636,7 @@ requestBody.Add("block",block);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsDomains",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsDomains",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// add a domain on secondary dns
@@ -2668,7 +2656,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("domain",domain);
 requestBody.Add("ip",ip);
 
-			await RawCall(HttpMethod.Post,String.Format("/dedicated/server/{0}/secondaryDnsDomains",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/dedicated/server/{0}/secondaryDnsDomains",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Retrieve available country for IP order
@@ -2682,7 +2670,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.IpCountryEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/ipCountryAvailable",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.IpCountryEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/ipCountryAvailable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2696,7 +2684,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Rtm>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Rtm>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get server opened connections
@@ -2710,7 +2698,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmConnection[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/connection",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmConnection[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/connection",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Retrieve RTM graph values
@@ -2726,12 +2714,11 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.ChartReturn>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/chart{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.ChartReturn>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/chart{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get server cpu informations
@@ -2745,7 +2732,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmCpu>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/cpu",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmCpu>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/cpu",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get server PCI devices informations
@@ -2759,7 +2746,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmPci[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/pci",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmPci[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/pci",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Server disks
@@ -2773,7 +2760,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/disk",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/disk",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2789,7 +2776,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmDisk>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/disk/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(disk.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmDisk>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/disk/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(disk.ToString())));
 		}
 		/// <summary>
 		/// Get disk smart informations
@@ -2805,7 +2792,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmDiskSmart>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/disk/{1}/smart",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(disk.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmDiskSmart>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/disk/{1}/smart",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(disk.ToString())));
 		}
 		/// <summary>
 		/// Get server process
@@ -2819,7 +2806,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmCommandSize[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/process",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmCommandSize[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/process",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get server os informations
@@ -2833,7 +2820,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmOs>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/os",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmOs>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/os",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Server raid informations
@@ -2847,7 +2834,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2863,7 +2850,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmRaid>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(unit.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmRaid>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(unit.ToString())));
 		}
 		/// <summary>
 		/// Raid unit volumes
@@ -2879,7 +2866,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(unit.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(unit.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2897,7 +2884,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmRaidVolume>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(unit.ToString()),System.Uri.EscapeDataString(volume.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmRaidVolume>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(unit.ToString()),System.Net.WebUtility.UrlEncode(volume.ToString())));
 		}
 		/// <summary>
 		/// Raid unit volume ports
@@ -2915,7 +2902,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume/{2}/port",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(unit.ToString()),System.Uri.EscapeDataString(volume.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume/{2}/port",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(unit.ToString()),System.Net.WebUtility.UrlEncode(volume.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2935,7 +2922,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmRaidVolumePort>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume/{2}/port/{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(unit.ToString()),System.Uri.EscapeDataString(volume.ToString()),System.Uri.EscapeDataString(port.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmRaidVolumePort>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/raid/{1}/volume/{2}/port/{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(unit.ToString()),System.Net.WebUtility.UrlEncode(volume.ToString()),System.Net.WebUtility.UrlEncode(port.ToString())));
 		}
 		/// <summary>
 		/// Get server memory informations
@@ -2949,7 +2936,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmMemory[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/memory",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmMemory[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/memory",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get server load
@@ -2963,7 +2950,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmLoad>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/load",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmLoad>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/load",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Server partitions
@@ -2977,7 +2964,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/partition",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/partition",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -2993,7 +2980,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmPartition>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/partition/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partition.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmPartition>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/partition/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partition.ToString())));
 		}
 		/// <summary>
 		/// Retrieve partition charts
@@ -3009,11 +2996,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("partition",partition);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.ChartReturn>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/partition/{1}/chart{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(partition.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.ChartReturn>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/partition/{1}/chart{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(partition.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get server motherboard hardware informations
@@ -3027,7 +3013,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.RtmMotherboardHw>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/motherboard",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.RtmMotherboardHw>(HttpMethod.Get,String.Format("/dedicated/server/{0}/statistics/motherboard",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// technical intervention history
@@ -3041,7 +3027,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/intervention",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/intervention",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3057,7 +3043,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Intervention>(HttpMethod.Get,String.Format("/dedicated/server/{0}/intervention/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(interventionId.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Intervention>(HttpMethod.Get,String.Format("/dedicated/server/{0}/intervention/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(interventionId.ToString())));
 		}
 		/// <summary>
 		/// List all ip from server
@@ -3071,7 +3057,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/ips",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/ips",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Retrieve traffic graph values
@@ -3087,12 +3073,11 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.MrtgTimestampValue[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/mrtg{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Dedicated.Server.MrtgTimestampValue[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/mrtg{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Virtual MAC addresses of the server
@@ -3106,7 +3091,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a virtual mac to an IP address
@@ -3130,7 +3115,7 @@ requestBody.Add("virtualMachineName",virtualMachineName);
 requestBody.Add("ipAddress",ipAddress);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/virtualMac",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/virtualMac",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3146,7 +3131,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.VirtualMac>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(macAddress.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.VirtualMac>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(macAddress.ToString())));
 		}
 		/// <summary>
 		/// List of IPs associated to this Virtual MAC
@@ -3162,7 +3147,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(macAddress.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(macAddress.ToString())));
 		}
 		/// <summary>
 		/// Add an IP to this Virtual MAC
@@ -3185,7 +3170,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("virtualMachineName",virtualMachineName);
 requestBody.Add("ipAddress",ipAddress);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(macAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(macAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3203,7 +3188,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.VirtualMacManagement>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(macAddress.ToString()),System.Uri.EscapeDataString(ipAddress.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.VirtualMacManagement>(HttpMethod.Get,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(macAddress.ToString()),System.Net.WebUtility.UrlEncode(ipAddress.ToString())));
 		}
 		/// <summary>
 		/// Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted
@@ -3221,7 +3206,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(macAddress.ToString()),System.Uri.EscapeDataString(ipAddress.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/virtualMac/{1}/virtualAddress/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(macAddress.ToString()),System.Net.WebUtility.UrlEncode(ipAddress.ToString())));
 		}
 		/// <summary>
 		/// DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
@@ -3235,11 +3220,10 @@ requestBody.Add("ipAddress",ipAddress);
 			Ensure.NotNullNorEmpty("domain",domain);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("domain",domain);
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSCheckField>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsNameDomainToken{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSCheckField>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsNameDomainToken{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Check if given IP can be moved to this server
@@ -3253,11 +3237,10 @@ requestBody.Add("ipAddress",ipAddress);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 
 
-			await RawCall(HttpMethod.Get,String.Format("/dedicated/server/{0}/ipCanBeMovedTo{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			await RawCall(HttpMethod.Get,String.Format("/dedicated/server/{0}/ipCanBeMovedTo{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Hard reboot this server
@@ -3271,7 +3254,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/reboot",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/reboot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3285,7 +3268,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Firewall>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/firewall",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Firewall>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/firewall",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -3301,7 +3284,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/features/firewall",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/features/firewall",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3315,7 +3298,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtp>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtp>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new Backup FTP space
@@ -3329,7 +3312,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
@@ -3343,7 +3326,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/features/backupFTP",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/features/backupFTP",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Change your Backup FTP password
@@ -3357,7 +3340,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP/password",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP/password",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get all IP blocks that can be used in the ACL
@@ -3371,7 +3354,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/authorizableBlocks",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/authorizableBlocks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
@@ -3385,7 +3368,7 @@ requestBody.Add("ipAddress",ipAddress);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/access",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new Backup FTP ACL
@@ -3411,7 +3394,7 @@ requestBody.Add("ipBlock",ipBlock);
 requestBody.Add("nfs",nfs);
 requestBody.Add("cifs",cifs);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP/access",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/backupFTP/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3427,7 +3410,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtpAcl>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipBlock.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtpAcl>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -3445,7 +3428,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipBlock.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Revoke this ACL
@@ -3461,7 +3444,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipBlock.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/features/backupFTP/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3475,7 +3458,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Ipmi>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/ipmi",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Ipmi>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/ipmi",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Launch test on KVM IPMI interface
@@ -3496,7 +3479,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("ttl",ttl);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/test",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/test",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Result of http, ping and identification tests on IPMI interface
@@ -3510,11 +3493,10 @@ requestBody.Add("type",type);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.IpmiTestResult>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/ipmi/test{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Dedicated.Server.IpmiTestResult>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/ipmi/test{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Reset KVM IPMI interface
@@ -3528,7 +3510,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/resetInterface",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/resetInterface",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Request an acces on KVM IPMI interface
@@ -3553,7 +3535,7 @@ requestBody.Add("sshKey",sshKey);
 requestBody.Add("ttl",ttl);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/access",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// IPMI access method
@@ -3567,11 +3549,10 @@ requestBody.Add("type",type);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.IpmiAccessValue>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/ipmi/access{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Dedicated.Server.IpmiAccessValue>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/ipmi/access{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Reset KVM IPMI sessions
@@ -3585,7 +3566,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/resetSessions",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/features/ipmi/resetSessions",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3599,7 +3580,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Kvm>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/kvm",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Kvm>(HttpMethod.Get,String.Format("/dedicated/server/{0}/features/kvm",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Retreive compatible  install templates names
@@ -3613,7 +3594,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.InstallTemplate>(HttpMethod.Get,String.Format("/dedicated/server/{0}/install/compatibleTemplates",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.InstallTemplate>(HttpMethod.Get,String.Format("/dedicated/server/{0}/install/compatibleTemplates",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get installation status
@@ -3627,7 +3608,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.InstallationProgressStatus>(HttpMethod.Get,String.Format("/dedicated/server/{0}/install/status",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.InstallationProgressStatus>(HttpMethod.Get,String.Format("/dedicated/server/{0}/install/status",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Retreive compatible  install template partitions scheme
@@ -3641,11 +3622,10 @@ requestBody.Add("type",type);
 			Ensure.NotNullNorEmpty("templateName",templateName);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("templateName",templateName);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/install/compatibleTemplatePartitionSchemes{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/install/compatibleTemplatePartitionSchemes{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Start an install
@@ -3667,7 +3647,7 @@ requestBody.Add("templateName",templateName);
 requestBody.Add("partitionSchemeName",partitionSchemeName);
 requestBody.Add("details",details);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/install/start",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/install/start",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3681,7 +3661,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.ServerBurst>(HttpMethod.Get,String.Format("/dedicated/server/{0}/burst",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.ServerBurst>(HttpMethod.Get,String.Format("/dedicated/server/{0}/burst",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -3697,7 +3677,7 @@ requestBody.Add("details",details);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/burst",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/burst",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Is this feature orderable with your server
@@ -3711,11 +3691,10 @@ requestBody.Add("details",details);
 			Ensure.NotNull("feature",feature);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("feature",feature);
 
 
-			return await RawCall<bool>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/feature{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<bool>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/feature{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Is a KVM express orderable with your server
@@ -3729,7 +3708,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<bool>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/kvmExpress",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<bool>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/kvmExpress",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get bandwidth orderable with your server.
@@ -3743,7 +3722,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.BandwidthOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/bandwidth",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.BandwidthOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/bandwidth",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Is professional use orderable with your server
@@ -3757,7 +3736,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<bool>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/professionalUse",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<bool>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/professionalUse",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get IP orderable with your server.
@@ -3771,7 +3750,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.IpOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/ip",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.IpOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/ip",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get USB keys orderable with your server
@@ -3785,7 +3764,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.UsbKeyOrderableDetails>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/usbKey",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.UsbKeyOrderableDetails>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/usbKey",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get the backup storage orderable with your server.
@@ -3799,7 +3778,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.BackupStorageOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/backupStorage",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.BackupStorageOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/orderable/backupStorage",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Dedicated server todos
@@ -3813,12 +3792,11 @@ requestBody.Add("details",details);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("function",function);
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/task{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/task{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3834,7 +3812,7 @@ requestBody.Add("details",details);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Get,String.Format("/dedicated/server/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Get,String.Format("/dedicated/server/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// this action stop the task progression if it's possible
@@ -3850,7 +3828,7 @@ requestBody.Add("details",details);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/dedicated/server/{0}/task/{1}/cancel",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/dedicated/server/{0}/task/{1}/cancel",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.
@@ -3871,7 +3849,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("licenseId",licenseId);
 requestBody.Add("version",version);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/license/windows",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/dedicated/server/{0}/license/windows",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get the windows SQL server license compliant with your server.
@@ -3885,7 +3863,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.License.WindowsSqlVersionEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/license/compliantWindowsSqlServer",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.WindowsSqlVersionEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/license/compliantWindowsSqlServer",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get the windows license compliant with your server.
@@ -3899,7 +3877,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.License.WindowsOsVersionEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/license/compliantWindows",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.WindowsOsVersionEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/license/compliantWindows",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Server Vracks
@@ -3913,7 +3891,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/vrack",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/vrack",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -3929,7 +3907,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.DedicatedServer>(HttpMethod.Get,String.Format("/dedicated/server/{0}/vrack/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(vrack.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.DedicatedServer>(HttpMethod.Get,String.Format("/dedicated/server/{0}/vrack/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(vrack.ToString())));
 		}
 		/// <summary>
 		/// remove this server from this vrack (1.5)
@@ -3945,7 +3923,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/vrack/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(vrack.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/dedicated/server/{0}/vrack/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(vrack.ToString())));
 		}
 		/// <summary>
 		/// Retrieve vrack traffic graph values
@@ -3963,12 +3941,11 @@ requestBody.Add("version",version);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("vrack",vrack);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.MrtgTimestampValue[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/vrack/{1}/mrtg{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(vrack.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Dedicated.Server.MrtgTimestampValue[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/vrack/{1}/mrtg{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(vrack.ToString()),queryString));
 		}
 		/// <summary>
 		/// Your own SPLA licenses attached to this dedicated server
@@ -3982,12 +3959,11 @@ requestBody.Add("version",version);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("type",type);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/spla{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/spla{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Add a new SPLA license
@@ -4008,7 +3984,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("type",type);
 requestBody.Add("serialNumber",serialNumber);
 
-			return await RawCall<long>(HttpMethod.Post,String.Format("/dedicated/server/{0}/spla",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<long>(HttpMethod.Post,String.Format("/dedicated/server/{0}/spla",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4024,7 +4000,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Spla>(HttpMethod.Get,String.Format("/dedicated/server/{0}/spla/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Spla>(HttpMethod.Get,String.Format("/dedicated/server/{0}/spla/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -4042,7 +4018,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/spla/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicated/server/{0}/spla/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Revoke an SPLA license
@@ -4058,7 +4034,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/dedicated/server/{0}/spla/{1}/revoke",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/dedicated/server/{0}/spla/{1}/revoke",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Server compatibles netboots
@@ -4071,11 +4047,10 @@ requestBody.Add("serialNumber",serialNumber);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("bootType",bootType);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4091,7 +4066,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Netboot>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(bootId.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Netboot>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(bootId.ToString())));
 		}
 		/// <summary>
 		/// Option used on this netboot
@@ -4107,7 +4082,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.BootOptionEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot/{1}/option",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(bootId.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.BootOptionEnum[]>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot/{1}/option",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(bootId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4125,7 +4100,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.NetbootOption>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot/{1}/option/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(bootId.ToString()),System.Uri.EscapeDataString(option.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.NetbootOption>(HttpMethod.Get,String.Format("/dedicated/server/{0}/boot/{1}/option/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(bootId.ToString()),System.Net.WebUtility.UrlEncode(option.ToString())));
 		}
 		/// <summary>
 		/// Retrieve network informations about this dedicated server
@@ -4139,7 +4114,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.NetworkSpecifications>(HttpMethod.Get,String.Format("/dedicated/server/{0}/specifications/network",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.NetworkSpecifications>(HttpMethod.Get,String.Format("/dedicated/server/{0}/specifications/network",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Retrieve IP capabilities about this dedicated server
@@ -4153,7 +4128,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.IpOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/specifications/ip",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.IpOrderable>(HttpMethod.Get,String.Format("/dedicated/server/{0}/specifications/ip",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Retrieve hardware informations about this dedicated server
@@ -4167,7 +4142,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.HardwareSpecifications>(HttpMethod.Get,String.Format("/dedicated/server/{0}/specifications/hardware",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.HardwareSpecifications>(HttpMethod.Get,String.Format("/dedicated/server/{0}/specifications/hardware",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Secondary nameServer available for your Server
@@ -4181,7 +4156,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsNameServerAvailable",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/dedicated/server/{0}/secondaryDnsNameServerAvailable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -4207,7 +4182,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -4223,7 +4198,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4237,7 +4212,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.DedicatedCloud>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.DedicatedCloud>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -4253,7 +4228,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Datacenters associated with this Dedicated Cloud
@@ -4267,7 +4242,7 @@ requestBody.Add("serialNumber",serialNumber);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a new Datacenter in your Dedicated Cloud
@@ -4284,7 +4259,7 @@ requestBody.Add("serialNumber",serialNumber);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("commercialRangeName",commercialRangeName);
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4300,7 +4275,7 @@ requestBody.Add("commercialRangeName",commercialRangeName);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Datacenter>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Datacenter>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -4318,7 +4293,7 @@ requestBody.Add("commercialRangeName",commercialRangeName);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/datacenter/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/datacenter/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove this Datacenter from your Dedicated Cloud. (It has to be empty in order to be removable)
@@ -4334,7 +4309,7 @@ requestBody.Add("commercialRangeName",commercialRangeName);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/datacenter/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/datacenter/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Order a new hourly Host in a given Datacenter
@@ -4354,7 +4329,7 @@ requestBody.Add("commercialRangeName",commercialRangeName);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("name",name);
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderNewHostHourly",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderNewHostHourly",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Tasks associated with this Datacenter
@@ -4370,7 +4345,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/task",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/task",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4388,7 +4363,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/task/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/task/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// List available filers in a given Dedicated Cloud Datacenter
@@ -4404,7 +4379,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Filer.Profile[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderableFilerProfiles",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Filer.Profile[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderableFilerProfiles",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Filers associated with this Datacenter
@@ -4420,7 +4395,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/filer",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/filer",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4438,7 +4413,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Filer>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/filer/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString()),System.Uri.EscapeDataString(filerId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Filer>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/filer/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString()),System.Net.WebUtility.UrlEncode(filerId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4456,7 +4431,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Host>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/host/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString()),System.Uri.EscapeDataString(hostId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Host>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/host/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString()),System.Net.WebUtility.UrlEncode(hostId.ToString())));
 		}
 		/// <summary>
 		/// Hosts associated with this Datacenter
@@ -4472,7 +4447,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/host",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/host",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Order a new hourly Filer in a given Datacenter
@@ -4492,7 +4467,7 @@ requestBody.Add("name",name);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("name",name);
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderNewFilerHourly",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderNewFilerHourly",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available hosts in a given Dedicated Cloud Datacenter
@@ -4508,7 +4483,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Host.Profile[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderableHostProfiles",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Host.Profile[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/orderableHostProfiles",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4524,7 +4499,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Backup>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/backup",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Backup>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/datacenter/{1}/backup",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Enable a Backup on this dedicated Cloud
@@ -4540,7 +4515,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter/{1}/backup",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/datacenter/{1}/backup",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Remove this Backup from your Dedicated Cloud
@@ -4556,7 +4531,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/datacenter/{1}/backup",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(datacenterId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/datacenter/{1}/backup",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(datacenterId.ToString())));
 		}
 		/// <summary>
 		/// Ip Blocks attached to this Dedicated Cloud
@@ -4570,7 +4545,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/ip",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/ip",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4586,7 +4561,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Ip>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/ip/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(network.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Ip>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/ip/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(network.ToString())));
 		}
 		/// <summary>
 		/// Tasks associated with this Dedicated Cloud
@@ -4599,11 +4574,10 @@ requestBody.Add("name",name);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/task{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/task{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4619,7 +4593,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Get the name of the commercial ranges compliant with your Dedicated Cloud
@@ -4633,7 +4607,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/commercialRange/compliance",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/commercialRange/compliance",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get the name of the commercial ranges orderable in your Dedicated Cloud
@@ -4647,7 +4621,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/commercialRange/orderable",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/commercialRange/orderable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Filers mounted on all Datacenters of your Dedicated Cloud Vsphere
@@ -4661,7 +4635,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/filer",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/filer",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4677,7 +4651,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Filer>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/filer/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(filerId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Filer>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/filer/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(filerId.ToString())));
 		}
 		/// <summary>
 		/// Dedicated Cloud vlans
@@ -4691,7 +4665,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vlan",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vlan",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4707,7 +4681,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Vlan>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vlan/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(vlanId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Vlan>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vlan/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(vlanId.ToString())));
 		}
 		/// <summary>
 		/// Order a new hourly Filer mounted in every Datacenter of a given Dedicated Cloud
@@ -4725,7 +4699,7 @@ requestBody.Add("name",name);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("name",name);
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/orderNewFilerHourly",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/orderNewFilerHourly",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// This Dedicated Cloud vrack
@@ -4739,7 +4713,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vrack",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vrack",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4755,7 +4729,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.DedicatedCloud>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vrack/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(vrack.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.DedicatedCloud>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/vrack/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(vrack.ToString())));
 		}
 		/// <summary>
 		/// remove this a dedicatedCloud from this vrack (1.5)
@@ -4771,7 +4745,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/vrack/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(vrack.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/vrack/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(vrack.ToString())));
 		}
 		/// <summary>
 		/// Networks allowed to access to this Dedicated Cloud management interface
@@ -4785,7 +4759,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/allowedNetwork",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/allowedNetwork",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new Allowed network for your dedicatedCloud
@@ -4803,7 +4777,7 @@ requestBody.Add("name",name);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("network",network);
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/allowedNetwork",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/allowedNetwork",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4819,7 +4793,7 @@ requestBody.Add("network",network);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.AllowedNetwork>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/allowedNetwork/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(networkAccessId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.AllowedNetwork>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/allowedNetwork/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(networkAccessId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -4837,7 +4811,7 @@ requestBody.Add("network",network);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/allowedNetwork/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(networkAccessId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/allowedNetwork/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(networkAccessId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove this network from your Dedicated Cloud
@@ -4853,7 +4827,7 @@ requestBody.Add("network",network);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/allowedNetwork/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(networkAccessId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/allowedNetwork/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(networkAccessId.ToString())));
 		}
 		/// <summary>
 		/// Upgrade your hypervisor to the next released version
@@ -4867,7 +4841,7 @@ requestBody.Add("network",network);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/upgradeHypervisor",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/upgradeHypervisor",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4881,7 +4855,7 @@ requestBody.Add("network",network);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Capabilities>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/capabilities",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Capabilities>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/capabilities",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Dedicated Cloud users
@@ -4894,11 +4868,10 @@ requestBody.Add("network",network);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("name",name);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new User in your Dedicated Cloud
@@ -4926,7 +4899,7 @@ requestBody.Add("name",name);
 requestBody.Add("vmNetworkRole",vmNetworkRole);
 requestBody.Add("networkRole",networkRole);
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/user",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/user",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -4942,7 +4915,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.User>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.User>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -4960,7 +4933,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/user/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/user/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove a given user from your Dedicated Cloud
@@ -4976,7 +4949,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/user/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Delete,String.Format("/dedicatedCloud/{0}/user/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString())));
 		}
 		/// <summary>
 		/// User rights in a given Datacenters
@@ -4992,7 +4965,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user/{1}/right",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user/{1}/right",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5010,7 +4983,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Right>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user/{1}/right/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString()),System.Uri.EscapeDataString(rightId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Right>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/user/{1}/right/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString()),System.Net.WebUtility.UrlEncode(rightId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5030,7 +5003,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/user/{1}/right/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString()),System.Uri.EscapeDataString(rightId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/dedicatedCloud/{0}/user/{1}/right/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString()),System.Net.WebUtility.UrlEncode(rightId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Reset the password for a given Dedicated Cloud user 
@@ -5046,7 +5019,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/user/{1}/resetPassword",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(userId.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.Task>(HttpMethod.Post,String.Format("/dedicatedCloud/{0}/user/{1}/resetPassword",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(userId.ToString())));
 		}
 		/// <summary>
 		/// Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip
@@ -5060,7 +5033,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.IpCountriesEnum[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/orderableIpCountries",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.IpCountriesEnum[]>(HttpMethod.Get,String.Format("/dedicatedCloud/{0}/orderableIpCountries",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -5094,7 +5067,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.DedicatedCloud.CommercialRange>(HttpMethod.Get,String.Format("/dedicatedCloud/commercialRange/{0}",System.Uri.EscapeDataString(commercialRangeName.ToString())));
+			return await RawCall<OvhApi.Models.DedicatedCloud.CommercialRange>(HttpMethod.Get,String.Format("/dedicatedCloud/commercialRange/{0}",System.Net.WebUtility.UrlEncode(commercialRangeName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5108,7 +5081,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/domain/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/domain/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5124,7 +5097,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5138,7 +5111,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Domain>(HttpMethod.Get,String.Format("/domain/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Domain>(HttpMethod.Get,String.Format("/domain/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5154,7 +5127,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Return authInfo code if the domain is unlocked
@@ -5168,7 +5141,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<string>(HttpMethod.Get,String.Format("/domain/{0}/authInfo",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Get,String.Format("/domain/{0}/authInfo",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Domain pending tasks
@@ -5181,11 +5154,10 @@ requestBody.Add("networkRole",networkRole);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/{0}/task{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/{0}/task{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5201,7 +5173,7 @@ requestBody.Add("networkRole",networkRole);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Task>(HttpMethod.Get,String.Format("/domain/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Task>(HttpMethod.Get,String.Format("/domain/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List of whois obfuscators
@@ -5214,11 +5186,10 @@ requestBody.Add("networkRole",networkRole);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("field",field);
 
 
-			return await RawCall<OvhApi.Models.Domain.WhoisObfuscatorFieldsEnum[]>(HttpMethod.Get,String.Format("/domain/{0}/owo{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Domain.WhoisObfuscatorFieldsEnum[]>(HttpMethod.Get,String.Format("/domain/{0}/owo{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Add whois obfuscators
@@ -5236,7 +5207,7 @@ requestBody.Add("networkRole",networkRole);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("fields",fields);
 
-			return await RawCall<OvhApi.Models.Domain.WhoisObfuscatorFieldsEnum[]>(HttpMethod.Post,String.Format("/domain/{0}/owo",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Domain.WhoisObfuscatorFieldsEnum[]>(HttpMethod.Post,String.Format("/domain/{0}/owo",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5252,7 +5223,7 @@ requestBody.Add("fields",fields);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Owo>(HttpMethod.Get,String.Format("/domain/{0}/owo/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(field.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Owo>(HttpMethod.Get,String.Format("/domain/{0}/owo/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(field.ToString())));
 		}
 		/// <summary>
 		/// Delete a whois obfuscator
@@ -5268,7 +5239,7 @@ requestBody.Add("fields",fields);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/domain/{0}/owo/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(field.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/domain/{0}/owo/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(field.ToString())));
 		}
 		/// <summary>
 		/// List of current name servers
@@ -5282,7 +5253,7 @@ requestBody.Add("fields",fields);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/{0}/nameServer",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/{0}/nameServer",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add new name server
@@ -5300,7 +5271,7 @@ requestBody.Add("fields",fields);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("nameServer",nameServer);
 
-			return await RawCall<OvhApi.Models.Domain.Task>(HttpMethod.Post,String.Format("/domain/{0}/nameServer",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Domain.Task>(HttpMethod.Post,String.Format("/domain/{0}/nameServer",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5316,7 +5287,7 @@ requestBody.Add("nameServer",nameServer);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.CurrentNameServer>(HttpMethod.Get,String.Format("/domain/{0}/nameServer/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Domain.CurrentNameServer>(HttpMethod.Get,String.Format("/domain/{0}/nameServer/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete a name server
@@ -5332,7 +5303,7 @@ requestBody.Add("nameServer",nameServer);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Task>(HttpMethod.Delete,String.Format("/domain/{0}/nameServer/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Task>(HttpMethod.Delete,String.Format("/domain/{0}/nameServer/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -5370,7 +5341,7 @@ requestBody.Add("nameServer",nameServer);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/domain/zone/{0}/serviceInfos",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/domain/zone/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5386,7 +5357,7 @@ requestBody.Add("nameServer",nameServer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/serviceInfos",System.Uri.EscapeDataString(zoneName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(zoneName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5400,7 +5371,7 @@ requestBody.Add("nameServer",nameServer);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Zone>(HttpMethod.Get,String.Format("/domain/zone/{0}",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.Zone>(HttpMethod.Get,String.Format("/domain/zone/{0}",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Redirections
@@ -5413,11 +5384,10 @@ requestBody.Add("nameServer",nameServer);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("zoneName",zoneName);
 
-			var queryString = new QueryString();
 			queryString.Add("subDomain",subDomain);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/redirection{1}",System.Uri.EscapeDataString(zoneName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/redirection{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new redirection
@@ -5446,7 +5416,7 @@ requestBody.Add("type",type);
 requestBody.Add("subDomain",subDomain);
 requestBody.Add("description",description);
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Redirection>(HttpMethod.Post,String.Format("/domain/zone/{0}/redirection",System.Uri.EscapeDataString(zoneName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Domain.Zone.Redirection>(HttpMethod.Post,String.Format("/domain/zone/{0}/redirection",System.Net.WebUtility.UrlEncode(zoneName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5462,7 +5432,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Redirection>(HttpMethod.Get,String.Format("/domain/zone/{0}/redirection/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.Redirection>(HttpMethod.Get,String.Format("/domain/zone/{0}/redirection/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5480,7 +5450,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/redirection/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/redirection/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete a redirection
@@ -5496,7 +5466,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/redirection/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/redirection/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// DynHost' records
@@ -5509,11 +5479,10 @@ requestBody.Add("description",description);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("zoneName",zoneName);
 
-			var queryString = new QueryString();
 			queryString.Add("subDomain",subDomain);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/record{1}",System.Uri.EscapeDataString(zoneName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/record{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new DynHost record
@@ -5533,7 +5502,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("ip",ip);
 requestBody.Add("subDomain",subDomain);
 
-			return await RawCall<OvhApi.Models.Domain.Zone.DynHostRecord>(HttpMethod.Post,String.Format("/domain/zone/{0}/dynHost/record",System.Uri.EscapeDataString(zoneName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Domain.Zone.DynHostRecord>(HttpMethod.Post,String.Format("/domain/zone/{0}/dynHost/record",System.Net.WebUtility.UrlEncode(zoneName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5549,7 +5518,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.DynHostRecord>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/record/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.DynHostRecord>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/record/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5567,7 +5536,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/dynHost/record/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/dynHost/record/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete a DynHost record
@@ -5583,7 +5552,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/dynHost/record/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/dynHost/record/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// DynHost' logins
@@ -5597,12 +5566,11 @@ requestBody.Add("subDomain",subDomain);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("zoneName",zoneName);
 
-			var queryString = new QueryString();
 			queryString.Add("subDomain",subDomain);
 			queryString.Add("login",login);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/login{1}",System.Uri.EscapeDataString(zoneName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/login{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new DynHost login
@@ -5626,7 +5594,7 @@ requestBody.Add("password",password);
 requestBody.Add("loginSuffix",loginSuffix);
 requestBody.Add("subDomain",subDomain);
 
-			return await RawCall<OvhApi.Models.Domain.Zone.DynHostLogin>(HttpMethod.Post,String.Format("/domain/zone/{0}/dynHost/login",System.Uri.EscapeDataString(zoneName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Domain.Zone.DynHostLogin>(HttpMethod.Post,String.Format("/domain/zone/{0}/dynHost/login",System.Net.WebUtility.UrlEncode(zoneName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5642,7 +5610,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.DynHostLogin>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/login/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.DynHostLogin>(HttpMethod.Get,String.Format("/domain/zone/{0}/dynHost/login/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5660,7 +5628,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/dynHost/login/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/dynHost/login/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete a DynHost login
@@ -5676,7 +5644,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/dynHost/login/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/dynHost/login/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Change password of the DynHost login
@@ -5696,7 +5664,7 @@ requestBody.Add("subDomain",subDomain);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("password",password);
 
-			await RawCall(HttpMethod.Post,String.Format("/domain/zone/{0}/dynHost/login/{1}/changePassword",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/domain/zone/{0}/dynHost/login/{1}/changePassword",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Records of the zone
@@ -5710,12 +5678,11 @@ requestBody.Add("password",password);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("zoneName",zoneName);
 
-			var queryString = new QueryString();
 			queryString.Add("fieldType",fieldType);
 			queryString.Add("subDomain",subDomain);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/record{1}",System.Uri.EscapeDataString(zoneName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/domain/zone/{0}/record{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new resource record
@@ -5740,7 +5707,7 @@ requestBody.Add("ttl",ttl);
 requestBody.Add("fieldType",fieldType);
 requestBody.Add("subDomain",subDomain);
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Record>(HttpMethod.Post,String.Format("/domain/zone/{0}/record",System.Uri.EscapeDataString(zoneName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Domain.Zone.Record>(HttpMethod.Post,String.Format("/domain/zone/{0}/record",System.Net.WebUtility.UrlEncode(zoneName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5756,7 +5723,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Record>(HttpMethod.Get,String.Format("/domain/zone/{0}/record/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.Record>(HttpMethod.Get,String.Format("/domain/zone/{0}/record/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5774,7 +5741,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/record/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/record/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete a resource record
@@ -5790,7 +5757,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/record/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/record/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Refresh zone
@@ -5804,7 +5771,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/domain/zone/{0}/refresh",System.Uri.EscapeDataString(zoneName.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/domain/zone/{0}/refresh",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5818,7 +5785,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Dnssec>(HttpMethod.Get,String.Format("/domain/zone/{0}/dnssec",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.Dnssec>(HttpMethod.Get,String.Format("/domain/zone/{0}/dnssec",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Enable Dnssec
@@ -5832,7 +5799,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/domain/zone/{0}/dnssec",System.Uri.EscapeDataString(zoneName.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/domain/zone/{0}/dnssec",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Disable Dnssec
@@ -5846,7 +5813,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/dnssec",System.Uri.EscapeDataString(zoneName.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/domain/zone/{0}/dnssec",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Export zone
@@ -5860,7 +5827,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<string>(HttpMethod.Get,String.Format("/domain/zone/{0}/export",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<string>(HttpMethod.Get,String.Format("/domain/zone/{0}/export",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5874,7 +5841,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Domain.Zone.Soa>(HttpMethod.Get,String.Format("/domain/zone/{0}/soa",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<OvhApi.Models.Domain.Zone.Soa>(HttpMethod.Get,String.Format("/domain/zone/{0}/soa",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5890,7 +5857,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/soa",System.Uri.EscapeDataString(zoneName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/domain/zone/{0}/soa",System.Net.WebUtility.UrlEncode(zoneName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -5916,7 +5883,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service",System.Uri.EscapeDataString(organizationName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service",System.Net.WebUtility.UrlEncode(organizationName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5932,7 +5899,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/serviceInfos",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5950,7 +5917,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/serviceInfos",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -5966,7 +5933,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeService>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeService>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -5984,7 +5951,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Shared accounts associated to this exchange service
@@ -5999,11 +5966,10 @@ requestBody.Add("subDomain",subDomain);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("sharedEmailAddress",sharedEmailAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create new shared mailbox in exchange server
@@ -6038,7 +6004,7 @@ requestBody.Add("lastName",lastName);
 requestBody.Add("mailingFilter",mailingFilter);
 requestBody.Add("displayName",displayName);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6056,7 +6022,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.SharedAccount>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.SharedAccount>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -6076,7 +6042,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete existing shared mailbox in exchange server
@@ -6094,7 +6060,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Pending task for this mailbox
@@ -6112,7 +6078,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/tasks",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/tasks",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6132,7 +6098,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/tasks/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/tasks/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// SendOnBehalfTo granted users for this shared mailbox
@@ -6150,7 +6116,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow another user to Send On Behalf To mails from this shared mailbox
@@ -6172,7 +6138,7 @@ requestBody.Add("displayName",displayName);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowAccountId",allowAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6192,7 +6158,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeSharedAccountSendOnBehalfTo>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeSharedAccountSendOnBehalfTo>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete allowed user for SendOnBehalfTo
@@ -6212,7 +6178,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendOnBehalfTo/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Full access granted users for this shared mailbox
@@ -6230,7 +6196,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow full access to a user
@@ -6252,7 +6218,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowedAccountId",allowedAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6272,7 +6238,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeSharedAccountFullAccess>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeSharedAccountFullAccess>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Revoke full access
@@ -6292,7 +6258,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/fullAccess/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Send as granted users for this shared mailbox
@@ -6310,7 +6276,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow another user to send mails from this shared mailbox
@@ -6332,7 +6298,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowAccountId",allowAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6352,7 +6318,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeSharedAccountSendAs>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeSharedAccountSendAs>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete allowed user for sendAs
@@ -6372,7 +6338,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(sharedEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/sharedAccount/{2}/sendAs/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(sharedEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Get public folder quota usage in total available space
@@ -6388,7 +6354,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.PublicFolderQuota>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolderQuota",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.PublicFolderQuota>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolderQuota",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Get DCV emails if your ssl will expire in next 30 days
@@ -6404,7 +6370,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/dcvEmails",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/dcvEmails",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6422,7 +6388,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Domain>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Domain>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -6442,7 +6408,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/domain/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/domain/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete existing domain in exchange services
@@ -6460,7 +6426,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/domain/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/domain/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())));
 		}
 		/// <summary>
 		/// Get diclaimer attributes to substitute with Active Directory properties
@@ -6478,7 +6444,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.DisclaimerAttributeEnum[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimerAttribute",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.DisclaimerAttributeEnum[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimerAttribute",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6496,7 +6462,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Disclaimer>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Disclaimer>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -6516,7 +6482,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Create organization disclaimer of each email
@@ -6540,7 +6506,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("outsideOnly",outsideOnly);
 requestBody.Add("content",content);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete existing organization disclaimer
@@ -6558,7 +6524,7 @@ requestBody.Add("content",content);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(domainName.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/domain/{2}/disclaimer",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(domainName.ToString())));
 		}
 		/// <summary>
 		/// Domains associated to this service
@@ -6574,12 +6540,11 @@ requestBody.Add("content",content);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("main",main);
 			queryString.Add("state",state);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/domain{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create new domain in exchange services
@@ -6612,7 +6577,7 @@ requestBody.Add("type",type);
 requestBody.Add("configureMx",configureMx);
 requestBody.Add("main",main);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/domain",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/domain",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Renew SSL if it will expire in next 30 days
@@ -6632,7 +6597,7 @@ requestBody.Add("main",main);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("dcv",dcv);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/renewSSL",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/renewSSL",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Public folders associated to this service
@@ -6647,11 +6612,10 @@ requestBody.Add("dcv",dcv);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("path",path);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create organization public folder
@@ -6681,7 +6645,7 @@ requestBody.Add("type",type);
 requestBody.Add("path",path);
 requestBody.Add("defaultPermission",defaultPermission);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/publicFolder",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/publicFolder",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6699,7 +6663,7 @@ requestBody.Add("defaultPermission",defaultPermission);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.PublicFolder>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.PublicFolder>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -6719,7 +6683,7 @@ requestBody.Add("defaultPermission",defaultPermission);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete existing organization public folder
@@ -6737,7 +6701,7 @@ requestBody.Add("defaultPermission",defaultPermission);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString())));
 		}
 		/// <summary>
 		/// Public folder permission
@@ -6755,7 +6719,7 @@ requestBody.Add("defaultPermission",defaultPermission);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString())));
 		}
 		/// <summary>
 		/// Create public folder permission
@@ -6780,7 +6744,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowedAccountId",allowedAccountId);
 requestBody.Add("accessRights",accessRights);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6800,7 +6764,7 @@ requestBody.Add("accessRights",accessRights);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangePublicFolderPermission>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangePublicFolderPermission>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -6822,7 +6786,7 @@ requestBody.Add("accessRights",accessRights);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete existing permission from public folder
@@ -6842,7 +6806,7 @@ requestBody.Add("accessRights",accessRights);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(path.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/publicFolder/{2}/permission/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(path.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6858,7 +6822,7 @@ requestBody.Add("accessRights",accessRights);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Server>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/server",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Server>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/server",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Accounts associated to this exchange service
@@ -6875,13 +6839,12 @@ requestBody.Add("accessRights",accessRights);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("primaryEmailAddress",primaryEmailAddress);
 			queryString.Add("accountLicense",accountLicense);
 			queryString.Add("id",id);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create new mailbox in exchange server
@@ -6926,7 +6889,7 @@ requestBody.Add("lastName",lastName);
 requestBody.Add("outlookLicense",outlookLicense);
 requestBody.Add("displayName",displayName);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -6944,7 +6907,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Account>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Account>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -6964,7 +6927,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/account/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/account/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete existing mailbox in exchange server
@@ -6982,7 +6945,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Pending task for this mailbox
@@ -7000,7 +6963,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/tasks",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/tasks",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7020,7 +6983,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/tasks/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/tasks/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Change mailbox password
@@ -7042,7 +7005,7 @@ requestBody.Add("displayName",displayName);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("password",password);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/changePassword",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/changePassword",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Terminate account at expiration date
@@ -7060,7 +7023,7 @@ requestBody.Add("password",password);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/terminate",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/terminate",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7078,7 +7041,7 @@ requestBody.Add("password",password);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExportUrl>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/exportURL",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExportUrl>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/exportURL",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Generate PST file url
@@ -7096,7 +7059,7 @@ requestBody.Add("password",password);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/exportURL",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/exportURL",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// SendOnBehalfTo granted users for this mailbox
@@ -7114,7 +7077,7 @@ requestBody.Add("password",password);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow another user to Send On Behalf To mails from this mailbox
@@ -7136,7 +7099,7 @@ requestBody.Add("password",password);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowAccountId",allowAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7156,7 +7119,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountSendOnBehalfTo>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountSendOnBehalfTo>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete allowed user for SendOnBehalfTo
@@ -7176,7 +7139,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendOnBehalfTo/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Full access granted users for this mailbox
@@ -7194,7 +7157,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow full access to a user
@@ -7216,7 +7179,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowedAccountId",allowedAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7236,7 +7199,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountFullAccess>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountFullAccess>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Revoke full access
@@ -7256,7 +7219,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/fullAccess/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7274,7 +7237,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Export>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/export",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Export>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/export",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Request PST file for the account
@@ -7292,7 +7255,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/export",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/export",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Remove request of PST file
@@ -7310,7 +7273,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/export",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/export",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Aliases associated to this mailbox
@@ -7328,7 +7291,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Create new alias
@@ -7350,7 +7313,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("alias",alias);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7370,7 +7333,7 @@ requestBody.Add("alias",alias);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountAlias>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(alias.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountAlias>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(alias.ToString())));
 		}
 		/// <summary>
 		/// Delete existing alias
@@ -7390,7 +7353,7 @@ requestBody.Add("alias",alias);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(alias.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/alias/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(alias.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7408,7 +7371,7 @@ requestBody.Add("alias",alias);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.OutlookUrl>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/outlookURL",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.OutlookUrl>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/outlookURL",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Generate outlook url
@@ -7433,7 +7396,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("language",language);
 requestBody.Add("version",version);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/outlookURL",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/outlookURL",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Send as granted users for this mailbox
@@ -7451,7 +7414,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow another user to send mails from this mailbox
@@ -7473,7 +7436,7 @@ requestBody.Add("version",version);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowAccountId",allowAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7493,7 +7456,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountSendAs>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeAccountSendAs>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete allowed user for sendAs
@@ -7513,7 +7476,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(primaryEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/account/{2}/sendAs/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(primaryEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Pending actions
@@ -7529,7 +7492,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/task",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/task",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7547,7 +7510,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/task/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/task/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get active licenses for specific period of time
@@ -7564,13 +7527,12 @@ requestBody.Add("allowAccountId",allowAccountId);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("license",license);
 			queryString.Add("toDate",toDate);
 			queryString.Add("fromDate",fromDate);
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.DailyLicense[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/license{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Email.Exchange.DailyLicense[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/license{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// External contacts for this service
@@ -7589,7 +7551,6 @@ requestBody.Add("allowAccountId",allowAccountId);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("firstName",firstName);
 			queryString.Add("id",id);
 			queryString.Add("lastName",lastName);
@@ -7597,7 +7558,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 			queryString.Add("externalEmailAddress",externalEmailAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/externalContact{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/externalContact{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// create new external contact
@@ -7629,7 +7590,7 @@ requestBody.Add("lastName",lastName);
 requestBody.Add("displayName",displayName);
 requestBody.Add("externalEmailAddress",externalEmailAddress);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/externalContact",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/externalContact",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7647,7 +7608,7 @@ requestBody.Add("externalEmailAddress",externalEmailAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeExternalContact>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/externalContact/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(externalEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeExternalContact>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/externalContact/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(externalEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -7667,7 +7628,7 @@ requestBody.Add("externalEmailAddress",externalEmailAddress);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/externalContact/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(externalEmailAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/externalContact/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(externalEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// delete external contact
@@ -7685,7 +7646,7 @@ requestBody.Add("externalEmailAddress",externalEmailAddress);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/externalContact/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(externalEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/externalContact/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(externalEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Mailing list for this service
@@ -7700,11 +7661,10 @@ requestBody.Add("externalEmailAddress",externalEmailAddress);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("mailingListAddress",mailingListAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Add mailing list
@@ -7740,7 +7700,7 @@ requestBody.Add("maxSendSize",maxSendSize);
 requestBody.Add("maxReceiveSize",maxReceiveSize);
 requestBody.Add("displayName",displayName);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7758,7 +7718,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.MailingList>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.MailingList>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -7778,7 +7738,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete mailing list
@@ -7796,7 +7756,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Mailing list account member
@@ -7814,7 +7774,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Add new mailing list member
@@ -7837,7 +7797,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("memberContactId",memberContactId);
 requestBody.Add("memberAccountId",memberAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7857,7 +7817,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupMember>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(memberAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupMember>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(memberAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete mailing list member
@@ -7877,7 +7837,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(memberAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/account/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(memberAccountId.ToString())));
 		}
 		/// <summary>
 		/// Mailing list contact member
@@ -7895,7 +7855,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Add new mailing list member
@@ -7918,7 +7878,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("memberContactId",memberContactId);
 requestBody.Add("memberAccountId",memberAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -7938,7 +7898,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupMember>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(memberContactId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupMember>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(memberContactId.ToString())));
 		}
 		/// <summary>
 		/// Delete mailing list member
@@ -7958,7 +7918,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(memberContactId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/member/contact/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(memberContactId.ToString())));
 		}
 		/// <summary>
 		/// sendOnBehalfTo
@@ -7976,7 +7936,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow another user to Send aso mails from this mailing list
@@ -7998,7 +7958,7 @@ requestBody.Add("memberAccountId",memberAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowAccountId",allowAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8018,7 +7978,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupSendOnBehalfTo>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupSendOnBehalfTo>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete allowed user for SendOnBehalfTo
@@ -8038,7 +7998,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendOnBehalfTo/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Aliases associated to this mailingList
@@ -8056,7 +8016,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Create new alias
@@ -8078,7 +8038,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("alias",alias);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8098,7 +8058,7 @@ requestBody.Add("alias",alias);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeMailingListAlias>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(alias.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeMailingListAlias>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(alias.ToString())));
 		}
 		/// <summary>
 		/// Delete existing alias
@@ -8118,7 +8078,7 @@ requestBody.Add("alias",alias);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(alias.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/alias/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(alias.ToString())));
 		}
 		/// <summary>
 		/// Mailing list account manager
@@ -8136,7 +8096,7 @@ requestBody.Add("alias",alias);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Add new mailing list manager
@@ -8158,7 +8118,7 @@ requestBody.Add("alias",alias);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("managerAccountId",managerAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8178,7 +8138,7 @@ requestBody.Add("managerAccountId",managerAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupManager>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(managerAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupManager>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(managerAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete mailing list manager
@@ -8198,7 +8158,7 @@ requestBody.Add("managerAccountId",managerAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(managerAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/manager/account/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(managerAccountId.ToString())));
 		}
 		/// <summary>
 		/// sendAs
@@ -8216,7 +8176,7 @@ requestBody.Add("managerAccountId",managerAccountId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())));
 		}
 		/// <summary>
 		/// Allow another user to Send aso mails from this mailing list
@@ -8238,7 +8198,7 @@ requestBody.Add("managerAccountId",managerAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowAccountId",allowAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8258,7 +8218,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupSendAs>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeDistributionGroupSendAs>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Delete allowed user for SendAs
@@ -8278,7 +8238,7 @@ requestBody.Add("allowAccountId",allowAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(mailingListAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/mailingList/{2}/sendAs/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(mailingListAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Activate Sharepoint infra connected to this exchange service
@@ -8301,7 +8261,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("primaryEmailAddress",primaryEmailAddress);
 requestBody.Add("subDomain",subDomain);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/activateSharepoint",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/activateSharepoint",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get shared account quota usage in total available space
@@ -8317,7 +8277,7 @@ requestBody.Add("subDomain",subDomain);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.SharedAccountQuota>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccountQuota",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.SharedAccountQuota>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/sharedAccountQuota",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Resource account associated to this service
@@ -8332,11 +8292,10 @@ requestBody.Add("subDomain",subDomain);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("resourceEmailAddress",resourceEmailAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// create new resource account in exchange server
@@ -8366,7 +8325,7 @@ requestBody.Add("type",type);
 requestBody.Add("capacity",capacity);
 requestBody.Add("displayName",displayName);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/resourceAccount",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/resourceAccount",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8384,7 +8343,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ResourceAccount>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ResourceAccount>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -8404,7 +8363,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// delete existing resource account in exchange server
@@ -8422,7 +8381,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// Resource account manager
@@ -8440,7 +8399,7 @@ requestBody.Add("displayName",displayName);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString())));
 		}
 		/// <summary>
 		/// add new resource account delegate in exchange server
@@ -8462,7 +8421,7 @@ requestBody.Add("displayName",displayName);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("allowedAccountId",allowedAccountId);
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Post,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8482,7 +8441,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeResourceAccountDelegate>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.ExchangeResourceAccountDelegate>(HttpMethod.Get,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// delete existing resource account delegate in exchange server
@@ -8502,7 +8461,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate/{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(resourceEmailAddress.ToString()),System.Uri.EscapeDataString(allowedAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Email.Exchange.Task>(HttpMethod.Delete,String.Format("/email/exchange/{0}/service/{1}/resourceAccount/{2}/delegate/{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(resourceEmailAddress.ToString()),System.Net.WebUtility.UrlEncode(allowedAccountId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8516,7 +8475,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/hosting/web/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/hosting/web/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -8532,7 +8491,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/hosting/web/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/hosting/web/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8546,7 +8505,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Service>(HttpMethod.Get,String.Format("/hosting/web/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Service>(HttpMethod.Get,String.Format("/hosting/web/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available database you can install
@@ -8560,7 +8519,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Database.CreationDatabaseCapabilities[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/databaseCreationCapabilities",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Database.CreationDatabaseCapabilities[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/databaseCreationCapabilities",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get statistics about this web hosting
@@ -8568,7 +8527,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 		/// <param name="type">To be written</param>
 		/// <param name="serviceName">The internal name of your hosting</param>
 		/// </summary>
-		public async Task<OvhApi.Models.ComplexType.ChartSerie<OvhApi.Models.ComplexType.ChartTimestampValue>[]> GetHostingWebStatistics(OvhApi.Models.Hosting.Web.StatisticsPeriodEnum period,OvhApi.Models.Hosting.Web.StatisticsTypeEnum type,string serviceName)
+		public async Task<OvhApi.Models.ComplexType.ChartSerie<complexType.ChartTimestampValue>[]> GetHostingWebStatistics(OvhApi.Models.Hosting.Web.StatisticsPeriodEnum period,OvhApi.Models.Hosting.Web.StatisticsTypeEnum type,string serviceName)
 		{
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -8576,12 +8535,11 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.ChartSerie<OvhApi.Models.ComplexType.ChartTimestampValue>[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/statistics{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.ChartSerie<complexType.ChartTimestampValue>[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/statistics{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Allows you to boost your offer.
@@ -8598,7 +8556,7 @@ requestBody.Add("allowedAccountId",allowedAccountId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("offer",offer);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/requestBoost",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/requestBoost",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available database version following a type
@@ -8612,11 +8570,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Database.VersionEnum[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/databaseAvailableVersion{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Hosting.Web.Database.VersionEnum[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/databaseAvailableVersion{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// User allowed to connect into your hosting
@@ -8630,12 +8587,11 @@ requestBody.Add("offer",offer);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("home",home);
 			queryString.Add("login",login);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/user{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/user{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create new ftp/ssh user
@@ -8663,7 +8619,7 @@ requestBody.Add("home",home);
 requestBody.Add("webDavRights",webDavRights);
 requestBody.Add("login",login);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/user",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/user",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8679,7 +8635,7 @@ requestBody.Add("login",login);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.User>(HttpMethod.Get,String.Format("/hosting/web/{0}/user/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.User>(HttpMethod.Get,String.Format("/hosting/web/{0}/user/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -8697,7 +8653,7 @@ requestBody.Add("login",login);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/hosting/web/{0}/user/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/hosting/web/{0}/user/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete ftp/ssh user
@@ -8713,7 +8669,7 @@ requestBody.Add("login",login);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/user/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/user/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Request a password change
@@ -8733,7 +8689,7 @@ requestBody.Add("login",login);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("password",password);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/user/{1}/changePassword",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/user/{1}/changePassword",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Restore this snapshot ALL CURRENT DATA WILL BE REPLACED BY YOUR SNAPSHOT
@@ -8751,7 +8707,7 @@ requestBody.Add("password",password);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("backup",backup);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/restoreSnapshot",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/restoreSnapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )
@@ -8765,7 +8721,7 @@ requestBody.Add("backup",backup);
 
 
 
-			return await RawCall<string>(HttpMethod.Get,String.Format("/hosting/web/{0}/token",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Get,String.Format("/hosting/web/{0}/token",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Modules installed on your hosting
@@ -8779,7 +8735,7 @@ requestBody.Add("backup",backup);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/module",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/module",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Install a new module
@@ -8815,7 +8771,7 @@ requestBody.Add("dependencies",dependencies);
 requestBody.Add("path",path);
 requestBody.Add("moduleId",moduleId);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/module",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/module",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8831,7 +8787,7 @@ requestBody.Add("moduleId",moduleId);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Module>(HttpMethod.Get,String.Format("/hosting/web/{0}/module/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Module>(HttpMethod.Get,String.Format("/hosting/web/{0}/module/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete a module installed
@@ -8847,7 +8803,7 @@ requestBody.Add("moduleId",moduleId);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/module/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/module/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Generate a new admin password for your module
@@ -8863,7 +8819,7 @@ requestBody.Add("moduleId",moduleId);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/module/{1}/changePassword",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/module/{1}/changePassword",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Request specific operation for your hosting
@@ -8881,7 +8837,7 @@ requestBody.Add("moduleId",moduleId);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("action",action);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/request",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/request",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Tasks attached to your hosting
@@ -8895,12 +8851,11 @@ requestBody.Add("action",action);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("function",function);
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -8916,7 +8871,7 @@ requestBody.Add("action",action);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Get,String.Format("/hosting/web/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Get,String.Format("/hosting/web/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Databases linked to your hosting
@@ -8933,7 +8888,6 @@ requestBody.Add("action",action);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("mode",mode);
 			queryString.Add("user",user);
 			queryString.Add("name",name);
@@ -8941,7 +8895,7 @@ requestBody.Add("action",action);
 			queryString.Add("server",server);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/database{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/database{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Install new database
@@ -8971,7 +8925,7 @@ requestBody.Add("capabilitie",capabilitie);
 requestBody.Add("user",user);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Request specific operation for your database
@@ -8991,7 +8945,7 @@ requestBody.Add("type",type);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("action",action);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database/{1}/request",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database/{1}/request",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9007,7 +8961,7 @@ requestBody.Add("action",action);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Database>(HttpMethod.Get,String.Format("/hosting/web/{0}/database/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Database>(HttpMethod.Get,String.Format("/hosting/web/{0}/database/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// Delete database
@@ -9023,7 +8977,7 @@ requestBody.Add("action",action);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/database/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/database/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// Request the dump from your database
@@ -9043,7 +8997,7 @@ requestBody.Add("action",action);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("date",date);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database/{1}/dump",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database/{1}/dump",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get statistics about this database
@@ -9052,7 +9006,7 @@ requestBody.Add("date",date);
 		/// <param name="serviceName">The internal name of your hosting</param>
 		/// <param name="name">Database name</param>
 		/// </summary>
-		public async Task<OvhApi.Models.ComplexType.ChartSerie<OvhApi.Models.ComplexType.ChartTimestampValue>[]> GetHostingWebDatabaseStatistics(OvhApi.Models.Hosting.Web.StatisticsPeriodEnum period,OvhApi.Models.Hosting.Web.Database.StatisticsTypeEnum type,string serviceName,string name)
+		public async Task<OvhApi.Models.ComplexType.ChartSerie<complexType.ChartTimestampValue>[]> GetHostingWebDatabaseStatistics(OvhApi.Models.Hosting.Web.StatisticsPeriodEnum period,OvhApi.Models.Hosting.Web.Database.StatisticsTypeEnum type,string serviceName,string name)
 		{
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -9061,12 +9015,11 @@ requestBody.Add("date",date);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("name",name);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.ChartSerie<OvhApi.Models.ComplexType.ChartTimestampValue>[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/database/{1}/statistics{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.ChartSerie<complexType.ChartTimestampValue>[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/database/{1}/statistics{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString()),queryString));
 		}
 		/// <summary>
 		/// Request a password change
@@ -9086,7 +9039,7 @@ requestBody.Add("date",date);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("password",password);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database/{1}/changePassword",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/database/{1}/changePassword",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())),requestBody);
 		}
 		/// <summary>
 		/// History of your hosting boost
@@ -9099,11 +9052,10 @@ requestBody.Add("password",password);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("date",date);
 
 
-			return await RawCall<DateTime[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/boostHistory{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<DateTime[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/boostHistory{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9119,7 +9071,7 @@ requestBody.Add("password",password);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.BoostHistory>(HttpMethod.Get,String.Format("/hosting/web/{0}/boostHistory/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(date.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.BoostHistory>(HttpMethod.Get,String.Format("/hosting/web/{0}/boostHistory/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(date.ToString())));
 		}
 		/// <summary>
 		/// Crons on your hosting
@@ -9135,14 +9087,13 @@ requestBody.Add("password",password);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("email",email);
 			queryString.Add("language",language);
 			queryString.Add("description",description);
 			queryString.Add("command",command);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/cron{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/cron{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create new cron
@@ -9170,7 +9121,7 @@ requestBody.Add("language",language);
 requestBody.Add("description",description);
 requestBody.Add("command",command);
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/hosting/web/{0}/cron",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<string>(HttpMethod.Post,String.Format("/hosting/web/{0}/cron",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9186,7 +9137,7 @@ requestBody.Add("command",command);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Cron>(HttpMethod.Get,String.Format("/hosting/web/{0}/cron/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Cron>(HttpMethod.Get,String.Format("/hosting/web/{0}/cron/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -9204,7 +9155,7 @@ requestBody.Add("command",command);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/hosting/web/{0}/cron/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/hosting/web/{0}/cron/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete cron
@@ -9220,7 +9171,7 @@ requestBody.Add("command",command);
 
 
 
-			return await RawCall<string>(HttpMethod.Delete,String.Format("/hosting/web/{0}/cron/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<string>(HttpMethod.Delete,String.Format("/hosting/web/{0}/cron/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9236,7 +9187,7 @@ requestBody.Add("command",command);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.AttachedDomain>(HttpMethod.Get,String.Format("/hosting/web/{0}/attachedDomain/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.AttachedDomain>(HttpMethod.Get,String.Format("/hosting/web/{0}/attachedDomain/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -9254,7 +9205,7 @@ requestBody.Add("command",command);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Put,String.Format("/hosting/web/{0}/attachedDomain/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Put,String.Format("/hosting/web/{0}/attachedDomain/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Unlink domain from hosting
@@ -9270,7 +9221,7 @@ requestBody.Add("command",command);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/attachedDomain/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Delete,String.Format("/hosting/web/{0}/attachedDomain/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Domains or subdomains attached to your hosting
@@ -9284,12 +9235,11 @@ requestBody.Add("command",command);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("domain",domain);
 			queryString.Add("path",path);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/attachedDomain{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/hosting/web/{0}/attachedDomain{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Link a domain to this hosting
@@ -9312,7 +9262,7 @@ requestBody.Add("cdn",cdn);
 requestBody.Add("domain",domain);
 requestBody.Add("path",path);
 
-			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/attachedDomain",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Hosting.Web.Task>(HttpMethod.Post,String.Format("/hosting/web/{0}/attachedDomain",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -9336,7 +9286,6 @@ requestBody.Add("path",path);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("domain",domain);
 
-			var queryString = new QueryString();
 			queryString.Add("domain",domain);
 
 
@@ -9352,7 +9301,6 @@ requestBody.Add("path",path);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("offer",offer);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
@@ -9366,7 +9314,6 @@ requestBody.Add("path",path);
 		public async Task<long[]> GetHostingWebModulelistIds(bool? active = null,bool? latest = null)
 		{
 
-			var queryString = new QueryString();
 			queryString.Add("latest",latest);
 			queryString.Add("active",active);
 
@@ -9383,7 +9330,7 @@ requestBody.Add("path",path);
 
 
 
-			return await RawCall<OvhApi.Models.Hosting.Web.ModuleList>(HttpMethod.Get,String.Format("/hosting/web/moduleList/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Hosting.Web.ModuleList>(HttpMethod.Get,String.Format("/hosting/web/moduleList/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Your OVH IPs
@@ -9397,7 +9344,6 @@ requestBody.Add("path",path);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 			queryString.Add("routedTo.serviceName",routedTo_serviceName);
 			queryString.Add("type",type);
@@ -9418,7 +9364,7 @@ requestBody.Add("path",path);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.Ip>(HttpMethod.Get,String.Format("/ip/{0}",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Ip.Ip>(HttpMethod.Get,String.Format("/ip/{0}",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -9434,7 +9380,7 @@ requestBody.Add("path",path);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/{0}",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/{0}",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Move this IP to a dedicated server
@@ -9452,7 +9398,7 @@ requestBody.Add("path",path);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("to",to);
 
-			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Post,String.Format("/ip/{0}/move",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Post,String.Format("/ip/{0}/move",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// ARP blocked IP
@@ -9465,11 +9411,10 @@ requestBody.Add("to",to);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/arp{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/arp{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9485,7 +9430,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.ArpBlockedIp>(HttpMethod.Get,String.Format("/ip/{0}/arp/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipBlocked.ToString())));
+			return await RawCall<OvhApi.Models.Ip.ArpBlockedIp>(HttpMethod.Get,String.Format("/ip/{0}/arp/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipBlocked.ToString())));
 		}
 		/// <summary>
 		/// Unblock this IP
@@ -9501,7 +9446,7 @@ requestBody.Add("to",to);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/ip/{0}/arp/{1}/unblock",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipBlocked.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/ip/{0}/arp/{1}/unblock",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipBlocked.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9515,7 +9460,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.RipeInfos>(HttpMethod.Get,String.Format("/ip/{0}/ripe",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Ip.RipeInfos>(HttpMethod.Get,String.Format("/ip/{0}/ripe",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -9531,7 +9476,7 @@ requestBody.Add("to",to);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/ripe",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/ripe",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete a failover IP
@@ -9545,7 +9490,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Post,String.Format("/ip/{0}/terminate",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Post,String.Format("/ip/{0}/terminate",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Park this IP
@@ -9559,7 +9504,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Post,String.Format("/ip/{0}/park",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Post,String.Format("/ip/{0}/park",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Ip spamming
@@ -9572,11 +9517,10 @@ requestBody.Add("to",to);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/spam{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/spam{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9592,7 +9536,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.SpamIp>(HttpMethod.Get,String.Format("/ip/{0}/spam/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipSpamming.ToString())));
+			return await RawCall<OvhApi.Models.Ip.SpamIp>(HttpMethod.Get,String.Format("/ip/{0}/spam/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipSpamming.ToString())));
 		}
 		/// <summary>
 		/// Release the ip from anti-spam system
@@ -9608,7 +9552,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.SpamIp>(HttpMethod.Post,String.Format("/ip/{0}/spam/{1}/unblock",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipSpamming.ToString())));
+			return await RawCall<OvhApi.Models.Ip.SpamIp>(HttpMethod.Post,String.Format("/ip/{0}/spam/{1}/unblock",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipSpamming.ToString())));
 		}
 		/// <summary>
 		/// Get statistics about the email traffic
@@ -9626,12 +9570,11 @@ requestBody.Add("to",to);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNull("ipSpamming",ipSpamming);
 
-			var queryString = new QueryString();
 			queryString.Add("to",to);
 			queryString.Add("from",from);
 
 
-			return await RawCall<OvhApi.Models.Ip.SpamStats[]>(HttpMethod.Get,String.Format("/ip/{0}/spam/{1}/stats{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipSpamming.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Ip.SpamStats[]>(HttpMethod.Get,String.Format("/ip/{0}/spam/{1}/stats{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipSpamming.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9645,7 +9588,7 @@ requestBody.Add("to",to);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.IpMigrationToken>(HttpMethod.Get,String.Format("/ip/{0}/migrationToken",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Ip.IpMigrationToken>(HttpMethod.Get,String.Format("/ip/{0}/migrationToken",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Generate a migration token
@@ -9663,7 +9606,7 @@ requestBody.Add("to",to);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("customerId",customerId);
 
-			return await RawCall<OvhApi.Models.Ip.IpMigrationToken>(HttpMethod.Post,String.Format("/ip/{0}/migrationToken",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.IpMigrationToken>(HttpMethod.Post,String.Format("/ip/{0}/migrationToken",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Manage mitigation profile on your IPs
@@ -9677,7 +9620,7 @@ requestBody.Add("customerId",customerId);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigationProfiles",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigationProfiles",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Create new profile for one of your ip
@@ -9698,7 +9641,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("ipMitigationProfile",ipMitigationProfile);
 requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 
-			return await RawCall<OvhApi.Models.Ip.MitigationProfile>(HttpMethod.Post,String.Format("/ip/{0}/mitigationProfiles",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.MitigationProfile>(HttpMethod.Post,String.Format("/ip/{0}/mitigationProfiles",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9714,7 +9657,7 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.MitigationProfile>(HttpMethod.Get,String.Format("/ip/{0}/mitigationProfiles/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipMitigationProfile.ToString())));
+			return await RawCall<OvhApi.Models.Ip.MitigationProfile>(HttpMethod.Get,String.Format("/ip/{0}/mitigationProfiles/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipMitigationProfile.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -9732,7 +9675,7 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/mitigationProfiles/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipMitigationProfile.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/mitigationProfiles/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipMitigationProfile.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete mitigation profile
@@ -9748,7 +9691,7 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/ip/{0}/mitigationProfiles/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipMitigationProfile.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/ip/{0}/mitigationProfiles/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipMitigationProfile.ToString())));
 		}
 		/// <summary>
 		/// IP tasks
@@ -9762,12 +9705,11 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("function",function);
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/{0}/task{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/{0}/task{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9783,7 +9725,7 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Get,String.Format("/ip/{0}/task/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Ip.IpTask>(HttpMethod.Get,String.Format("/ip/{0}/task/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// WorkLight licenses associated to this IP
@@ -9796,11 +9738,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/worklight{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/worklight{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Cloud Linux licenses associated to this IP
@@ -9813,11 +9754,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/cloudLinux{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/cloudLinux{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// DirectAdmin licenses associated to this IP
@@ -9830,11 +9770,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/directadmin{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/directadmin{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Windows licenses associated to this IP
@@ -9847,11 +9786,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/windows{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/windows{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Virtuozzo licenses associated to this IP
@@ -9864,11 +9802,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/virtuozzo{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/virtuozzo{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Cpanel licenses associated to this IP
@@ -9881,11 +9818,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/cpanel{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/cpanel{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// SQL Server licenses associated to this IP
@@ -9898,11 +9834,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/sqlserver{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/sqlserver{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Plesk licenses associated to this IP
@@ -9915,11 +9850,10 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ipAddress",ipAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/plesk{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/ip/{0}/license/plesk{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Ip under mitigation
@@ -9933,12 +9867,11 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("auto",auto);
 			queryString.Add("state",state);
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigation{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigation{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// AntiDDOS option. Add new IP on permanent mitigation
@@ -9956,7 +9889,7 @@ requestBody.Add("autoMitigationTimeOut",autoMitigationTimeOut);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ipOnMitigation",ipOnMitigation);
 
-			return await RawCall<OvhApi.Models.Ip.MitigationIp>(HttpMethod.Post,String.Format("/ip/{0}/mitigation",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.MitigationIp>(HttpMethod.Post,String.Format("/ip/{0}/mitigation",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -9972,7 +9905,7 @@ requestBody.Add("ipOnMitigation",ipOnMitigation);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.MitigationIp>(HttpMethod.Get,String.Format("/ip/{0}/mitigation/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnMitigation.ToString())));
+			return await RawCall<OvhApi.Models.Ip.MitigationIp>(HttpMethod.Get,String.Format("/ip/{0}/mitigation/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnMitigation.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -9990,7 +9923,7 @@ requestBody.Add("ipOnMitigation",ipOnMitigation);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/mitigation/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnMitigation.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/mitigation/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnMitigation.ToString())),requestBody);
 		}
 		/// <summary>
 		/// AntiDDOS option. Delete IP from mitigation
@@ -10006,7 +9939,7 @@ requestBody.Add("ipOnMitigation",ipOnMitigation);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.MitigationIp>(HttpMethod.Delete,String.Format("/ip/{0}/mitigation/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnMitigation.ToString())));
+			return await RawCall<OvhApi.Models.Ip.MitigationIp>(HttpMethod.Delete,String.Format("/ip/{0}/mitigation/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnMitigation.ToString())));
 		}
 		/// <summary>
 		/// AntiDDOS option. Get statistics about your traffic in and out during this mitigation
@@ -10026,13 +9959,12 @@ requestBody.Add("ipOnMitigation",ipOnMitigation);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNull("ipOnMitigation",ipOnMitigation);
 
-			var queryString = new QueryString();
 			queryString.Add("to",to);
 			queryString.Add("from",from);
 			queryString.Add("scale",scale);
 
 
-			return await RawCall<OvhApi.Models.Ip.MitigationStats[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigation/{1}/stats{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnMitigation.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Ip.MitigationStats[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigation/{1}/stats{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnMitigation.ToString()),queryString));
 		}
 		/// <summary>
 		/// AntiDDOS option. Get top stream on your ip on a specific timestamp
@@ -10050,12 +9982,11 @@ requestBody.Add("ipOnMitigation",ipOnMitigation);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNull("ipOnMitigation",ipOnMitigation);
 
-			var queryString = new QueryString();
 			queryString.Add("date",date);
 			queryString.Add("scale",scale);
 
 
-			return await RawCall<OvhApi.Models.Ip.MitigationDetailedStats[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigation/{1}/topStream{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnMitigation.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Ip.MitigationDetailedStats[]>(HttpMethod.Get,String.Format("/ip/{0}/mitigation/{1}/topStream{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnMitigation.ToString()),queryString));
 		}
 		/// <summary>
 		/// Reverse on your ip
@@ -10069,7 +10000,7 @@ requestBody.Add("ipOnMitigation",ipOnMitigation);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/reverse",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/reverse",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Add reverse on an ip
@@ -10090,7 +10021,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("ipReverse",ipReverse);
 requestBody.Add("reverse",reverse);
 
-			return await RawCall<OvhApi.Models.Ip.ReverseIp>(HttpMethod.Post,String.Format("/ip/{0}/reverse",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.ReverseIp>(HttpMethod.Post,String.Format("/ip/{0}/reverse",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10106,7 +10037,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.ReverseIp>(HttpMethod.Get,String.Format("/ip/{0}/reverse/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipReverse.ToString())));
+			return await RawCall<OvhApi.Models.Ip.ReverseIp>(HttpMethod.Get,String.Format("/ip/{0}/reverse/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipReverse.ToString())));
 		}
 		/// <summary>
 		/// Delete a reverse on one IP
@@ -10122,7 +10053,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/ip/{0}/reverse/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipReverse.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/ip/{0}/reverse/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipReverse.ToString())));
 		}
 		/// <summary>
 		/// Anti-Hack blocked IP
@@ -10135,11 +10066,10 @@ requestBody.Add("reverse",reverse);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/antihack{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/antihack{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10155,7 +10085,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.BlockedIp>(HttpMethod.Get,String.Format("/ip/{0}/antihack/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipBlocked.ToString())));
+			return await RawCall<OvhApi.Models.Ip.BlockedIp>(HttpMethod.Get,String.Format("/ip/{0}/antihack/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipBlocked.ToString())));
 		}
 		/// <summary>
 		/// Unblock this IP
@@ -10171,7 +10101,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/ip/{0}/antihack/{1}/unblock",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipBlocked.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/ip/{0}/antihack/{1}/unblock",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipBlocked.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10187,7 +10117,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.GameMitigation>(HttpMethod.Get,String.Format("/ip/{0}/game/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnGame.ToString())));
+			return await RawCall<OvhApi.Models.Ip.GameMitigation>(HttpMethod.Get,String.Format("/ip/{0}/game/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnGame.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -10205,7 +10135,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/game/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnGame.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/game/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnGame.ToString())),requestBody);
 		}
 		/// <summary>
 		/// IDs of rules configured for this IP
@@ -10221,7 +10151,7 @@ requestBody.Add("reverse",reverse);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/{0}/game/{1}/rule",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnGame.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/{0}/game/{1}/rule",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnGame.ToString())));
 		}
 		/// <summary>
 		/// Add new rule on your IP
@@ -10244,7 +10174,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("protocol",protocol);
 requestBody.Add("ports",ports);
 
-			return await RawCall<OvhApi.Models.Ip.GameMitigationRule>(HttpMethod.Post,String.Format("/ip/{0}/game/{1}/rule",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnGame.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.GameMitigationRule>(HttpMethod.Post,String.Format("/ip/{0}/game/{1}/rule",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnGame.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10262,7 +10192,7 @@ requestBody.Add("ports",ports);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.GameMitigationRule>(HttpMethod.Get,String.Format("/ip/{0}/game/{1}/rule/{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnGame.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Ip.GameMitigationRule>(HttpMethod.Get,String.Format("/ip/{0}/game/{1}/rule/{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnGame.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete rule
@@ -10280,7 +10210,7 @@ requestBody.Add("ports",ports);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.GameMitigationRule>(HttpMethod.Delete,String.Format("/ip/{0}/game/{1}/rule/{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnGame.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Ip.GameMitigationRule>(HttpMethod.Delete,String.Format("/ip/{0}/game/{1}/rule/{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnGame.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Ip under game anti-ddos
@@ -10294,7 +10224,7 @@ requestBody.Add("ports",ports);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/game",System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/game",System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Ip under firewall
@@ -10308,12 +10238,11 @@ requestBody.Add("ports",ports);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 			queryString.Add("enabled",enabled);
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/firewall{1}",System.Uri.EscapeDataString(ip.ToString()),queryString));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/{0}/firewall{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),queryString));
 		}
 		/// <summary>
 		/// AntiDDOS option. Add new IP on firewall
@@ -10331,7 +10260,7 @@ requestBody.Add("ports",ports);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ipOnFirewall",ipOnFirewall);
 
-			return await RawCall<OvhApi.Models.Ip.FirewallIp>(HttpMethod.Post,String.Format("/ip/{0}/firewall",System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.FirewallIp>(HttpMethod.Post,String.Format("/ip/{0}/firewall",System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10347,7 +10276,7 @@ requestBody.Add("ipOnFirewall",ipOnFirewall);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.FirewallIp>(HttpMethod.Get,String.Format("/ip/{0}/firewall/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString())));
+			return await RawCall<OvhApi.Models.Ip.FirewallIp>(HttpMethod.Get,String.Format("/ip/{0}/firewall/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -10365,7 +10294,7 @@ requestBody.Add("ipOnFirewall",ipOnFirewall);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/firewall/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/{0}/firewall/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString())),requestBody);
 		}
 		/// <summary>
 		/// AntiDDOS option. Delete IP and rules from firewall
@@ -10381,7 +10310,7 @@ requestBody.Add("ipOnFirewall",ipOnFirewall);
 
 
 
-			return await RawCall<string>(HttpMethod.Delete,String.Format("/ip/{0}/firewall/{1}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString())));
+			return await RawCall<string>(HttpMethod.Delete,String.Format("/ip/{0}/firewall/{1}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString())));
 		}
 		/// <summary>
 		/// Rules for this IP
@@ -10396,11 +10325,10 @@ requestBody.Add("ipOnFirewall",ipOnFirewall);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNull("ipOnFirewall",ipOnFirewall);
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/{0}/firewall/{1}/rule{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/{0}/firewall/{1}/rule{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString()),queryString));
 		}
 		/// <summary>
 		/// AntiDDOS option. Add new rule on your IP
@@ -10434,7 +10362,7 @@ requestBody.Add("sequence",sequence);
 requestBody.Add("action",action);
 requestBody.Add("sourcePort",sourcePort);
 
-			return await RawCall<OvhApi.Models.Ip.FirewallNetworkRule>(HttpMethod.Post,String.Format("/ip/{0}/firewall/{1}/rule",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.FirewallNetworkRule>(HttpMethod.Post,String.Format("/ip/{0}/firewall/{1}/rule",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10452,7 +10380,7 @@ requestBody.Add("sourcePort",sourcePort);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.FirewallNetworkRule>(HttpMethod.Get,String.Format("/ip/{0}/firewall/{1}/rule/{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString()),System.Uri.EscapeDataString(sequence.ToString())));
+			return await RawCall<OvhApi.Models.Ip.FirewallNetworkRule>(HttpMethod.Get,String.Format("/ip/{0}/firewall/{1}/rule/{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString()),System.Net.WebUtility.UrlEncode(sequence.ToString())));
 		}
 		/// <summary>
 		/// AntiDDOS option. Delete rule
@@ -10470,7 +10398,7 @@ requestBody.Add("sourcePort",sourcePort);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.FirewallNetworkRule>(HttpMethod.Delete,String.Format("/ip/{0}/firewall/{1}/rule/{2}",System.Uri.EscapeDataString(ip.ToString()),System.Uri.EscapeDataString(ipOnFirewall.ToString()),System.Uri.EscapeDataString(sequence.ToString())));
+			return await RawCall<OvhApi.Models.Ip.FirewallNetworkRule>(HttpMethod.Delete,String.Format("/ip/{0}/firewall/{1}/rule/{2}",System.Net.WebUtility.UrlEncode(ip.ToString()),System.Net.WebUtility.UrlEncode(ipOnFirewall.ToString()),System.Net.WebUtility.UrlEncode(sequence.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10484,7 +10412,7 @@ requestBody.Add("sourcePort",sourcePort);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -10500,7 +10428,7 @@ requestBody.Add("sourcePort",sourcePort);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/loadBalancing/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/loadBalancing/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.
@@ -10523,7 +10451,7 @@ requestBody.Add("chain",chain);
 requestBody.Add("certificate",certificate);
 requestBody.Add("key",key);
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/importCustomSsl",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/importCustomSsl",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10537,7 +10465,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingIp>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingIp>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of backends you can attach to your IP
@@ -10551,7 +10479,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/allowedBackends",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/allowedBackends",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
@@ -10565,11 +10493,10 @@ requestBody.Add("key",key);
 			Ensure.NotNull("zone",zone);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("zone",zone);
 
 
-			return await RawCall<OVHApi.IPAddressBlock>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/internalNatIp{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OVHApi.IPAddressBlock>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/internalNatIp{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Backends for this IP load balancing
@@ -10583,7 +10510,7 @@ requestBody.Add("key",key);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/backend",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/backend",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a new backend on your IP load balancing
@@ -10606,7 +10533,7 @@ requestBody.Add("weight",weight);
 requestBody.Add("ipBackend",ipBackend);
 requestBody.Add("probe",probe);
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/backend",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/backend",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10622,7 +10549,7 @@ requestBody.Add("probe",probe);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingBackendIp>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/backend/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(backend.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingBackendIp>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/backend/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(backend.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -10640,7 +10567,7 @@ requestBody.Add("probe",probe);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/ip/loadBalancing/{0}/backend/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(backend.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/ip/loadBalancing/{0}/backend/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(backend.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove a backend IP
@@ -10656,7 +10583,7 @@ requestBody.Add("probe",probe);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Delete,String.Format("/ip/loadBalancing/{0}/backend/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(backend.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Delete,String.Format("/ip/loadBalancing/{0}/backend/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(backend.ToString())));
 		}
 		/// <summary>
 		/// Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
@@ -10678,7 +10605,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("mainBackendIp",mainBackendIp);
 requestBody.Add("backupStateSet",backupStateSet);
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/backend/{1}/backupState",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(backend.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/backend/{1}/backupState",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(backend.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.
@@ -10698,7 +10625,7 @@ requestBody.Add("backupStateSet",backupStateSet);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("weight",weight);
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/backend/{1}/setWeight",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(backend.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/backend/{1}/setWeight",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(backend.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Task list associated with this IP
@@ -10712,7 +10639,7 @@ requestBody.Add("weight",weight);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/task",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/task",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10728,7 +10655,7 @@ requestBody.Add("weight",weight);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
@@ -10742,7 +10669,7 @@ requestBody.Add("weight",weight);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/restoreSsl",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/restoreSsl",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
@@ -10760,7 +10687,7 @@ requestBody.Add("weight",weight);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("stickiness",stickiness);
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/stickiness",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/stickiness",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get all srcPort
@@ -10774,7 +10701,7 @@ requestBody.Add("stickiness",stickiness);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingAdditionalPortEnum[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/portsRedirection",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingAdditionalPortEnum[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/portsRedirection",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a new port redirection
@@ -10790,7 +10717,7 @@ requestBody.Add("stickiness",stickiness);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/portsRedirection",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Post,String.Format("/ip/loadBalancing/{0}/portsRedirection",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get the value for the given srcPort
@@ -10806,7 +10733,7 @@ requestBody.Add("stickiness",stickiness);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingIp.LoadBalancingPort>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/portsRedirection/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(srcPort.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingIp.LoadBalancingPort>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/portsRedirection/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(srcPort.ToString())));
 		}
 		/// <summary>
 		/// Delete a port redirection
@@ -10822,7 +10749,7 @@ requestBody.Add("stickiness",stickiness);
 
 
 
-			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Delete,String.Format("/ip/loadBalancing/{0}/portsRedirection/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(srcPort.ToString())));
+			return await RawCall<OvhApi.Models.Ip.LoadBalancingTask>(HttpMethod.Delete,String.Format("/ip/loadBalancing/{0}/portsRedirection/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(srcPort.ToString())));
 		}
 		/// <summary>
 		/// Ip subnet used to send probes to your backends
@@ -10836,11 +10763,10 @@ requestBody.Add("stickiness",stickiness);
 			Ensure.NotNull("zone",zone);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("zone",zone);
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/probeIp{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/ip/loadBalancing/{0}/probeIp{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// List available services
@@ -10866,7 +10792,7 @@ requestBody.Add("stickiness",stickiness);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/cpanel/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/cpanel/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -10882,7 +10808,7 @@ requestBody.Add("stickiness",stickiness);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/cpanel/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/cpanel/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Move this license to another Ip
@@ -10900,7 +10826,7 @@ requestBody.Add("stickiness",stickiness);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("destinationIp",destinationIp);
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/cpanel/{0}/changeIp",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/cpanel/{0}/changeIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10914,7 +10840,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Cpanel.Cpanel>(HttpMethod.Get,String.Format("/license/cpanel/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.Cpanel.Cpanel>(HttpMethod.Get,String.Format("/license/cpanel/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -10930,7 +10856,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/cpanel/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/cpanel/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// tasks linked to this license
@@ -10944,12 +10870,11 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("action",action);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/cpanel/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/cpanel/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -10965,7 +10890,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/cpanel/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/cpanel/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Returns an array of ips where the license can be moved to
@@ -10979,7 +10904,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/cpanel/{0}/allowedDestinationIp",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/cpanel/{0}/allowedDestinationIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -10993,7 +10918,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/license/cpanel/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/license/cpanel/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Will tell if the ip can accept the license
@@ -11007,11 +10932,10 @@ requestBody.Add("destinationIp",destinationIp);
 			Ensure.NotNull("destinationIp",destinationIp);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("destinationIp",destinationIp);
 
 
-			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/cpanel/{0}/canLicenseBeMovedTo{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/cpanel/{0}/canLicenseBeMovedTo{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// List available services
@@ -11035,7 +10959,6 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 
 
@@ -11053,7 +10976,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/directadmin/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/directadmin/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11069,7 +10992,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/directadmin/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/directadmin/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Move this license to another Ip
@@ -11087,7 +11010,7 @@ requestBody.Add("destinationIp",destinationIp);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("destinationIp",destinationIp);
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/directadmin/{0}/changeIp",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/directadmin/{0}/changeIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11101,7 +11024,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Directadmin.DirectAdmin>(HttpMethod.Get,String.Format("/license/directadmin/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.Directadmin.DirectAdmin>(HttpMethod.Get,String.Format("/license/directadmin/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11117,7 +11040,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/directadmin/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/directadmin/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// tasks linked to this license
@@ -11131,12 +11054,11 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("action",action);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/directadmin/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/directadmin/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11152,7 +11074,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/directadmin/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/directadmin/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Returns an array of ips where the license can be moved to
@@ -11166,7 +11088,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/directadmin/{0}/allowedDestinationIp",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/directadmin/{0}/allowedDestinationIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -11180,7 +11102,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/license/directadmin/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/license/directadmin/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Will tell if the ip can accept the license
@@ -11194,11 +11116,10 @@ requestBody.Add("destinationIp",destinationIp);
 			Ensure.NotNull("destinationIp",destinationIp);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("destinationIp",destinationIp);
 
 
-			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/directadmin/{0}/canLicenseBeMovedTo{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/directadmin/{0}/canLicenseBeMovedTo{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// List available services
@@ -11222,7 +11143,6 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 
 
@@ -11240,7 +11160,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/plesk/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/plesk/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11256,7 +11176,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/plesk/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/plesk/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11270,7 +11190,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Plesk.Plesk>(HttpMethod.Get,String.Format("/license/plesk/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.Plesk.Plesk>(HttpMethod.Get,String.Format("/license/plesk/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11286,7 +11206,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/plesk/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/plesk/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// tasks linked to this license
@@ -11300,12 +11220,11 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("action",action);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11321,7 +11240,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/plesk/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/plesk/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Returns an array of ips where the license can be moved to
@@ -11335,7 +11254,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/allowedDestinationIp",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/allowedDestinationIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -11349,7 +11268,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/license/plesk/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/license/plesk/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Will tell if the ip can accept the license
@@ -11363,11 +11282,10 @@ requestBody.Add("destinationIp",destinationIp);
 			Ensure.NotNull("destinationIp",destinationIp);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("destinationIp",destinationIp);
 
 
-			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/plesk/{0}/canLicenseBeMovedTo{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/plesk/{0}/canLicenseBeMovedTo{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Move this license to another Ip
@@ -11385,7 +11303,7 @@ requestBody.Add("destinationIp",destinationIp);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("destinationIp",destinationIp);
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/plesk/{0}/changeIp",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/plesk/{0}/changeIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// options attached to this license
@@ -11399,7 +11317,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.OptionLabel[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/option",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.OptionLabel[]>(HttpMethod.Get,String.Format("/license/plesk/{0}/option",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11415,7 +11333,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Option>(HttpMethod.Get,String.Format("/license/plesk/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(label.ToString())));
+			return await RawCall<OvhApi.Models.License.Option>(HttpMethod.Get,String.Format("/license/plesk/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(label.ToString())));
 		}
 		/// <summary>
 		/// release this Option
@@ -11431,7 +11349,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Delete,String.Format("/license/plesk/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(label.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Delete,String.Format("/license/plesk/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(label.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -11455,7 +11373,6 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 
 
@@ -11473,7 +11390,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11489,7 +11406,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/virtuozzo/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/virtuozzo/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11503,7 +11420,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Virtuozzo.Virtuozzo>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.Virtuozzo.Virtuozzo>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11519,7 +11436,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/virtuozzo/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/virtuozzo/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// tasks linked to this license
@@ -11533,12 +11450,11 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("action",action);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11554,7 +11470,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Returns an array of ips where the license can be moved to
@@ -11568,7 +11484,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/allowedDestinationIp",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/allowedDestinationIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -11582,7 +11498,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/license/virtuozzo/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/license/virtuozzo/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Will tell if the ip can accept the license
@@ -11596,11 +11512,10 @@ requestBody.Add("destinationIp",destinationIp);
 			Ensure.NotNull("destinationIp",destinationIp);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("destinationIp",destinationIp);
 
 
-			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/canLicenseBeMovedTo{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.License.ChangeIpStatus>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/canLicenseBeMovedTo{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Move this license to another Ip
@@ -11618,7 +11533,7 @@ requestBody.Add("destinationIp",destinationIp);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("destinationIp",destinationIp);
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/virtuozzo/{0}/changeIp",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/virtuozzo/{0}/changeIp",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Options linked to this license
@@ -11631,11 +11546,10 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("label",label);
 
 
-			return await RawCall<OvhApi.Models.License.OptionLabel[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/option{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.License.OptionLabel[]>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/option{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11651,7 +11565,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Option>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(label.ToString())));
+			return await RawCall<OvhApi.Models.License.Option>(HttpMethod.Get,String.Format("/license/virtuozzo/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(label.ToString())));
 		}
 		/// <summary>
 		/// release this Option
@@ -11667,7 +11581,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Delete,String.Format("/license/virtuozzo/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(label.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Delete,String.Format("/license/virtuozzo/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(label.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -11691,7 +11605,6 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 
 
@@ -11709,7 +11622,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/windows/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/license/windows/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11725,7 +11638,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/windows/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/windows/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11739,7 +11652,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Windows.Windows>(HttpMethod.Get,String.Format("/license/windows/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.Windows.Windows>(HttpMethod.Get,String.Format("/license/windows/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -11755,7 +11668,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/license/windows/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/license/windows/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// tasks linked to this license
@@ -11769,12 +11682,11 @@ requestBody.Add("destinationIp",destinationIp);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("action",action);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/windows/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/license/windows/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11790,7 +11702,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/windows/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Get,String.Format("/license/windows/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -11804,7 +11716,7 @@ requestBody.Add("destinationIp",destinationIp);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/license/windows/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/license/windows/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Link your own sql server license to this Windows license
@@ -11825,7 +11737,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("licenseId",licenseId);
 requestBody.Add("version",version);
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/windows/{0}/sqlServer",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Post,String.Format("/license/windows/{0}/sqlServer",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// options attached to this license
@@ -11839,7 +11751,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.License.OptionLabel[]>(HttpMethod.Get,String.Format("/license/windows/{0}/option",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.License.OptionLabel[]>(HttpMethod.Get,String.Format("/license/windows/{0}/option",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -11855,7 +11767,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.License.Option>(HttpMethod.Get,String.Format("/license/windows/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(label.ToString())));
+			return await RawCall<OvhApi.Models.License.Option>(HttpMethod.Get,String.Format("/license/windows/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(label.ToString())));
 		}
 		/// <summary>
 		/// release this Option
@@ -11871,7 +11783,7 @@ requestBody.Add("version",version);
 
 
 
-			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Delete,String.Format("/license/windows/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(label.ToString())));
+			return await RawCall<OvhApi.Models.License.Task>(HttpMethod.Delete,String.Format("/license/windows/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(label.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -11895,7 +11807,6 @@ requestBody.Add("version",version);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 
 
@@ -11973,7 +11884,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Nichandle.Ipxe>(HttpMethod.Get,String.Format("/me/ipxeScript/{0}",System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Nichandle.Ipxe>(HttpMethod.Get,String.Format("/me/ipxeScript/{0}",System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// Remove this IPXE Script
@@ -11987,7 +11898,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/ipxeScript/{0}",System.Uri.EscapeDataString(name.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/ipxeScript/{0}",System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// List of IP restrictions
@@ -12035,7 +11946,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Nichandle.IpRestriction>(HttpMethod.Get,String.Format("/me/accessRestriction/ip/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Nichandle.IpRestriction>(HttpMethod.Get,String.Format("/me/accessRestriction/ip/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12051,7 +11962,7 @@ requestBody.Add("rule",rule);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/accessRestriction/ip/{0}",System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/accessRestriction/ip/{0}",System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete this restriction rule
@@ -12065,7 +11976,7 @@ requestBody.Add("rule",rule);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/accessRestriction/ip/{0}",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/accessRestriction/ip/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12117,7 +12028,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Api.Application>(HttpMethod.Get,String.Format("/me/api/application/{0}",System.Uri.EscapeDataString(applicationId.ToString())));
+			return await RawCall<OvhApi.Models.Api.Application>(HttpMethod.Get,String.Format("/me/api/application/{0}",System.Net.WebUtility.UrlEncode(applicationId.ToString())));
 		}
 		/// <summary>
 		/// Remove this application. It will revoke all credential belonging to this application.
@@ -12131,7 +12042,7 @@ requestBody.Add("rule",rule);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/api/application/{0}",System.Uri.EscapeDataString(applicationId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/api/application/{0}",System.Net.WebUtility.UrlEncode(applicationId.ToString())));
 		}
 		/// <summary>
 		/// List of your Api Credentials
@@ -12143,7 +12054,6 @@ requestBody.Add("rule",rule);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 			queryString.Add("applicationId",applicationId);
 
@@ -12162,7 +12072,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Api.Credential>(HttpMethod.Get,String.Format("/me/api/credential/{0}",System.Uri.EscapeDataString(credentialId.ToString())));
+			return await RawCall<OvhApi.Models.Api.Credential>(HttpMethod.Get,String.Format("/me/api/credential/{0}",System.Net.WebUtility.UrlEncode(credentialId.ToString())));
 		}
 		/// <summary>
 		/// Remove this credential
@@ -12176,7 +12086,7 @@ requestBody.Add("rule",rule);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/api/credential/{0}",System.Uri.EscapeDataString(credentialId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/api/credential/{0}",System.Net.WebUtility.UrlEncode(credentialId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12190,7 +12100,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Api.Application>(HttpMethod.Get,String.Format("/me/api/credential/{0}/application",System.Uri.EscapeDataString(credentialId.ToString())));
+			return await RawCall<OvhApi.Models.Api.Application>(HttpMethod.Get,String.Format("/me/api/credential/{0}/application",System.Net.WebUtility.UrlEncode(credentialId.ToString())));
 		}
 		/// <summary>
 		/// List of all the orders the logged account has
@@ -12202,7 +12112,6 @@ requestBody.Add("rule",rule);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("date.to",date_to);
 			queryString.Add("date.from",date_from);
 
@@ -12221,7 +12130,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Order.PaymentMeans>(HttpMethod.Get,String.Format("/me/order/{0}/paymentMeans",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Order.PaymentMeans>(HttpMethod.Get,String.Format("/me/order/{0}/paymentMeans",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12235,7 +12144,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Order>(HttpMethod.Get,String.Format("/me/order/{0}",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Order>(HttpMethod.Get,String.Format("/me/order/{0}",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12249,7 +12158,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Payment>(HttpMethod.Get,String.Format("/me/order/{0}/payment",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Payment>(HttpMethod.Get,String.Format("/me/order/{0}/payment",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12263,7 +12172,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Refund>(HttpMethod.Get,String.Format("/me/order/{0}/refund",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Refund>(HttpMethod.Get,String.Format("/me/order/{0}/refund",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// Give access to all entries of the order
@@ -12277,7 +12186,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/me/order/{0}/details",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/me/order/{0}/details",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12293,7 +12202,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.OrderDetail>(HttpMethod.Get,String.Format("/me/order/{0}/details/{1}",System.Uri.EscapeDataString(orderId.ToString()),System.Uri.EscapeDataString(orderDetailId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.OrderDetail>(HttpMethod.Get,String.Format("/me/order/{0}/details/{1}",System.Net.WebUtility.UrlEncode(orderId.ToString()),System.Net.WebUtility.UrlEncode(orderDetailId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12307,7 +12216,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Bill>(HttpMethod.Get,String.Format("/me/order/{0}/bill",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Bill>(HttpMethod.Get,String.Format("/me/order/{0}/bill",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// Return main data about the object the processing of the order generated
@@ -12321,7 +12230,7 @@ requestBody.Add("rule",rule);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Order.AssociatedObject>(HttpMethod.Get,String.Format("/me/order/{0}/associatedObject",System.Uri.EscapeDataString(orderId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Order.AssociatedObject>(HttpMethod.Get,String.Format("/me/order/{0}/associatedObject",System.Net.WebUtility.UrlEncode(orderId.ToString())));
 		}
 		/// <summary>
 		/// List of Paypal accounts usable for payments on this account
@@ -12364,7 +12273,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/me/paymentMean/paypal/{0}/chooseAsDefaultPaymentMean",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/me/paymentMean/paypal/{0}/chooseAsDefaultPaymentMean",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12378,7 +12287,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Paypal>(HttpMethod.Get,String.Format("/me/paymentMean/paypal/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Paypal>(HttpMethod.Get,String.Format("/me/paymentMean/paypal/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12394,7 +12303,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/paymentMean/paypal/{0}",System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/paymentMean/paypal/{0}",System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Disable payment through this PayPal account
@@ -12408,7 +12317,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/paymentMean/paypal/{0}",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/paymentMean/paypal/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List of credit cards
@@ -12451,7 +12360,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/me/paymentMean/creditCard/{0}/chooseAsDefaultPaymentMean",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/me/paymentMean/creditCard/{0}/chooseAsDefaultPaymentMean",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12465,7 +12374,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.CreditCard>(HttpMethod.Get,String.Format("/me/paymentMean/creditCard/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Billing.CreditCard>(HttpMethod.Get,String.Format("/me/paymentMean/creditCard/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12481,7 +12390,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/paymentMean/creditCard/{0}",System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/paymentMean/creditCard/{0}",System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Disable payment through this credit card
@@ -12495,7 +12404,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/paymentMean/creditCard/{0}",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/paymentMean/creditCard/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List of bank accounts
@@ -12506,7 +12415,6 @@ requestBody.Add("description",description);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("state",state);
 
 
@@ -12551,7 +12459,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/me/paymentMean/bankAccount/{0}/chooseAsDefaultPaymentMean",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/me/paymentMean/bankAccount/{0}/chooseAsDefaultPaymentMean",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12565,7 +12473,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.BankAccount>(HttpMethod.Get,String.Format("/me/paymentMean/bankAccount/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Billing.BankAccount>(HttpMethod.Get,String.Format("/me/paymentMean/bankAccount/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12581,7 +12489,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/paymentMean/bankAccount/{0}",System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/paymentMean/bankAccount/{0}",System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Disable payment through this account
@@ -12595,7 +12503,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/paymentMean/bankAccount/{0}",System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/paymentMean/bankAccount/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List of all OVH things you can subscribe to
@@ -12621,7 +12529,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Nichandle.Subscription>(HttpMethod.Get,String.Format("/me/subscription/{0}",System.Uri.EscapeDataString(subscriptionType.ToString())));
+			return await RawCall<OvhApi.Models.Nichandle.Subscription>(HttpMethod.Get,String.Format("/me/subscription/{0}",System.Net.WebUtility.UrlEncode(subscriptionType.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12637,7 +12545,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/subscription/{0}",System.Uri.EscapeDataString(subscriptionType.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/subscription/{0}",System.Net.WebUtility.UrlEncode(subscriptionType.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Your customized operating system installation templates
@@ -12685,7 +12593,7 @@ requestBody.Add("baseTemplateName",baseTemplateName);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.Templates>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}",System.Uri.EscapeDataString(templateName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.Templates>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}",System.Net.WebUtility.UrlEncode(templateName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12701,7 +12609,7 @@ requestBody.Add("baseTemplateName",baseTemplateName);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/installationTemplate/{0}",System.Uri.EscapeDataString(templateName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/installationTemplate/{0}",System.Net.WebUtility.UrlEncode(templateName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// remove this template
@@ -12715,7 +12623,7 @@ requestBody.Add("baseTemplateName",baseTemplateName);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/installationTemplate/{0}",System.Uri.EscapeDataString(templateName.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/installationTemplate/{0}",System.Net.WebUtility.UrlEncode(templateName.ToString())));
 		}
 		/// <summary>
 		/// Partitioning schemes available on this template
@@ -12729,7 +12637,7 @@ requestBody.Add("baseTemplateName",baseTemplateName);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme",System.Uri.EscapeDataString(templateName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme",System.Net.WebUtility.UrlEncode(templateName.ToString())));
 		}
 		/// <summary>
 		/// Add a scheme of partition
@@ -12750,7 +12658,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("priority",priority);
 requestBody.Add("name",name);
 
-			await RawCall(HttpMethod.Post,String.Format("/me/installationTemplate/{0}/partitionScheme",System.Uri.EscapeDataString(templateName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/me/installationTemplate/{0}/partitionScheme",System.Net.WebUtility.UrlEncode(templateName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12766,7 +12674,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitioningSchemes>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitioningSchemes>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12784,7 +12692,7 @@ requestBody.Add("name",name);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// remove this scheme of partition
@@ -12800,7 +12708,7 @@ requestBody.Add("name",name);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())));
 		}
 		/// <summary>
 		/// Partitions defined in this partitioning scheme
@@ -12816,7 +12724,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())));
 		}
 		/// <summary>
 		/// Add a partition in this partitioning scheme
@@ -12852,7 +12760,7 @@ requestBody.Add("mountpoint",mountpoint);
 requestBody.Add("type",type);
 requestBody.Add("size",size);
 
-			await RawCall(HttpMethod.Post,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12870,7 +12778,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitions>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString()),System.Uri.EscapeDataString(mountpoint.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.InstallationTemplate.TemplatePartitions>(HttpMethod.Get,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString()),System.Net.WebUtility.UrlEncode(mountpoint.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -12890,7 +12798,7 @@ requestBody.Add("size",size);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString()),System.Uri.EscapeDataString(mountpoint.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString()),System.Net.WebUtility.UrlEncode(mountpoint.ToString())),requestBody);
 		}
 		/// <summary>
 		/// remove this partition
@@ -12908,7 +12816,7 @@ requestBody.Add("size",size);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Uri.EscapeDataString(templateName.ToString()),System.Uri.EscapeDataString(schemeName.ToString()),System.Uri.EscapeDataString(mountpoint.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/installationTemplate/{0}/partitionScheme/{1}/partition/{2}",System.Net.WebUtility.UrlEncode(templateName.ToString()),System.Net.WebUtility.UrlEncode(schemeName.ToString()),System.Net.WebUtility.UrlEncode(mountpoint.ToString())));
 		}
 		/// <summary>
 		/// Check the integrity of this template
@@ -12922,7 +12830,7 @@ requestBody.Add("size",size);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/me/installationTemplate/{0}/checkIntegrity",System.Uri.EscapeDataString(templateName.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/me/installationTemplate/{0}/checkIntegrity",System.Net.WebUtility.UrlEncode(templateName.ToString())));
 		}
 		/// <summary>
 		/// List of all the refunds the logged account has
@@ -12934,7 +12842,6 @@ requestBody.Add("size",size);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("date.to",date_to);
 			queryString.Add("date.from",date_from);
 
@@ -12953,7 +12860,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Refund>(HttpMethod.Get,String.Format("/me/refund/{0}",System.Uri.EscapeDataString(refundId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Refund>(HttpMethod.Get,String.Format("/me/refund/{0}",System.Net.WebUtility.UrlEncode(refundId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12967,7 +12874,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Payment>(HttpMethod.Get,String.Format("/me/refund/{0}/payment",System.Uri.EscapeDataString(refundId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Payment>(HttpMethod.Get,String.Format("/me/refund/{0}/payment",System.Net.WebUtility.UrlEncode(refundId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -12983,7 +12890,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.RefundDetail>(HttpMethod.Get,String.Format("/me/refund/{0}/details/{1}",System.Uri.EscapeDataString(refundId.ToString()),System.Uri.EscapeDataString(refundDetailId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.RefundDetail>(HttpMethod.Get,String.Format("/me/refund/{0}/details/{1}",System.Net.WebUtility.UrlEncode(refundId.ToString()),System.Net.WebUtility.UrlEncode(refundDetailId.ToString())));
 		}
 		/// <summary>
 		/// Give access to all entries of the refund
@@ -12997,7 +12904,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/refund/{0}/details",System.Uri.EscapeDataString(refundId.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/refund/{0}/details",System.Net.WebUtility.UrlEncode(refundId.ToString())));
 		}
 		/// <summary>
 		/// List of OVH accounts the logged account has
@@ -13025,7 +12932,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Movement>(HttpMethod.Get,String.Format("/me/ovhAccount/{0}/movements/{1}",System.Uri.EscapeDataString(ovhAccountId.ToString()),System.Uri.EscapeDataString(movementId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Movement>(HttpMethod.Get,String.Format("/me/ovhAccount/{0}/movements/{1}",System.Net.WebUtility.UrlEncode(ovhAccountId.ToString()),System.Net.WebUtility.UrlEncode(movementId.ToString())));
 		}
 		/// <summary>
 		/// Details about an entry of the OVH account
@@ -13039,12 +12946,11 @@ requestBody.Add("size",size);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("ovhAccountId",ovhAccountId);
 
-			var queryString = new QueryString();
 			queryString.Add("date.to",date_to);
 			queryString.Add("date.from",date_from);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/me/ovhAccount/{0}/movements{1}",System.Uri.EscapeDataString(ovhAccountId.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/me/ovhAccount/{0}/movements{1}",System.Net.WebUtility.UrlEncode(ovhAccountId.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -13058,7 +12964,7 @@ requestBody.Add("size",size);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.OvhAccount>(HttpMethod.Get,String.Format("/me/ovhAccount/{0}",System.Uri.EscapeDataString(ovhAccountId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.OvhAccount>(HttpMethod.Get,String.Format("/me/ovhAccount/{0}",System.Net.WebUtility.UrlEncode(ovhAccountId.ToString())));
 		}
 		/// <summary>
 		/// Generate an order that can be paid in order to credit the OVH account
@@ -13076,7 +12982,7 @@ requestBody.Add("size",size);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("amount",amount);
 
-			return await RawCall<OvhApi.Models.Billing.Order>(HttpMethod.Post,String.Format("/me/ovhAccount/{0}/creditOrder",System.Uri.EscapeDataString(ovhAccountId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Billing.Order>(HttpMethod.Post,String.Format("/me/ovhAccount/{0}/creditOrder",System.Net.WebUtility.UrlEncode(ovhAccountId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Initiate a password change procedure
@@ -13153,7 +13059,7 @@ requestBody.Add("abuse_mailbox",abuse_mailbox);
 
 
 
-			return await RawCall<OvhApi.Models.Nichandle.Ipv4Org>(HttpMethod.Get,String.Format("/me/ipOrganisation/{0}",System.Uri.EscapeDataString(organisationId.ToString())));
+			return await RawCall<OvhApi.Models.Nichandle.Ipv4Org>(HttpMethod.Get,String.Format("/me/ipOrganisation/{0}",System.Net.WebUtility.UrlEncode(organisationId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -13169,7 +13075,7 @@ requestBody.Add("abuse_mailbox",abuse_mailbox);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/ipOrganisation/{0}",System.Uri.EscapeDataString(organisationId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/ipOrganisation/{0}",System.Net.WebUtility.UrlEncode(organisationId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -13183,7 +13089,7 @@ requestBody.Add("abuse_mailbox",abuse_mailbox);
 
 
 
-			return await RawCall<OvhApi.Models.Nichandle.SshKey>(HttpMethod.Get,String.Format("/me/sshKey/{0}",System.Uri.EscapeDataString(keyName.ToString())));
+			return await RawCall<OvhApi.Models.Nichandle.SshKey>(HttpMethod.Get,String.Format("/me/sshKey/{0}",System.Net.WebUtility.UrlEncode(keyName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -13199,7 +13105,7 @@ requestBody.Add("abuse_mailbox",abuse_mailbox);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/me/sshKey/{0}",System.Uri.EscapeDataString(keyName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/me/sshKey/{0}",System.Net.WebUtility.UrlEncode(keyName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Remove this public SSH key
@@ -13213,7 +13119,7 @@ requestBody.Add("abuse_mailbox",abuse_mailbox);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/me/sshKey/{0}",System.Uri.EscapeDataString(keyName.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/me/sshKey/{0}",System.Net.WebUtility.UrlEncode(keyName.ToString())));
 		}
 		/// <summary>
 		/// List of your public SSH keys
@@ -13273,7 +13179,6 @@ requestBody.Add("ovhCompany",ovhCompany);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("agreed",agreed);
 			queryString.Add("contractId",contractId);
 
@@ -13292,7 +13197,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<OvhApi.Models.Agreements.ContractAgreement>(HttpMethod.Get,String.Format("/me/agreements/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Agreements.ContractAgreement>(HttpMethod.Get,String.Format("/me/agreements/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -13306,7 +13211,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<OvhApi.Models.Agreements.Contract>(HttpMethod.Get,String.Format("/me/agreements/{0}/contract",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Agreements.Contract>(HttpMethod.Get,String.Format("/me/agreements/{0}/contract",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Accept this contract
@@ -13320,7 +13225,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/me/agreements/{0}/accept",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/me/agreements/{0}/accept",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List of all the bills the logged account has
@@ -13332,7 +13237,6 @@ requestBody.Add("ovhCompany",ovhCompany);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("date.to",date_to);
 			queryString.Add("date.from",date_from);
 
@@ -13351,7 +13255,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Bill>(HttpMethod.Get,String.Format("/me/bill/{0}",System.Uri.EscapeDataString(billId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Bill>(HttpMethod.Get,String.Format("/me/bill/{0}",System.Net.WebUtility.UrlEncode(billId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -13365,7 +13269,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.Payment>(HttpMethod.Get,String.Format("/me/bill/{0}/payment",System.Uri.EscapeDataString(billId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.Payment>(HttpMethod.Get,String.Format("/me/bill/{0}/payment",System.Net.WebUtility.UrlEncode(billId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -13381,7 +13285,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<OvhApi.Models.Billing.BillDetail>(HttpMethod.Get,String.Format("/me/bill/{0}/details/{1}",System.Uri.EscapeDataString(billId.ToString()),System.Uri.EscapeDataString(billDetailId.ToString())));
+			return await RawCall<OvhApi.Models.Billing.BillDetail>(HttpMethod.Get,String.Format("/me/bill/{0}/details/{1}",System.Net.WebUtility.UrlEncode(billId.ToString()),System.Net.WebUtility.UrlEncode(billDetailId.ToString())));
 		}
 		/// <summary>
 		/// Give access to all entries of the bill
@@ -13395,7 +13299,7 @@ requestBody.Add("ovhCompany",ovhCompany);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/bill/{0}/details",System.Uri.EscapeDataString(billId.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/me/bill/{0}/details",System.Net.WebUtility.UrlEncode(billId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -13509,7 +13413,6 @@ requestBody.Add("legalform",legalform);
 		{
 			Ensure.NotNull("country",country);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
@@ -13523,7 +13426,6 @@ requestBody.Add("legalform",legalform);
 		{
 			Ensure.NotNull("country",country);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
@@ -13543,7 +13445,6 @@ requestBody.Add("legalform",legalform);
 			Ensure.NotNull("ovhCompany",ovhCompany);
 			Ensure.NotNull("legalform",legalform);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 			queryString.Add("ovhSubsidiary",ovhSubsidiary);
 			queryString.Add("ovhCompany",ovhCompany);
@@ -13560,7 +13461,6 @@ requestBody.Add("legalform",legalform);
 		{
 			Ensure.NotNull("country",country);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
@@ -13576,7 +13476,6 @@ requestBody.Add("legalform",legalform);
 			Ensure.NotNull("ovhSubsidiary",ovhSubsidiary);
 			Ensure.NotNull("ovhCompany",ovhCompany);
 
-			var queryString = new QueryString();
 			queryString.Add("ovhSubsidiary",ovhSubsidiary);
 			queryString.Add("ovhCompany",ovhCompany);
 
@@ -13595,11 +13494,10 @@ requestBody.Add("legalform",legalform);
 			Ensure.NotNull("quota",quota);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("quota",quota);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/quota{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/quota{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -13615,11 +13513,10 @@ requestBody.Add("legalform",legalform);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("quota",quota);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/quota/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/quota/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -13639,7 +13536,7 @@ requestBody.Add("legalform",legalform);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("quota",quota);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/dedicated/{0}/quota/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/dedicated/{0}/quota/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -13653,7 +13550,7 @@ requestBody.Add("quota",quota);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'cacheRule' option
@@ -13667,11 +13564,10 @@ requestBody.Add("quota",quota);
 			Ensure.NotNull("cacheRule",cacheRule);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("cacheRule",cacheRule);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/cacheRule{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/cacheRule{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -13687,11 +13583,10 @@ requestBody.Add("quota",quota);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("cacheRule",cacheRule);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/cacheRule/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/cacheRule/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -13711,7 +13606,7 @@ requestBody.Add("quota",quota);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("cacheRule",cacheRule);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/dedicated/{0}/cacheRule/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/dedicated/{0}/cacheRule/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'backend' option
@@ -13725,11 +13620,10 @@ requestBody.Add("cacheRule",cacheRule);
 			Ensure.IdIsValid("backend",backend);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("backend",backend);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/backend{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/backend{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -13745,11 +13639,10 @@ requestBody.Add("cacheRule",cacheRule);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("backend",backend);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/backend/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/dedicated/{0}/backend/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -13769,7 +13662,7 @@ requestBody.Add("cacheRule",cacheRule);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("backend",backend);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/dedicated/{0}/backend/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/dedicated/{0}/backend/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -13795,11 +13688,10 @@ requestBody.Add("backend",backend);
 			Ensure.NotNull("bandwidth",bandwidth);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("bandwidth",bandwidth);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}/traffic{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}/traffic{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -13817,7 +13709,7 @@ requestBody.Add("backend",backend);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("bandwidth",bandwidth);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/webstorage/{0}/traffic",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/webstorage/{0}/traffic",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -13831,7 +13723,7 @@ requestBody.Add("bandwidth",bandwidth);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'storage' option
@@ -13845,11 +13737,10 @@ requestBody.Add("bandwidth",bandwidth);
 			Ensure.NotNull("storage",storage);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("storage",storage);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}/storage{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}/storage{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -13865,11 +13756,10 @@ requestBody.Add("bandwidth",bandwidth);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("storage",storage);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}/storage/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/cdn/webstorage/{0}/storage/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -13889,7 +13779,7 @@ requestBody.Add("bandwidth",bandwidth);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("storage",storage);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/webstorage/{0}/storage/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/cdn/webstorage/{0}/storage/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -13915,7 +13805,7 @@ requestBody.Add("storage",storage);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/sms/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/sms/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -13929,11 +13819,10 @@ requestBody.Add("storage",storage);
 			Ensure.IdIsValid("quantity",quantity);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("quantity",quantity);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/sms/{0}/credits{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/sms/{0}/credits{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -13951,7 +13840,7 @@ requestBody.Add("storage",storage);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("quantity",quantity);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/sms/{0}/credits",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/sms/{0}/credits",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -13989,7 +13878,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/telephony/{0}",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/telephony/{0}",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14042,7 +13931,6 @@ requestBody.Add("quantity",quantity);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 
-			var queryString = new QueryString();
 			queryString.Add("socialReason",socialReason);
 			queryString.Add("offer",offer);
 			queryString.Add("floor",floor);
@@ -14070,7 +13958,7 @@ requestBody.Add("quantity",quantity);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/telephony/{0}/portability{1}",System.Uri.EscapeDataString(billingAccount.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/telephony/{0}/portability{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14151,7 +14039,7 @@ requestBody.Add("door",door);
 requestBody.Add("building",building);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/telephony/{0}/portability",System.Uri.EscapeDataString(billingAccount.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/telephony/{0}/portability",System.Net.WebUtility.UrlEncode(billingAccount.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -14165,7 +14053,7 @@ requestBody.Add("type",type);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14179,11 +14067,10 @@ requestBody.Add("type",type);
 			Ensure.NotNullNorEmpty("domain",domain);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("domain",domain);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/{0}/ssl{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/{0}/ssl{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14201,7 +14088,7 @@ requestBody.Add("type",type);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("domain",domain);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/ip/loadBalancing/{0}/ssl",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/ip/loadBalancing/{0}/ssl",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14215,11 +14102,10 @@ requestBody.Add("domain",domain);
 			Ensure.NotNull("pop",pop);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("pop",pop);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/{0}/pop{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/{0}/pop{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14237,7 +14123,7 @@ requestBody.Add("domain",domain);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("pop",pop);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/ip/loadBalancing/{0}/pop",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/ip/loadBalancing/{0}/pop",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -14261,7 +14147,6 @@ requestBody.Add("pop",pop);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("pop",pop);
 
-			var queryString = new QueryString();
 			queryString.Add("pop",pop);
 
 
@@ -14279,11 +14164,10 @@ requestBody.Add("pop",pop);
 			Ensure.NotNull("pop",pop);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("pop",pop);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/ip/loadBalancing/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14301,7 +14185,7 @@ requestBody.Add("pop",pop);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("pop",pop);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/ip/loadBalancing/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/ip/loadBalancing/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -14327,7 +14211,7 @@ requestBody.Add("pop",pop);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service",System.Uri.EscapeDataString(organizationName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service",System.Net.WebUtility.UrlEncode(organizationName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -14343,7 +14227,7 @@ requestBody.Add("pop",pop);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/serviceInfos",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -14361,7 +14245,7 @@ requestBody.Add("pop",pop);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/order/email/exchange/{0}/service/{1}/serviceInfos",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/order/email/exchange/{0}/service/{1}/serviceInfos",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -14377,7 +14261,7 @@ requestBody.Add("pop",pop);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'outlook' option
@@ -14395,12 +14279,11 @@ requestBody.Add("pop",pop);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("licence",licence);
 			queryString.Add("primaryEmailAddress",primaryEmailAddress);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/outlook{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/outlook{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14420,12 +14303,11 @@ requestBody.Add("pop",pop);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("licence",licence);
 			queryString.Add("primaryEmailAddress",primaryEmailAddress);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/outlook/{2}{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/outlook/{2}{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14450,7 +14332,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("licence",licence);
 requestBody.Add("primaryEmailAddress",primaryEmailAddress);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/email/exchange/{0}/service/{1}/outlook/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/email/exchange/{0}/service/{1}/outlook/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'account' option
@@ -14468,12 +14350,11 @@ requestBody.Add("primaryEmailAddress",primaryEmailAddress);
 			Ensure.NotNullNorEmpty("organizationName",organizationName);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 
-			var queryString = new QueryString();
 			queryString.Add("number",number);
 			queryString.Add("licence",licence);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/account{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/account{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14493,12 +14374,11 @@ requestBody.Add("primaryEmailAddress",primaryEmailAddress);
 			Ensure.NotNullNorEmpty("exchangeService",exchangeService);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("number",number);
 			queryString.Add("licence",licence);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/account/{2}{3}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/account/{2}{3}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14523,7 +14403,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("number",number);
 requestBody.Add("licence",licence);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/email/exchange/{0}/service/{1}/account/{2}",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/email/exchange/{0}/service/{1}/account/{2}",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14539,7 +14419,7 @@ requestBody.Add("licence",licence);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/diskSpace",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/email/exchange/{0}/service/{1}/diskSpace",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -14555,7 +14435,7 @@ requestBody.Add("licence",licence);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/email/exchange/{0}/service/{1}/diskSpace",System.Uri.EscapeDataString(organizationName.ToString()),System.Uri.EscapeDataString(exchangeService.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/email/exchange/{0}/service/{1}/diskSpace",System.Net.WebUtility.UrlEncode(organizationName.ToString()),System.Net.WebUtility.UrlEncode(exchangeService.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -14581,7 +14461,7 @@ requestBody.Add("licence",licence);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/domain/zone/{0}",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/domain/zone/{0}",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'dnsAnycast' option
@@ -14595,7 +14475,7 @@ requestBody.Add("licence",licence);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/domain/zone/{0}/dnsAnycast",System.Uri.EscapeDataString(zoneName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/domain/zone/{0}/dnsAnycast",System.Net.WebUtility.UrlEncode(zoneName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14611,7 +14491,7 @@ requestBody.Add("licence",licence);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/domain/zone/{0}/dnsAnycast/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/domain/zone/{0}/dnsAnycast/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -14627,7 +14507,7 @@ requestBody.Add("licence",licence);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/domain/zone/{0}/dnsAnycast/{1}",System.Uri.EscapeDataString(zoneName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/domain/zone/{0}/dnsAnycast/{1}",System.Net.WebUtility.UrlEncode(zoneName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'new' option
@@ -14640,7 +14520,6 @@ requestBody.Add("licence",licence);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNull("model",model);
 
-			var queryString = new QueryString();
 			queryString.Add("protocol",protocol);
 			queryString.Add("model",model);
 
@@ -14660,12 +14539,11 @@ requestBody.Add("licence",licence);
 			Ensure.NotNull("model",model);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("protocol",protocol);
 			queryString.Add("model",model);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/nas/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/nas/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14685,7 +14563,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("protocol",protocol);
 requestBody.Add("model",model);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/nas/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/nas/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'kvmExpress' option
@@ -14699,7 +14577,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/kvmExpress",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/kvmExpress",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14715,7 +14593,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/kvmExpress/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/kvmExpress/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -14731,7 +14609,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/kvmExpress/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/kvmExpress/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed options
@@ -14745,7 +14623,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'professionalUse' option
@@ -14759,7 +14637,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/professionalUse",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/professionalUse",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14775,7 +14653,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/professionalUse/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/professionalUse/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -14791,7 +14669,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/professionalUse/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/professionalUse/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'usbKey' option
@@ -14805,11 +14683,10 @@ requestBody.Add("model",model);
 			Ensure.NotNull("capacity",capacity);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("capacity",capacity);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/usbKey{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/usbKey{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14825,11 +14702,10 @@ requestBody.Add("model",model);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("capacity",capacity);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/usbKey/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/usbKey/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14849,7 +14725,7 @@ requestBody.Add("model",model);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("capacity",capacity);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/usbKey/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/usbKey/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'ip' option
@@ -14867,14 +14743,13 @@ requestBody.Add("capacity",capacity);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("organisationId",organisationId);
 			queryString.Add("country",country);
 			queryString.Add("blockSize",blockSize);
 			queryString.Add("type",type);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ip{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ip{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14894,14 +14769,13 @@ requestBody.Add("capacity",capacity);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("organisationId",organisationId);
 			queryString.Add("country",country);
 			queryString.Add("blockSize",blockSize);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ip/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ip/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14928,7 +14802,7 @@ requestBody.Add("country",country);
 requestBody.Add("blockSize",blockSize);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/ip/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/ip/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'backupStorage' option
@@ -14942,11 +14816,10 @@ requestBody.Add("type",type);
 			Ensure.NotNull("capacity",capacity);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("capacity",capacity);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/backupStorage{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/backupStorage{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -14962,11 +14835,10 @@ requestBody.Add("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("capacity",capacity);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/backupStorage/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/backupStorage/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -14986,7 +14858,7 @@ requestBody.Add("type",type);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("capacity",capacity);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/backupStorage/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/backupStorage/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'ipMigration' option
@@ -15002,12 +14874,11 @@ requestBody.Add("capacity",capacity);
 			Ensure.NotNullNorEmpty("token",token);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 			queryString.Add("token",token);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ipMigration{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ipMigration{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15025,12 +14896,11 @@ requestBody.Add("capacity",capacity);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("ip",ip);
 			queryString.Add("token",token);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ipMigration/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/ipMigration/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15053,7 +14923,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("ip",ip);
 requestBody.Add("token",token);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/ipMigration/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/ipMigration/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'feature' option
@@ -15067,11 +14937,10 @@ requestBody.Add("token",token);
 			Ensure.NotNull("feature",feature);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("feature",feature);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/feature{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/feature{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15087,11 +14956,10 @@ requestBody.Add("token",token);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("feature",feature);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/feature/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/feature/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15111,7 +14979,7 @@ requestBody.Add("token",token);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("feature",feature);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/feature/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/feature/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'staticIP' option
@@ -15125,11 +14993,10 @@ requestBody.Add("feature",feature);
 			Ensure.NotNull("country",country);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/staticIP{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/staticIP{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15145,11 +15012,10 @@ requestBody.Add("feature",feature);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/staticIP/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/staticIP/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15169,7 +15035,7 @@ requestBody.Add("feature",feature);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("country",country);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/staticIP/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/staticIP/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'failoverIP' option
@@ -15183,11 +15049,10 @@ requestBody.Add("country",country);
 			Ensure.NotNull("country",country);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/failoverIP{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/failoverIP{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15203,11 +15068,10 @@ requestBody.Add("country",country);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/failoverIP/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/failoverIP/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15227,7 +15091,7 @@ requestBody.Add("country",country);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("country",country);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/failoverIP/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/failoverIP/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'bandwidth' option
@@ -15243,12 +15107,11 @@ requestBody.Add("country",country);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("bandwidth",bandwidth);
 			queryString.Add("type",type);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/bandwidth{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/bandwidth{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15266,12 +15129,11 @@ requestBody.Add("country",country);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("bandwidth",bandwidth);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/bandwidth/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/bandwidth/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15294,7 +15156,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("bandwidth",bandwidth);
 requestBody.Add("type",type);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/bandwidth/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/bandwidth/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'firewall' option
@@ -15308,11 +15170,10 @@ requestBody.Add("type",type);
 			Ensure.NotNull("firewallModel",firewallModel);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("firewallModel",firewallModel);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/firewall{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/firewall{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15328,11 +15189,10 @@ requestBody.Add("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("firewallModel",firewallModel);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/firewall/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/server/{0}/firewall/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15352,7 +15212,7 @@ requestBody.Add("type",type);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("firewallModel",firewallModel);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/firewall/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/server/{0}/firewall/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -15378,7 +15238,6 @@ requestBody.Add("firewallModel",firewallModel);
 			Ensure.NotNull("datacenter",datacenter);
 			Ensure.NotNull("model",model);
 
-			var queryString = new QueryString();
 			queryString.Add("datacenter",datacenter);
 			queryString.Add("model",model);
 
@@ -15399,12 +15258,11 @@ requestBody.Add("firewallModel",firewallModel);
 			Ensure.NotNull("model",model);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("datacenter",datacenter);
 			queryString.Add("model",model);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/nasha/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicated/nasha/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15425,7 +15283,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("datacenter",datacenter);
 requestBody.Add("model",model);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/nasha/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicated/nasha/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -15439,7 +15297,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'ip' option
@@ -15463,7 +15321,6 @@ requestBody.Add("model",model);
 			Ensure.NotNullNorEmpty("networkName",networkName);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("usage",usage);
 			queryString.Add("country",country);
 			queryString.Add("estimatedClientsNumber",estimatedClientsNumber);
@@ -15472,7 +15329,7 @@ requestBody.Add("model",model);
 			queryString.Add("networkName",networkName);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/ip{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/ip{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15498,7 +15355,6 @@ requestBody.Add("model",model);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("usage",usage);
 			queryString.Add("country",country);
 			queryString.Add("estimatedClientsNumber",estimatedClientsNumber);
@@ -15507,7 +15363,7 @@ requestBody.Add("model",model);
 			queryString.Add("networkName",networkName);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/ip/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/ip/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15542,7 +15398,7 @@ requestBody.Add("description",description);
 requestBody.Add("size",size);
 requestBody.Add("networkName",networkName);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/ip/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/ip/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'filer' option
@@ -15558,13 +15414,12 @@ requestBody.Add("networkName",networkName);
 			Ensure.NotNullNorEmpty("name",name);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("quantity",quantity);
 			queryString.Add("name",name);
 			queryString.Add("datacenterId",datacenterId);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/filer{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/filer{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15582,13 +15437,12 @@ requestBody.Add("networkName",networkName);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("quantity",quantity);
 			queryString.Add("name",name);
 			queryString.Add("datacenterId",datacenterId);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/filer/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/filer/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15612,7 +15466,7 @@ requestBody.Add("quantity",quantity);
 requestBody.Add("name",name);
 requestBody.Add("datacenterId",datacenterId);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/filer/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/filer/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'host' option
@@ -15629,13 +15483,12 @@ requestBody.Add("datacenterId",datacenterId);
 			Ensure.IdIsValid("datacenterId",datacenterId);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("quantity",quantity);
 			queryString.Add("name",name);
 			queryString.Add("datacenterId",datacenterId);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/host{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/host{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15654,13 +15507,12 @@ requestBody.Add("datacenterId",datacenterId);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("quantity",quantity);
 			queryString.Add("name",name);
 			queryString.Add("datacenterId",datacenterId);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/host/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/host/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15685,7 +15537,7 @@ requestBody.Add("quantity",quantity);
 requestBody.Add("name",name);
 requestBody.Add("datacenterId",datacenterId);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/host/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/host/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgradeRessource' option
@@ -15702,13 +15554,12 @@ requestBody.Add("datacenterId",datacenterId);
 			Ensure.NotNull("upgradeType",upgradeType);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("upgradedRessourceId",upgradedRessourceId);
 			queryString.Add("upgradedRessourceType",upgradedRessourceType);
 			queryString.Add("upgradeType",upgradeType);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/upgradeRessource{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/upgradeRessource{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15727,13 +15578,12 @@ requestBody.Add("datacenterId",datacenterId);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("upgradedRessourceId",upgradedRessourceId);
 			queryString.Add("upgradedRessourceType",upgradedRessourceType);
 			queryString.Add("upgradeType",upgradeType);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/upgradeRessource/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/upgradeRessource/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15758,7 +15608,7 @@ requestBody.Add("upgradedRessourceId",upgradedRessourceId);
 requestBody.Add("upgradedRessourceType",upgradedRessourceType);
 requestBody.Add("upgradeType",upgradeType);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/upgradeRessource/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/upgradeRessource/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15772,7 +15622,7 @@ requestBody.Add("upgradeType",upgradeType);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/spla",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/spla",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -15786,7 +15636,7 @@ requestBody.Add("upgradeType",upgradeType);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/spla",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/spla",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'additionalBandwidth' option
@@ -15800,11 +15650,10 @@ requestBody.Add("upgradeType",upgradeType);
 			Ensure.NotNull("bandwidth",bandwidth);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("bandwidth",bandwidth);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/additionalBandwidth{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/additionalBandwidth{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15820,11 +15669,10 @@ requestBody.Add("upgradeType",upgradeType);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("bandwidth",bandwidth);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/additionalBandwidth/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/dedicatedCloud/{0}/additionalBandwidth/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15844,7 +15692,7 @@ requestBody.Add("upgradeType",upgradeType);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("bandwidth",bandwidth);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/additionalBandwidth/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/dedicatedCloud/{0}/additionalBandwidth/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -15870,7 +15718,7 @@ requestBody.Add("bandwidth",bandwidth);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'ftpbackup' option
@@ -15884,7 +15732,7 @@ requestBody.Add("bandwidth",bandwidth);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/ftpbackup",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/ftpbackup",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15900,7 +15748,7 @@ requestBody.Add("bandwidth",bandwidth);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/ftpbackup/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/ftpbackup/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -15916,7 +15764,7 @@ requestBody.Add("bandwidth",bandwidth);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/ftpbackup/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/ftpbackup/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'ip' option
@@ -15931,12 +15779,11 @@ requestBody.Add("bandwidth",bandwidth);
 			Ensure.IdIsValid("number",number);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 			queryString.Add("number",number);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/ip{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/ip{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -15953,12 +15800,11 @@ requestBody.Add("bandwidth",bandwidth);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("country",country);
 			queryString.Add("number",number);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/ip/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/ip/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -15980,7 +15826,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("country",country);
 requestBody.Add("number",number);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/ip/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/ip/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'cpanel' option
@@ -15995,7 +15841,7 @@ requestBody.Add("number",number);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/cpanel",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/cpanel",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16012,7 +15858,7 @@ requestBody.Add("number",number);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/cpanel/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/cpanel/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -16029,7 +15875,7 @@ requestBody.Add("number",number);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/cpanel/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/cpanel/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -16043,11 +15889,10 @@ requestBody.Add("number",number);
 			Ensure.NotNullNorEmpty("model",model);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("model",model);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16063,11 +15908,10 @@ requestBody.Add("number",number);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("model",model);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16087,7 +15931,7 @@ requestBody.Add("number",number);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("model",model);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'snapshot' option
@@ -16101,7 +15945,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/snapshot",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/snapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16117,7 +15961,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/snapshot/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/snapshot/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -16133,7 +15977,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/snapshot/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/snapshot/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'veeam' option
@@ -16147,7 +15991,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/veeam",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/veeam",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16163,7 +16007,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/veeam/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/veeam/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -16179,7 +16023,7 @@ requestBody.Add("model",model);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/veeam/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/veeam/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'plesk' option
@@ -16194,11 +16038,10 @@ requestBody.Add("model",model);
 			Ensure.NotNull("domainNumber",domainNumber);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("domainNumber",domainNumber);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/plesk{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vps/{0}/plesk{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16215,11 +16058,10 @@ requestBody.Add("model",model);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("domainNumber",domainNumber);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/plesk/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/vps/{0}/plesk/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16240,7 +16082,7 @@ requestBody.Add("model",model);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("domainNumber",domainNumber);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/plesk/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/vps/{0}/plesk/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -16266,7 +16108,7 @@ requestBody.Add("domainNumber",domainNumber);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'cdn' option
@@ -16280,11 +16122,10 @@ requestBody.Add("domainNumber",domainNumber);
 			Ensure.NotNull("offer",offer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/cdn{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/cdn{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16300,11 +16141,10 @@ requestBody.Add("domainNumber",domainNumber);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/cdn/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/cdn/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16324,7 +16164,7 @@ requestBody.Add("domainNumber",domainNumber);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("offer",offer);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/cdn/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/cdn/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'ssl' option
@@ -16338,7 +16178,7 @@ requestBody.Add("offer",offer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/ssl",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/ssl",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16354,7 +16194,7 @@ requestBody.Add("offer",offer);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/ssl/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/ssl/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -16370,7 +16210,7 @@ requestBody.Add("offer",offer);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/ssl/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/ssl/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'extraSqlPerso' option
@@ -16384,11 +16224,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNull("offer",offer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/extraSqlPerso{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/extraSqlPerso{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16404,11 +16243,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/extraSqlPerso/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/extraSqlPerso/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16428,7 +16266,7 @@ requestBody.Add("offer",offer);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("offer",offer);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/extraSqlPerso/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/extraSqlPerso/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -16442,11 +16280,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNull("offer",offer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16462,11 +16299,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16486,7 +16322,7 @@ requestBody.Add("offer",offer);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("offer",offer);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -16512,7 +16348,6 @@ requestBody.Add("offer",offer);
 			Ensure.NotNullNorEmpty("domain",domain);
 			Ensure.NotNull("offer",offer);
 
-			var queryString = new QueryString();
 			queryString.Add("domain",domain);
 			queryString.Add("offer",offer);
 
@@ -16533,12 +16368,11 @@ requestBody.Add("offer",offer);
 			Ensure.NotNull("offer",offer);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("domain",domain);
 			queryString.Add("offer",offer);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/web/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16559,7 +16393,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("domain",domain);
 requestBody.Add("offer",offer);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/web/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -16573,7 +16407,7 @@ requestBody.Add("offer",offer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'ram' option
@@ -16587,11 +16421,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNull("ram",ram);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("ram",ram);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/{0}/ram{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/{0}/ram{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16607,11 +16440,10 @@ requestBody.Add("offer",offer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("ram",ram);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/{0}/ram/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/{0}/ram/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16631,7 +16463,7 @@ requestBody.Add("offer",offer);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ram",ram);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/privateDatabase/{0}/ram/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/privateDatabase/{0}/ram/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -16657,7 +16489,6 @@ requestBody.Add("ram",ram);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ram",ram);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 			queryString.Add("ram",ram);
 
@@ -16678,12 +16509,11 @@ requestBody.Add("ram",ram);
 			Ensure.NotNull("ram",ram);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 			queryString.Add("ram",ram);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hosting/privateDatabase/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16704,7 +16534,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("version",version);
 requestBody.Add("ram",ram);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/privateDatabase/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hosting/privateDatabase/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -16718,7 +16548,7 @@ requestBody.Add("ram",ram);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/sqlserver/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/sqlserver/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -16732,7 +16562,7 @@ requestBody.Add("ram",ram);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/sqlserver/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/sqlserver/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -16746,11 +16576,10 @@ requestBody.Add("ram",ram);
 			Ensure.NotNull("version",version);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/sqlserver/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/sqlserver/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16766,11 +16595,10 @@ requestBody.Add("ram",ram);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/sqlserver/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/sqlserver/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16790,7 +16618,7 @@ requestBody.Add("ram",ram);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("version",version);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/sqlserver/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/sqlserver/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -16816,7 +16644,6 @@ requestBody.Add("version",version);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
@@ -16837,12 +16664,11 @@ requestBody.Add("version",version);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/sqlserver/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/sqlserver/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16863,7 +16689,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/sqlserver/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/sqlserver/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -16877,7 +16703,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/worklight/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/worklight/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -16891,7 +16717,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/worklight/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/worklight/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -16905,11 +16731,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("version",version);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/worklight/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/worklight/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -16925,11 +16750,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/worklight/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/worklight/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -16949,7 +16773,7 @@ requestBody.Add("ip",ip);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("version",version);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/worklight/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/worklight/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -16977,7 +16801,6 @@ requestBody.Add("version",version);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("lessThan1000Users",lessThan1000Users);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
@@ -17001,13 +16824,12 @@ requestBody.Add("version",version);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("lessThan1000Users",lessThan1000Users);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/worklight/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/worklight/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17031,7 +16853,7 @@ requestBody.Add("lessThan1000Users",lessThan1000Users);
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/worklight/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/worklight/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'new' option
@@ -17045,7 +16867,6 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
@@ -17066,12 +16887,11 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/cloudLinux/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/cloudLinux/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17092,7 +16912,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/cloudLinux/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/cloudLinux/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -17106,7 +16926,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/windows/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/windows/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -17120,7 +16940,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/windows/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/windows/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -17134,12 +16954,11 @@ requestBody.Add("ip",ip);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("sqlVersion",sqlVersion);
 			queryString.Add("version",version);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/windows/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/windows/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -17155,12 +16974,11 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("sqlVersion",sqlVersion);
 			queryString.Add("version",version);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/windows/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/windows/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17181,7 +16999,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("sqlVersion",sqlVersion);
 requestBody.Add("version",version);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/windows/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/windows/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -17209,7 +17027,6 @@ requestBody.Add("version",version);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("sqlVersion",sqlVersion);
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("version",version);
@@ -17234,14 +17051,13 @@ requestBody.Add("version",version);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("sqlVersion",sqlVersion);
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/windows/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/windows/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17266,7 +17082,7 @@ requestBody.Add("serviceType",serviceType);
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/windows/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/windows/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'new' option
@@ -17281,7 +17097,6 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
@@ -17304,13 +17119,12 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/directadmin/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/directadmin/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17333,7 +17147,7 @@ requestBody.Add("serviceType",serviceType);
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/directadmin/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/directadmin/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -17347,7 +17161,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/virtuozzo/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/virtuozzo/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -17361,7 +17175,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/virtuozzo/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/virtuozzo/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -17375,11 +17189,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNull("containerNumber",containerNumber);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("containerNumber",containerNumber);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/virtuozzo/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/virtuozzo/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -17395,11 +17208,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("containerNumber",containerNumber);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/virtuozzo/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/virtuozzo/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17419,7 +17231,7 @@ requestBody.Add("ip",ip);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("containerNumber",containerNumber);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/virtuozzo/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/virtuozzo/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -17448,7 +17260,6 @@ requestBody.Add("containerNumber",containerNumber);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("containerNumber",containerNumber);
 			queryString.Add("version",version);
@@ -17474,14 +17285,13 @@ requestBody.Add("containerNumber",containerNumber);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("containerNumber",containerNumber);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/virtuozzo/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/virtuozzo/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17507,7 +17317,7 @@ requestBody.Add("containerNumber",containerNumber);
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/virtuozzo/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/virtuozzo/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -17521,7 +17331,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/plesk/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/plesk/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Terminate your service
@@ -17535,7 +17345,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/plesk/{0}/terminate",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string>(HttpMethod.Post,String.Format("/order/license/plesk/{0}/terminate",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get allowed durations for 'upgrade' option
@@ -17555,7 +17365,6 @@ requestBody.Add("ip",ip);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("applicationSet",applicationSet);
 			queryString.Add("wordpressToolkit",wordpressToolkit);
 			queryString.Add("version",version);
@@ -17566,7 +17375,7 @@ requestBody.Add("ip",ip);
 			queryString.Add("domainNumber",domainNumber);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/plesk/{0}/upgrade{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/license/plesk/{0}/upgrade{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get prices and contracts information
@@ -17588,7 +17397,6 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("applicationSet",applicationSet);
 			queryString.Add("wordpressToolkit",wordpressToolkit);
 			queryString.Add("version",version);
@@ -17599,7 +17407,7 @@ requestBody.Add("ip",ip);
 			queryString.Add("domainNumber",domainNumber);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/plesk/{0}/upgrade/{1}{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/plesk/{0}/upgrade/{1}{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17632,7 +17440,7 @@ requestBody.Add("antivirus",antivirus);
 requestBody.Add("antispam",antispam);
 requestBody.Add("domainNumber",domainNumber);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/plesk/{0}/upgrade/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/plesk/{0}/upgrade/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -17665,7 +17473,6 @@ requestBody.Add("domainNumber",domainNumber);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("applicationSet",applicationSet);
 			queryString.Add("wordpressToolkit",wordpressToolkit);
@@ -17700,7 +17507,6 @@ requestBody.Add("domainNumber",domainNumber);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("applicationSet",applicationSet);
 			queryString.Add("wordpressToolkit",wordpressToolkit);
@@ -17712,7 +17518,7 @@ requestBody.Add("domainNumber",domainNumber);
 			queryString.Add("domainNumber",domainNumber);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/plesk/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/plesk/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17747,7 +17553,7 @@ requestBody.Add("powerpack",powerpack);
 requestBody.Add("antivirus",antivirus);
 requestBody.Add("domainNumber",domainNumber);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/plesk/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/plesk/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'new' option
@@ -17762,7 +17568,6 @@ requestBody.Add("domainNumber",domainNumber);
 			Ensure.NotNull("version",version);
 			Ensure.NotNull("ip",ip);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
@@ -17785,13 +17590,12 @@ requestBody.Add("domainNumber",domainNumber);
 			Ensure.NotNull("ip",ip);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("serviceType",serviceType);
 			queryString.Add("version",version);
 			queryString.Add("ip",ip);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/cpanel/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/license/cpanel/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17814,7 +17618,7 @@ requestBody.Add("serviceType",serviceType);
 requestBody.Add("version",version);
 requestBody.Add("ip",ip);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/cpanel/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/license/cpanel/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed durations for 'new' option
@@ -17826,7 +17630,6 @@ requestBody.Add("ip",ip);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("vrack",vrack);
 
-			var queryString = new QueryString();
 			queryString.Add("vrack",vrack);
 
 
@@ -17844,11 +17647,10 @@ requestBody.Add("ip",ip);
 			Ensure.NotNullNorEmpty("vrack",vrack);
 			Ensure.NotNullNorEmpty("duration",duration);
 
-			var queryString = new QueryString();
 			queryString.Add("vrack",vrack);
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/router/new/{0}{1}",System.Uri.EscapeDataString(duration.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/router/new/{0}{1}",System.Net.WebUtility.UrlEncode(duration.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create order
@@ -17866,7 +17668,7 @@ requestBody.Add("ip",ip);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("vrack",vrack);
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/router/new/{0}",System.Uri.EscapeDataString(duration.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/router/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get allowed options
@@ -17880,7 +17682,7 @@ requestBody.Add("vrack",vrack);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vrack/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/order/vrack/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -17903,7 +17705,6 @@ requestBody.Add("vrack",vrack);
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
 
-			var queryString = new QueryString();
 			queryString.Add("quantity",quantity);
 
 
@@ -17948,7 +17749,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hpcspot/new/{0}",System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Get,String.Format("/order/hpcspot/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Create order
@@ -17962,7 +17763,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hpcspot/new/{0}",System.Uri.EscapeDataString(duration.ToString())));
+			return await RawCall<OvhApi.Models.Order.Order>(HttpMethod.Post,String.Format("/order/hpcspot/new/{0}",System.Net.WebUtility.UrlEncode(duration.ToString())));
 		}
 		/// <summary>
 		/// Get price of CDN
@@ -17976,7 +17777,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of CDN Quota
@@ -17990,7 +17791,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/option/quota/{0}",System.Uri.EscapeDataString(quotaSize.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/option/quota/{0}",System.Net.WebUtility.UrlEncode(quotaSize.ToString())));
 		}
 		/// <summary>
 		/// Get price
@@ -18004,7 +17805,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/option/{0}",System.Uri.EscapeDataString(optionName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/option/{0}",System.Net.WebUtility.UrlEncode(optionName.ToString())));
 		}
 		/// <summary>
 		/// Get price of CDN cache rules
@@ -18018,7 +17819,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/option/cacherules/{0}",System.Uri.EscapeDataString(cacheruleNumber.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/cdn/anycast/option/cacherules/{0}",System.Net.WebUtility.UrlEncode(cacheruleNumber.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18032,7 +17833,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18046,7 +17847,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18060,7 +17861,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18074,7 +17875,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18088,7 +17889,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18102,7 +17903,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18116,7 +17917,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18130,7 +17931,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18144,7 +17945,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18158,7 +17959,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18172,7 +17973,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18186,7 +17987,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18200,7 +18001,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18214,7 +18015,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18228,7 +18029,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18242,7 +18043,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18256,7 +18057,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18270,7 +18071,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18284,7 +18085,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18298,7 +18099,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18312,7 +18113,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18326,7 +18127,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18340,7 +18141,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18354,7 +18155,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18368,7 +18169,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18382,7 +18183,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18396,7 +18197,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18410,7 +18211,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18424,7 +18225,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18438,7 +18239,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18452,7 +18253,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18466,7 +18267,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18480,7 +18281,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18494,7 +18295,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18508,7 +18309,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18522,7 +18323,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18536,7 +18337,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18550,7 +18351,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18564,7 +18365,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18578,7 +18379,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly filer ressources
@@ -18592,7 +18393,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly filer ressources
@@ -18606,7 +18407,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{0}",System.Uri.EscapeDataString(filerProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{0}",System.Net.WebUtility.UrlEncode(filerProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud hourly host ressources
@@ -18620,7 +18421,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of dedicated Cloud monthly host ressources
@@ -18634,7 +18435,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{0}",System.Uri.EscapeDataString(hostProfile.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{0}",System.Net.WebUtility.UrlEncode(hostProfile.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Cloud
@@ -18649,7 +18450,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/cloud/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/cloud/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Cloud Options
@@ -18664,7 +18465,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/cloud/option/{0}",System.Uri.EscapeDataString(optionName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/cloud/option/{0}",System.Net.WebUtility.UrlEncode(optionName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Cloud 2014
@@ -18678,7 +18479,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2014v1/cloud/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2014v1/cloud/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Cloud Options 2014
@@ -18692,7 +18493,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2014v1/cloud/option/{0}",System.Uri.EscapeDataString(optionName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2014v1/cloud/option/{0}",System.Net.WebUtility.UrlEncode(optionName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Classic 2014
@@ -18706,7 +18507,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2014v1/classic/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2014v1/classic/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Low Latency
@@ -18721,7 +18522,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/lowlat/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/lowlat/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Classic 2013
@@ -18735,7 +18536,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/cloud/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/cloud/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Cloud Options 2013
@@ -18749,7 +18550,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/cloud/option/{0}",System.Uri.EscapeDataString(optionName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/cloud/option/{0}",System.Net.WebUtility.UrlEncode(optionName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Low Latency 2013
@@ -18763,7 +18564,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/lowlat/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/lowlat/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Cloud 2013
@@ -18777,7 +18578,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/classic/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/2013v1/classic/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of VPS Classic
@@ -18792,7 +18593,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/classic/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/vps/classic/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get the price for cdn option
@@ -18806,7 +18607,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/web/cdn/{0}",System.Uri.EscapeDataString(cdnName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/web/cdn/{0}",System.Net.WebUtility.UrlEncode(cdnName.ToString())));
 		}
 		/// <summary>
 		/// Get the price for hosted ssl option
@@ -18820,7 +18621,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/web/ssl/{0}",System.Uri.EscapeDataString(sslName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/web/ssl/{0}",System.Net.WebUtility.UrlEncode(sslName.ToString())));
 		}
 		/// <summary>
 		/// Get the price for extra sql perso option
@@ -18834,7 +18635,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/web/extraSqlPerso/{0}",System.Uri.EscapeDataString(extraSqlPersoName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/web/extraSqlPerso/{0}",System.Net.WebUtility.UrlEncode(extraSqlPersoName.ToString())));
 		}
 		/// <summary>
 		/// Get the price for a private database
@@ -18848,7 +18649,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/privateDatabase/{0}",System.Uri.EscapeDataString(privateDatabaseName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hosting/privateDatabase/{0}",System.Net.WebUtility.UrlEncode(privateDatabaseName.ToString())));
 		}
 		/// <summary>
 		/// Get price of zone options
@@ -18862,7 +18663,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/domain/zone/option/{0}",System.Uri.EscapeDataString(optionName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/domain/zone/option/{0}",System.Net.WebUtility.UrlEncode(optionName.ToString())));
 		}
 		/// <summary>
 		/// Get the price of IPv4 options
@@ -18876,7 +18677,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/xdsl/options/ipv4/{0}",System.Uri.EscapeDataString(ipRange.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/xdsl/options/ipv4/{0}",System.Net.WebUtility.UrlEncode(ipRange.ToString())));
 		}
 		/// <summary>
 		/// Get the price of Nas offers
@@ -18890,7 +18691,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/nas/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/nas/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get the price of Nas HA offers
@@ -18904,7 +18705,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/nasha/model/{0}",System.Uri.EscapeDataString(modelName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/nasha/model/{0}",System.Net.WebUtility.UrlEncode(modelName.ToString())));
 		}
 		/// <summary>
 		/// Get price of available firewall models
@@ -18918,7 +18719,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/firewall/{0}",System.Uri.EscapeDataString(firewallModel.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/firewall/{0}",System.Net.WebUtility.UrlEncode(firewallModel.ToString())));
 		}
 		/// <summary>
 		/// Get price of IPs
@@ -18932,7 +18733,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/ip/{0}",System.Uri.EscapeDataString(routedTo.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/ip/{0}",System.Net.WebUtility.UrlEncode(routedTo.ToString())));
 		}
 		/// <summary>
 		/// Get price of backup storage offer
@@ -18946,7 +18747,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/backupStorage/{0}",System.Uri.EscapeDataString(capacity.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/backupStorage/{0}",System.Net.WebUtility.UrlEncode(capacity.ToString())));
 		}
 		/// <summary>
 		/// Get price of anti-DDos Pro option
@@ -18960,7 +18761,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/antiDDoSPro/{0}",System.Uri.EscapeDataString(commercialRange.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/dedicated/server/antiDDoSPro/{0}",System.Net.WebUtility.UrlEncode(commercialRange.ToString())));
 		}
 		/// <summary>
 		/// Get the price of a HPC Spot Account for 1 month
@@ -18974,7 +18775,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/account/subscription/{0}",System.Uri.EscapeDataString(subscriptionName.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/account/subscription/{0}",System.Net.WebUtility.UrlEncode(subscriptionName.ToString())));
 		}
 		/// <summary>
 		/// Get the price of a RESERVATION consumption for 1 hour
@@ -18988,7 +18789,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/consumption/reservation/{0}",System.Uri.EscapeDataString(reference.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/consumption/reservation/{0}",System.Net.WebUtility.UrlEncode(reference.ToString())));
 		}
 		/// <summary>
 		/// Get the price of a SESSION consumption for 1 hour
@@ -19002,7 +18803,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/consumption/session/{0}",System.Uri.EscapeDataString(reference.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/consumption/session/{0}",System.Net.WebUtility.UrlEncode(reference.ToString())));
 		}
 		/// <summary>
 		/// Get the price of a JOB consumption for 1 hour
@@ -19016,7 +18817,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/consumption/job/{0}",System.Uri.EscapeDataString(reference.ToString())));
+			return await RawCall<OvhApi.Models.Order.Price>(HttpMethod.Get,String.Format("/price/hpcspot/consumption/job/{0}",System.Net.WebUtility.UrlEncode(reference.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19030,7 +18831,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/sms/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/sms/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -19046,7 +18847,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/sms/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/sms/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Sms sent associated to the sms account
@@ -19066,7 +18867,6 @@ requestBody.Add("quantity",quantity);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("receiver",receiver);
 			queryString.Add("differedDelivery",differedDelivery);
 			queryString.Add("deliveryReceipt",deliveryReceipt);
@@ -19077,7 +18877,7 @@ requestBody.Add("quantity",quantity);
 			queryString.Add("creationDatetime.to",creationDatetime_to);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/outgoing{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/outgoing{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19093,7 +18893,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Outgoing>(HttpMethod.Get,String.Format("/sms/{0}/outgoing/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Outgoing>(HttpMethod.Get,String.Format("/sms/{0}/outgoing/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the sms outgoing history given
@@ -19109,7 +18909,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/outgoing/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/outgoing/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19125,7 +18925,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Hlr>(HttpMethod.Get,String.Format("/sms/{0}/outgoing/{1}/hlr",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Hlr>(HttpMethod.Get,String.Format("/sms/{0}/outgoing/{1}/hlr",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19139,7 +18939,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Account>(HttpMethod.Get,String.Format("/sms/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Account>(HttpMethod.Get,String.Format("/sms/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -19155,7 +18955,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/sms/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/sms/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Describe filter exceptions in sms sending from a specific receiver.
@@ -19169,11 +18969,10 @@ requestBody.Add("quantity",quantity);
 			Ensure.NotNullNorEmpty("receiver",receiver);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("receiver",receiver);
 
 
-			return await RawCall<OvhApi.Models.Sms.Exception[]>(HttpMethod.Get,String.Format("/sms/{0}/exceptions{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Sms.Exception[]>(HttpMethod.Get,String.Format("/sms/{0}/exceptions{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Receivers preloaded from text or csv document file
@@ -19187,7 +18986,7 @@ requestBody.Add("quantity",quantity);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/receivers",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/receivers",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a new document of csv receivers
@@ -19211,7 +19010,7 @@ requestBody.Add("csvUrl",csvUrl);
 requestBody.Add("slotId",slotId);
 requestBody.Add("description",description);
 
-			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Post,String.Format("/sms/{0}/receivers",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Post,String.Format("/sms/{0}/receivers",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19227,7 +19026,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Get,String.Format("/sms/{0}/receivers/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(slotId.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Get,String.Format("/sms/{0}/receivers/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(slotId.ToString())));
 		}
 		/// <summary>
 		/// Delete the document from the slot
@@ -19243,7 +19042,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/receivers/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(slotId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/receivers/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(slotId.ToString())));
 		}
 		/// <summary>
 		/// Get the document data container
@@ -19259,7 +19058,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<string>(HttpMethod.Get,String.Format("/sms/{0}/receivers/{1}/csv",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(slotId.ToString())));
+			return await RawCall<string>(HttpMethod.Get,String.Format("/sms/{0}/receivers/{1}/csv",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(slotId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19275,7 +19074,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Sender>(HttpMethod.Get,String.Format("/sms/{0}/senders/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(sender.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Sender>(HttpMethod.Get,String.Format("/sms/{0}/senders/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(sender.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -19293,7 +19092,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/sms/{0}/senders/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(sender.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/sms/{0}/senders/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(sender.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the sms sender given
@@ -19309,7 +19108,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/senders/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(sender.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/senders/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(sender.ToString())));
 		}
 		/// <summary>
 		/// Validate a given sender with an activation code.
@@ -19329,7 +19128,7 @@ requestBody.Add("description",description);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("code",code);
 
-			await RawCall(HttpMethod.Post,String.Format("/sms/{0}/senders/{1}/validate",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(sender.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/sms/{0}/senders/{1}/validate",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(sender.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Senders allowed associated to the sms account
@@ -19343,7 +19142,7 @@ requestBody.Add("code",code);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/sms/{0}/senders",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/sms/{0}/senders",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create the sms sender given
@@ -19365,7 +19164,7 @@ requestBody.Add("sender",sender);
 requestBody.Add("reason",reason);
 requestBody.Add("description",description);
 
-			return await RawCall<string>(HttpMethod.Post,String.Format("/sms/{0}/senders",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<string>(HttpMethod.Post,String.Format("/sms/{0}/senders",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Users associated to the sms account
@@ -19379,7 +19178,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/sms/{0}/users",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/sms/{0}/users",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new user for an sms account
@@ -19400,7 +19199,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("password",password);
 requestBody.Add("login",login);
 
-			await RawCall(HttpMethod.Post,String.Format("/sms/{0}/users",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/sms/{0}/users",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Sms sent associated to the sms user
@@ -19420,7 +19219,6 @@ requestBody.Add("login",login);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("login",login);
 
-			var queryString = new QueryString();
 			queryString.Add("receiver",receiver);
 			queryString.Add("differedDelivery",differedDelivery);
 			queryString.Add("deliveryReceipt",deliveryReceipt);
@@ -19429,7 +19227,7 @@ requestBody.Add("login",login);
 			queryString.Add("tag",tag);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/outgoing{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/outgoing{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19447,7 +19245,7 @@ requestBody.Add("login",login);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Outgoing>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/outgoing/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Outgoing>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/outgoing/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the sms outgoing history given
@@ -19465,7 +19263,7 @@ requestBody.Add("login",login);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/outgoing/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/outgoing/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19483,7 +19281,7 @@ requestBody.Add("login",login);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Hlr>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/outgoing/{2}/hlr",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Hlr>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/outgoing/{2}/hlr",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19499,7 +19297,7 @@ requestBody.Add("login",login);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.User>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			return await RawCall<OvhApi.Models.Sms.User>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -19517,7 +19315,7 @@ requestBody.Add("login",login);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/sms/{0}/users/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/sms/{0}/users/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the sms user given
@@ -19533,7 +19331,7 @@ requestBody.Add("login",login);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Sms in pending associated to the sms user
@@ -19549,7 +19347,7 @@ requestBody.Add("login",login);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/jobs",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/jobs",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Add one or several sending jobs
@@ -19595,7 +19393,7 @@ requestBody.Add("tag",tag);
 requestBody.Add("receiversDocumentUrl",receiversDocumentUrl);
 requestBody.Add("class",class_);
 
-			return await RawCall<OvhApi.Models.Sms.SmsSendingReport>(HttpMethod.Post,String.Format("/sms/{0}/users/{1}/jobs",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Sms.SmsSendingReport>(HttpMethod.Post,String.Format("/sms/{0}/users/{1}/jobs",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19613,7 +19411,7 @@ requestBody.Add("class",class_);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Job>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/jobs/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Job>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/jobs/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the sms job given (stop sending)
@@ -19631,7 +19429,7 @@ requestBody.Add("class",class_);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/jobs/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/jobs/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Receivers preloaded from text or csv document file
@@ -19647,7 +19445,7 @@ requestBody.Add("class",class_);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/receivers",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/receivers",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())));
 		}
 		/// <summary>
 		/// Add a new document of csv receivers
@@ -19673,7 +19471,7 @@ requestBody.Add("csvUrl",csvUrl);
 requestBody.Add("slotId",slotId);
 requestBody.Add("description",description);
 
-			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Post,String.Format("/sms/{0}/users/{1}/receivers",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Post,String.Format("/sms/{0}/users/{1}/receivers",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19691,7 +19489,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/receivers/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(slotId.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Receiver>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/receivers/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(slotId.ToString())));
 		}
 		/// <summary>
 		/// Delete the document from the slot
@@ -19709,7 +19507,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/receivers/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(slotId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/receivers/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(slotId.ToString())));
 		}
 		/// <summary>
 		/// Get the document data container
@@ -19727,7 +19525,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<string>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/receivers/{2}/csv",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(slotId.ToString())));
+			return await RawCall<string>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/receivers/{2}/csv",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(slotId.ToString())));
 		}
 		/// <summary>
 		/// Sms received associated to the sms user
@@ -19743,12 +19541,11 @@ requestBody.Add("description",description);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("login",login);
 
-			var queryString = new QueryString();
 			queryString.Add("sender",sender);
 			queryString.Add("tag",tag);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/incoming{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/incoming{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19766,7 +19563,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Incoming>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/incoming/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Incoming>(HttpMethod.Get,String.Format("/sms/{0}/users/{1}/incoming/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the sms incoming history given
@@ -19784,7 +19581,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/incoming/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(login.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/users/{1}/incoming/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(login.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Numbers blacklisted associated to the sms account
@@ -19798,7 +19595,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/sms/{0}/blacklists",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/sms/{0}/blacklists",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19814,7 +19611,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Blacklist>(HttpMethod.Get,String.Format("/sms/{0}/blacklists/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Blacklist>(HttpMethod.Get,String.Format("/sms/{0}/blacklists/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())));
 		}
 		/// <summary>
 		/// Delete the blacklisted sms number given
@@ -19830,7 +19627,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/blacklists/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/blacklists/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())));
 		}
 		/// <summary>
 		/// Sms in pending associated to the sms account
@@ -19844,7 +19641,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/jobs",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/jobs",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add one or several sending jobs
@@ -19888,7 +19685,7 @@ requestBody.Add("tag",tag);
 requestBody.Add("receiversDocumentUrl",receiversDocumentUrl);
 requestBody.Add("class",class_);
 
-			return await RawCall<OvhApi.Models.Sms.SmsSendingReport>(HttpMethod.Post,String.Format("/sms/{0}/jobs",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Sms.SmsSendingReport>(HttpMethod.Post,String.Format("/sms/{0}/jobs",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19904,7 +19701,7 @@ requestBody.Add("class",class_);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Job>(HttpMethod.Get,String.Format("/sms/{0}/jobs/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Job>(HttpMethod.Get,String.Format("/sms/{0}/jobs/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the sms job given (stop sending)
@@ -19920,7 +19717,7 @@ requestBody.Add("class",class_);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/jobs/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/jobs/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Sms received associated to the sms account
@@ -19936,14 +19733,13 @@ requestBody.Add("class",class_);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("sender",sender);
 			queryString.Add("tag",tag);
 			queryString.Add("creationDatetime.to",creationDatetime_to);
 			queryString.Add("creationDatetime.from",creationDatetime_from);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/incoming{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/sms/{0}/incoming{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -19959,7 +19755,7 @@ requestBody.Add("class",class_);
 
 
 
-			return await RawCall<OvhApi.Models.Sms.Incoming>(HttpMethod.Get,String.Format("/sms/{0}/incoming/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Sms.Incoming>(HttpMethod.Get,String.Format("/sms/{0}/incoming/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the sms incoming history given
@@ -19975,7 +19771,7 @@ requestBody.Add("class",class_);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/incoming/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/sms/{0}/incoming/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Describe SMS offers available.
@@ -19993,13 +19789,12 @@ requestBody.Add("class",class_);
 			Ensure.NotNull("quantity",quantity);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("countryDestination",countryDestination);
 			queryString.Add("countryCurrencyPrice",countryCurrencyPrice);
 			queryString.Add("quantity",quantity);
 
 
-			return await RawCall<OvhApi.Models.Sms.PackOffer[]>(HttpMethod.Get,String.Format("/sms/{0}/seeOffers{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Sms.PackOffer[]>(HttpMethod.Get,String.Format("/sms/{0}/seeOffers{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Credit transfer between two sms accounts.
@@ -20020,7 +19815,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("credits",credits);
 requestBody.Add("smsAccountTarget",smsAccountTarget);
 
-			await RawCall(HttpMethod.Post,String.Format("/sms/{0}/transferCredits",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/sms/{0}/transferCredits",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -20058,7 +19853,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/telephony/{0}/serviceInfos",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/telephony/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20074,7 +19869,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/serviceInfos",System.Uri.EscapeDataString(billingAccount.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(billingAccount.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20088,7 +19883,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.BillingAccount>(HttpMethod.Get,String.Format("/telephony/{0}",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.BillingAccount>(HttpMethod.Get,String.Format("/telephony/{0}",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20104,7 +19899,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}",System.Uri.EscapeDataString(billingAccount.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}",System.Net.WebUtility.UrlEncode(billingAccount.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20120,7 +19915,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Number>(HttpMethod.Get,String.Format("/telephony/{0}/number/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Number>(HttpMethod.Get,String.Format("/telephony/{0}/number/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20138,7 +19933,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/number/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/number/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Change the feature type of the phone number
@@ -20158,7 +19953,7 @@ requestBody.Add("smsAccountTarget",smsAccountTarget);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("featureType",featureType);
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/number/{1}/changeFeatureType",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/number/{1}/changeFeatureType",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Additional numbers associated with this billing account
@@ -20172,7 +19967,7 @@ requestBody.Add("featureType",featureType);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/number",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/number",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20188,7 +19983,7 @@ requestBody.Add("featureType",featureType);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.GenericScreen>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.GenericScreen>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20204,7 +19999,7 @@ requestBody.Add("featureType",featureType);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.TimeConditionOptions>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}/options",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.TimeConditionOptions>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}/options",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20222,7 +20017,7 @@ requestBody.Add("featureType",featureType);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/timeCondition/{1}/options",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/timeCondition/{1}/options",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Rules for time conditions for this service
@@ -20238,7 +20033,7 @@ requestBody.Add("featureType",featureType);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}/condition",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}/condition",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new time condition rule
@@ -20267,7 +20062,7 @@ requestBody.Add("policy",policy);
 requestBody.Add("day",day);
 requestBody.Add("hourBegin",hourBegin);
 
-			await RawCall(HttpMethod.Post,String.Format("/telephony/{0}/timeCondition/{1}/condition",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/telephony/{0}/timeCondition/{1}/condition",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20285,7 +20080,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.TimeCondition>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}/condition/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.TimeCondition>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition/{1}/condition/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the given screen list
@@ -20303,7 +20098,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/timeCondition/{1}/condition/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/timeCondition/{1}/condition/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Time conditions compatible numbers associated with this billing account
@@ -20317,7 +20112,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/timeCondition",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20333,7 +20128,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Vxml>(HttpMethod.Get,String.Format("/telephony/{0}/vxml/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Vxml>(HttpMethod.Get,String.Format("/telephony/{0}/vxml/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20349,7 +20144,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.VxmlProperties>(HttpMethod.Get,String.Format("/telephony/{0}/vxml/{1}/settings",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.VxmlProperties>(HttpMethod.Get,String.Format("/telephony/{0}/vxml/{1}/settings",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20367,7 +20162,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/vxml/{1}/settings",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/vxml/{1}/settings",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Vxml numbers associated with this billing account
@@ -20381,7 +20176,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/vxml",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/vxml",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Abbreviated numbers for the billing account
@@ -20395,7 +20190,7 @@ requestBody.Add("hourBegin",hourBegin);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/abbreviatedNumber",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/abbreviatedNumber",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Create a new abbreviated number for the billing account
@@ -20422,7 +20217,7 @@ requestBody.Add("abbreviatedNumber",abbreviatedNumber);
 requestBody.Add("name",name);
 requestBody.Add("surname",surname);
 
-			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumberGroup>(HttpMethod.Post,String.Format("/telephony/{0}/abbreviatedNumber",System.Uri.EscapeDataString(billingAccount.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumberGroup>(HttpMethod.Post,String.Format("/telephony/{0}/abbreviatedNumber",System.Net.WebUtility.UrlEncode(billingAccount.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20438,7 +20233,7 @@ requestBody.Add("surname",surname);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumberGroup>(HttpMethod.Get,String.Format("/telephony/{0}/abbreviatedNumber/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(abbreviatedNumber.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumberGroup>(HttpMethod.Get,String.Format("/telephony/{0}/abbreviatedNumber/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(abbreviatedNumber.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20456,7 +20251,7 @@ requestBody.Add("surname",surname);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/abbreviatedNumber/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(abbreviatedNumber.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/abbreviatedNumber/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(abbreviatedNumber.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given abbreviated number
@@ -20472,7 +20267,7 @@ requestBody.Add("surname",surname);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/abbreviatedNumber/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(abbreviatedNumber.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/abbreviatedNumber/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(abbreviatedNumber.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20488,7 +20283,7 @@ requestBody.Add("surname",surname);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Redirect>(HttpMethod.Get,String.Format("/telephony/{0}/redirect/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Redirect>(HttpMethod.Get,String.Format("/telephony/{0}/redirect/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20506,7 +20301,7 @@ requestBody.Add("surname",surname);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/redirect/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/redirect/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Change the destination of the redirect
@@ -20526,7 +20321,7 @@ requestBody.Add("surname",surname);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("destination",destination);
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/redirect/{1}/changeDestination",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/redirect/{1}/changeDestination",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Redirects associated with this billing account
@@ -20540,7 +20335,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/redirect",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/redirect",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20556,7 +20351,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyPabx>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyPabx>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20574,7 +20369,7 @@ requestBody.Add("destination",destination);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyPabx/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyPabx/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20590,7 +20385,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}/hunting",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}/hunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20608,7 +20403,7 @@ requestBody.Add("destination",destination);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyPabx/{1}/hunting",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyPabx/{1}/hunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Hunting agents
@@ -20624,7 +20419,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new agent
@@ -20653,7 +20448,7 @@ requestBody.Add("position",position);
 requestBody.Add("logged",logged);
 requestBody.Add("noReplyTimer",noReplyTimer);
 
-			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20671,7 +20466,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentNumber.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentNumber.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20691,7 +20486,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentNumber.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentNumber.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the agent
@@ -20709,7 +20504,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentNumber.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentNumber.ToString())));
 		}
 		/// <summary>
 		/// EasyPabx associated with this billing account
@@ -20723,7 +20518,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyPabx",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20739,7 +20534,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.MiniPabx>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.MiniPabx>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20757,7 +20552,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/miniPabx/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/miniPabx/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20773,7 +20568,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.MiniPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}/hunting",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.MiniPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}/hunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20791,7 +20586,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/miniPabx/{1}/hunting",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/miniPabx/{1}/hunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Hunting agents
@@ -20807,7 +20602,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new agent
@@ -20836,7 +20631,7 @@ requestBody.Add("position",position);
 requestBody.Add("logged",logged);
 requestBody.Add("noReplyTimer",noReplyTimer);
 
-			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20854,7 +20649,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentNumber.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyMiniPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentNumber.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -20874,7 +20669,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentNumber.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentNumber.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the agent
@@ -20892,7 +20687,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentNumber.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/miniPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentNumber.ToString())));
 		}
 		/// <summary>
 		/// Miniabx associated with this billing account
@@ -20906,7 +20701,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/miniPabx",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20922,7 +20717,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Conference>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Conference>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Lock the conference room
@@ -20938,7 +20733,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/unlock",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/unlock",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Current participants of the associate conference
@@ -20954,7 +20749,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}/participants",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}/participants",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Change a participant level of audio transmission
@@ -20976,7 +20771,7 @@ requestBody.Add("noReplyTimer",noReplyTimer);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("value",value);
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/energy",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/energy",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -20994,7 +20789,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.ConferenceParticipants>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}/participants/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.ConferenceParticipants>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}/participants/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Unmute a participant in your conference room
@@ -21012,7 +20807,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/unmute",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/unmute",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Mute a participant in your conference room
@@ -21030,7 +20825,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/mute",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/mute",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Eject a participant from your conference room
@@ -21048,7 +20843,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/kick",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/kick",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Make a participant deaf in your conference room
@@ -21066,7 +20861,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/deaf",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/deaf",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Make a participant undeaf your conference room
@@ -21084,7 +20879,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/undeaf",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/participants/{2}/undeaf",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Lock the conference room
@@ -21100,7 +20895,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/lock",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/conference/{1}/lock",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21116,7 +20911,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.ConferenceProperties>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}/settings",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.ConferenceProperties>(HttpMethod.Get,String.Format("/telephony/{0}/conference/{1}/settings",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Conferences associated with this billing account
@@ -21130,7 +20925,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/conference",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/conference",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21146,7 +20941,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Line>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Line>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21164,7 +20959,7 @@ requestBody.Add("value",value);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Abbreviated numbers for the line
@@ -21180,7 +20975,7 @@ requestBody.Add("value",value);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new abbreviated number for the line
@@ -21209,7 +21004,7 @@ requestBody.Add("abbreviatedNumber",abbreviatedNumber);
 requestBody.Add("name",name);
 requestBody.Add("surname",surname);
 
-			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumber>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumber>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21227,7 +21022,7 @@ requestBody.Add("surname",surname);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumber>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(abbreviatedNumber.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.AbbreviatedNumber>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(abbreviatedNumber.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21247,7 +21042,7 @@ requestBody.Add("surname",surname);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(abbreviatedNumber.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(abbreviatedNumber.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given abbreviated number
@@ -21265,7 +21060,7 @@ requestBody.Add("surname",surname);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(abbreviatedNumber.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/line/{1}/abbreviatedNumber/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(abbreviatedNumber.ToString())));
 		}
 		/// <summary>
 		/// Make a phone call from the current line
@@ -21285,7 +21080,7 @@ requestBody.Add("surname",surname);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("calledNumber",calledNumber);
 
-			await RawCall(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/click2Call",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/click2Call",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21301,7 +21096,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.LineOptions>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/options",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.LineOptions>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/options",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21319,7 +21114,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/options",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/options",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List of codecs combinaisons available for this line
@@ -21335,7 +21130,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/options/availableCodecs",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/options/availableCodecs",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get statistics of the current line
@@ -21353,12 +21148,11 @@ requestBody.Add("calledNumber",calledNumber);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("timeframe",timeframe);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Telephony.TimestampAndValue>>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/statistics{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Telephony.TimestampAndValue>>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/statistics{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21374,7 +21168,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Phone>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Phone>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a task to reboot the phone
@@ -21390,7 +21184,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/phone/reboot",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/phone/reboot",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a task to refresh the screen of the MGCP phone
@@ -21406,7 +21200,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/phone/refreshScreen",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/phone/refreshScreen",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Plug & Phone function keys
@@ -21422,7 +21216,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/functionKey",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/functionKey",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21440,7 +21234,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.FunctionKey>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/functionKey/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(keyNum.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.FunctionKey>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/functionKey/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(keyNum.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21460,7 +21254,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/phone/functionKey/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(keyNum.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/phone/functionKey/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(keyNum.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List the available functions for the key
@@ -21478,7 +21272,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/functionKey/{2}/availableFunction",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(keyNum.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/functionKey/{2}/availableFunction",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(keyNum.ToString())));
 		}
 		/// <summary>
 		/// List of available exchange merchandise brand
@@ -21494,7 +21288,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/merchandiseAvailable",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/merchandiseAvailable",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Return Merchandise Authorisation associated
@@ -21510,7 +21304,7 @@ requestBody.Add("calledNumber",calledNumber);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/rma",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/rma",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a specific rma
@@ -21534,7 +21328,7 @@ requestBody.Add("newMerchandise",newMerchandise);
 requestBody.Add("type",type);
 requestBody.Add("shippingContact",shippingContact);
 
-			return await RawCall<OvhApi.Models.Telephony.RmaReturn>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/phone/rma",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.RmaReturn>(HttpMethod.Post,String.Format("/telephony/{0}/line/{1}/phone/rma",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21552,7 +21346,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Rma>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/rma/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Rma>(HttpMethod.Get,String.Format("/telephony/{0}/line/{1}/phone/rma/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21572,7 +21366,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/phone/rma/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/line/{1}/phone/rma/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Lines associated with this billing account
@@ -21586,7 +21380,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/line",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get the allowed creditThreshold for this billing account
@@ -21600,7 +21394,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<double[]>(HttpMethod.Get,String.Format("/telephony/{0}/allowedCreditThreshold",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<double[]>(HttpMethod.Get,String.Format("/telephony/{0}/allowedCreditThreshold",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Current number portabilities for this billing account
@@ -21614,7 +21408,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<double[]>(HttpMethod.Get,String.Format("/telephony/{0}/portabilities",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<double[]>(HttpMethod.Get,String.Format("/telephony/{0}/portabilities",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21630,7 +21424,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Portability>(HttpMethod.Get,String.Format("/telephony/{0}/portabilities/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Portability>(HttpMethod.Get,String.Format("/telephony/{0}/portabilities/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Previous billed consumptions
@@ -21644,7 +21438,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<DateTime[]>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<DateTime[]>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21660,7 +21454,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.HistoryConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(date.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.HistoryConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString())));
 		}
 		/// <summary>
 		/// Previous billed consumptions in the given format
@@ -21676,11 +21470,10 @@ requestBody.Add("shippingContact",shippingContact);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNull("date",date);
 
-			var queryString = new QueryString();
 			queryString.Add("extension",extension);
 
 
-			return await RawCall<OvhApi.Models.Telephony.PcsFile>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}/document{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(date.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Telephony.PcsFile>(HttpMethod.Get,String.Format("/telephony/{0}/historyConsumption/{1}/document{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(date.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21696,7 +21489,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHunting>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyHunting>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21714,7 +21507,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21730,7 +21523,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingScreenListsConditionsSettings>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingScreenListsConditionsSettings>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21748,7 +21541,7 @@ requestBody.Add("shippingContact",shippingContact);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Screen lists conditions checked when a call is received
@@ -21763,11 +21556,10 @@ requestBody.Add("shippingContact",shippingContact);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("screenListType",screenListType);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new screenlist condition for an extension
@@ -21789,7 +21581,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("callerIdNumber",callerIdNumber);
 requestBody.Add("screenListType",screenListType);
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingScreenListsConditions>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingScreenListsConditions>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21807,7 +21599,7 @@ requestBody.Add("screenListType",screenListType);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingScreenListsConditions>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingScreenListsConditions>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Delete the given condition
@@ -21825,7 +21617,7 @@ requestBody.Add("screenListType",screenListType);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/screenListConditions/conditions/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21841,7 +21633,7 @@ requestBody.Add("screenListType",screenListType);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Calls agents
@@ -21857,7 +21649,7 @@ requestBody.Add("screenListType",screenListType);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new agent
@@ -21889,7 +21681,7 @@ requestBody.Add("simultaneousLines",simultaneousLines);
 requestBody.Add("status",status);
 requestBody.Add("timeout",timeout);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -21907,7 +21699,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -21927,7 +21719,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given agent
@@ -21945,7 +21737,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Agent assigned to the queues
@@ -21963,7 +21755,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Create a new skill for an agent (it adds the agent in a queue)
@@ -21988,7 +21780,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("queueId",queueId);
 requestBody.Add("position",position);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22008,7 +21800,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22030,7 +21822,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString()),System.Uri.EscapeDataString(queueId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given skill
@@ -22050,7 +21842,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/hunting/agent/{2}/queue/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Calls queues
@@ -22066,7 +21858,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22084,7 +21876,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingQueue>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingQueue>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22104,7 +21896,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Agent assigned to the queue
@@ -22122,7 +21914,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Create a new skill for an agent (it adds the agent in a queue)
@@ -22145,7 +21937,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("queueId",queueId);
 requestBody.Add("position",position);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{queueId}/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{queueId}/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22165,7 +21957,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22187,7 +21979,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString()),System.Uri.EscapeDataString(agentId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given skill
@@ -22207,7 +21999,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/hunting/queue/{2}/agent/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22223,7 +22015,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingTimeConditionsSettings>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingTimeConditionsSettings>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22241,7 +22033,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Time conditions checked when a call is received
@@ -22256,11 +22048,10 @@ requestBody.Add("position",position);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("policy",policy);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Create a new time condition
@@ -22271,7 +22062,7 @@ requestBody.Add("position",position);
 		/// <param name="billingAccount">The name of your billingAccount</param>
 		/// <param name="serviceName">To be written</param>
 		/// </summary>
-		public async Task<OvhApi.Models.Telephony.EasyHuntingTimeConditions> CreateTelephonyEasyhuntingTimeconditionsConditions(TimeSpan timeFrom,TimeSpan timeTo,OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum weekDay,OvhApi.Models.Telephony.EasyHuntingTimeConditionsPolicyEnum policy,string billingAccount,string serviceName)
+		public async Task<OvhApi.Models.Telephony.EasyHuntingTimeConditions> CreateTelephonyEasyhuntingTimeconditionsConditions(time timeFrom,time timeTo,OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum weekDay,OvhApi.Models.Telephony.EasyHuntingTimeConditionsPolicyEnum policy,string billingAccount,string serviceName)
 		{
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -22289,7 +22080,7 @@ requestBody.Add("timeTo",timeTo);
 requestBody.Add("weekDay",weekDay);
 requestBody.Add("policy",policy);
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingTimeConditions>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingTimeConditions>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22307,7 +22098,7 @@ requestBody.Add("policy",policy);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingTimeConditions>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingTimeConditions>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22327,7 +22118,7 @@ requestBody.Add("policy",policy);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(conditionId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given condition
@@ -22345,7 +22136,7 @@ requestBody.Add("policy",policy);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/timeConditions/conditions/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Sounds associated with this PABX
@@ -22361,7 +22152,7 @@ requestBody.Add("policy",policy);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/sound",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/sound",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22379,7 +22170,7 @@ requestBody.Add("policy",policy);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxSound>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/sound/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(soundId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxSound>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/sound/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(soundId.ToString())));
 		}
 		/// <summary>
 		/// Custom events scheduled for this PABX
@@ -22398,7 +22189,6 @@ requestBody.Add("policy",policy);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("dateEnd.from",dateEnd_from);
 			queryString.Add("dateStart.to",dateStart_to);
 			queryString.Add("dateEnd.to",dateEnd_to);
@@ -22406,7 +22196,7 @@ requestBody.Add("policy",policy);
 			queryString.Add("category",category);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/scheduler{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/scheduler{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Add scheduler events in ICS format
@@ -22426,7 +22216,7 @@ requestBody.Add("policy",policy);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ics",ics);
 
-			return await RawCall<string[]>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/scheduler",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<string[]>(HttpMethod.Post,String.Format("/telephony/{0}/easyHunting/{1}/scheduler",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22444,7 +22234,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.EasyHuntingPabxScheduler>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/scheduler/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(schedulerId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.EasyHuntingPabxScheduler>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting/{1}/scheduler/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(schedulerId.ToString())));
 		}
 		/// <summary>
 		/// Delete the given scheduler event
@@ -22462,7 +22252,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/scheduler/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(schedulerId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/easyHunting/{1}/scheduler/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(schedulerId.ToString())));
 		}
 		/// <summary>
 		/// OVH easy calls queues associated with this billing account
@@ -22476,7 +22266,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/easyHunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22492,7 +22282,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.TelephonyService>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.TelephonyService>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22510,7 +22300,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/service/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/service/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Call delivery records.
@@ -22529,7 +22319,6 @@ requestBody.Add("ics",ics);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("planType",planType);
 			queryString.Add("destinationType",destinationType);
 			queryString.Add("creationDatetime.to",creationDatetime_to);
@@ -22537,7 +22326,7 @@ requestBody.Add("ics",ics);
 			queryString.Add("wayType",wayType);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/voiceConsumption{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/voiceConsumption{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22555,7 +22344,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.VoiceConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/voiceConsumption/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(consumptionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.VoiceConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/voiceConsumption/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(consumptionId.ToString())));
 		}
 		/// <summary>
 		/// Operations on a telephony service
@@ -22570,11 +22359,10 @@ requestBody.Add("ics",ics);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/task{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/task{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22592,7 +22380,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/task/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/task/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22608,7 +22396,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.DirectoryInfo>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/directory",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.DirectoryInfo>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/directory",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22626,7 +22414,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/service/{1}/directory",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/service/{1}/directory",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get all the way types availables
@@ -22642,7 +22430,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.DirectoryWayType[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/directory/getWayTypes",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.DirectoryWayType[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/directory/getWayTypes",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get directory service code from an APE code ( principal activity of the firm code )
@@ -22658,11 +22446,10 @@ requestBody.Add("ics",ics);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("apeCode",apeCode);
 
 
-			return await RawCall<OvhApi.Models.Telephony.DirectoryHeadingPJ[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/directory/getDirectoryServiceCode{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Telephony.DirectoryHeadingPJ[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/directory/getDirectoryServiceCode{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Fax delivery records.
@@ -22679,13 +22466,12 @@ requestBody.Add("ics",ics);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("creationDatetime.to",creationDatetime_to);
 			queryString.Add("creationDatetime.from",creationDatetime_from);
 			queryString.Add("wayType",wayType);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/faxConsumption{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/faxConsumption{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22703,7 +22489,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.FaxConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/faxConsumption/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(consumptionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.FaxConsumption>(HttpMethod.Get,String.Format("/telephony/{0}/service/{1}/faxConsumption/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(consumptionId.ToString())));
 		}
 		/// <summary>
 		/// Services associated with this billing account
@@ -22717,7 +22503,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/service",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/service",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22733,7 +22519,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabx>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabx>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22751,7 +22537,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22769,7 +22555,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplan>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplan>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22789,7 +22575,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given dialplan
@@ -22807,7 +22593,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString())));
 		}
 		/// <summary>
 		/// Extensions contained in the dialplan
@@ -22825,7 +22611,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString())));
 		}
 		/// <summary>
 		/// Create a new extension for a dialplan
@@ -22854,7 +22640,7 @@ requestBody.Add("screenListType",screenListType);
 requestBody.Add("position",position);
 requestBody.Add("schedulerCategory",schedulerCategory);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtension>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtension>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22874,7 +22660,7 @@ requestBody.Add("schedulerCategory",schedulerCategory);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtension>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtension>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -22896,7 +22682,7 @@ requestBody.Add("schedulerCategory",schedulerCategory);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given extension
@@ -22916,7 +22702,7 @@ requestBody.Add("schedulerCategory",schedulerCategory);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())));
 		}
 		/// <summary>
 		/// Screenlist conditions checked when executing the extension
@@ -22936,7 +22722,7 @@ requestBody.Add("schedulerCategory",schedulerCategory);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())));
 		}
 		/// <summary>
 		/// Create a new screenlist condition for an extension
@@ -22959,7 +22745,7 @@ requestBody.Add("schedulerCategory",schedulerCategory);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("callerIdNumber",callerIdNumber);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionScreenList>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionScreenList>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -22981,7 +22767,7 @@ requestBody.Add("callerIdNumber",callerIdNumber);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionScreenList>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionScreenList>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Delete the given condition
@@ -23003,7 +22789,7 @@ requestBody.Add("callerIdNumber",callerIdNumber);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionScreenList/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Rules contained in the extension
@@ -23023,7 +22809,7 @@ requestBody.Add("callerIdNumber",callerIdNumber);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())));
 		}
 		/// <summary>
 		/// Create a new rule for an extension
@@ -23055,7 +22841,7 @@ requestBody.Add("actionParam",actionParam);
 requestBody.Add("action",action);
 requestBody.Add("position",position);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionRule>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionRule>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23077,7 +22863,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionRule>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(ruleId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionRule>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(ruleId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23101,7 +22887,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(ruleId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(ruleId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given rule
@@ -23123,7 +22909,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(ruleId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/rule/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(ruleId.ToString())));
 		}
 		/// <summary>
 		/// Time conditions checked when executing the extension
@@ -23143,7 +22929,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())));
 		}
 		/// <summary>
 		/// Create a new time condition for an extension
@@ -23155,7 +22941,7 @@ requestBody.Add("position",position);
 		/// <param name="dialplanId">To be written</param>
 		/// <param name="extensionId">To be written</param>
 		/// </summary>
-		public async Task<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTime> CreateTelephonyOvhpabxDialplanExtensionConditiontime(TimeSpan timeFrom,TimeSpan timeTo,OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum weekDay,string billingAccount,string serviceName,long dialplanId,long extensionId)
+		public async Task<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTime> CreateTelephonyOvhpabxDialplanExtensionConditiontime(time timeFrom,time timeTo,OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum weekDay,string billingAccount,string serviceName,long dialplanId,long extensionId)
 		{
 			if(ConsumerKey == null)
 				throw new OvhException("This request must be authenticated");
@@ -23173,7 +22959,7 @@ requestBody.Add("timeFrom",timeFrom);
 requestBody.Add("timeTo",timeTo);
 requestBody.Add("weekDay",weekDay);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTime>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTime>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23195,7 +22981,7 @@ requestBody.Add("weekDay",weekDay);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTime>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplanExtensionConditionTime>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23219,7 +23005,7 @@ requestBody.Add("weekDay",weekDay);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(conditionId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given condition
@@ -23241,7 +23027,7 @@ requestBody.Add("weekDay",weekDay);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime/{4}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dialplanId.ToString()),System.Uri.EscapeDataString(extensionId.ToString()),System.Uri.EscapeDataString(conditionId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan/{2}/extension/{3}/conditionTime/{4}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dialplanId.ToString()),System.Net.WebUtility.UrlEncode(extensionId.ToString()),System.Net.WebUtility.UrlEncode(conditionId.ToString())));
 		}
 		/// <summary>
 		/// Dialplans associated with this PABX
@@ -23257,7 +23043,7 @@ requestBody.Add("weekDay",weekDay);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new dialplan
@@ -23286,7 +23072,7 @@ requestBody.Add("name",name);
 requestBody.Add("transferTimeout",transferTimeout);
 requestBody.Add("anonymousRejection",anonymousRejection);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplan>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxDialplan>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/dialplan",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Menus associated with this PABX
@@ -23302,7 +23088,7 @@ requestBody.Add("anonymousRejection",anonymousRejection);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new menu
@@ -23328,7 +23114,7 @@ requestBody.Add("name",name);
 requestBody.Add("invalidSound",invalidSound);
 requestBody.Add("greetSound",greetSound);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenu>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/menu",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenu>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/menu",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23346,7 +23132,7 @@ requestBody.Add("greetSound",greetSound);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenu>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenu>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23366,7 +23152,7 @@ requestBody.Add("greetSound",greetSound);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given menu
@@ -23384,7 +23170,7 @@ requestBody.Add("greetSound",greetSound);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString())));
 		}
 		/// <summary>
 		/// Menu entry
@@ -23402,7 +23188,7 @@ requestBody.Add("greetSound",greetSound);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString())));
 		}
 		/// <summary>
 		/// Create a new menu entry
@@ -23432,7 +23218,7 @@ requestBody.Add("action",action);
 requestBody.Add("position",position);
 requestBody.Add("dtmf",dtmf);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenuEntry>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenuEntry>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23452,7 +23238,7 @@ requestBody.Add("dtmf",dtmf);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenuEntry>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString()),System.Uri.EscapeDataString(entryId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxMenuEntry>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString()),System.Net.WebUtility.UrlEncode(entryId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23474,7 +23260,7 @@ requestBody.Add("dtmf",dtmf);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString()),System.Uri.EscapeDataString(entryId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString()),System.Net.WebUtility.UrlEncode(entryId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given menu entry
@@ -23494,7 +23280,7 @@ requestBody.Add("dtmf",dtmf);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(menuId.ToString()),System.Uri.EscapeDataString(entryId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/menu/{2}/entry/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(menuId.ToString()),System.Net.WebUtility.UrlEncode(entryId.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23510,7 +23296,7 @@ requestBody.Add("dtmf",dtmf);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHunting>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Calls agents
@@ -23526,7 +23312,7 @@ requestBody.Add("dtmf",dtmf);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new agent
@@ -23558,7 +23344,7 @@ requestBody.Add("simultaneousLines",simultaneousLines);
 requestBody.Add("status",status);
 requestBody.Add("timeout",timeout);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23576,7 +23362,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgent>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23596,7 +23382,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given agent
@@ -23614,7 +23400,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Agent assigned to the queues
@@ -23632,7 +23418,7 @@ requestBody.Add("timeout",timeout);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Create a new skill for an agent (it adds the agent in a queue)
@@ -23657,7 +23443,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("queueId",queueId);
 requestBody.Add("position",position);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23677,7 +23463,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23699,7 +23485,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString()),System.Uri.EscapeDataString(queueId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given skill
@@ -23719,7 +23505,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(agentId.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/agent/{2}/queue/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Calls queues
@@ -23735,7 +23521,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23753,7 +23539,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingQueue>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingQueue>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23773,7 +23559,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Agent assigned to the queue
@@ -23791,7 +23577,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString())));
 		}
 		/// <summary>
 		/// Create a new skill for an agent (it adds the agent in a queue)
@@ -23814,7 +23600,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("queueId",queueId);
 requestBody.Add("position",position);
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{queueId}/agent",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{queueId}/agent",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23834,7 +23620,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxHuntingAgentQueue>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -23856,7 +23642,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString()),System.Uri.EscapeDataString(agentId.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete the given skill
@@ -23876,7 +23662,7 @@ requestBody.Add("position",position);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent/{3}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(queueId.ToString()),System.Uri.EscapeDataString(agentId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/hunting/queue/{2}/agent/{3}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(queueId.ToString()),System.Net.WebUtility.UrlEncode(agentId.ToString())));
 		}
 		/// <summary>
 		/// Sounds associated with this PABX
@@ -23892,7 +23678,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/sound",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/sound",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23910,7 +23696,7 @@ requestBody.Add("position",position);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxSound>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/sound/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(soundId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxSound>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/sound/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(soundId.ToString())));
 		}
 		/// <summary>
 		/// Custom events scheduled for this PABX
@@ -23929,7 +23715,6 @@ requestBody.Add("position",position);
 			Ensure.NotNullNorEmpty("billingAccount",billingAccount);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("dateEnd.from",dateEnd_from);
 			queryString.Add("dateStart.to",dateStart_to);
 			queryString.Add("dateEnd.to",dateEnd_to);
@@ -23937,7 +23722,7 @@ requestBody.Add("position",position);
 			queryString.Add("category",category);
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Add scheduler events in ICS format
@@ -23957,7 +23742,7 @@ requestBody.Add("position",position);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("ics",ics);
 
-			return await RawCall<string[]>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<string[]>(HttpMethod.Post,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -23975,7 +23760,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.OvhPabxScheduler>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(schedulerId.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.OvhPabxScheduler>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(schedulerId.ToString())));
 		}
 		/// <summary>
 		/// Delete the given scheduler event
@@ -23993,7 +23778,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(schedulerId.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/ovhPabx/{1}/scheduler/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(schedulerId.ToString())));
 		}
 		/// <summary>
 		/// OVH calls queues and OVH IVRs (Interactive Voice Response) associated with this billing account
@@ -24007,7 +23792,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/ovhPabx",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24023,7 +23808,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Screen>(HttpMethod.Get,String.Format("/telephony/{0}/screen/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Screen>(HttpMethod.Get,String.Format("/telephony/{0}/screen/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24041,7 +23826,7 @@ requestBody.Add("ics",ics);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/screen/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/screen/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Rules for call filtering for this service
@@ -24057,7 +23842,7 @@ requestBody.Add("ics",ics);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/screen/{1}/screenLists",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/telephony/{0}/screen/{1}/screenLists",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new screen list rule
@@ -24083,7 +23868,7 @@ requestBody.Add("callNumber",callNumber);
 requestBody.Add("type",type);
 requestBody.Add("nature",nature);
 
-			await RawCall(HttpMethod.Post,String.Format("/telephony/{0}/screen/{1}/screenLists",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/telephony/{0}/screen/{1}/screenLists",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24101,7 +23886,7 @@ requestBody.Add("nature",nature);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.ScreenList>(HttpMethod.Get,String.Format("/telephony/{0}/screen/{1}/screenLists/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.ScreenList>(HttpMethod.Get,String.Format("/telephony/{0}/screen/{1}/screenLists/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Delete the given screen list
@@ -24119,7 +23904,7 @@ requestBody.Add("nature",nature);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/screen/{1}/screenLists/{2}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/telephony/{0}/screen/{1}/screenLists/{2}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Screenlist compatible numbers associated with this billing account
@@ -24133,7 +23918,7 @@ requestBody.Add("nature",nature);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/screen",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/screen",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24149,7 +23934,7 @@ requestBody.Add("nature",nature);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Ddi>(HttpMethod.Get,String.Format("/telephony/{0}/ddi/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Ddi>(HttpMethod.Get,String.Format("/telephony/{0}/ddi/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24167,7 +23952,7 @@ requestBody.Add("nature",nature);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ddi/{1}",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/telephony/{0}/ddi/{1}",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Change the destination of the DDI
@@ -24187,7 +23972,7 @@ requestBody.Add("nature",nature);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("destination",destination);
 
-			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/ddi/{1}/changeDestination",System.Uri.EscapeDataString(billingAccount.ToString()),System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Telephony.Task>(HttpMethod.Post,String.Format("/telephony/{0}/ddi/{1}/changeDestination",System.Net.WebUtility.UrlEncode(billingAccount.ToString()),System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// DDIs (direct dial-in) associated with this billing account
@@ -24201,7 +23986,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/ddi",System.Uri.EscapeDataString(billingAccount.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/telephony/{0}/ddi",System.Net.WebUtility.UrlEncode(billingAccount.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24215,7 +24000,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/vps/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Services.Service>(HttpMethod.Get,String.Format("/vps/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24231,7 +24016,7 @@ requestBody.Add("destination",destination);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/serviceInfos",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/serviceInfos",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Return all active options for the virtual server
@@ -24246,7 +24031,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.VpsOptionEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/activeOptions",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.VpsOptionEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/activeOptions",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24260,7 +24045,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.VPS>(HttpMethod.Get,String.Format("/vps/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.VPS>(HttpMethod.Get,String.Format("/vps/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24276,7 +24061,7 @@ requestBody.Add("destination",destination);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vps/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vps/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24290,7 +24075,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Datacenter>(HttpMethod.Get,String.Format("/vps/{0}/datacenter",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Datacenter>(HttpMethod.Get,String.Format("/vps/{0}/datacenter",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24306,7 +24091,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNS>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsDomains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNS>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsDomains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24324,7 +24109,7 @@ requestBody.Add("destination",destination);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/secondaryDnsDomains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/secondaryDnsDomains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())),requestBody);
 		}
 		/// <summary>
 		/// remove this domain
@@ -24340,7 +24125,7 @@ requestBody.Add("destination",destination);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/vps/{0}/secondaryDnsDomains/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/vps/{0}/secondaryDnsDomains/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// domain name server informations
@@ -24356,7 +24141,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsDomains/{1}/dnsServer",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(domain.ToString())));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsDomains/{1}/dnsServer",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(domain.ToString())));
 		}
 		/// <summary>
 		/// List of secondary dns domain name
@@ -24370,7 +24155,7 @@ requestBody.Add("destination",destination);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsDomains",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsDomains",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// add a domain on secondary dns
@@ -24390,7 +24175,7 @@ var requestBody = new Dictionary<string, object>();
 requestBody.Add("domain",domain);
 requestBody.Add("ip",ip);
 
-			await RawCall(HttpMethod.Post,String.Format("/vps/{0}/secondaryDnsDomains",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Post,String.Format("/vps/{0}/secondaryDnsDomains",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Give the status of the services of the main IP
@@ -24404,7 +24189,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Ip.ServiceStatus>(HttpMethod.Get,String.Format("/vps/{0}/status",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Ip.ServiceStatus>(HttpMethod.Get,String.Format("/vps/{0}/status",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get the countries you can select for your IPs geolocation
@@ -24418,7 +24203,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Ip.GeolocationEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/ipCountryAvailable",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Ip.GeolocationEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/ipCountryAvailable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Return all models the virtual server can be upgraded to
@@ -24432,7 +24217,7 @@ requestBody.Add("ip",ip);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Model[]>(HttpMethod.Get,String.Format("/vps/{0}/availableUpgrade",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Model[]>(HttpMethod.Get,String.Format("/vps/{0}/availableUpgrade",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot
@@ -24449,7 +24234,7 @@ requestBody.Add("ip",ip);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("description",description);
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/createSnapshot",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/createSnapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Return many statistics about the virtual machine at that time
@@ -24463,11 +24248,10 @@ requestBody.Add("description",description);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValue<double>>(HttpMethod.Get,String.Format("/vps/{0}/use{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValue<double>>(HttpMethod.Get,String.Format("/vps/{0}/use{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Ips associated to this virtual server
@@ -24481,7 +24265,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/vps/{0}/ips",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/vps/{0}/ips",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24497,7 +24281,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Ip>(HttpMethod.Get,String.Format("/vps/{0}/ips/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipAddress.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Ip>(HttpMethod.Get,String.Format("/vps/{0}/ips/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24515,7 +24299,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/ips/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/ips/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Release a given Ip (Additional Ip)
@@ -24531,7 +24315,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/vps/{0}/ips/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipAddress.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/vps/{0}/ips/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipAddress.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24545,7 +24329,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Snapshot>(HttpMethod.Get,String.Format("/vps/{0}/snapshot",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Snapshot>(HttpMethod.Get,String.Format("/vps/{0}/snapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -24561,7 +24345,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/snapshot",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/snapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Creates a vps.Task that will delete the Snapshot
@@ -24575,7 +24359,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Delete,String.Format("/vps/{0}/snapshot",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Delete,String.Format("/vps/{0}/snapshot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Revert the Virtual Server to this snapshot
@@ -24589,7 +24373,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/snapshot/revert",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/snapshot/revert",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of VPS options
@@ -24603,7 +24387,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.VpsOptionEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/option",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.VpsOptionEnum[]>(HttpMethod.Get,String.Format("/vps/{0}/option",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24619,7 +24403,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Option>(HttpMethod.Get,String.Format("/vps/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(option.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Option>(HttpMethod.Get,String.Format("/vps/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(option.ToString())));
 		}
 		/// <summary>
 		/// Release a given option
@@ -24635,7 +24419,7 @@ requestBody.Add("description",description);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/vps/{0}/option/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(option.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/vps/{0}/option/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(option.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24649,7 +24433,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Veeam>(HttpMethod.Get,String.Format("/vps/{0}/veeam",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Veeam>(HttpMethod.Get,String.Format("/vps/{0}/veeam",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Veeam restore points for the VPS
@@ -24662,11 +24446,10 @@ requestBody.Add("description",description);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("creationTime",creationTime);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/veeam/restorePoints{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/veeam/restorePoints{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24682,7 +24465,7 @@ requestBody.Add("description",description);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Veeam.RestorePoint>(HttpMethod.Get,String.Format("/vps/{0}/veeam/restorePoints/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Veeam.RestorePoint>(HttpMethod.Get,String.Format("/vps/{0}/veeam/restorePoints/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Creates a VPS.Task that will restore the given restorePoint
@@ -24706,7 +24489,7 @@ requestBody.Add("changePassword",changePassword);
 requestBody.Add("export",export);
 requestBody.Add("full",full);
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/veeam/restorePoints/{1}/restore",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/veeam/restorePoints/{1}/restore",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24720,7 +24503,7 @@ requestBody.Add("full",full);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Veeam.RestoredBackup>(HttpMethod.Get,String.Format("/vps/{0}/veeam/restoredBackup",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Veeam.RestoredBackup>(HttpMethod.Get,String.Format("/vps/{0}/veeam/restoredBackup",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Creates a VPS.Task that will unmount the backup
@@ -24734,7 +24517,7 @@ requestBody.Add("full",full);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Delete,String.Format("/vps/{0}/veeam/restoredBackup",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Delete,String.Format("/vps/{0}/veeam/restoredBackup",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Return all models for the range of the virtual server
@@ -24748,7 +24531,7 @@ requestBody.Add("full",full);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Model[]>(HttpMethod.Get,String.Format("/vps/{0}/models",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Model[]>(HttpMethod.Get,String.Format("/vps/{0}/models",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Tasks associated to this virtual server
@@ -24762,12 +24545,11 @@ requestBody.Add("full",full);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("type",type);
 			queryString.Add("state",state);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24783,7 +24565,7 @@ requestBody.Add("full",full);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Get,String.Format("/vps/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Get,String.Format("/vps/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Reinstall the virtual server
@@ -24805,7 +24587,7 @@ requestBody.Add("language",language);
 requestBody.Add("softwareId",softwareId);
 requestBody.Add("templateId",templateId);
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/reinstall",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/reinstall",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Request a reboot of the machine
@@ -24819,7 +24601,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/reboot",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/reboot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Request the machine to stop
@@ -24833,7 +24615,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/stop",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/stop",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24847,7 +24629,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Template>(HttpMethod.Get,String.Format("/vps/{0}/distribution",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Template>(HttpMethod.Get,String.Format("/vps/{0}/distribution",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List available softwares for this template Id
@@ -24861,7 +24643,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/distribution/software",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/distribution/software",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24877,7 +24659,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Software>(HttpMethod.Get,String.Format("/vps/{0}/distribution/software/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(softwareId.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Software>(HttpMethod.Get,String.Format("/vps/{0}/distribution/software/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(softwareId.ToString())));
 		}
 		/// <summary>
 		/// Disks associated to this virtual server
@@ -24891,7 +24673,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/disks",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/disks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24907,7 +24689,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Disk>(HttpMethod.Get,String.Format("/vps/{0}/disks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Disk>(HttpMethod.Get,String.Format("/vps/{0}/disks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Return many statistics about the disk for a given period
@@ -24925,12 +24707,11 @@ requestBody.Add("templateId",templateId);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.IdIsValid("id",id);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Vps.VpsTimestampValue>>(HttpMethod.Get,String.Format("/vps/{0}/disks/{1}/monitoring{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Vps.VpsTimestampValue>>(HttpMethod.Get,String.Format("/vps/{0}/disks/{1}/monitoring{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString()),queryString));
 		}
 		/// <summary>
 		/// Return many statistics about the disk at that time
@@ -24946,11 +24727,10 @@ requestBody.Add("templateId",templateId);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.IdIsValid("id",id);
 
-			var queryString = new QueryString();
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValue<double>>(HttpMethod.Get,String.Format("/vps/{0}/disks/{1}/use{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValue<double>>(HttpMethod.Get,String.Format("/vps/{0}/disks/{1}/use{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString()),queryString));
 		}
 		/// <summary>
 		/// Return many statistics about the virtual machine for a given period
@@ -24966,12 +24746,11 @@ requestBody.Add("templateId",templateId);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Vps.VpsTimestampValue>>(HttpMethod.Get,String.Format("/vps/{0}/monitoring{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Vps.VpsTimestampValue>>(HttpMethod.Get,String.Format("/vps/{0}/monitoring{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -24985,7 +24764,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.BackupFtp>(HttpMethod.Get,String.Format("/vps/{0}/backupftp",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.BackupFtp>(HttpMethod.Get,String.Format("/vps/{0}/backupftp",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Change your Backup FTP password
@@ -24999,7 +24778,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/vps/{0}/backupftp/password",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/vps/{0}/backupftp/password",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get all IP blocks that can be used in the ACL
@@ -25013,7 +24792,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/vps/{0}/backupftp/authorizableBlocks",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/vps/{0}/backupftp/authorizableBlocks",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
@@ -25027,7 +24806,7 @@ requestBody.Add("templateId",templateId);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/vps/{0}/backupftp/access",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/vps/{0}/backupftp/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Create a new Backup FTP ACL
@@ -25053,7 +24832,7 @@ requestBody.Add("ipBlock",ipBlock);
 requestBody.Add("nfs",nfs);
 requestBody.Add("cifs",cifs);
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/vps/{0}/backupftp/access",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Post,String.Format("/vps/{0}/backupftp/access",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25069,7 +24848,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtpAcl>(HttpMethod.Get,String.Format("/vps/{0}/backupftp/access/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipBlock.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.BackupFtpAcl>(HttpMethod.Get,String.Format("/vps/{0}/backupftp/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -25087,7 +24866,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/backupftp/access/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipBlock.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vps/{0}/backupftp/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Revoke this ACL
@@ -25103,7 +24882,7 @@ requestBody.Add("cifs",cifs);
 
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/vps/{0}/backupftp/access/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ipBlock.ToString())));
+			return await RawCall<OvhApi.Models.Dedicated.Server.Task>(HttpMethod.Delete,String.Format("/vps/{0}/backupftp/access/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ipBlock.ToString())));
 		}
 		/// <summary>
 		/// Return the necessary informations to open a VNC connection to your VPS
@@ -25120,7 +24899,7 @@ requestBody.Add("cifs",cifs);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("protocol",protocol);
 
-			return await RawCall<OvhApi.Models.Vps.Vnc>(HttpMethod.Post,String.Format("/vps/{0}/openConsoleAccess",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vps.Vnc>(HttpMethod.Post,String.Format("/vps/{0}/openConsoleAccess",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Secondary nameServer available for your Server
@@ -25134,7 +24913,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsNameServerAvailable",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.SecondaryDns.SecondaryDNSNameServer>(HttpMethod.Get,String.Format("/vps/{0}/secondaryDnsNameServerAvailable",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
@@ -25148,7 +24927,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/setPassword",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/setPassword",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Request the machine to start
@@ -25162,7 +24941,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/start",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Task>(HttpMethod.Post,String.Format("/vps/{0}/start",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Templates available for this virtual server
@@ -25176,7 +24955,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/templates",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/templates",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25192,7 +24971,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Template>(HttpMethod.Get,String.Format("/vps/{0}/templates/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Template>(HttpMethod.Get,String.Format("/vps/{0}/templates/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// List available softwares for this template Id
@@ -25208,7 +24987,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/templates/{1}/software",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vps/{0}/templates/{1}/software",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25226,7 +25005,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<OvhApi.Models.Vps.Software>(HttpMethod.Get,String.Format("/vps/{0}/templates/{1}/software/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString()),System.Uri.EscapeDataString(softwareId.ToString())));
+			return await RawCall<OvhApi.Models.Vps.Software>(HttpMethod.Get,String.Format("/vps/{0}/templates/{1}/software/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString()),System.Net.WebUtility.UrlEncode(softwareId.ToString())));
 		}
 		/// <summary>
 		/// List available services
@@ -25252,7 +25031,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Vrack>(HttpMethod.Get,String.Format("/vrack/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Vrack>(HttpMethod.Get,String.Format("/vrack/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -25268,7 +25047,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vrack/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vrack/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// vrack (1.5) dedicated cloud 
@@ -25282,7 +25061,7 @@ requestBody.Add("protocol",protocol);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedCloud",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedCloud",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// add a dedicatedCloud to this vrack (1.5)
@@ -25300,7 +25079,7 @@ requestBody.Add("protocol",protocol);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("dedicatedCloud",dedicatedCloud);
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/dedicatedCloud",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/dedicatedCloud",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25316,7 +25095,7 @@ requestBody.Add("dedicatedCloud",dedicatedCloud);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.DedicatedCloud>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedCloud/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dedicatedCloud.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.DedicatedCloud>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedCloud/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dedicatedCloud.ToString())));
 		}
 		/// <summary>
 		/// remove this a dedicatedCloud from this vrack (1.5)
@@ -25332,7 +25111,7 @@ requestBody.Add("dedicatedCloud",dedicatedCloud);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/dedicatedCloud/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dedicatedCloud.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/dedicatedCloud/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dedicatedCloud.ToString())));
 		}
 		/// <summary>
 		/// vrack (1.5) for legacy vrack (1.0)
@@ -25346,7 +25125,7 @@ requestBody.Add("dedicatedCloud",dedicatedCloud);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/legacyVrack",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/legacyVrack",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// add a legacy vrack (1.0) to this vrack (1.5)
@@ -25364,7 +25143,7 @@ requestBody.Add("dedicatedCloud",dedicatedCloud);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("legacyVrack",legacyVrack);
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/legacyVrack",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/legacyVrack",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25380,7 +25159,7 @@ requestBody.Add("legacyVrack",legacyVrack);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.LegacyVrack>(HttpMethod.Get,String.Format("/vrack/{0}/legacyVrack/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(legacyVrack.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.LegacyVrack>(HttpMethod.Get,String.Format("/vrack/{0}/legacyVrack/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(legacyVrack.ToString())));
 		}
 		/// <summary>
 		/// remove this legacy vrack (1.0) from this vrack (1.5)
@@ -25396,7 +25175,7 @@ requestBody.Add("legacyVrack",legacyVrack);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/legacyVrack/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(legacyVrack.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/legacyVrack/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(legacyVrack.ToString())));
 		}
 		/// <summary>
 		/// vrack (1.5) for IP blocks
@@ -25410,7 +25189,7 @@ requestBody.Add("legacyVrack",legacyVrack);
 
 
 
-			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/vrack/{0}/ip",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OVHApi.IPAddressBlock[]>(HttpMethod.Get,String.Format("/vrack/{0}/ip",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// add an IP block to this vrack (1.5)
@@ -25428,7 +25207,7 @@ requestBody.Add("legacyVrack",legacyVrack);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("block",block);
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/ip",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/ip",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Zone available to announce your block
@@ -25444,7 +25223,7 @@ requestBody.Add("block",block);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.VrackZoneEnum[]>(HttpMethod.Get,String.Format("/vrack/{0}/ip/{1}/availableZone",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.VrackZoneEnum[]>(HttpMethod.Get,String.Format("/vrack/{0}/ip/{1}/availableZone",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25460,7 +25239,7 @@ requestBody.Add("block",block);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Ip>(HttpMethod.Get,String.Format("/vrack/{0}/ip/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Ip>(HttpMethod.Get,String.Format("/vrack/{0}/ip/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// remove this IP block from this vrack (1.5)
@@ -25476,7 +25255,7 @@ requestBody.Add("block",block);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/ip/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/ip/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Announce IP to zone for vrack (1.5)
@@ -25496,7 +25275,7 @@ requestBody.Add("block",block);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("zone",zone);
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/ip/{1}/announceInZone",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ip.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/ip/{1}/announceInZone",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())),requestBody);
 		}
 		/// <summary>
 		/// vrack (1.5) tasks
@@ -25510,7 +25289,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vrack/{0}/task",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/vrack/{0}/task",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25526,7 +25305,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Get,String.Format("/vrack/{0}/task/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(taskId.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Get,String.Format("/vrack/{0}/task/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(taskId.ToString())));
 		}
 		/// <summary>
 		/// List all services allowed in this vrack (1.5)
@@ -25540,7 +25319,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.AllowedServices>(HttpMethod.Get,String.Format("/vrack/{0}/allowedServices",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.AllowedServices>(HttpMethod.Get,String.Format("/vrack/{0}/allowedServices",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// vrack (1.5) for dedicated server
@@ -25554,7 +25333,7 @@ requestBody.Add("zone",zone);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedServer",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedServer",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// add a dedicated server to this vrack (1.5)
@@ -25572,7 +25351,7 @@ requestBody.Add("zone",zone);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("dedicatedServer",dedicatedServer);
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/dedicatedServer",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Post,String.Format("/vrack/{0}/dedicatedServer",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25588,7 +25367,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.DedicatedServer>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedServer/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dedicatedServer.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.DedicatedServer>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedServer/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dedicatedServer.ToString())));
 		}
 		/// <summary>
 		/// remove this server from this vrack (1.5)
@@ -25604,7 +25383,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/dedicatedServer/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dedicatedServer.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.Task>(HttpMethod.Delete,String.Format("/vrack/{0}/dedicatedServer/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dedicatedServer.ToString())));
 		}
 		/// <summary>
 		/// Retrieve vrack traffic graph values
@@ -25622,12 +25401,11 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("dedicatedServer",dedicatedServer);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.Dedicated.Server.MrtgTimestampValue[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedServer/{1}/mrtg{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(dedicatedServer.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Dedicated.Server.MrtgTimestampValue[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedServer/{1}/mrtg{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(dedicatedServer.ToString()),queryString));
 		}
 		/// <summary>
 		/// vrack (1.5) dedicated connect
@@ -25641,7 +25419,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedConnect",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedConnect",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25657,7 +25435,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Vrack.DedicatedConnect>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedConnect/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Vrack.DedicatedConnect>(HttpMethod.Get,String.Format("/vrack/{0}/dedicatedConnect/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -25675,7 +25453,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/vrack/{0}/dedicatedConnect/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/vrack/{0}/dedicatedConnect/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -25701,7 +25479,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Access>(HttpMethod.Get,String.Format("/xdsl/{0}",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Access>(HttpMethod.Get,String.Format("/xdsl/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -25717,7 +25495,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List the radius connection logs
@@ -25731,7 +25509,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.RadiusConnectionLog[]>(HttpMethod.Get,String.Format("/xdsl/{0}/radiusConnectionLogs",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.RadiusConnectionLog[]>(HttpMethod.Get,String.Format("/xdsl/{0}/radiusConnectionLogs",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25745,7 +25523,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Incident>(HttpMethod.Get,String.Format("/xdsl/{0}/incident",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Incident>(HttpMethod.Get,String.Format("/xdsl/{0}/incident",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get various statistics about this access
@@ -25761,12 +25539,11 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 			Ensure.NotNull("type",type);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Xdsl.TimestampAndValue>>(HttpMethod.Get,String.Format("/xdsl/{0}/statistics{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Xdsl.TimestampAndValue>>(HttpMethod.Get,String.Format("/xdsl/{0}/statistics{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Send the PPP login informations to the e-mail of the nicAdmin
@@ -25780,7 +25557,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			await RawCall(HttpMethod.Post,String.Format("/xdsl/{0}/requestPPPLoginMail",System.Uri.EscapeDataString(serviceName.ToString())));
+			await RawCall(HttpMethod.Post,String.Format("/xdsl/{0}/requestPPPLoginMail",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// The lines of the access
@@ -25794,7 +25571,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/lines",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/lines",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25810,7 +25587,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Line>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Line>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())));
 		}
 		/// <summary>
 		/// Get various statistics about the line
@@ -25828,12 +25605,11 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("number",number);
 
-			var queryString = new QueryString();
 			queryString.Add("period",period);
 			queryString.Add("type",type);
 
 
-			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Xdsl.TimestampAndValue>>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/statistics{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString()),queryString));
+			return await RawCall<OvhApi.Models.ComplexType.UnitAndValues<OvhApi.Models.Xdsl.TimestampAndValue>>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/statistics{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25849,7 +25625,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.DslamPort>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/dslamPort",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.DslamPort>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/dslamPort",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())));
 		}
 		/// <summary>
 		/// List all availables profiles for this port
@@ -25865,7 +25641,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.DslamLineProfile[]>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/dslamPort/availableProfiles",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.DslamLineProfile[]>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/dslamPort/availableProfiles",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())));
 		}
 		/// <summary>
 		/// Reset the port on the DSLAM
@@ -25881,7 +25657,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/lines/{1}/dslamPort/reset",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/lines/{1}/dslamPort/reset",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())));
 		}
 		/// <summary>
 		/// Change the profile of the port
@@ -25901,7 +25677,7 @@ requestBody.Add("dedicatedServer",dedicatedServer);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("dslamProfileId",dslamProfileId);
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/lines/{1}/dslamPort/changeProfile",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/lines/{1}/dslamPort/changeProfile",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get the logs emitted by the DSLAM for this port
@@ -25917,11 +25693,10 @@ requestBody.Add("dslamProfileId",dslamProfileId);
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 			Ensure.NotNullNorEmpty("number",number);
 
-			var queryString = new QueryString();
 			queryString.Add("limit",limit);
 
 
-			return await RawCall<OvhApi.Models.Xdsl.DslamPortLog[]>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/dslamPort/logs{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(number.ToString()),queryString));
+			return await RawCall<OvhApi.Models.Xdsl.DslamPortLog[]>(HttpMethod.Get,String.Format("/xdsl/{0}/lines/{1}/dslamPort/logs{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(number.ToString()),queryString));
 		}
 		/// <summary>
 		/// Switch this access to total deconsolidation
@@ -25935,7 +25710,7 @@ requestBody.Add("dslamProfileId",dslamProfileId);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/requestTotalDeconsolidation",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/requestTotalDeconsolidation",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -25949,7 +25724,7 @@ requestBody.Add("dslamProfileId",dslamProfileId);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Modem>(HttpMethod.Get,String.Format("/xdsl/{0}/modem",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Modem>(HttpMethod.Get,String.Format("/xdsl/{0}/modem",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -25965,7 +25740,7 @@ requestBody.Add("dslamProfileId",dslamProfileId);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Reboot the modem
@@ -25979,7 +25754,7 @@ requestBody.Add("dslamProfileId",dslamProfileId);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/reboot",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/reboot",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of PortMappings on this modem
@@ -25993,7 +25768,7 @@ requestBody.Add("dslamProfileId",dslamProfileId);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/portMappings",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/portMappings",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a port mapping
@@ -26027,7 +25802,7 @@ requestBody.Add("description",description);
 requestBody.Add("externalPortStart",externalPortStart);
 requestBody.Add("externalPortEnd",externalPortEnd);
 
-			return await RawCall<OvhApi.Models.Xdsl.PortMapping>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/portMappings",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Xdsl.PortMapping>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/portMappings",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26043,7 +25818,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.PortMapping>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/portMappings/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.PortMapping>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/portMappings/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26061,7 +25836,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/portMappings/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/portMappings/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete this port mapping
@@ -26077,7 +25852,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Delete,String.Format("/xdsl/{0}/modem/portMappings/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(name.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Delete,String.Format("/xdsl/{0}/modem/portMappings/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(name.ToString())));
 		}
 		/// <summary>
 		/// List of devices connected on this modem
@@ -26091,7 +25866,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/connectedDevices",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/connectedDevices",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26107,7 +25882,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.ConnectedDevice>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/connectedDevices/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(macAddress.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.ConnectedDevice>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/connectedDevices/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(macAddress.ToString())));
 		}
 		/// <summary>
 		/// Reset the modem to its default configuration
@@ -26121,7 +25896,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/reset",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/reset",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of WLANs on this modem
@@ -26135,7 +25910,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/wifi",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/wifi",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26151,7 +25926,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.WLAN>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/wifi/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(wifiName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.WLAN>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/wifi/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(wifiName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26169,7 +25944,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/wifi/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(wifiName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/wifi/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(wifiName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Refresh the list of connected devices on the modem
@@ -26183,7 +25958,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/refreshConnectedDevices",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/refreshConnectedDevices",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of LANs on this modem
@@ -26197,7 +25972,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26213,7 +25988,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.LAN>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.LAN>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26231,7 +26006,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/lan/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/lan/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List of DHCP on this modem
@@ -26247,7 +26022,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26265,7 +26040,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.DHCP>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.DHCP>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26285,7 +26060,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List of DHCP Static Address of this modem
@@ -26303,7 +26078,7 @@ requestBody.Add("externalPortEnd",externalPortEnd);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString())));
 		}
 		/// <summary>
 		/// Add a DHCP static lease
@@ -26330,7 +26105,7 @@ requestBody.Add("MACAddress",MACAddress);
 requestBody.Add("IPAddress",IPAddress);
 requestBody.Add("name",name);
 
-			return await RawCall<OvhApi.Models.Xdsl.DHCPStaticAddress>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Xdsl.DHCPStaticAddress>(HttpMethod.Post,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26350,7 +26125,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.DHCPStaticAddress>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses/{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString()),System.Uri.EscapeDataString(MACAddress.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.DHCPStaticAddress>(HttpMethod.Get,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses/{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString()),System.Net.WebUtility.UrlEncode(MACAddress.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26372,7 +26147,7 @@ requestBody.Add("name",name);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses/{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString()),System.Uri.EscapeDataString(MACAddress.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses/{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString()),System.Net.WebUtility.UrlEncode(MACAddress.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete this port mapping
@@ -26392,7 +26167,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Delete,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses/{3}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(lanName.ToString()),System.Uri.EscapeDataString(dhcpName.ToString()),System.Uri.EscapeDataString(MACAddress.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Delete,String.Format("/xdsl/{0}/modem/lan/{1}/dhcp/{2}/DHCPStaticAddresses/{3}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(lanName.ToString()),System.Net.WebUtility.UrlEncode(dhcpName.ToString()),System.Net.WebUtility.UrlEncode(MACAddress.ToString())));
 		}
 		/// <summary>
 		/// List available LNS for this access
@@ -26406,7 +26181,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Lns[]>(HttpMethod.Get,String.Format("/xdsl/{0}/availableLns",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Lns[]>(HttpMethod.Get,String.Format("/xdsl/{0}/availableLns",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List of IPs addresses for this access
@@ -26420,7 +26195,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/xdsl/{0}/ips",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<System.Net.IPAddress[]>(HttpMethod.Get,String.Format("/xdsl/{0}/ips",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Order an extra /29 range of IPv4 addresses
@@ -26434,7 +26209,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/ips",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/ips",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26450,7 +26225,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.IP>(HttpMethod.Get,String.Format("/xdsl/{0}/ips/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.IP>(HttpMethod.Get,String.Format("/xdsl/{0}/ips/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Stop renewing this extra IPv4 option
@@ -26466,7 +26241,7 @@ requestBody.Add("name",name);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/xdsl/{0}/ips/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(ip.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/xdsl/{0}/ips/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(ip.ToString())));
 		}
 		/// <summary>
 		/// Tasks scheduled for this access
@@ -26480,12 +26255,11 @@ requestBody.Add("name",name);
 				throw new OvhException("This request must be authenticated");
 			Ensure.NotNullNorEmpty("serviceName",serviceName);
 
-			var queryString = new QueryString();
 			queryString.Add("function",function);
 			queryString.Add("status",status);
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/xdsl/{0}/tasks{1}",System.Uri.EscapeDataString(serviceName.ToString()),queryString));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/xdsl/{0}/tasks{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),queryString));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26501,7 +26275,7 @@ requestBody.Add("name",name);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Get,String.Format("/xdsl/{0}/tasks/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Get,String.Format("/xdsl/{0}/tasks/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Change the status of the IPv6 for this access
@@ -26519,7 +26293,7 @@ requestBody.Add("name",name);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("enabled",enabled);
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/ipv6",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/ipv6",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Change the LNS of the access
@@ -26537,7 +26311,7 @@ requestBody.Add("enabled",enabled);
 var requestBody = new Dictionary<string, object>();
 requestBody.Add("lnsName",lnsName);
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/changeLns",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/changeLns",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get the status of the order
@@ -26551,7 +26325,7 @@ requestBody.Add("lnsName",lnsName);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.OrderFollowup.Step[]>(HttpMethod.Get,String.Format("/xdsl/{0}/orderFollowup",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.OrderFollowup.Step[]>(HttpMethod.Get,String.Format("/xdsl/{0}/orderFollowup",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26565,7 +26339,7 @@ requestBody.Add("lnsName",lnsName);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.PendingAction>(HttpMethod.Get,String.Format("/xdsl/{0}/pendingAction",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.PendingAction>(HttpMethod.Get,String.Format("/xdsl/{0}/pendingAction",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// List the notifications for this access
@@ -26579,7 +26353,7 @@ requestBody.Add("lnsName",lnsName);
 
 
 
-			return await RawCall<long[]>(HttpMethod.Get,String.Format("/xdsl/{0}/monitoringNotifications",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<long[]>(HttpMethod.Get,String.Format("/xdsl/{0}/monitoringNotifications",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Add a notification
@@ -26606,7 +26380,7 @@ requestBody.Add("frequency",frequency);
 requestBody.Add("type",type);
 requestBody.Add("phone",phone);
 
-			return await RawCall<OvhApi.Models.Xdsl.MonitoringNotification>(HttpMethod.Post,String.Format("/xdsl/{0}/monitoringNotifications",System.Uri.EscapeDataString(serviceName.ToString())),requestBody);
+			return await RawCall<OvhApi.Models.Xdsl.MonitoringNotification>(HttpMethod.Post,String.Format("/xdsl/{0}/monitoringNotifications",System.Net.WebUtility.UrlEncode(serviceName.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26622,7 +26396,7 @@ requestBody.Add("phone",phone);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.MonitoringNotification>(HttpMethod.Get,String.Format("/xdsl/{0}/monitoringNotifications/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.MonitoringNotification>(HttpMethod.Get,String.Format("/xdsl/{0}/monitoringNotifications/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26640,7 +26414,7 @@ requestBody.Add("phone",phone);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/monitoringNotifications/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/monitoringNotifications/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// Delete this notification
@@ -26656,7 +26430,7 @@ requestBody.Add("phone",phone);
 
 
 
-			await RawCall(HttpMethod.Delete,String.Format("/xdsl/{0}/monitoringNotifications/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			await RawCall(HttpMethod.Delete,String.Format("/xdsl/{0}/monitoringNotifications/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26670,7 +26444,7 @@ requestBody.Add("phone",phone);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.AccessDiagnostic>(HttpMethod.Get,String.Format("/xdsl/{0}/diagnostic",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.AccessDiagnostic>(HttpMethod.Get,String.Format("/xdsl/{0}/diagnostic",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Run diagnostic on the access
@@ -26684,7 +26458,7 @@ requestBody.Add("phone",phone);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/diagnostic",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Task>(HttpMethod.Post,String.Format("/xdsl/{0}/diagnostic",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Return Merchandise Authorisation associated
@@ -26698,7 +26472,7 @@ requestBody.Add("phone",phone);
 
 
 
-			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/rma",System.Uri.EscapeDataString(serviceName.ToString())));
+			return await RawCall<string[]>(HttpMethod.Get,String.Format("/xdsl/{0}/rma",System.Net.WebUtility.UrlEncode(serviceName.ToString())));
 		}
 		/// <summary>
 		/// Get this object properties
@@ -26714,7 +26488,7 @@ requestBody.Add("phone",phone);
 
 
 
-			return await RawCall<OvhApi.Models.Telephony.Rma>(HttpMethod.Get,String.Format("/xdsl/{0}/rma/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Telephony.Rma>(HttpMethod.Get,String.Format("/xdsl/{0}/rma/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 		/// <summary>
 		/// Alter this object properties
@@ -26732,7 +26506,7 @@ requestBody.Add("phone",phone);
 
 
 
-			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/rma/{1}",System.Uri.EscapeDataString(serviceName.ToString()),System.Uri.EscapeDataString(id.ToString())),requestBody);
+			await RawCall(HttpMethod.Put,String.Format("/xdsl/{0}/rma/{1}",System.Net.WebUtility.UrlEncode(serviceName.ToString()),System.Net.WebUtility.UrlEncode(id.ToString())),requestBody);
 		}
 		/// <summary>
 		/// List available services
@@ -26754,7 +26528,6 @@ requestBody.Add("phone",phone);
 		public async Task<long[]> GetXdslIncidentIds(DateTime? endDate = null,DateTime? creationDate = null)
 		{
 
-			var queryString = new QueryString();
 			queryString.Add("creationDate",creationDate);
 			queryString.Add("endDate",endDate);
 
@@ -26771,7 +26544,7 @@ requestBody.Add("phone",phone);
 
 
 
-			return await RawCall<OvhApi.Models.Xdsl.Incident>(HttpMethod.Get,String.Format("/xdsl/incidents/{0}",System.Uri.EscapeDataString(id.ToString())));
+			return await RawCall<OvhApi.Models.Xdsl.Incident>(HttpMethod.Get,String.Format("/xdsl/incidents/{0}",System.Net.WebUtility.UrlEncode(id.ToString())));
 		}
 	}
 }

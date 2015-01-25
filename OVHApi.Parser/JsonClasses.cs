@@ -61,8 +61,11 @@ namespace OVHApi.Parser
 		public string Description { get; internal set; }
 		[JsonProperty]
 		public DateTime DeprecatedDate { get; internal set; }
-		[JsonProperty]
-		public DateTime DeletionDate { get; internal set; }
+
+        ////[JsonProperty] // "deletionDate": "2014-07-06:00:00+01:00" WTF?
+        ////[JsonIgnore]
+        ////public DateTime DeletionDate { get; internal set; }
+
 		[JsonProperty]
 		public string Replacement { get; internal set; }
 	}
