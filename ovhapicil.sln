@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.testapp", "OVHApi.te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.Parser", "OVHApi.Parser\OVHApi.Parser.csproj", "{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET40.OVHApi", "NET40.OVHApi\NET40.OVHApi.csproj", "{2D514408-2D84-4520-83C3-8B6347E0F021}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D514408-2D84-4520-83C3-8B6347E0F021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D514408-2D84-4520-83C3-8B6347E0F021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D514408-2D84-4520-83C3-8B6347E0F021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D514408-2D84-4520-83C3-8B6347E0F021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
