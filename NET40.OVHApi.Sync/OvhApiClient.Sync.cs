@@ -31,6 +31,58 @@ namespace OVHApi
             return RawCall<CredentialsResponse>(HttpMethod.Post, "/auth/credential", cmd);
         }
 
+        /// <summary>
+        /// Get this object properties
+        /// <param name="serviceName">The internal name of your SMS offer</param>
+        /// <param name="sender">The sms sender</param>
+        /// </summary>
+        public OvhApi.Models.Sms.Sender GetSmsSendersEx(string serviceName, string sender)
+        {
+            if (ConsumerKey == null)
+                throw new OvhException("This request must be authenticated");
+
+            Ensure.NotNullNorEmpty("serviceName", serviceName);
+            Ensure.NotNullNorEmpty("sender", sender);
+
+            return RawCall<OvhApi.Models.Sms.Sender>(
+                HttpMethod.Get,
+                String.Format(
+                    "/sms/{0}/senders/{1}",
+                    Uri.EscapeDataString(serviceName.ToString()),
+                    Uri.EscapeDataString(sender.ToString()).Replace("%2B", "+")));
+            // fix here ----------------------------------------------/\
+            // the api does not accept a escaped '+' sign.
+        }
+
+        /// <summary>
+        /// Validate a given sender with an activation code.
+        /// <param name="code">The validation code</param>
+        /// <param name="serviceName">The internal name of your SMS offer</param>
+        /// <param name="sender">The sms sender</param>
+        /// </summary>
+        public void CreateSmsSendersValidateEx(string code, string serviceName, string sender)
+        {
+            if (ConsumerKey == null)
+                throw new OvhException("This request must be authenticated");
+
+            Ensure.NotNullNorEmpty("code", code);
+            Ensure.NotNullNorEmpty("serviceName", serviceName);
+            Ensure.NotNullNorEmpty("sender", sender);
+
+            var requestBody = new Dictionary<string, object>();
+            requestBody.Add("code", code);
+
+            RawCall(
+                HttpMethod.Post,
+                String.Format(
+                    "/sms/{0}/senders/{1}/validate",
+                    Uri.EscapeDataString(serviceName.ToString()),
+                    Uri.EscapeDataString(sender.ToString()).Replace("%2B", "+")),
+                    requestBody); //                             /\
+            // fix here -----------------------------------------/
+            // the api does not accept a escaped '+' sign.
+        }
+
         private void RawCall(HttpMethod method, string path, object content = null)
         {
             var request = BuildHttpRequest(method, path, content);

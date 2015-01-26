@@ -117,7 +117,7 @@ namespace OVHApi.Parser
 				}
 			}
 
-			AddSummary(type.Comments,model.Description);
+			AddSummary(type.Comments, model.Description);
 
 			foreach (ModelType child in modelType.Children)
 			{
