@@ -1,9 +1,14 @@
 ovhapicil
 =========
 
-.NET Client for OVH API ( More info about API can be found at [https://api.ovh.com/](https://api.ovh.com/))
+.NET Client for OVH API (More info about API can be found at [https://api.ovh.com/](https://api.ovh.com/)).
 
-The API is automatically generated from [OVH documentation](https://api.ovh.com/console/) using CodeDom and T4 templates
+The API is automatically generated from [OVH documentation](https://api.ovh.com/console/) using CodeDom and T4 templates.
+
+Built for:
+
+* .NET 4.5 with async/await  and System.Net.Http
+* .NET 4.0 with sync methods
 
 How to use the API
 ==================
@@ -28,7 +33,7 @@ Once the application key and secret are created, you must retrieve a consumer ke
                         
  ```
  
- The previous code returns a *CredentialsResponse.ValidationUrl*.  **You must use this url to link your application with your OVH NickHandle**. Therefore, Copy/Paste or redirect user to that url to create the ConsumerKey.
+The previous code returns a *CredentialsResponse.ValidationUrl*.  **You must use this url to link your application with your OVH NickHandle**. Therefore, Copy/Paste or redirect user to that url to create the ConsumerKey.
  
 2. Consume API services
 -----------------------

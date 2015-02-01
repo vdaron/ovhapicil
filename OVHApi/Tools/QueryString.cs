@@ -12,7 +12,7 @@ namespace OVHApi.Tools
 			StringBuilder builder = new StringBuilder();
 			foreach (string key in Keys)
 			{
-				string v = base[key] != null ? System.Net.WebUtility.UrlEncode(GetValueAsString(key)) : null;
+				string v = base[key] != null ? Uri.EscapeDataString(GetValueAsString(key)) : null;
 				if (!string.IsNullOrEmpty(v))
 				{
 					if (builder.Length > 0)
