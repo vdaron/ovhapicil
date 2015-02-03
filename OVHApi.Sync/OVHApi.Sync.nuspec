@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>OVHApi.Sync</id>
+    <title>OVHApi.Sync</title>
+    <version>$version$</version>
+    <authors>Vincent DARON</authors>
+    <owners>Vincent DARON</owners>
+    <licenseUrl>https://github.com/vdaron/ovhapicil/blob/develop/LICENCE</licenseUrl>
+    <projectUrl>https://github.com/vdaron/ovhapicil/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2015 - Vincent DARON</copyright>
+    <tags>OVH</tags>
+  </metadata>
+</package>
