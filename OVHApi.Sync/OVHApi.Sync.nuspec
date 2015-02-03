@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>OVHApi</id>
-    <title>OVHApi</title>
+    <id>OVHApi.Sync</id>
+    <title>OVHApi.Sync</title>
     <version>$version$</version>
     <authors>Vincent DARON</authors>
     <owners>Vincent DARON</owners>
