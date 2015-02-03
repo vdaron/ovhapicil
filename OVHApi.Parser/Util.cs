@@ -13,7 +13,7 @@ namespace OVHApi.Parser
 		public static string GetMethodName(Api api, Operation operation)
 		{
 			string prefix = GetMethodPrefix(operation);
-			string[] tokens = api.Path.Split(new []{'/'},StringSplitOptions.RemoveEmptyEntries);
+			string[] tokens = api.Path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
 			StringBuilder result = new StringBuilder(prefix);
 			foreach (var token in tokens)
@@ -77,7 +77,7 @@ namespace OVHApi.Parser
 				if (!p.Required)
 				{
 					param.Append(" = null");
-					nulllable.Insert(0,param.ToString()); // To have have from date before to date
+					nulllable.Insert(0, param.ToString()); // To have have from date before to date
 				}
 				else
 				{
@@ -113,7 +113,7 @@ namespace OVHApi.Parser
 		public static bool IsNullableType(Parameter prop)
 		{
 			string type = GetType(prop.DataType);
-			
+
 			return !prop.Required && !prop.DataType.EndsWith("[]") && type != "string" && (!type.Contains(".") || (type.EndsWith("Enum")));
 		}
 
@@ -142,34 +142,34 @@ namespace OVHApi.Parser
 			string result = type;
 
 			Regex r = new Regex(@"<(.*)>$");
-			
-			if(r.IsMatch(result))
+
+			if (r.IsMatch(result))
 			{
 				Match genericMatch = r.Match(type);
-                var genericResult = GetType(genericMatch.Groups[1].Value);
+				var genericResult = GetType(genericMatch.Groups[1].Value);
 
-                if (genericResult.StartsWith("complexType"))
-                {
-                    genericResult = genericResult.Replace("complexType", "OvhApi.Models.ComplexType");
-                }
+				if (genericResult.StartsWith("complexType"))
+				{
+					genericResult = genericResult.Replace("complexType", "OvhApi.Models.ComplexType");
+				}
 
-                result = r.Replace(result, "<" + genericResult + ">");
+				result = r.Replace(result, "<" + genericResult + ">");
 			}
 
 			if (type.Contains("."))
 			{
-            if (type.StartsWith("complexType"))
-            {
-                type = type.Replace("complexType", "OvhApi.Models.ComplexType");
-            }
+				if (type.StartsWith("complexType"))
+				{
+					type = type.Replace("complexType", "OvhApi.Models.ComplexType");
+				}
 
 				return ModelsNamespaces + FixCase(FixNamespace(result));
 			}
 
-            if (type.StartsWith("complexType"))
-            {
-                type = type.Replace("complexType", "OvhApi.Models.ComplexType");
-            }
+			if (type.StartsWith("complexType"))
+			{
+				type = type.Replace("complexType", "OvhApi.Models.ComplexType");
+			}
 
 			if (type.EndsWith("[]"))
 			{
@@ -215,7 +215,7 @@ namespace OVHApi.Parser
 		public static string GetEnumValue(string name)
 		{
 			string n = FixCase(name);
-            n = n.Replace(":", "_").Replace('-', '_').Replace('.', '_').Replace('/', '_').Replace("+", "Plus").Replace(" ", "_").Replace("(", "_").Replace(")", "_");
+			n = n.Replace(":", "_").Replace('-', '_').Replace('.', '_').Replace('/', '_').Replace("+", "Plus").Replace(" ", "_").Replace("(", "_").Replace(")", "_");
 			if (char.IsDigit(n[0]))
 			{
 				n = "_" + n;
@@ -250,21 +250,21 @@ namespace OVHApi.Parser
 
 		public static string GetMethodReturnTaskParameter(string type, bool async = true)
 		{
-            if (type == "void")
-            {
-                return async ? String.Empty : "void";
-            }
+			if (type == "void")
+			{
+				return async ? String.Empty : "void";
+			}
 
-            var item = GetType(type);
+			var item = GetType(type);
 
-            if (item.Contains("complexType"))
-            {
-                item = item.Replace("complexType", "OvhApi.Models.ComplexType");
-            }
+			if (item.Contains("complexType"))
+			{
+				item = item.Replace("complexType", "OvhApi.Models.ComplexType");
+			}
 
-            if (async)
-                return "<" + item + ">";
-            return item;
+			if (async)
+				return "<" + item + ">";
+			return item;
 		}
 
 		public static string CreateParameterChecks(Parameter[] parameters, int indent = 3)
@@ -272,12 +272,12 @@ namespace OVHApi.Parser
 			StringBuilder result = new StringBuilder();
 			for (int i = 0; i < parameters.Length; i++)
 			{
-				if (!parameters[i].Required) 
+				if (!parameters[i].Required)
 					continue;
 
 				string type = GetType(parameters[i].DataType);
 
-                result.Append(GetIndent(indent));
+				result.Append(GetIndent(indent));
 				switch (type)
 				{
 					case "string":
@@ -294,16 +294,16 @@ namespace OVHApi.Parser
 			return result.ToString();
 		}
 
-        public static string GetIndent(int value)
-        {
-            var chars = new char[value];
-            for (int i = 0; i < chars.Length; i++)
-            {
-                chars[i] = '\t';
-            }
+		public static string GetIndent(int value)
+		{
+			var chars = new char[value];
+			for (int i = 0; i < chars.Length; i++)
+			{
+				chars[i] = '\t';
+			}
 
-            return new string(chars);
-        }
+			return new string(chars);
+		}
 
 		public static string GetApiPath(Api api, Operation operation)
 		{
@@ -318,8 +318,8 @@ namespace OVHApi.Parser
 				{
 					case ParamType.Path:
 						path = path.Replace("{" + p.Name + "}", "{" + count + "}");
-					args.Add(GetParameterName(p));
-					count++;
+						args.Add(GetParameterName(p));
+						count++;
 						break;
 					case ParamType.Query:
 						hasQueryString = true;
@@ -331,12 +331,12 @@ namespace OVHApi.Parser
 			result.Append('"');
 			result.Append(path);
 			if (hasQueryString)
-				result.AppendFormat("{{{0}}}",count);
+				result.AppendFormat("{{{0}}}", count);
 			result.Append('"');
-            
+
 			foreach (var arg in args)
 			{
-				result.AppendFormat(",System.Uri.EscapeDataString({0}.ToString())", arg);
+				result.AppendFormat(",System.Uri.EscapeDataString({0}.ToString()).Replace(\"%2B\", \"+\")", arg);
 			}
 			if (hasQueryString)
 				result.Append(",queryString");
@@ -345,7 +345,7 @@ namespace OVHApi.Parser
 			return result.ToString();
 		}
 
-        public static string CreateQueryString(Parameter[] parameters, int indent = 3)
+		public static string CreateQueryString(Parameter[] parameters, int indent = 3)
 		{
 			//var queryString = new QueryString();
 			//queryString["fieldType"] = fieldType;
@@ -356,14 +356,14 @@ namespace OVHApi.Parser
 			{
 				if (parameter.ParamType == ParamType.Query)
 				{
-                    if (result.Length == 0)
+					if (result.Length == 0)
 					{
-                        result.Append(GetIndent(indent));
-                        result.AppendLine("var queryString = new QueryString();");
+						result.Append(GetIndent(indent));
+						result.AppendLine("var queryString = new QueryString();");
 					}
 
-                    result.Append(GetIndent(indent));
-                    result.AppendLine(String.Format("queryString.Add(\"{0}\",{1});", parameter.Name, GetParameterName(parameter)));
+					result.Append(GetIndent(indent));
+					result.AppendLine(String.Format("queryString.Add(\"{0}\",{1});", parameter.Name, GetParameterName(parameter)));
 				}
 			}
 
@@ -391,27 +391,24 @@ namespace OVHApi.Parser
 			return result.ToString();
 		}
 
-        public static string CreateMethodReturn(Api api, Operation operation, int indent = 3, bool async = true)
+		public static string CreateMethodReturn(Api api, Operation operation, int indent = 3, bool async = true)
 		{
 			StringBuilder result = new StringBuilder();
 
 			string methodReturnType = GetMethodReturnTaskParameter(operation.ResponseType);
 
-            result.Append(GetIndent(indent));
+			result.Append(GetIndent(indent));
 
 			if (methodReturnType != String.Empty)
 			{
 				result.Append("return ");
 			}
 
-            if (async)
-                result.Append("await RawCall");
-            else
-                result.Append("RawCall");
-            
-            result.Append(methodReturnType);
+			result.Append(async ? "await RawCall" : "RawCall");
+
+			result.Append(methodReturnType);
 			result.AppendFormat("(HttpMethod.{0},", FirstUpperCase(operation.HttpMethod));
-			result.Append(GetApiPath(api,operation));
+			result.Append(GetApiPath(api, operation));
 			if (operation.Parameters.Any(parameter => parameter.ParamType == ParamType.Body))
 			{
 				result.Append(",requestBody");
