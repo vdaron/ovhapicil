@@ -33,11 +33,11 @@ namespace OVHApi
                 {
 #>
 		/// <summary>
-		/// <#= operation.Description #>
+		/// <#= Util.XmlEncode(operation.Description) #>
 <#                  foreach(var param in operation.Parameters)
                     {
 #>
-		/// <param name="<#= Util.GetParameterName(param)#>"><#= param.Description ?? "To be written"#></param>
+		/// <param name="<#= Util.GetParameterName(param)#>"><#= Util.XmlEncode(param.Description, "To be writter")#></param>
 <#                  }
 #>
 		/// </summary>

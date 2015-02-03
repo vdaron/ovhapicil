@@ -5,7 +5,7 @@
 <#
 	List<OvhApi> apis = new List<OvhApi>();
 	apis.AddRange(new HttpFileLoader().Load());
-    bool async = true;
+    bool asyncMode = true;
 #>
 using System;
 using System.Linq;
@@ -28,11 +28,11 @@ namespace OVHApi
                 {
 #>
 		/// <summary>
-		/// <#= operation.Description #>
+		/// <#= Util.XmlEncode(operation.Description) #>
 <#                  foreach(var param in operation.Parameters)
                     {
 #>
-		/// <param name="<#= Util.GetParameterName(param)#>"><#= param.Description ?? "To be written"#></param>
+		/// <param name="<#= Util.GetParameterName(param)#>"><#= Util.XmlEncode(param.Description,"To be written")  #></param>
 <#                  }
 #>
 		/// </summary>
@@ -45,7 +45,7 @@ namespace OVHApi
 		[Obsolete("Deprecated since <#= operation.ApiStatus.DeprecatedDate#><# if(operation.ApiStatus.Replacement != null){#> use '<#=operation.ApiStatus.Replacement #>' instead<#}#>")]
 <#              }
 #>
-		public async Task<#= Util.GetMethodReturnTaskParameter(operation.ResponseType, async)#> <#= Util.GetMethodNameAndParameters(a,operation) #>
+		public async Task<#= Util.GetMethodReturnTaskParameter(operation.ResponseType, asyncMode)#> <#= Util.GetMethodNameAndParameters(a,operation) #>
 		{
 <#              
                 if (!operation.NoAuthentication)
@@ -58,7 +58,7 @@ namespace OVHApi
 <#= Util.CreateParameterChecks(operation.Parameters) #>
 <#= Util.CreateQueryString(operation.Parameters) #>
 <#= Util.CreateBodyRequest(operation.Parameters) #>
-<#= Util.CreateMethodReturn(a,operation, async: async) #>
+<#= Util.CreateMethodReturn(a,operation,0,asyncMode) #>
 		}
 <#
             }

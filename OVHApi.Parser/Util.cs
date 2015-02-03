@@ -452,6 +452,11 @@ namespace OVHApi.Parser
 			return ModelsNamespaces + Util.FixCase(Util.FixNamespace(model.Namespace));
 		}
 
+		public static string XmlEncode(string str, string defaultValue = null)
+		{
+			return !String.IsNullOrEmpty(str) ? str.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;") : defaultValue ?? String.Empty;
+		}
+
 		/// <summary>
 		/// Add an '_' before namespaces starting with a number
 		/// </summary>

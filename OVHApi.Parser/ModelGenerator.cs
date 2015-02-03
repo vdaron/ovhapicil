@@ -52,7 +52,6 @@ namespace OVHApi.Parser
 		{
 			CodeNamespace globalNamespace = new CodeNamespace();
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System"));
-			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Net.Http"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Threading.Tasks"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
 			globalNamespace.Imports.Add(new CodeNamespaceImport("System.Runtime.Serialization"));
@@ -243,7 +242,7 @@ namespace OVHApi.Parser
 				return;
 
 			comments.Add(new CodeCommentStatement("<summary>", true));
-			comments.Add(new CodeCommentStatement(summary, true));
+			comments.Add(new CodeCommentStatement(Util.XmlEncode(summary), true));
 			comments.Add(new CodeCommentStatement("</summary>", true));
 		}
 
