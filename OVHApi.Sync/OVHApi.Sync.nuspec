@@ -4,13 +4,13 @@
     <id>OVHApi.Sync</id>
     <title>OVHApi.Sync</title>
     <version>$version$</version>
-    <authors>Vincent DARON</authors>
+    <authors>Vincent DARON, SandRock</authors>
     <owners>Vincent DARON</owners>
     <licenseUrl>https://github.com/vdaron/ovhapicil/blob/develop/LICENCE</licenseUrl>
     <projectUrl>https://github.com/vdaron/ovhapicil/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <copyright>Copyright 2015 - Vincent DARON</copyright>
+    <copyright>Copyright 2015 - Vincent DARON,SandRock</copyright>
     <tags>OVH</tags>
   </metadata>
 </package>
