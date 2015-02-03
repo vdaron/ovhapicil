@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi", "OVHApi\OVHApi.csproj", "{238E8EA0-5ABE-433B-B328-6C05C9B9FD4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.testapp", "OVHApi.testapp\OVHApi.testapp.csproj", "{5A349CAC-1B23-4236-9D38-7C2586FDE94C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.Parser", "OVHApi.Parser\OVHApi.Parser.csproj", "{18AAD39B-9710-4FB7-AA90-5CACB2317DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET40.OVHApi.Sync", "NET40.OVHApi.Sync\NET40.OVHApi.Sync.csproj", "{E38897F2-0EFD-4E78-84E8-C3EA34AE4EF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVHApi.Sync", "OVHApi.Sync\OVHApi.Sync.csproj", "{E38897F2-0EFD-4E78-84E8-C3EA34AE4EF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
